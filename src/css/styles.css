@@ -6,3 +6,264 @@
 @import url("./photo-tips.css");
 @import url("./prices.css");
 @import url("./testimonials.css");
+
+/* Hide element on Desktop */
+@media only screen and (min-width: 851px) {
+/* Navigation Desktop*/
+.burger {
+  display: none;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+  
+nav ul li {
+  text-align: center;
+}
+
+nav ul li:first-child a:hover {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+nav ul li:last-child a:hover {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+  
+nav ul li a {
+  padding: 10px 20px 10px 20px;
+  color: var(--white);
+  font-family: "Oswald", serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+  
+nav ul li a:hover {
+  background-color: var(--green); 
+  color: var(--white);
+  text-decoration: none;
+}
+
+nav .active {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+nav .active:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+nav .active:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--dark);
+  width: 496px;
+  height: auto;
+  list-style: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  padding: 0;
+}
+
+.dropdown-menu li a {
+  color: var(--white);
+  text-decoration: none;
+  text-align: left;
+  padding-left: 25px;
+  width: 100%;
+}
+
+.dropdown-menu li a:hover {
+  padding-left: 25px;
+  width: 100%;
+}
+
+.dropdown-menu li:first-child a:hover {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.dropdown-menu li:last-child a:hover {
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+}
+
+/* Header */
+
+header {
+  position: relative;
+  height: 127px;
+  min-height: 127px;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  z-index: 100;
+}
+
+.logo-header {
+  position: absolute;
+  top: 25px;
+  left: 60px;
+  display: flex;
+  width: 215px;
+  height: 54px;
+}
+
+/* Navigation */
+
+.toggler {
+  display: none;
+}
+
+nav {
+  position: absolute;
+  top: 34px;
+  right: 60px;
+  background-color: var(--dark);
+  border-radius: 4px;
+}
+
+.toggler:checked ~ nav ul {
+  left: 0;
+}
+
+/* Desktop Section */
+  
+body {
+  color: var(--dark);
+  background-color: var(--white);
+  font-family: 'Frank-ruhl-libre', sans-serif;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Footer */
+
+footer {
+  width: 100%;
+  background-color: var(--dark);
+  padding: 58px 58px 58px 58px;
+}
+
+.logo-footer {
+  display: flex;
+  width: 165px;
+  height: auto;
+}
+
+/* Hide element on Tablet/Phone */
+
+@media only screen and (max-width:850px) {
+.logo-header {
+  left: 30px;
+  width: 150px;
+  height: auto;
+  }
+
+.burger {
+  position: absolute;
+  display: flex;
+  font-size: 30px;
+  color:  var(--white);
+  height: 100%;
+  cursor: pointer; 
+  top: 0;
+  right: 0;
+  margin: 20px 30px 0 0;
+  align-items: center;
+  z-index: 100;
+  background-color: var(--dark);
+  width: 64px;
+  height: 69px;
+  padding: 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+nav {
+  width: 100%;
+  right: 0;
+  top: 88px;
+  border-radius: 0;
+  border-top: 7px solid var(--dark);
+}
+
+nav a {
+  font-size: 18px;
+  font-family: "Oswald", serif;
+  font-weight: 400;
+  color: var(--white);
+}
+
+nav a:hover {
+  text-decoration: none;
+}
+
+nav a: {
+  text-decoration: none;
+}
+
+nav ul {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin-top: 0;
+  padding: 40px;
+  background-color: var(--dark);
+  left: -100%;
+  transition: all .5s;
+  list-style: none;
+  }
+
+nav li {
+  margin-left: 15%;
+  margin-bottom: 20px;
+  text-align: left;
+  }
+
+nav a::after, nav a:hover::after {
+    display: none;
+  }
+
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
