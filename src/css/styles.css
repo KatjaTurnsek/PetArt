@@ -120,11 +120,11 @@ nav .active:last-child {
 
 header {
   position: relative;
-  height: 127px;
-  min-height: 127px;
+  height: 115px;
+  min-height: 115px;
   width: 100%;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 100;
 }
 
@@ -172,13 +172,96 @@ body {
   position: relative;
   overflow: hidden;
   min-height: 525px;
-  background-image: linear-gradient(90deg, rgba(244,218,82,0.804359243697479) 23%, rgba(244,218,82,0) 56%), url("../../assets/images/jesse-orrico.jpg");
+  background-image: linear-gradient(90deg, rgb(255, 255, 255, 0.80) 23%, rgba(244,218,82,0) 56%), url("../../assets/images/progress-collie-maggie.jpg");
   background-position: center right;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding: 0 60px 0 60px;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
 }
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Global elements */
+
+.call-to-action-button {
+  background-color: var(--orange);
+  border: 2px solid var(--dark);
+  color: var(--white);
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 16px;
+  font-family: "Oswald", serif;
+  border-radius: 4px; 
+  padding: 25px;
+  margin: 30px 0 0 60px;
+  min-width: 290px;
+  width: 290px;
+  cursor: pointer; 
+  transition-duration: 0.4s;
+  position: relative;
+  z-index: 3;
+  }   
+
+.call-to-action-button:hover {
+  border: 2px solid var(--dark);
+  color: var(--white);
+  background-color: var(--green);
+  text-decoration: none;
+}
+
+.vl1, .vl2, .vl3, .vl4 {
+  height:100%;
+  position: absolute;
+  top: 0;
+} 
+
+.vl1 {
+  border-left: 58px solid var(--orange);
+  right: 0;
+} 
+
+.vl2 {
+  border-left: 20px solid var(--white);
+  right: 58px;
+} 
+
+.vl3 {
+  border-left: 28px solid var(--green);
+  right: 78px;
+} 
+
+.vl4 {
+  border-left: 1px solid var(--white);
+  right: 140px;
+} 
 
 /* Footer */
 
@@ -197,11 +280,19 @@ footer {
 /* Hide element on Tablet/Phone */
 
 @media only screen and (max-width:1199px) {
+/* Header */
+  header {
+  height: 90px;
+  min-height: 90px;
+}
+
 .logo-header {
   padding-left: 30px;
   width: 220px;
   height: auto;
 }
+
+/* Navigation */
 
 .burger {
   position: absolute;
@@ -312,6 +403,43 @@ nav ul li a {
   width: 100%;
 }
 
+/* Desktop Section */
+
+.main-img {
+  min-height: 400px;
+  padding: 0 30px 0 30px;
+  background-image: linear-gradient(90deg, rgb(255, 255, 255, 0.80) 23%, rgba(244,218,82,0) 70%), url("../../assets/images/progress-collie-maggie.jpg");
+}
+
+/* Global elements */
+
+.call-to-action-button {
+  font-size: 16px;
+  padding: 15px;
+  min-width: 180px;
+  width: 10px;
+  margin: 30px 0 30px 30px;
+  } 
+  
+.vl1 {
+  border-left: 35px solid var(--orange);
+  right: 0;
+} 
+  
+.vl2 {
+  border-left: 20px solid var(--white);
+  right: 35px;
+} 
+  
+.vl3 {
+  border-left: 22px solid var(--green);
+  right: 50px;
+} 
+  
+.vl4 {
+  border-left: 1px solid var(--white);
+  right: 90px;
+} 
 }
 
 /* Screen reader only */
