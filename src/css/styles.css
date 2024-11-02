@@ -8,7 +8,7 @@
 @import url("./testimonials.css");
 
 /* Hide element on Desktop */
-@media only screen and (min-width: 851px) {
+@media only screen and (min-width: 1200px) {
 /* Navigation Desktop*/
 .burger {
   display: none;
@@ -129,10 +129,10 @@ header {
 }
 
 .logo-header {
-  position: absolute;
-  top: 25px;
-  left: 60px;
-  display: flex;
+  padding-left: 60px;
+}
+
+.logo-header img {
   width: 215px;
   height: 54px;
 }
@@ -145,7 +145,7 @@ header {
 
 nav {
   position: absolute;
-  top: 34px;
+  top: 36px;
   right: 60px;
   background-color: var(--dark);
   border-radius: 4px;
@@ -166,6 +166,20 @@ body {
   text-align: center;
 }
 
+.main-img {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 525px;
+  background-image: linear-gradient(90deg, rgba(244,218,82,0.804359243697479) 23%, rgba(244,218,82,0) 56%), url("../../assets/images/jesse-orrico.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
 /* Footer */
 
 footer {
@@ -182,12 +196,12 @@ footer {
 
 /* Hide element on Tablet/Phone */
 
-@media only screen and (max-width:850px) {
+@media only screen and (max-width:1199px) {
 .logo-header {
-  left: 30px;
-  width: 150px;
+  padding-left: 30px;
+  width: 220px;
   height: auto;
-  }
+}
 
 .burger {
   position: absolute;
@@ -198,20 +212,21 @@ footer {
   cursor: pointer; 
   top: 0;
   right: 0;
-  margin: 20px 30px 0 0;
+  margin: 25px 30px 0 0;
   align-items: center;
   z-index: 100;
   background-color: var(--dark);
-  width: 64px;
-  height: 69px;
-  padding: 20px;
+  width: 60px;
+  height: 64px;
+  padding: 17px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
 
 nav {
+  position: absolute;
   width: 100%;
-  right: 0;
+  left: 0;
   top: 88px;
   border-radius: 0;
   border-top: 7px solid var(--dark);
@@ -221,14 +236,17 @@ nav a {
   font-size: 18px;
   font-family: "Oswald", serif;
   font-weight: 400;
-  color: var(--white);
+  color: var(--dark);
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  box-sizing: border-box;
 }
 
 nav a:hover {
-  text-decoration: none;
-}
-
-nav a: {
+  background-color: var(--green);
+  transition: background-color 0.3s ease;
   text-decoration: none;
 }
 
@@ -237,22 +255,62 @@ nav ul {
   width: 100%;
   height: 100vh;
   margin-top: 0;
-  padding: 40px;
-  background-color: var(--dark);
+  background-color: var(--white);
   left: -100%;
-  transition: all .5s;
+  transition: all 0.5s;
   list-style: none;
-  }
+}
 
 nav li {
-  margin-left: 15%;
-  margin-bottom: 20px;
   text-align: left;
+  border-bottom: 1px solid var(--dark);
+}
+
+nav ul li:last-child {
+  border-bottom: none;
+}
+
+nav ul li a {
+  font-size: 18px;
+  width: 100%;
+  padding-left: 60px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown li {
+  margin-left: 0;
+  border-bottom: none;
+}
+  
+.dropdown-menu {
+  display: none;
+  position: relative;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  list-style: none;
+  }
+  
+.dropdown:hover .dropdown-menu {
+  display: block;
+  padding-top: 0;
   }
 
-nav a::after, nav a:hover::after {
-    display: none;
-  }
+.dropdown-menu li a {
+  color: var(--dark);
+  text-decoration: none;
+  text-align: left;
+  padding: 15px 0 15px 80px;
+  width: 100%;
+}
+  
+.dropdown-menu li a:hover {
+  width: 100%;
+}
 
 }
 
