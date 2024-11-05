@@ -48,6 +48,10 @@ h2 {
   padding-bottom: 40px;
 }
 
+h2.right {
+  text-align: right;
+}
+
 h3 {
   font-family: "Oswald", serif;
   font-size: 30px;

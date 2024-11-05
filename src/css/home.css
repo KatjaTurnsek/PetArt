@@ -43,7 +43,7 @@
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+  grid-template-columns: repeat(auto-fill, 1fr);
   grid-template-rows: repeat(auto-fit, 1fr);
   gap: 7px;
   width: 100%;
@@ -100,11 +100,86 @@
   object-fit: cover;  
 }
 
+.testimonial-flex {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 350px;
+  display: flex;
+  margin: 0 auto;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  border-left: 15px solid var(--green);
+}
+
+.testimonial-flex::before {
+  position: absolute;
+  content: "“";
+  font-family: "Frank-ruhl-libre", serif;
+  font-size: 160px;
+  line-height: 160px;
+  text-align: center;
+  color: var(--green);
+  background-color: var(--white);
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+  width: 90px;
+  height: 90px;
+  top: -45px;
+  left: 80px;
+}
+
+.testimonial-flex-item1 {
+  flex: 1 1 70%;
+  padding: 60px 60px 40px 200px;
+  background-color: var(--grey);
+}
+
+.testimonial-flex-item1 p {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.testimonial-flex-item2 {
+  flex: 1 1 30%;
+  padding: 40px;
+  background-color: var(--grey);
+}
+
+.testimonial-img {
+  height: auto;
+  width: 100%;
+  border-radius: 300px;
+}
+
 /* Hide element on Tablet/Phone */
 
 @media only screen and (max-width:850px) {
+  .testimonial-flex {
+    flex-direction: column;
+    padding: 0 0 0 20px;
+  }
+
+  .testimonial-flex-item2 {
+    order: -1;
+    padding: 60px 100px 0 100px;
+  }
+
+  .testimonial-flex::before {
+    font-size: 100px;
+    line-height: 100px;
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 50px;
+  }  
+
+  .testimonial-flex-item1 {
+    padding: 60px;
+  }
+  
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr)); /* Flexible column width */
+    grid-template-columns: repeat(auto-fill, 1fr);
   }
   
   .div1 {
