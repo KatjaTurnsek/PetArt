@@ -100,6 +100,35 @@
   object-fit: cover;  
 }
 
+figure {
+  position: relative;
+  display: inline-block;
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figure figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(47, 19, 18, 0.6); /* Semi-transparent background */
+  color: var(--white);
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+figure:hover figcaption {
+  opacity: 1; 
+}
+
 .testimonial-flex {
   position: relative;
   width: 100%;

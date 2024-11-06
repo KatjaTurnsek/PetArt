@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+
+  <!-- Header with Navigation -->
   <header>
     <a href="index.html"><img class="logo-header" src="/assets/images/petart-with-heart-logotype.png" alt="Pet Art with Heart logotype"></a>
     <input id="toggler" class="toggler" type="checkbox">
@@ -16,16 +18,16 @@
       <span><i class="fa-solid fa-bars"></i></span>
       <span class="sr-only">Menu</span>
     </label>
-    <nav>
+    <nav aria-label="Primary Navigation">
       <ul>
         <li class="active"><a href="index.html">Home</a></li>
         <li><a href="html/pet-portraits-oils-gallery.html">Pet Portrait Gallery</a></li>
-          <li class="dropdown"><a href="#">Order Information <i class="fas fa-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="html/pet-portrait-commission-prices.html">Prices & How It Works</a></li>
-              <li><a href="html/pet-portrait-testimonials.html">Testimonials</a></li>
-              <li><a href="html/photo-tips-portrait-commissions.html">Photo Tips</a></li>
-            </ul>
+        <li class="dropdown"><a href="#">Order Information <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="html/pet-portrait-commission-prices.html">Prices & How It Works</a></li>
+            <li><a href="html/pet-portrait-testimonials.html">Testimonials</a></li>
+            <li><a href="html/photo-tips-portrait-commissions.html">Photo Tips</a></li>
+          </ul>
         </li>
         <li><a href="html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a></li>
         <li><a href="html/about-pet-portrait-artist.html">About Artist</a></li>
@@ -33,45 +35,61 @@
       </ul>
     </nav>
   </header>
+
+  <!-- Main Content -->
 <main>
+   <!-- Hero Section -->
   <section class="main-img">
-    <div class="vert-lines"></div>
+    <figure title="Lines Animation" class="vert-lines"></figure>
     <h1>Immortalize the Heart and Soul of Your Pet with Katja's Pet Portraits</h1>
-    <a href="html/contact-pet-portrait-artist.html" class="head-button">Join My Client List Now</a>        
+    <button onclick="window.location.href='html/contact-pet-portrait-artist.html'" class="head-button" title="Go to top">Join My Client List Now</button>
   </section>
+
+  <!-- Introduction Article -->
   <article class="main-flex">
     <h2>A Warm Welcome,</h2>
     <p>Whether you have a majestic cat, a loyal dog, or even a charming hamster as your beloved companion, <strong>pet portraits</strong> offer the ultimate way to capture and preserve the unique connection you share. My hand-painted, <strong>one-of-a-kind</strong>  artwork masterpieces are created with utmost care to capture the true essence of your pet.</p>
     <p>Transforming your photo into a <strong>vibrant fine art painting</strong> in oils, my <strong>custom painted pet portraits</strong> ensure that every detail of your furry friend is beautifully brought to life. With my long experience in creating <strong>portraits with pets</strong>, I guarantee a stunning representation that not only reflects their appearance but also their personality.</p>
-    <div class="gallery-grid">
-      <figure class="div1"><img class="image" src="/assets/images/dog-portrait-white-terrier.jpg" alt="Dog Portrait of a White Terrier"></figure>
-      <figure class="div2"><img class="image" src="/assets/images/pet-portrait-newfoundland-dog.jpg" alt="Pet Portrait of Newfoundland Dog"></figure>
-      <figure class="div3"><img class="image" src="/assets/images/framed-cat-painting.jpg" alt="Framed Cat Painting"></figure>
-      <figure class="div4"><img class="image" src="/assets/images/oil-painting-rabbit-grace.jpg" alt="Oil Portrait of a Rabbit"></figure>
-      <figure class="div5"><img class="image" src="/assets/images/client-picture-cat-with-portrait.jpg" alt="Client Picture Cat with Portrait"></figure>
-      <figure class="div6"><img class="image" src="/assets/images/horse-painting-in-progress.jpg" alt="Horse Oil Painting in Progress"></figure>
-    </div>
-    <a href="html/pet-portraits-oils-gallery.html" class="button">View Pet Portrait Gallery</a>        
+
+  <!-- Gallery Grid -->
+  <div class="gallery-grid">
+    <figure class="div1"><img class="image" src="/assets/images/dog-portrait-white-terrier.jpg" alt="Dog Portrait of a White Terrier">
+      <figcaption>Oil Painting</figcaption>
+    </figure>
+    <figure class="div2"><img class="image" src="/assets/images/pet-portrait-newfoundland-dog.jpg" alt="Pet Portrait of Newfoundland Dog"></figure>
+    <figure class="div3"><img class="image" src="/assets/images/framed-cat-painting.jpg" alt="Framed Cat Painting"></figure>
+    <figure class="div4"><img class="image" src="/assets/images/oil-painting-rabbit-grace.jpg" alt="Oil Portrait of a Rabbit"></figure>
+    <figure class="div5"><img class="image" src="/assets/images/client-picture-cat-with-portrait.jpg" alt="Client Picture Cat with Portrait"></figure>
+    <figure class="div6"><img class="image" src="/assets/images/horse-painting-in-progress.jpg" alt="Horse Oil Painting in Progress"></figure>
+  </div>
+    <button onclick="window.location.href='html/pet-portraits-oils-gallery.html'" class="button" title="View Gallery">View Pet Portrait Gallery</button>
   </article>
+
     <hr class="hr">
-    <section class="article-flex">
-      <div class="article-flex-item1">
-        <img class="img" src="/assets/images/portrait-oil-newfounlandsjpg.jpg" alt="Oil Portraits of two Newfoundlands">
-        <h2>Capturing Memories: Hand-Painted Pet Portraits by Katja Turnsek</h2>
-        <p>My name is <strong>Katja Turnsek</strong>, an artist based outside Gothenburg, Sweden. With and artistic flair, I create hand painted pet portraits that serve as <strong> timeless memories</strong> of your cherished companion.</p>
-        <p>Every stroke of the brush is infused with love and dedication, resulting in an exquisite <strong>Fine Art</strong> that captures the spirit and soul of your pet. 
-        </p>
-        <p>Whether you want to honor a current furry friend or create a lasting tribute for one who has crossed the rainbow bridge, my custom painted pet portraits are the perfect way to celebrate their presence in your life.</p>
-      </div>
-      <div class="article-flex-item2">
-        <img class="img" src="/assets/images/pet-portrait-artist-painting.jpg" alt="Artist Painting a Cat in Oils">
-        <h2>Transform Your Photo into Hand-Painted Pet Portraits</h2>
-        <p>Discover the beauty and artistry of my hand-painted pet portraits today. Let me transform your treasured photo into an extraordinary <strong>oil painting</strong> that will forever remind you of the special bond you share with your beloved pet.</p>
-        <p><strong>The process is very simple</strong>, just <a href="html/contact-pet-portrait-artist.html">join my client list</a> and share any ideas or special request you have.</p>
-        <a href="html/contact-pet-portrait-artist.html" class="action-button">Join My Client List Now</a> 
-      </div>
-    </section>
+
+  <!-- Additional Article with Images and Information -->
+  <section class="article-flex">
+    <div class="article-flex-item1">
+      <img class="img" src="/assets/images/portrait-oil-newfounlandsjpg.jpg" alt="Oil Portraits of two Newfoundlands">
+      <h2>Capturing Memories: Hand-Painted Pet Portraits by Katja Turnsek</h2>
+      <p>My name is <strong>Katja Turnsek</strong>, an artist based outside Gothenburg, Sweden. With and artistic flair, I create hand painted pet portraits that serve as <strong> timeless memories</strong> of your cherished companion.</p>
+      <p>Every stroke of the brush is infused with love and dedication, resulting in an exquisite <strong>Fine Art</strong> that captures the spirit and soul of your pet. 
+      </p>
+      <p>Whether you want to honor a current furry friend or create a lasting tribute for one who has crossed the rainbow bridge, my custom painted pet portraits are the perfect way to celebrate their presence in your life.</p>
+    </div>
+
+    <div class="article-flex-item2">
+      <img class="img" src="/assets/images/pet-portrait-artist-painting.jpg" alt="Artist Painting a Cat in Oils">
+      <h2>Transform Your Photo into Hand-Painted Pet Portraits</h2>
+      <p>Discover the beauty and artistry of my hand-painted pet portraits today. Let me transform your treasured photo into an extraordinary <strong>oil painting</strong> that will forever remind you of the special bond you share with your beloved pet.</p>
+      <p><strong>The process is very simple</strong>, just <a href="html/contact-pet-portrait-artist.html">join my client list</a> and share any ideas or special request you have.</p>
+       <button onclick="window.location.href='html/contact-pet-portrait-artist.html'" class="action-button" title="View Gallery">Join My Client List Now</button>
+    </div>
+  </section>
+
     <hr class="hr">
+
+  <!-- Testimonial Section -->
   <aside class="main-flex">
     <h2 class="right">Painting of Maggie</h2>
     <blockquote class="testimonial-flex"> 
@@ -81,9 +99,11 @@
       <img class="testimonial-img" src="/assets/images/pet-portrait-client-photo.jpg" alt="Dog with Portrait client testimonial">
     </div>
     </blockquote>
-    <a href="html/pet-portrait-testimonials.html" class="button">Read More Testimonials</a>    
+    <button onclick="window.location.href='html/pet-portrait-testimonials.html'" class="button" title="View Gallery">Read More Testimonials</button>    
   </aside>
 </main>
+
+ <!-- Footer -->
 <footer>
   <div class="footer-flex-item">
     <h3 class="footer-headline">Menu</h3>
@@ -98,16 +118,14 @@
     <div class="footer-social">
       <a title="Facebook" href="https://www.facebook.com/PetPortraitsArtist" class="btn-social-fb"><i class="fa-brands fa-square-facebook fa-2x"></i></a>
       <a title="Instagram" href="https://www.instagram.com/katjapetportraits" class="btn-social-fb btn-social-in"><i class="fa-brands fa-instagram fa-2x"></i></a>
-  </div>
-  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <div class="up">
-      <a title="To top" href="#"><i class="fa-solid fa-arrow-up fa-2x"></i></a>
     </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up fa-2x"></i></button>
   </div>
   <div class="footer-flex-item wide"><a href="index.html"><img class="footer-logo" src="/assets/images/petart-logotype-bw.png" alt="Pet Art with Heart logotype"></a>
   </div>
   <div class="footer-flex-item wide wide2">&copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja Turnsek
   </div>
 </footer>
+<script src="./src/js/up.js"></script>
 </body>
 </html>
