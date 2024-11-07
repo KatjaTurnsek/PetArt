@@ -44,5 +44,8 @@
 /* Hide element on Tablet/Phone */
 
 @media only screen and (max-width:850px) {
-
+  .main-img-gallery {
+    min-height: 430px;
+    padding: 0 30px 0 30px;
+  }
 }
