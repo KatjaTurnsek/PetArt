@@ -1,40 +1,33 @@
-// Open the Modal
+let slideIndex = 1; 
+
 function openModal() {
-  document.getElementById("myModal").style.display = "block";
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+  modal.setAttribute('aria-hidden', 'false');
+  showSlides(slideIndex);
 }
 
-// Close the Modal
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
 }
 
-var slideIndex = 1;
-showSlides(slideIndex);
+function setCurrentSlide(n) {
+  slideIndex = n;
+  showSlides(slideIndex);
+}
 
-// Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function showSlides(n) {
+  const slides = document.querySelectorAll('.mySlides');
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  
+  slides.forEach(slide => slide.style.display = 'none');
+  slides[slideIndex - 1].style.display = 'block';
 }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}

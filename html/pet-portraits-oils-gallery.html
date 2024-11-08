@@ -76,8 +76,8 @@
   </div>
 
   <!-- The Modal/Lightbox -->
-<div id="myModal" class="modal">
-  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div id="myModal" class="modal" aria-hidden="true">
+  <button class="close" onclick="closeModal()" aria-label="Close lightbox">&times;</button>
   <div class="modal-content">
     <div class="mySlides">
       <div class="numbertext">1 / 6</div>
@@ -108,12 +108,12 @@
       <div class="numbertext">6 / 6</div>
       <img src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.jpg" alt="Flat Coated Retriever Lennon" class="lightbox-image">
       <p class="caption">Dog Portrait of Flat Coated Retriever Lennon, Size: 40x30cm, Painted Year: 2024</p>
-    </div>
+  </div> 
 
     <!-- Next/previous controls -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
+    
   </section>
 
   <!-- Article -->
