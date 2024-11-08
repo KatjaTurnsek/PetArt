@@ -183,7 +183,7 @@ main {
   height: auto;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding: 60px;
+  padding: 30px 60px 30px 60px;
   text-align: left;
 }
 

@@ -55,26 +55,41 @@
 
   <!-- Gallery Grid -->
   <div class="gallery-grid">
-    <figure class="div1"><img class="image" src="/assets/images/dog-portrait-white-terrier.jpg" alt="Dog Portrait of a White Terrier">
+    <figure class="div1"><img class="image" src="/assets/images/dog-portrait-white-terrier.jpg" alt="Dog Portrait of a White Terrier" onclick="openLightbox();setCurrentSlide(1)>
       <figcaption>White Terrier Winston in Oils</figcaption>
     </figure>
-    <figure class="div2"><img class="image" src="/assets/images/pet-portrait-newfoundland-dog.jpg" alt="Pet Portrait of Newfoundland Dog">
+    <figure class="div2"><img class="image" src="/assets/images/pet-portrait-newfoundland-dog.jpg" alt="Pet Portrait of Newfoundland Dog" onclick="openLightbox();setCurrentSlide(1)>
       <figcaption>Newfoundland Dog Mitzy</figcaption>
     </figure>
-    <figure class="div3"><img class="image" src="/assets/images/framed-cat-painting.jpg" alt="Framed Cat Painting">
+    <figure class="div3"><img class="image" src="/assets/images/framed-cat-painting.jpg" alt="Framed Cat Painting" onclick="openLightbox();setCurrentSlide(1)>
       <figcaption>Framed Portrait of Cat Odessa</figcaption>
     </figure>
-    <figure class="div4"><img class="image" src="/assets/images/oil-painting-rabbit-grace.jpg" alt="Oil Portrait of a Rabbit">
+    <figure class="div4"><img class="image" src="/assets/images/oil-painting-rabbit-grace.jpg" alt="Oil Portrait of a Rabbit" onclick="openLightbox();setCurrentSlide(1)>
       <figcaption>Oil Painting of Rabbit Grace</figcaption>
     </figure>
-    <figure class="div5"><img class="image" src="/assets/images/client-picture-cat-with-portrait.jpg" alt="Client Picture Cat with Portrait">
+    <figure class="div5"><img class="image" src="/assets/images/client-picture-cat-with-portrait.jpg" alt="Client Picture Cat with Portrait" onclick="openLightbox();setCurrentSlide(1)>
       <figcaption>Cat Masquerade with Portrait</figcaption>
     </figure>
-    <figure class="div6"><img class="image" src="/assets/images/horse-painting-in-progress.jpg" alt="Horse Oil Painting in Progress">
+    <figure class="div6"><img class="image" src="/assets/images/horse-painting-in-progress.jpg" alt="Horse Oil Painting in Progress" onclick="openLightbox();setCurrentSlide(1)>
       <figcaption>Paitning Arab Horse Wangelisa</figcaption>
     </figure>
   </div>
   </section>
+
+   <!-- Lightbox Container -->
+  <div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <div class="lightbox-content">
+    <img src="/assets/images/dog-portrait-white-terrier.jpg" class="lightbox-image" alt="Expanded view of image 1">
+    <img src="/assets/images/pet-portrait-newfoundland-dog.jpg" class="lightbox-image" alt="Expanded view of image 2">
+    <img src="/assets/images/framed-cat-painting.jpg" class="lightbox-image" alt="Expanded view of image 3">
+    <img src="/assets/images/oil-painting-rabbit-grace.jpg" class="lightbox-image" alt="Expanded view of image 3">
+    <img src="/assets/images/client-picture-cat-with-portrait.jpg" class="lightbox-image" alt="Expanded view of image 3">
+    <img src="/assets/images/horse-painting-in-progress.jpg" class="lightbox-image" alt="Expanded view of image 3">
+  </div>
+  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next" onclick="changeSlide(1)">&#10095;</a>
+  </div>
 
   <!-- Article -->
   <section class="main-flex">
@@ -131,5 +146,6 @@
   </div>
 </footer>
 <script src="../src/js/up.js"></script>
+<script src="../gallery.js"></script>
 </body>
 </html>
