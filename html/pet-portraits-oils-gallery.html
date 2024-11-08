@@ -55,41 +55,66 @@
 
   <!-- Gallery Grid -->
   <div class="gallery-grid">
-    <figure class="div1"><img class="image" src="/assets/images/dog-portrait-white-terrier.jpg" alt="Dog Portrait of a White Terrier" onclick="openLightbox();setCurrentSlide(1)>
-      <figcaption>White Terrier Winston in Oils</figcaption>
+    <figure class="div1"><img class="image" src="/assets/images/pet-portraits/cat-portrait-masquerade.jpg" alt="Cat Portrait of Masquerade" onclick="openModal();setCurrentSlide(1)">
+      <figcaption>Cat Portrait of Masquerade</figcaption>
     </figure>
-    <figure class="div2"><img class="image" src="/assets/images/pet-portrait-newfoundland-dog.jpg" alt="Pet Portrait of Newfoundland Dog" onclick="openLightbox();setCurrentSlide(1)>
-      <figcaption>Newfoundland Dog Mitzy</figcaption>
+    <figure class="div2"><img class="image" src="/assets/images/pet-portraits/rabbit-oil-painting-grace.jpg" alt="Rabbit Painting of Grace" onclick="openModal();setCurrentSlide(2)">
+      <figcaption>Rabbit Painting of Grace</figcaption>
     </figure>
-    <figure class="div3"><img class="image" src="/assets/images/framed-cat-painting.jpg" alt="Framed Cat Painting" onclick="openLightbox();setCurrentSlide(1)>
-      <figcaption>Framed Portrait of Cat Odessa</figcaption>
+    <figure class="div3"><img class="image" src="/assets/images/pet-portraits/cat-painting-oil-odessa.jpg" alt="Cat Paitning of Cat Odessa" onclick="openModal();setCurrentSlide(3)">
+      <figcaption>Cat Paitning of Cat Odessa</figcaption>
     </figure>
-    <figure class="div4"><img class="image" src="/assets/images/oil-painting-rabbit-grace.jpg" alt="Oil Portrait of a Rabbit" onclick="openLightbox();setCurrentSlide(1)>
-      <figcaption>Oil Painting of Rabbit Grace</figcaption>
+    <figure class="div4"><img class="image" src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.jpg" alt="Norwegian Forest Cat Juanita" onclick="openModal();setCurrentSlide(4)">
+      <figcaption>Norwegian Forest Cat Juanita</figcaption>
     </figure>
-    <figure class="div5"><img class="image" src="/assets/images/client-picture-cat-with-portrait.jpg" alt="Client Picture Cat with Portrait" onclick="openLightbox();setCurrentSlide(1)>
-      <figcaption>Cat Masquerade with Portrait</figcaption>
+    <figure class="div5"><img class="image" src="/assets/images/pet-portraits/cat-oil-portrait-saga.jpg" alt="Cat Paiting of Saga" onclick="openModal();setCurrentSlide(5)">
+      <figcaption>Cat Paiting of Saga</figcaption>
     </figure>
-    <figure class="div6"><img class="image" src="/assets/images/horse-painting-in-progress.jpg" alt="Horse Oil Painting in Progress" onclick="openLightbox();setCurrentSlide(1)>
-      <figcaption>Paitning Arab Horse Wangelisa</figcaption>
+    <figure class="div6"><img class="image" src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.jpg" alt="Flat Coated Retriever Lennon" onclick="openModal();setCurrentSlide(6)">
+      <figcaption>Flat Coated Retriever Lennon</figcaption>
     </figure>
   </div>
-  </section>
 
-   <!-- Lightbox Container -->
-  <div id="lightbox" class="lightbox">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <div class="lightbox-content">
-    <img src="/assets/images/dog-portrait-white-terrier.jpg" class="lightbox-image" alt="Expanded view of image 1">
-    <img src="/assets/images/pet-portrait-newfoundland-dog.jpg" class="lightbox-image" alt="Expanded view of image 2">
-    <img src="/assets/images/framed-cat-painting.jpg" class="lightbox-image" alt="Expanded view of image 3">
-    <img src="/assets/images/oil-painting-rabbit-grace.jpg" class="lightbox-image" alt="Expanded view of image 3">
-    <img src="/assets/images/client-picture-cat-with-portrait.jpg" class="lightbox-image" alt="Expanded view of image 3">
-    <img src="/assets/images/horse-painting-in-progress.jpg" class="lightbox-image" alt="Expanded view of image 3">
-  </div>
-  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-  <a class="next" onclick="changeSlide(1)">&#10095;</a>
-  </div>
+  <!-- The Modal/Lightbox -->
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+      <img src="/assets/images/pet-portraits/cat-portrait-masquerade.jpg" alt="Cat Portrait of Masquerade" class="lightbox-image">
+      <p class="caption">Cat Portrait of Masquerade, Size: 30x25cm, Painted Year: 2020</p>
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+      <img src="/assets/images/pet-portraits/rabbit-oil-painting-grace.jpg" alt="Rabbit Painting of Grace" class="lightbox-image">
+      <p class="caption">Rabbit Painting of Grace, Size: 60x50cm, Painted Year: 2021</p>
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+      <img src="/assets/images/pet-portraits/cat-painting-oil-odessa.jpg" alt="Cat Paitning of Cat Odessa" class="lightbox-image">
+      <p class="caption">Cat Paitning of Odessa, Size: 30x25cm, Painted Year: 2020</p>
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+      <img src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.jpg" alt="Norwegian Forest Cat Juanita" class="lightbox-image">
+      <p class="caption">Norwegian Forest Cat Juanita, Size: 30x25cm, Painted Year: 2024</p>
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+      <img src="/assets/images/pet-portraits/cat-oil-portrait-saga.jpg" alt="Cat Paiting of Saga" class="lightbox-image">
+      <p class="caption">Cat Painintg of Saga, Size: 30x25cm, Painted Year: 2020</p>
+    </div>
+    <div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+      <img src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.jpg" alt="Flat Coated Retriever Lennon" class="lightbox-image">
+      <p class="caption">Dog Portrait of Flat Coated Retriever Lennon, Size: 40x30cm, Painted Year: 2024</p>
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </section>
 
   <!-- Article -->
   <section class="main-flex">
@@ -146,6 +171,6 @@
   </div>
 </footer>
 <script src="../src/js/up.js"></script>
-<script src="../gallery.js"></script>
+<script src="../src/js/gallery.js"></script>
 </body>
 </html>
