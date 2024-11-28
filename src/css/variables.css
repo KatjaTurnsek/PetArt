@@ -85,11 +85,13 @@ p {
   h2 {
     font-size: 25px;
     line-height: 35px;
+    text-align: center;
   }
 
   h3 {
     font-size: 25px;
     line-height: 30px;
+    text-align: center;
   }
 
   p {

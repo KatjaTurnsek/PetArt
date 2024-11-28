@@ -189,6 +189,7 @@ main {
 
 .hr {
   border: 1px solid var(--dark);
+  margin: 20px 0 20px 0;
 }
 
 .article-flex {
@@ -198,7 +199,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding: 60px;
+  padding: 30px 60px 30px 60px;
   text-align: left;
   gap: 6%;
 }
@@ -295,6 +296,33 @@ main {
   text-decoration: none;
 }
 
+.button-orange {
+  background-color: var(--orange);
+  color: var(--dark);
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  line-height: 30px;
+  font-family: "Oswald", serif;
+  border-radius: 4px; 
+  padding: 20px;
+  margin: 20px 0 0 0;
+  min-width: 240px;
+  width: auto;
+  cursor: pointer; 
+  transition-duration: 0.4s;
+  position: relative;
+  display: inline-block;
+  border: none;
+  outline: none;
+  }   
+
+.button-orange:hover {
+  color: var(--dark);
+  background-color: var(--green);
+  text-decoration: none;
+}
+
 .vert-lines {
   position: absolute;
   right: 0;
@@ -346,7 +374,7 @@ footer {
   flex-wrap: wrap;
   bottom: 0;
   padding: 0;
-  margin-top: auto;
+  margin-top: 60px;
   border-top: 2px solid var(--dark);
   text-align: left;
   background-image: url("/assets/images/footer-bg.png");
@@ -547,7 +575,7 @@ nav ul li a {
   margin: 30px 0 30px 30px;
 } 
 
-.button, .action-button {
+.button, .button-orange {
   font-size: 16px;
   padding: 15px;
   margin: 30px 0;
@@ -572,6 +600,7 @@ nav ul li a {
 
 footer {
   text-align: center;
+  margin-top: 30px;
   }
 
 .footer-flex-item,
