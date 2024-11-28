@@ -48,8 +48,14 @@ h2 {
   padding-bottom: 40px;
 }
 
+h2.left {
+  text-align: left;
+  padding-bottom: 60px;
+}
+
 h2.right {
   text-align: right;
+  padding-bottom: 60px;
 }
 
 h3 {
