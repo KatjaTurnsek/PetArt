@@ -17,6 +17,30 @@
   -ms-animation: fadeIn 3s;
 }
 
+.main-img-shop {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 525px;
+  background-image: linear-gradient(90deg, rgb(255, 255, 255, 0.80) 23%, rgba(244,218,82,0) 56%), url("../../assets/images/wildlife-art-for-sale.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 60px 0 60px;
+  margin-bottom: 30px;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+.painting-info {
+  line-height: 15px;
+  padding-left: 15px;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 1fr);
@@ -254,5 +278,11 @@ figure img {
     grid-row: 4;
     height: 200px;
   }
+
+  .painting-info {
+    text-align: center;
+    padding-left: 0;
+  }
+  
 
 }
