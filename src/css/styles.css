@@ -369,7 +369,8 @@ main {
 
 footer {
   width: 100%;
-  height: auto;
+  position: relative;
+  height: auto; 
   display: flex;
   flex-wrap: wrap;
   bottom: 0;
