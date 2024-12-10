@@ -42,6 +42,13 @@
   100% { opacity: 1; }
 }
 
+figure.gallery-item2 {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  flex: 1 1 calc(33.333% - 20px);
+}
+
 .testimonial-flex {
   position: relative;
   width: 100%;
