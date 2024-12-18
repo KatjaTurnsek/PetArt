@@ -83,3 +83,11 @@ p.magazine {
   
 } 
 
+@media only screen and (max-width:850px) {
+  .main-img-about {
+    min-height: 430px;
+    padding: 0 30px 0 30px;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 23%, rgba(138, 135, 53, 0.3) 56%), url("../../assets/images/pet-portrait-artist-katja-turnsek.jpg");
+  }
+}
+
