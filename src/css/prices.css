@@ -105,6 +105,8 @@ h3.plan-title {
   .plan-prices {
     font-size: 18px;
     line-height: 35px;
+    text-align: center;
+    padding: 10px;
   }
 
   .currency-select {
