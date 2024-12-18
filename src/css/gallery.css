@@ -240,7 +240,7 @@ figure img {
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 23%, rgba(138, 135, 53, 0.3) 56%), url("../../assets/images/oil-portrait-progress-cat.jpg");
   }
 
-  .main-img-gallery {
+  .main-img-shop {
     min-height: 430px;
     padding: 0 30px 0 30px;
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 23%, rgba(138, 135, 53, 0.3) 56%), url("../../assets/images/wildlife-art-for-sale.jpg");
