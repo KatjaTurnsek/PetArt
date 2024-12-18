@@ -117,7 +117,7 @@ figure.gallery-item2 {
 
   .testimonial-flex-item2 {
     order: -1;
-    padding: 60px 60px 0 60px;
+    padding: 30px;
   }
 
   .testimonial-flex::before {
@@ -130,7 +130,7 @@ figure.gallery-item2 {
   }  
 
   .testimonial-flex-item1 {
-    padding: 60px;
+    padding: 30px;
   }
 
 }
