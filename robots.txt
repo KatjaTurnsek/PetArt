@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /html/petart-with-heart-sitemap.html
+Sitemap: https://www.pet-art.net/sitemap.xml
+Disallow: /400.html
+Disallow: /404.html
+Disallow: /500.html
