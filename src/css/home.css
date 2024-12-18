@@ -117,7 +117,7 @@ figure.gallery-item2 {
 
   .testimonial-flex-item2 {
     order: -1;
-    padding: 60px 100px 0 100px;
+    padding: 60px 60px 0 60px;
   }
 
   .testimonial-flex::before {
