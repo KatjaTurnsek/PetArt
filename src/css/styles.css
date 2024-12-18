@@ -632,6 +632,14 @@ footer ul {
 }
 
 @media only screen and (max-width:850px) {
+  .logo-header {
+    padding-left: 30px;
+  }
+  
+  .burger {
+    margin: 25px 30px 0 0;
+  }
+ 
   .main-flex {
     padding: 30px;
   }
