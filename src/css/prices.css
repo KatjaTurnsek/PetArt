@@ -46,7 +46,8 @@
 h3.plan-title {
   font-size: 25px;
   font-weight: 400;
-  line-height: 25px;
+  line-height: 35px;
+  text-align: left;
   color: var(--white);
   background-color: var(--dark);
   border-top-left-radius: 4px;
@@ -99,7 +100,8 @@ h3.plan-title {
   }
   
   h3.plan-title {
-    padding: 15px 80px 15px 80px;
+    padding: 15px;
+    text-align: center;
   }
 
   .plan-prices {
