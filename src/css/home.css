@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   min-height: 525px;
-  background-image: linear-gradient(90deg, rgb(255, 255, 255, 0.80) 23%, rgba(138, 135, 53,0) 56%), url("../../assets/images/pet-portraits-in-progress.jpg");
+  background-image: linear-gradient(90deg, rgb(255, 255, 255, 0.80) 23%, rgba(138, 135, 53,0) 56%), url("../../assets/images/pet-portraits-in-progress.webp");
   background-position: center right;
   background-repeat: no-repeat;
   background-size: cover;
@@ -107,7 +107,7 @@ figure.gallery-item2 {
   .main-img {
     min-height: 430px;
     padding: 0 30px 0 30px;
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 23%, rgba(138, 135, 53, 0.3) 56%), url("../../assets/images/pet-portraits-in-progress.jpg");
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 23%, rgba(138, 135, 53, 0.3) 56%), url("../../assets/images/pet-portraits-in-progress.webp");
   }
   
   .testimonial-flex {
