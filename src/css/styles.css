@@ -378,7 +378,7 @@ footer {
   margin-top: 60px;
   border-top: 2px solid var(--dark);
   text-align: left;
-  background-image: url("/assets/images/footer-bg.png");
+  background-image: url("/assets/images/footer-bg.webp");
   background-position: center right;
   background-repeat: no-repeat;
   background-size: cover;
