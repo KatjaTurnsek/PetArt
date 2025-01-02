@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commissioned Pet Portraits in Oils | Gallery with Paintings</title>
-    <meta name="description" content="Transform your pet's photo into one-of-a-kind commissioned pet portraits in oils. Each painting is a custom creation that captures the spirit of your furry friend. Order today!">
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../src/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commissioned Pet Portraits in Oils | Gallery with Paintings</title>
+  <link rel="canonical" href="https://www.pet-art.net/html/pet-portraits-oils-gallery.html">
+  <meta name="description"
+    content="Transform your pet's photo into one-of-a-kind commissioned pet portraits in oils. Each painting is a custom creation that captures the spirit of your furry friend. Order today!">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../src/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
+
 <body>
 
   <!-- Header with Navigation -->
   <header>
-    <a href="../index.html"><img class="logo-header" src="/assets/images/petart-with-heart-logotype.webp" alt="Pet Art with Heart logotype"></a>
+    <a href="../index.html"><img class="logo-header" src="/assets/images/petart-with-heart-logotype.webp"
+        alt="Pet Art with Heart logotype"></a>
     <input id="toggler" class="toggler" type="checkbox">
     <label for="toggler" class="burger">
       <span><i class="fa-solid fa-bars"></i></span>
@@ -38,426 +45,537 @@
   </header>
 
   <!-- Main Content -->
-<main>
-  
-   <!-- Hero Section -->
-  <section class="main-img-gallery">
-    <figure title="Lines Animation" class="vert-lines"></figure>
-    <h1>Commissioned Pet Portraits in Oils: A Gallery of Exquisite Paintings</h1>
-    <button onclick="window.location.href='contact-pet-portrait-artist.html'" class="head-button" title="Go to top">Join My Client List Now</button>
-  </section>
+  <main>
 
-  <!-- Introduction Article -->
-  <section class="main-flex">
-    <h2>Custom-Painted from Your Photos</h2>
-    <p>I specialize in creating <strong>exquisite</strong> commissioned pet portraits, meticulously hand-painted using oils on professionally stretched gallery-wrapped linen canvas. Whether you're looking for dog portraits, cat portraits, or horse portraits, I can bring your beloved pets to life through my art.</p>
-    <p>Your commissioned hand painted oil painting will be a one-of-a-kind masterpiece that is completely custom-made. I will work closely with you to bring your vision to reality, using your favorite photo as a reference and incorporating any ideas or special requests you may have. From the orientation of the portrait to the suitable backgrounds, colors, and painting size, everything will be tailored to your preferences.</p>
-    <h3>Painted Year 2020-2024</h3>
-
-  <!-- Gallery Grid -->
-  <div class="gallery-grid">
-  <figure class="gallery-item div1">
-    <img class="image" src="/assets/images/pet-portraits/cat-portrait-masquerade.webp" alt="Oil Paitning Masquerade" onclick="openModal();setCurrentSlide(1)">
-    <figcaption class="gallery-caption">Cat Portrait of Masquerade</figcaption>
-  </figure>
-  <figure class="gallery-item div2">
-    <img class="image" src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp" alt="Oil Painting of Grace" onclick="openModal();setCurrentSlide(2)">
-    <figcaption class="gallery-caption">Rabbit Painting of Grace</figcaption>
-  </figure>
-  <figure class="gallery-item div3">
-    <img class="image" src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp" alt="Oil Painting of Odessa" onclick="openModal();setCurrentSlide(3)">
-    <figcaption class="gallery-caption">Cat Painting of Odessa</figcaption>
-  </figure>
-  <figure class="gallery-item div4">
-    <img class="image" src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp" alt="Oil Painting of Juanita" onclick="openModal();setCurrentSlide(4)">
-    <figcaption class="gallery-caption">Norwegian Forest Cat Juanita</figcaption>
-  </figure>
-  <figure class="gallery-item div5">
-    <img class="image" src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp" alt="Oil Painting of Saga" onclick="openModal();setCurrentSlide(5)">
-    <figcaption class="gallery-caption">Cat Painting of Saga</figcaption>
-  </figure>
-  <figure class="gallery-item div6">
-    <img class="image" src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp" alt="Oil Painting of Lennon" onclick="openModal();setCurrentSlide(6)">
-    <figcaption class="gallery-caption">Flat Coated Retriever Lennon</figcaption>
-  </figure>
-  </div>  
-
-  <!-- Lightbox Modal -->
-  <div id="lightboxModal" class="modal" role="dialog" aria-hidden="true" tabindex="-1">
-  <button id="closeLightboxButton" class="close" onclick="closeModal()" aria-label="Close lightbox">&times;</button>
-  <div class="modal-content" role="document">
-      
-    <figure class="mySlides">
-      <p class="numbertext">1 / 36</p>
-      <img src="/assets/images/pet-portraits/cat-portrait-masquerade.webp" alt="Cat Masquerade" class="lightbox-image">
-      <figcaption class="caption">Cat Portrait of Masquerade, Size: 30x25cm, Painted Year: 2020</figcaption>
-    </figure>
-    <figure class="mySlides">
-      <p class="numbertext">2 / 36</p>
-      <img src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp" alt="Rabbit Grace" class="lightbox-image">
-      <figcaption class="caption">Rabbit Painting of Grace, Size: 60x50cm, Painted Year: 2021</figcaption>
-    </figure>
-    <figure class="mySlides">
-      <p class="numbertext">3 / 36</p>
-        <img src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp" alt="Cat Odessa" class="lightbox-image">
-        <figcaption class="caption">Cat Painting of Odessa, Size: 30x25cm, Painted Year: 2020</figcaption>
-    </figure>
-    <figure class="mySlides">
-      <p class="numbertext">4 / 36</p>
-      <img src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp" alt="Cat Juanita" class="lightbox-image">
-      <figcaption class="caption">Norwegian Forest Cat Juanita, Size: 30x25cm, Painted Year: 2024</figcaption>
-      </figure>
-      <figure class="mySlides">
-      <p class="numbertext">5 / 36</p>
-      <img src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp" alt="Cat Saga" class="lightbox-image">
-      <figcaption class="caption">Cat Painting of Saga, Size: 30x25cm, Painted Year: 2020</figcaption>
-    </figure>
-    <figure class="mySlides">
-      <p class="numbertext">6 / 36</p>
-      <img src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp" alt="Dog Lennon" class="lightbox-image">
-      <figcaption class="caption">Dog Portrait of Flat Coated Retriever Lennon, Size: 40x30cm, Painted Year: 2024</figcaption>
-    </figure>
-    <figure class="mySlides">
-      <p class="numbertext">7 / 36</p>
-      <img src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp" alt="Dog Bella" class="lightbox-image">
-      <figcaption class="caption">Dog Painting of Boston Terrier Bella, Size: 30x30cm, Painted Year: 2018</figcaption>
-  </figure>
-  <figure class="mySlides">
-      <p class="numbertext">8 / 36</p>
-      <img src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp" alt="Cat Maggie" class="lightbox-image">
-      <figcaption class="caption">Cat Portrait of Maggie, Size: 30x25cm, Painted Year: 2017</figcaption>
-  </figure>
-  <figure class="mySlides">
-      <p class="numbertext">9 / 36</p>
-      <img src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp" alt="Dog Sadie" class="lightbox-image">
-      <figcaption class="caption">Dog Portrait in Oil of Sadie, Size: 35x25cm, Painted Year: 2017</figcaption>
-  </figure>
-  <figure class="mySlides">
-      <p class="numbertext">10 / 36</p>
-      <img src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp" alt="Dog Viruta" class="lightbox-image">
-      <figcaption class="caption">Dog Oil Portrait of Viruta, Size: 40x30cm, Painted Year: 2017</figcaption>
-  </figure>
-  <figure class="mySlides">
-      <p class="numbertext">11 / 36</p>
-      <img src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp" alt="Dogs Dixie and Charlie" class="lightbox-image">
-      <figcaption class="caption">Schnauzer's in Oils of Dixie and Charlie, Painted Year: 2017</figcaption>
-  </figure>
-  <figure class="mySlides">
-      <p class="numbertext">12 / 36</p>
-      <img src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp" alt="Dog Laddie" class="lightbox-image">
-      <figcaption class="caption">Flat Coated Retriever in Snow of Laddie, Size: 35x25, Painted Year: 2017</figcaption>
-  </figure>
-  <figure class="mySlides">
-    <p class="numbertext">13 / 36</p>
-    <img src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp" alt="Dog Mazie" class="lightbox-image">
-    <figcaption class="caption">Portrait of Labrador Retriever Mazie, Size: 35x30cm, Painted Year 2017</figcaption>
-</figure>
-<figure class="mySlides">
-    <p class="numbertext">14 / 36</p>
-    <img src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp" alt="Dog Mitzy" class="lightbox-image">
-    <figcaption class="caption">Oil Portrait of Newfounlnad Dog Mitzy, Size: 40x30cm, Painted Year: 2019</figcaption>
-</figure>
-<figure class="mySlides">
-    <p class="numbertext">15 / 36</p>
-    <img src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp" alt="Dog Ferguson" class="lightbox-image">
-    <figcaption class="caption">Dog Painting in Oil of Terrier Ferguson, Size: 35x30cm, Painted Year 2017</figcaption>
-</figure>
-<figure class="mySlides">
-    <p class="numbertext">16 / 36</p>
-    <img src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp" alt="Dog Jedi" class="lightbox-image">
-    <figcaption class="caption">Agility Painting of Tervueren Jedi, Size: 60x40cm, Painted Year 2019</figcaption>
-</figure>
-<figure class="mySlides">
-    <p class="numbertext">17 / 36</p>
-    <img src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp" alt="Dog Winston" class="lightbox-image">
-    <figcaption class="caption">Dog Portrait of White Terrier Winston, Size: 25x25cm, Painted Year: 2017</figcaption>
-</figure>
-<figure class="mySlides">
-    <p class="numbertext">18 / 36</p>
-    <img src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp" alt="Horse Wangelisa" class="lightbox-image">
-    <figcaption class="caption">Arab Horse Oil Painting of Wangelisa, Size: 40x30cm, Painted Year 2018</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">19 / 36</p>
-  <img src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp" alt="Dog Chatt" class="lightbox-image">
-  <figcaption class="caption">Oil Portrait of Border Collie Chatt, Size: 35x35cm, Painted Year 2014</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">20 / 36</p>
-  <img src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp" alt="Cat Hoover" class="lightbox-image">
-  <figcaption class="caption">Cat Portrait of Hoover, Size:35x35cm, Painted Year: 2014</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">21 / 36</p>
-  <img src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp" alt="Dog Maggie" class="lightbox-image">
-  <figcaption class="caption">Oil Portrait of Rough Collie Maggie, Painted Year 2016</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">22 / 36</p>
-  <img src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp" alt="Dog Rapp" class="lightbox-image">
-  <figcaption class="caption">Springer Spaniel Oil Painting of Rapp, Size:40x40cm, Painted Year 2014</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">23 / 36</p>
-  <img src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp" alt="Dogs Midge, Finnegan and Morgan" class="lightbox-image">
-  <figcaption class="caption">Oil Painting of Dogs Midge, Finnegan and Morgan, Size: 90x65cm, Painted Year: 2015</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">24 / 36</p>
-  <img src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp" alt="Dog Griffyn" class="lightbox-image">
-  <figcaption class="caption">Pharaoh Dog Oil Portrait if Griffyn, Size: 65x45cm, Painted Year: 2014</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">25 / 36</p>
-  <img src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp" alt="Dogs Aiko and Zuki" class="lightbox-image">
-  <figcaption class="caption">Painting of Shiba Inu's Aiko and Zuki, Size: 58x47cm, Painted Year: 2011</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">26 / 36</p>
-  <img src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp" alt="Dog Duncan" class="lightbox-image">
-  <figcaption class="caption">Clumber Spaniel Pet Portrait Duncan, Size: 35x35cm, Painted Year: 2013</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">27 / 36</p>
-  <img src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp" alt="Dog Elivs" class="lightbox-image">
-  <figcaption class="caption">Beagle Oil Portrait of Elivs, Size: 40x35cm, Painted Year: 2013</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">28 / 24</p>
-  <img src="/assets/images/pet-portraits/dog-portrait-nicki.webp" alt="Dog Nicki" class="lightbox-image">
-  <figcaption class="caption">Dog Portrait of Nicki, Size: 30x27cm, Paited Year: 2014</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">29 / 36</p>
-  <img src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp" alt="Dog Georgie" class="lightbox-image">
-  <figcaption class="caption">German Shepherd Pet Oil Portrait of Georgie, Size: 60x50cm, Painted Year: 2015</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">30 / 36</p>
-  <img src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp" alt="Horses" class="lightbox-image">
-  <figcaption class="caption">Oil Painting of Horses on Meadow, Size: 128x88cm, Painted Year: 2012</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">31 / 36</p>
-  <img src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp" alt="Dogs Nalle and Azlan" class="lightbox-image">
-  <figcaption class="caption">Newfoundland's in Oil of Nalle and Azlan, Size: 60x50cm, Painted Year: 2015</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">32 / 36</p>
-  <img src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp" alt="Dog Vilda" class="lightbox-image">
-  <figcaption class="caption">Pharaoh Dog Portrait of Vilda, Size: 50x35cm, Painted Year: 2012</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">33 / 36</p>
-  <img src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp" alt="Dog Kenzie" class="lightbox-image">
-  <figcaption class="caption">American Cocker Spaniel Kenzie, Painted Year: 2016</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">34 / 36</p>
-  <img src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp" alt="Dog Tigerbull" class="lightbox-image">
-  <figcaption class="caption">American Bullog running in Water Tigerbull, Size: 82x55cm, Painted Year: 2012</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">35 / 36</p>
-  <img src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp" alt="Dog Daisy" class="lightbox-image">
-  <figcaption class="caption">Welsh Terrier Portrait of Daisy, Painted Year: 2015</figcaption>
-</figure>
-<figure class="mySlides">
-  <p class="numbertext">36 / 36</p>
-  <img src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp" alt="Cat Gala" class="lightbox-image">
-  <figcaption class="caption">Cat Painting of Gala, Size: 42x35cm, Painted Year: 2013</figcaption>
-</figure>
-      
-      <button class="prev" onclick="plusSlides(-1)" aria-label="Previous slide">&#10094;</button>
-      <button class="next" onclick="plusSlides(1)" aria-label="Next slide">&#10095;</button>
-</div>
-  </div>
-</section>
-
-  <!-- Article -->
-  <section class="main-flex">
-    <h2>A Work of Art: Not Just A Copy of Your Photo</h2>
-    <p>My pet portraits are meticulously painted with dynamic movement and an abundance of expression. From broad, visible brushstrokes to intricate details, each painting is a true work of art that goes beyond simply reproducing your photograph.</p>
-    <p>Using oils as my medium, I strive to create expressive and lifelike oil portraits that showcase both the strength of brushwork and the importance of capturing every detail where necessary. Rest assured; you will not receive a mare copy of your photo but a unique piece that embodies the spirit of your beloved pet.</p>
-    <p>My ultimate goal I to not only capture your furry friend's distinct characteristics and likeness but also infuse the painting with vibrancy, vitality and luminosity. With my hand-painted approach, you can expect nothing less than a stunning pet portrait created in my signature style.</p>
-    <h3>Painted Year 2017-2019</h3>
-
-  <!-- Gallery Grid -->
-  <div class="gallery-grid">
-    <figure class="gallery-item div1">
-      <img class="image" src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp" alt="Oil Painting of Bella" onclick="openModal();setCurrentSlide(7)">
-      <figcaption class="gallery-caption">Dog Painting of Boston Terrier Bella</figcaption>
-    </figure>
-    <figure class="gallery-item div2">
-      <img class="image" src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp" alt="Oil Painting of Maggie" onclick="openModal();setCurrentSlide(8)">
-      <figcaption class="gallery-caption">Cat Portrait of Maggie</figcaption>
-    </figure>
-    <figure class="gallery-item div3">
-      <img class="image" src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp" alt="Oil Painting of Sadie" onclick="openModal();setCurrentSlide(9)">
-      <figcaption class="gallery-caption">Dog Portrait in Oil of Sadie</figcaption>
-    </figure>
-    <figure class="gallery-item div4">
-      <img class="image" src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp" alt="Oil Painting of Viruta" onclick="openModal();setCurrentSlide(10)">
-      <figcaption class="gallery-caption">Dog Oil Portrait of Viruta</figcaption>
-    </figure>
-    <figure class="gallery-item div5">
-      <img class="image" src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp" alt="Oil Painting of Dixie and Charlie" onclick="openModal();setCurrentSlide(11)">
-      <figcaption class="gallery-caption">Schnauzer's in Oils of Dixie and Charlie</figcaption>
-    </figure>
-    <figure class="gallery-item div6">
-      <img class="image" src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp" alt="Oil Painting of Laddie" onclick="openModal();setCurrentSlide(12)">
-      <figcaption class="gallery-caption">Flat Coated Retriever in Snow of Laddie</figcaption>
-    </figure>
-  </div>
-
-  <!-- Gallery Grid -->
-  <div class="gallery-grid">
-    <figure class="gallery-item div1">
-      <img class="image" src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp" alt="Oil Painting Mazie" onclick="openModal();setCurrentSlide(13)">
-      <figcaption class="gallery-caption">Portrait of Labrador Retriever Mazie</figcaption>
-    </figure>
-    <figure class="gallery-item div2">
-      <img class="image" src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp" alt="Oil Painting Mitzy" onclick="openModal();setCurrentSlide(14)">
-      <figcaption class="gallery-caption">Oil Portrait of Newfounlnad Dog Mitzy</figcaption>
-    </figure>
-    <figure class="gallery-item div3">
-      <img class="image" src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp" alt="Oil Painting Ferguson" onclick="openModal();setCurrentSlide(15)">
-      <figcaption class="gallery-caption">Dog Painting in Oil of Terrier Ferguson</figcaption>
-    </figure>
-    <figure class="gallery-item div4">
-      <img class="image" src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp" alt="Oil Painting Jedi" onclick="openModal();setCurrentSlide(16)">
-      <figcaption class="gallery-caption">Agility Painting of Tervueren Jedi</figcaption>
-    </figure>
-    <figure class="gallery-item div5">
-      <img class="image" src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp" alt="Oil Painting of Winston" onclick="openModal();setCurrentSlide(17)">
-      <figcaption class="gallery-caption">Dog Portrait of White Terrier Winston</figcaption>
-    </figure>
-    <figure class="gallery-item div6">
-      <img class="image" src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp" alt="Oil Painting of Wangelisa" onclick="openModal();setCurrentSlide(18)">
-      <figcaption class="gallery-caption">Arab Horse Oil Painting of Wangelisa</figcaption>
-    </figure>
-  </div>
-  </section>
-
-  <!-- Article -->
-  <section class="main-flex">
-    <h2>Pet Portraits in Oils: Painting Techniques</h2>
-    <p>To create stunning pet portraits in oils, I begin by using acrylics and pre-mixing the oil paints. This allows me to achieve a limited palette that enhances color harmony, depth, and light in my oil painting pet portraits.</p>
-    <p>For the highest quality results, I exclusively work with hand-painted techniques on premium linen canvases. These canvases are gallery-wrapped and stretched to wooden stretcher bars for a truly professional finish.</p>
-    <h3>Painted Year 2011-2016</h3>
-
-    <!-- Gallery Grid -->
-  <div class="gallery-grid">
-    <figure class="gallery-item div1">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp" alt="Oil Painting Chatt" onclick="openModal();setCurrentSlide(19)">
-      <figcaption class="gallery-caption">Oil Portrait of Border Collie Chatt</figcaption>
-    </figure>
-    <figure class="gallery-item div2">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp" alt="Oil Painting of Hoover" onclick="openModal();setCurrentSlide(20)">
-      <figcaption class="gallery-caption">Cat Portrait of Hoover</figcaption>
-    </figure>
-    <figure class="gallery-item div3">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp" alt="Oil Painting of Maggie" onclick="openModal();setCurrentSlide(21)">
-      <figcaption class="gallery-caption">Oil Portrait of Rough Collie Maggie</figcaption>
-    </figure>
-    <figure class="gallery-item div4">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp" alt="Oil Paintingof Rapp" onclick="openModal();setCurrentSlide(22)">
-      <figcaption class="gallery-caption">Springer Spaniel Oil Painting of Rapp</figcaption>
-    </figure>
-    <figure class="gallery-item div5">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp" alt="Painting of Midge, Finnegan and Morgan" onclick="openModal();setCurrentSlide(23)">
-      <figcaption class="gallery-caption">Oil Painting of Dogs Midge, Finnegan and Morgan</figcaption>
-    </figure>
-    <figure class="gallery-item div6">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp" alt="Oil Painting of Griffyn" onclick="openModal();setCurrentSlide(24)">
-      <figcaption class="gallery-caption">Pharaoh Dog Oil Portrait if Griffyn</figcaption>
-    </figure>
-  </div>
-
-  <!-- Gallery Grid -->
-  <div class="gallery-grid">
-    <figure class="gallery-item div1">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp" alt="Oil Painting of Aiko and Zuki" onclick="openModal();setCurrentSlide(25)">
-      <figcaption class="gallery-caption">Painting of Shiba Inu's Aiko and Zuki</figcaption>
-    </figure>
-    <figure class="gallery-item div2">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp" alt="Oil Painting of Duncan" onclick="openModal();setCurrentSlide(26)">
-      <figcaption class="gallery-caption">Clumber Spaniel Pet Portrait Duncan</figcaption>
-    </figure>
-    <figure class="gallery-item div3">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp" alt="Oil Painting of Elivs" onclick="openModal();setCurrentSlide(27)">
-      <figcaption class="gallery-caption">Beagle Oil Portrait of Elivs</figcaption>
-    </figure>
-    <figure class="gallery-item div4">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/dog-portrait-nicki.webp" alt="Oil Painting of Nicki" onclick="openModal();setCurrentSlide(28)">
-      <figcaption class="gallery-caption">Dog Portrait of Nicki</figcaption>
-    </figure>
-    <figure class="gallery-item div5">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp" alt="Oil Painting of Georgie" onclick="openModal();setCurrentSlide(29)">
-      <figcaption class="gallery-caption">German Shepherd Pet Oil Portrait of Georgie</figcaption>
-    </figure>
-    <figure class="gallery-item div6">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp" alt="Oil Painting of Horses" onclick="openModal();setCurrentSlide(30)">
-      <figcaption class="gallery-caption">Oil Painting of Horses on Meadow</figcaption>
-    </figure>
-  </div>
-
-  <!-- Gallery Grid -->
-  <div class="gallery-grid">
-    <figure class="gallery-item div1">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp" alt="Oil Painting of Nalle and Azlan" onclick="openModal();setCurrentSlide(31)">
-      <figcaption class="gallery-caption">Newfoundland's in Oil of Nalle and Azlan</figcaption>
-    </figure>
-    <figure class="gallery-item div2">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp" alt="Oil Painting of Vilda" onclick="openModal();setCurrentSlide(32)">
-      <figcaption class="gallery-caption">Pharaoh Dog Portrait of Vilda</figcaption>
-    </figure>
-    <figure class="gallery-item div3">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp" alt="Oil Painting of Kenzie" onclick="openModal();setCurrentSlide(33)">
-      <figcaption class="gallery-caption">American Cocker Spaniel Kenzie</figcaption>
-    </figure>
-    <figure class="gallery-item div4">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp" alt="Oil Painting of Tigerbull" onclick="openModal();setCurrentSlide(34)">
-      <figcaption class="gallery-caption">American Bullog running in Water Tigerbull</figcaption>
-    </figure>
-    <figure class="gallery-item div5">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp" alt="Oil Painting of Daisy" onclick="openModal();setCurrentSlide(35)">
-      <figcaption class="gallery-caption">Welsh Terrier Portrait of Daisy</figcaption>
-    </figure>
-    <figure class="gallery-item div6">
-      <img class="image" loading="lazy" src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp" alt="Oil Painting of Gala" onclick="openModal();setCurrentSlide(36)">
-      <figcaption class="gallery-caption">Cat Painting of Gala</figcaption>
-    </figure>
-  </div>
+    <!-- Hero Section -->
+    <section class="main-img-gallery">
+      <figure title="Lines Animation" class="vert-lines"></figure>
+      <h1>Commissioned Pet Portraits in Oils: A Gallery of Exquisite Paintings</h1>
+      <button onclick="window.location.href='contact-pet-portrait-artist.html'" class="head-button"
+        title="Go to top">Join My Client List Now</button>
     </section>
 
-</main>
- 
- <!-- Footer -->
-<footer>
-  <div class="footer-flex-item">
-    <h3 class="footer-headline">Menu</h3>
-    <ul>
-      <li><a href="terms-privacy.html">Terms and Privacy</a></li>
-      <li><a href="petart-with-heart-sitemap.html">Site Map</a></li>
-      <li><a href="../se/index.html">Site In Swedish</a></li>
-    </ul>
-  </div>
-  <div class="footer-flex-item">
-    <h3 class="footer-headline">Get Social</h3>
-    <div class="footer-social">
-      <a title="Facebook" href="https://www.facebook.com/PetPortraitsArtist" class="btn-social-fb"><i class="fa-brands fa-square-facebook fa-2x"></i></a>
-      <a title="Instagram" href="https://www.instagram.com/katjapetportraits" class="btn-social-fb btn-social-in"><i class="fa-brands fa-instagram fa-2x"></i></a>
+    <!-- Introduction Article -->
+    <section class="main-flex">
+      <h2>Custom-Painted from Your Photos</h2>
+      <p>I specialize in creating <strong>exquisite</strong> commissioned pet portraits, meticulously hand-painted using
+        oils on professionally stretched gallery-wrapped linen canvas. Whether you're looking for dog portraits, cat
+        portraits, or horse portraits, I can bring your beloved pets to life through my art.</p>
+      <p>Your commissioned hand painted oil painting will be a one-of-a-kind masterpiece that is completely custom-made.
+        I will work closely with you to bring your vision to reality, using your favorite photo as a reference and
+        incorporating any ideas or special requests you may have. From the orientation of the portrait to the suitable
+        backgrounds, colors, and painting size, everything will be tailored to your preferences.</p>
+      <h3>Painted Year 2020-2024</h3>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <figure class="gallery-item div1">
+          <img class="image" src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
+            alt="Oil Paitning Masquerade" onclick="openModal();setCurrentSlide(1)">
+          <figcaption class="gallery-caption">Cat Portrait of Masquerade</figcaption>
+        </figure>
+        <figure class="gallery-item div2">
+          <img class="image" src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
+            alt="Oil Painting of Grace" onclick="openModal();setCurrentSlide(2)">
+          <figcaption class="gallery-caption">Rabbit Painting of Grace</figcaption>
+        </figure>
+        <figure class="gallery-item div3">
+          <img class="image" src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
+            alt="Oil Painting of Odessa" onclick="openModal();setCurrentSlide(3)">
+          <figcaption class="gallery-caption">Cat Painting of Odessa</figcaption>
+        </figure>
+        <figure class="gallery-item div4">
+          <img class="image" src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
+            alt="Oil Painting of Juanita" onclick="openModal();setCurrentSlide(4)">
+          <figcaption class="gallery-caption">Norwegian Forest Cat Juanita</figcaption>
+        </figure>
+        <figure class="gallery-item div5">
+          <img class="image" src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp" alt="Oil Painting of Saga"
+            onclick="openModal();setCurrentSlide(5)">
+          <figcaption class="gallery-caption">Cat Painting of Saga</figcaption>
+        </figure>
+        <figure class="gallery-item div6">
+          <img class="image" src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
+            alt="Oil Painting of Lennon" onclick="openModal();setCurrentSlide(6)">
+          <figcaption class="gallery-caption">Flat Coated Retriever Lennon</figcaption>
+        </figure>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="lightboxModal" class="modal" role="dialog" aria-hidden="true" tabindex="-1">
+        <button id="closeLightboxButton" class="close" onclick="closeModal()"
+          aria-label="Close lightbox">&times;</button>
+        <div class="modal-content" role="document">
+
+          <figure class="mySlides">
+            <p class="numbertext">1 / 36</p>
+            <img src="/assets/images/pet-portraits/cat-portrait-masquerade.webp" alt="Cat Masquerade"
+              class="lightbox-image">
+            <figcaption class="caption">Cat Portrait of Masquerade, Size: 30x25cm, Painted Year: 2020</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">2 / 36</p>
+            <img src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp" alt="Rabbit Grace"
+              class="lightbox-image">
+            <figcaption class="caption">Rabbit Painting of Grace, Size: 60x50cm, Painted Year: 2021</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">3 / 36</p>
+            <img src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp" alt="Cat Odessa"
+              class="lightbox-image">
+            <figcaption class="caption">Cat Painting of Odessa, Size: 30x25cm, Painted Year: 2020</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">4 / 36</p>
+            <img src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp" alt="Cat Juanita"
+              class="lightbox-image">
+            <figcaption class="caption">Norwegian Forest Cat Juanita, Size: 30x25cm, Painted Year: 2024</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">5 / 36</p>
+            <img src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp" alt="Cat Saga" class="lightbox-image">
+            <figcaption class="caption">Cat Painting of Saga, Size: 30x25cm, Painted Year: 2020</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">6 / 36</p>
+            <img src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp" alt="Dog Lennon"
+              class="lightbox-image">
+            <figcaption class="caption">Dog Portrait of Flat Coated Retriever Lennon, Size: 40x30cm, Painted Year: 2024
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">7 / 36</p>
+            <img src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp" alt="Dog Bella"
+              class="lightbox-image">
+            <figcaption class="caption">Dog Painting of Boston Terrier Bella, Size: 30x30cm, Painted Year: 2018
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">8 / 36</p>
+            <img src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp" alt="Cat Maggie"
+              class="lightbox-image">
+            <figcaption class="caption">Cat Portrait of Maggie, Size: 30x25cm, Painted Year: 2017</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">9 / 36</p>
+            <img src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp" alt="Dog Sadie" class="lightbox-image">
+            <figcaption class="caption">Dog Portrait in Oil of Sadie, Size: 35x25cm, Painted Year: 2017</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">10 / 36</p>
+            <img src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp" alt="Dog Viruta"
+              class="lightbox-image">
+            <figcaption class="caption">Dog Oil Portrait of Viruta, Size: 40x30cm, Painted Year: 2017</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">11 / 36</p>
+            <img src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp"
+              alt="Dogs Dixie and Charlie" class="lightbox-image">
+            <figcaption class="caption">Schnauzer's in Oils of Dixie and Charlie, Painted Year: 2017</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">12 / 36</p>
+            <img src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp" alt="Dog Laddie"
+              class="lightbox-image">
+            <figcaption class="caption">Flat Coated Retriever in Snow of Laddie, Size: 35x25, Painted Year: 2017
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">13 / 36</p>
+            <img src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp" alt="Dog Mazie"
+              class="lightbox-image">
+            <figcaption class="caption">Portrait of Labrador Retriever Mazie, Size: 35x30cm, Painted Year 2017
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">14 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp" alt="Dog Mitzy"
+              class="lightbox-image">
+            <figcaption class="caption">Oil Portrait of Newfounlnad Dog Mitzy, Size: 40x30cm, Painted Year: 2019
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">15 / 36</p>
+            <img src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp" alt="Dog Ferguson"
+              class="lightbox-image">
+            <figcaption class="caption">Dog Painting in Oil of Terrier Ferguson, Size: 35x30cm, Painted Year 2017
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">16 / 36</p>
+            <img src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp" alt="Dog Jedi"
+              class="lightbox-image">
+            <figcaption class="caption">Agility Painting of Tervueren Jedi, Size: 60x40cm, Painted Year 2019
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">17 / 36</p>
+            <img src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp" alt="Dog Winston"
+              class="lightbox-image">
+            <figcaption class="caption">Dog Portrait of White Terrier Winston, Size: 25x25cm, Painted Year: 2017
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">18 / 36</p>
+            <img src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp" alt="Horse Wangelisa"
+              class="lightbox-image">
+            <figcaption class="caption">Arab Horse Oil Painting of Wangelisa, Size: 40x30cm, Painted Year 2018
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">19 / 36</p>
+            <img src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp" alt="Dog Chatt"
+              class="lightbox-image">
+            <figcaption class="caption">Oil Portrait of Border Collie Chatt, Size: 35x35cm, Painted Year 2014
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">20 / 36</p>
+            <img src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp" alt="Cat Hoover"
+              class="lightbox-image">
+            <figcaption class="caption">Cat Portrait of Hoover, Size:35x35cm, Painted Year: 2014</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">21 / 36</p>
+            <img src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp" alt="Dog Maggie"
+              class="lightbox-image">
+            <figcaption class="caption">Oil Portrait of Rough Collie Maggie, Painted Year 2016</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">22 / 36</p>
+            <img src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp" alt="Dog Rapp"
+              class="lightbox-image">
+            <figcaption class="caption">Springer Spaniel Oil Painting of Rapp, Size:40x40cm, Painted Year 2014
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">23 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp"
+              alt="Dogs Midge, Finnegan and Morgan" class="lightbox-image">
+            <figcaption class="caption">Oil Painting of Dogs Midge, Finnegan and Morgan, Size: 90x65cm, Painted Year:
+              2015</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">24 / 36</p>
+            <img src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp" alt="Dog Griffyn"
+              class="lightbox-image">
+            <figcaption class="caption">Pharaoh Dog Oil Portrait if Griffyn, Size: 65x45cm, Painted Year: 2014
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">25 / 36</p>
+            <img src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp" alt="Dogs Aiko and Zuki"
+              class="lightbox-image">
+            <figcaption class="caption">Painting of Shiba Inu's Aiko and Zuki, Size: 58x47cm, Painted Year: 2011
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">26 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp" alt="Dog Duncan"
+              class="lightbox-image">
+            <figcaption class="caption">Clumber Spaniel Pet Portrait Duncan, Size: 35x35cm, Painted Year: 2013
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">27 / 36</p>
+            <img src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp" alt="Dog Elivs"
+              class="lightbox-image">
+            <figcaption class="caption">Beagle Oil Portrait of Elivs, Size: 40x35cm, Painted Year: 2013</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">28 / 24</p>
+            <img src="/assets/images/pet-portraits/dog-portrait-nicki.webp" alt="Dog Nicki" class="lightbox-image">
+            <figcaption class="caption">Dog Portrait of Nicki, Size: 30x27cm, Paited Year: 2014</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">29 / 36</p>
+            <img src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp" alt="Dog Georgie"
+              class="lightbox-image">
+            <figcaption class="caption">German Shepherd Pet Oil Portrait of Georgie, Size: 60x50cm, Painted Year: 2015
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">30 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp" alt="Horses"
+              class="lightbox-image">
+            <figcaption class="caption">Oil Painting of Horses on Meadow, Size: 128x88cm, Painted Year: 2012
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">31 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp"
+              alt="Dogs Nalle and Azlan" class="lightbox-image">
+            <figcaption class="caption">Newfoundland's in Oil of Nalle and Azlan, Size: 60x50cm, Painted Year: 2015
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">32 / 36</p>
+            <img src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp" alt="Dog Vilda"
+              class="lightbox-image">
+            <figcaption class="caption">Pharaoh Dog Portrait of Vilda, Size: 50x35cm, Painted Year: 2012</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">33 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp" alt="Dog Kenzie"
+              class="lightbox-image">
+            <figcaption class="caption">American Cocker Spaniel Kenzie, Painted Year: 2016</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">34 / 36</p>
+            <img src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp" alt="Dog Tigerbull"
+              class="lightbox-image">
+            <figcaption class="caption">American Bullog running in Water Tigerbull, Size: 82x55cm, Painted Year: 2012
+            </figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">35 / 36</p>
+            <img src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp" alt="Dog Daisy"
+              class="lightbox-image">
+            <figcaption class="caption">Welsh Terrier Portrait of Daisy, Painted Year: 2015</figcaption>
+          </figure>
+          <figure class="mySlides">
+            <p class="numbertext">36 / 36</p>
+            <img src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp" alt="Cat Gala" class="lightbox-image">
+            <figcaption class="caption">Cat Painting of Gala, Size: 42x35cm, Painted Year: 2013</figcaption>
+          </figure>
+
+          <button class="prev" onclick="plusSlides(-1)" aria-label="Previous slide">&#10094;</button>
+          <button class="next" onclick="plusSlides(1)" aria-label="Next slide">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article -->
+    <section class="main-flex">
+      <h2>A Work of Art: Not Just A Copy of Your Photo</h2>
+      <p>My pet portraits are meticulously painted with dynamic movement and an abundance of expression. From broad,
+        visible brushstrokes to intricate details, each painting is a true work of art that goes beyond simply
+        reproducing your photograph.</p>
+      <p>Using oils as my medium, I strive to create expressive and lifelike oil portraits that showcase both the
+        strength of brushwork and the importance of capturing every detail where necessary. Rest assured; you will not
+        receive a mare copy of your photo but a unique piece that embodies the spirit of your beloved pet.</p>
+      <p>My ultimate goal I to not only capture your furry friend's distinct characteristics and likeness but also
+        infuse the painting with vibrancy, vitality and luminosity. With my hand-painted approach, you can expect
+        nothing less than a stunning pet portrait created in my signature style.</p>
+      <h3>Painted Year 2017-2019</h3>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <figure class="gallery-item div1">
+          <img class="image" src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp"
+            alt="Oil Painting of Bella" onclick="openModal();setCurrentSlide(7)">
+          <figcaption class="gallery-caption">Dog Painting of Boston Terrier Bella</figcaption>
+        </figure>
+        <figure class="gallery-item div2">
+          <img class="image" src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp"
+            alt="Oil Painting of Maggie" onclick="openModal();setCurrentSlide(8)">
+          <figcaption class="gallery-caption">Cat Portrait of Maggie</figcaption>
+        </figure>
+        <figure class="gallery-item div3">
+          <img class="image" src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp" alt="Oil Painting of Sadie"
+            onclick="openModal();setCurrentSlide(9)">
+          <figcaption class="gallery-caption">Dog Portrait in Oil of Sadie</figcaption>
+        </figure>
+        <figure class="gallery-item div4">
+          <img class="image" src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp"
+            alt="Oil Painting of Viruta" onclick="openModal();setCurrentSlide(10)">
+          <figcaption class="gallery-caption">Dog Oil Portrait of Viruta</figcaption>
+        </figure>
+        <figure class="gallery-item div5">
+          <img class="image" src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp"
+            alt="Oil Painting of Dixie and Charlie" onclick="openModal();setCurrentSlide(11)">
+          <figcaption class="gallery-caption">Schnauzer's in Oils of Dixie and Charlie</figcaption>
+        </figure>
+        <figure class="gallery-item div6">
+          <img class="image" src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp"
+            alt="Oil Painting of Laddie" onclick="openModal();setCurrentSlide(12)">
+          <figcaption class="gallery-caption">Flat Coated Retriever in Snow of Laddie</figcaption>
+        </figure>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <figure class="gallery-item div1">
+          <img class="image" src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp"
+            alt="Oil Painting Mazie" onclick="openModal();setCurrentSlide(13)">
+          <figcaption class="gallery-caption">Portrait of Labrador Retriever Mazie</figcaption>
+        </figure>
+        <figure class="gallery-item div2">
+          <img class="image" src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp"
+            alt="Oil Painting Mitzy" onclick="openModal();setCurrentSlide(14)">
+          <figcaption class="gallery-caption">Oil Portrait of Newfounlnad Dog Mitzy</figcaption>
+        </figure>
+        <figure class="gallery-item div3">
+          <img class="image" src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp"
+            alt="Oil Painting Ferguson" onclick="openModal();setCurrentSlide(15)">
+          <figcaption class="gallery-caption">Dog Painting in Oil of Terrier Ferguson</figcaption>
+        </figure>
+        <figure class="gallery-item div4">
+          <img class="image" src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp"
+            alt="Oil Painting Jedi" onclick="openModal();setCurrentSlide(16)">
+          <figcaption class="gallery-caption">Agility Painting of Tervueren Jedi</figcaption>
+        </figure>
+        <figure class="gallery-item div5">
+          <img class="image" src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp"
+            alt="Oil Painting of Winston" onclick="openModal();setCurrentSlide(17)">
+          <figcaption class="gallery-caption">Dog Portrait of White Terrier Winston</figcaption>
+        </figure>
+        <figure class="gallery-item div6">
+          <img class="image" src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp"
+            alt="Oil Painting of Wangelisa" onclick="openModal();setCurrentSlide(18)">
+          <figcaption class="gallery-caption">Arab Horse Oil Painting of Wangelisa</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Article -->
+    <section class="main-flex">
+      <h2>Pet Portraits in Oils: Painting Techniques</h2>
+      <p>To create stunning pet portraits in oils, I begin by using acrylics and pre-mixing the oil paints. This allows
+        me to achieve a limited palette that enhances color harmony, depth, and light in my oil painting pet portraits.
+      </p>
+      <p>For the highest quality results, I exclusively work with hand-painted techniques on premium linen canvases.
+        These canvases are gallery-wrapped and stretched to wooden stretcher bars for a truly professional finish.</p>
+      <h3>Painted Year 2011-2016</h3>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <figure class="gallery-item div1">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp"
+            alt="Oil Painting Chatt" onclick="openModal();setCurrentSlide(19)">
+          <figcaption class="gallery-caption">Oil Portrait of Border Collie Chatt</figcaption>
+        </figure>
+        <figure class="gallery-item div2">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp"
+            alt="Oil Painting of Hoover" onclick="openModal();setCurrentSlide(20)">
+          <figcaption class="gallery-caption">Cat Portrait of Hoover</figcaption>
+        </figure>
+        <figure class="gallery-item div3">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp"
+            alt="Oil Painting of Maggie" onclick="openModal();setCurrentSlide(21)">
+          <figcaption class="gallery-caption">Oil Portrait of Rough Collie Maggie</figcaption>
+        </figure>
+        <figure class="gallery-item div4">
+          <img class="image" loading="lazy"
+            src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp" alt="Oil Paintingof Rapp"
+            onclick="openModal();setCurrentSlide(22)">
+          <figcaption class="gallery-caption">Springer Spaniel Oil Painting of Rapp</figcaption>
+        </figure>
+        <figure class="gallery-item div5">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp"
+            alt="Painting of Midge, Finnegan and Morgan" onclick="openModal();setCurrentSlide(23)">
+          <figcaption class="gallery-caption">Oil Painting of Dogs Midge, Finnegan and Morgan</figcaption>
+        </figure>
+        <figure class="gallery-item div6">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp"
+            alt="Oil Painting of Griffyn" onclick="openModal();setCurrentSlide(24)">
+          <figcaption class="gallery-caption">Pharaoh Dog Oil Portrait if Griffyn</figcaption>
+        </figure>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <figure class="gallery-item div1">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp"
+            alt="Oil Painting of Aiko and Zuki" onclick="openModal();setCurrentSlide(25)">
+          <figcaption class="gallery-caption">Painting of Shiba Inu's Aiko and Zuki</figcaption>
+        </figure>
+        <figure class="gallery-item div2">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp"
+            alt="Oil Painting of Duncan" onclick="openModal();setCurrentSlide(26)">
+          <figcaption class="gallery-caption">Clumber Spaniel Pet Portrait Duncan</figcaption>
+        </figure>
+        <figure class="gallery-item div3">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp"
+            alt="Oil Painting of Elivs" onclick="openModal();setCurrentSlide(27)">
+          <figcaption class="gallery-caption">Beagle Oil Portrait of Elivs</figcaption>
+        </figure>
+        <figure class="gallery-item div4">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/dog-portrait-nicki.webp"
+            alt="Oil Painting of Nicki" onclick="openModal();setCurrentSlide(28)">
+          <figcaption class="gallery-caption">Dog Portrait of Nicki</figcaption>
+        </figure>
+        <figure class="gallery-item div5">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp"
+            alt="Oil Painting of Georgie" onclick="openModal();setCurrentSlide(29)">
+          <figcaption class="gallery-caption">German Shepherd Pet Oil Portrait of Georgie</figcaption>
+        </figure>
+        <figure class="gallery-item div6">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp"
+            alt="Oil Painting of Horses" onclick="openModal();setCurrentSlide(30)">
+          <figcaption class="gallery-caption">Oil Painting of Horses on Meadow</figcaption>
+        </figure>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid">
+        <figure class="gallery-item div1">
+          <img class="image" loading="lazy"
+            src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp"
+            alt="Oil Painting of Nalle and Azlan" onclick="openModal();setCurrentSlide(31)">
+          <figcaption class="gallery-caption">Newfoundland's in Oil of Nalle and Azlan</figcaption>
+        </figure>
+        <figure class="gallery-item div2">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp"
+            alt="Oil Painting of Vilda" onclick="openModal();setCurrentSlide(32)">
+          <figcaption class="gallery-caption">Pharaoh Dog Portrait of Vilda</figcaption>
+        </figure>
+        <figure class="gallery-item div3">
+          <img class="image" loading="lazy"
+            src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp"
+            alt="Oil Painting of Kenzie" onclick="openModal();setCurrentSlide(33)">
+          <figcaption class="gallery-caption">American Cocker Spaniel Kenzie</figcaption>
+        </figure>
+        <figure class="gallery-item div4">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp"
+            alt="Oil Painting of Tigerbull" onclick="openModal();setCurrentSlide(34)">
+          <figcaption class="gallery-caption">American Bullog running in Water Tigerbull</figcaption>
+        </figure>
+        <figure class="gallery-item div5">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp"
+            alt="Oil Painting of Daisy" onclick="openModal();setCurrentSlide(35)">
+          <figcaption class="gallery-caption">Welsh Terrier Portrait of Daisy</figcaption>
+        </figure>
+        <figure class="gallery-item div6">
+          <img class="image" loading="lazy" src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp"
+            alt="Oil Painting of Gala" onclick="openModal();setCurrentSlide(36)">
+          <figcaption class="gallery-caption">Cat Painting of Gala</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-flex-item">
+      <h3 class="footer-headline">Menu</h3>
+      <ul>
+        <li><a href="terms-privacy.html">Terms and Privacy</a></li>
+        <li><a href="petart-with-heart-sitemap.html">Site Map</a></li>
+        <li><a href="../se/index.html">Site In Swedish</a></li>
+      </ul>
     </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up fa-2x"></i></button>
-  </div>
-  <div class="footer-flex-item wide"><a href="../index.html"><img class="footer-logo" loading="lazy" src="/assets/images/petart-logotype-bw.webp" alt="Pet Art with Heart logotype"></a>
-  </div>
-  <div class="footer-flex-item wide wide2">&copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja Turnsek
-  </div>
-</footer>
-<script defer src="../src/js/analytics.js"></script>
-<script defer src="../src/js/up.js"></script>
-<script defer src="../src/js/gallery.js"></script>
+    <div class="footer-flex-item">
+      <h3 class="footer-headline">Get Social</h3>
+      <div class="footer-social">
+        <a title="Facebook" href="https://www.facebook.com/PetPortraitsArtist" class="btn-social-fb"><i
+            class="fa-brands fa-square-facebook fa-2x"></i></a>
+        <a title="Instagram" href="https://www.instagram.com/katjapetportraits" class="btn-social-fb btn-social-in"><i
+            class="fa-brands fa-instagram fa-2x"></i></a>
+      </div>
+      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up fa-2x"></i></button>
+    </div>
+    <div class="footer-flex-item wide"><a href="../index.html"><img class="footer-logo" loading="lazy"
+          src="/assets/images/petart-logotype-bw.webp" alt="Pet Art with Heart logotype"></a>
+    </div>
+    <div class="footer-flex-item wide wide2">&copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja
+      Turnsek
+    </div>
+  </footer>
+  <script defer src="../src/js/analytics.js"></script>
+  <script defer src="../src/js/up.js"></script>
+  <script defer src="../src/js/gallery.js"></script>
 </body>
+
 </html>
