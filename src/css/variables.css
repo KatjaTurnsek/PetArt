@@ -79,6 +79,10 @@ p {
   padding-bottom: 20px;
 }
 
+p.news {
+  max-width: 600px;
+}
+
  /* Hide element on Tablet/Phone */
 
 @media only screen and (max-width:1199px) {

@@ -1,24 +1,26 @@
+/* =======================
+   Main Image (Hero Section)
+   ======================= */
 .main-img-prices {
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
   min-height: 525px;
-  background-image: linear-gradient(90deg, rgb(255, 255, 255, 0.80) 23%, rgba(244,218,82,0) 56%), url("../../assets/images/oil-painting-brushes.webp");
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 23%, rgba(244, 218, 82, 0) 56%), url("../../assets/images/oil-painting-brushes.webp");
   background-position: center right;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 0 60px 0 60px;
+  padding: 0 60px;
   margin-bottom: 30px;
-  animation: fadeIn 3s;
-  -webkit-animation: fadeIn 3s;
-  -moz-animation: fadeIn 3s;
-  -o-animation: fadeIn 3s;
-  -ms-animation: fadeIn 3s;
+  animation: fadeIn 3s ease;
 }
 
+/* =======================
+   Pricing Section
+   ======================= */
 .pricing-section {
-  margin: 60px 0 30px 0;
+  margin: 60px 0 30px;
   width: 100%;
 }
 
@@ -31,7 +33,7 @@
 }
 
 .plan-prices {
-  padding: 10px 80px 10px 80px;
+  padding: 10px 80px;
   margin: 0;
   text-align: left;
   border-bottom: 1px solid var(--dark);
@@ -42,7 +44,7 @@
 .plan-prices:last-child {
   border-bottom: none;
 }
-  
+
 h3.plan-title {
   font-size: 25px;
   font-weight: 400;
@@ -50,15 +52,17 @@ h3.plan-title {
   text-align: left;
   color: var(--white);
   background-color: var(--dark);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  padding: 20px 80px 20px 80px;
-  margin: 20px 0 20px 0;
+  border-radius: 4px 4px 0 0;
+  padding: 20px 80px;
+  margin: 20px 0;
 }
 
+/* =======================
+   Bullet List
+   ======================= */
 .bullet-list {
   list-style: none;
-  padding: 0 0 40px 0;
+  padding: 0 0 40px;
   margin: 0;
 }
 
@@ -66,10 +70,9 @@ h3.plan-title {
   position: relative;
   padding: 10px 0 10px 40px;
   margin-bottom: 5px;
-  border-radius: 5px;
   font-size: 20px;
   font-family: "Frank-ruhl-libre", serif;
-
+  border-radius: 5px;
 }
 
 .bullet-list li::before {
@@ -82,39 +85,208 @@ h3.plan-title {
   color: var(--green);
 }
 
+/* =======================
+   Wet-on-Wet Offer Section
+   ======================= */
+.wet-offer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 60px;
+  margin: 60px 0;
+  background-color: var(--grey);
+  border-top: 2px solid var(--dark);
+  border-bottom: 2px solid var(--dark);
+}
+
+.wet-offer-text {
+  flex: 1 1 60%;
+  max-width: 60%;
+}
+
+.wet-offer-gallery {
+  flex: 1 1 40%;
+  max-width: 40%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.wet-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 8px solid var(--white);
+  transition: transform 0.3s ease;
+}
+
+.wet-img:hover {
+  transform: scale(1.02);
+}
+
+.wet-offer-gallery figcaption {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--dark);
+  font-style: italic;
+  padding: 8px 12px;
+  text-align: center;
+  background-color: var(--caption-bg);
+}
+
+h3.wet-title {
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 35px;
+  text-align: left;
+  color: var(--white);
+  background-color: var(--dark);
+  border-radius: 4px;
+  padding: 40px;
+  margin: 20px 0;
+}
+
+.wet-prices {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px;
+  font-size: 20px;
+  font-family: "Frank-ruhl-libre", serif;
+}
+
+.wet-prices li {
+  padding: 5px 0;
+}
+
+.wet-bullets {
+  list-style: none;
+  padding: 0 0 20px;
+  margin: 0;
+}
+
+.wet-bullets li {
+  position: relative;
+  padding: 10px 0 10px 40px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-family: "Frank-ruhl-libre", serif;
+}
+
+.wet-bullets li::before {
+  content: '✔';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--green);
+}
+
 /* Hide element on Tablet/Phone */
 
-@media only screen and (max-width:850px) {
+@media only screen and (max-width: 850px) {
   .pricing-section {
-    margin: 30px 0 20px 0;
+    margin: 30px 0 20px;
   }
 
   .main-img-prices {
     min-height: 430px;
-    padding: 0 30px 0 30px;
+    padding: 0 30px;
     background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("../../assets/images/oil-painting-brushes-mobile.webp");
   }
-  
-  .plan-features, .plan-prices, h3.plan-title {
+
+  .plan-features,
+  .plan-prices,
+  h3.plan-title {
     text-align: center;
   }
-  
+
   h3.plan-title {
     padding: 15px;
-    text-align: center;
   }
 
   .plan-prices {
     font-size: 18px;
     line-height: 35px;
-    text-align: center;
     padding: 10px;
   }
 
   .currency-select {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
   }
-  
+
+  .wet-offer {
+    flex-direction: column;
+    padding: 20px 30px;
+  }
+
+  .wet-title {
+    font-size: 22px;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .wet-prices {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .wet-prices li {
+    padding: 5px 0;
+  }
+
+  .wet-bullets {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .wet-bullets li {
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 18px;
+  }
+
+  .wet-bullets li::before {
+    left: 0;
+  }
+
+  .wet-offer-text,
+  .wet-offer-gallery {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .wet-offer-gallery {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .wet-offer-gallery figure {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .wet-offer-gallery figcaption {
+    font-size: 14px;
+  }
+}
+
+/* =======================
+   Fade In Animation
+   ======================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
