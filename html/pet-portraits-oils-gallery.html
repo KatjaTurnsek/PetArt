@@ -4,16 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Commissioned Pet Portraits in Oils | Gallery with Paintings</title>
+
+    <!-- Canonical (non-www) -->
     <link
       rel="canonical"
-      href="https://www.pet-art.net/html/pet-portraits-oils-gallery.html"
+      href="https://pet-art.net/html/pet-portraits-oils-gallery.html"
     />
+
+    <!-- Hreflang (EN self + Swedish equivalent) -->
+    <link
+      rel="alternate"
+      href="https://pet-art.net/html/pet-portraits-oils-gallery.html"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://pet-art.net/se/djurportratt-olja-galleri.html"
+      hreflang="sv"
+    />
+
+    <!-- Social URL matches canonical -->
+    <meta
+      property="og:url"
+      content="https://pet-art.net/html/pet-portraits-oils-gallery.html"
+    />
+
     <meta
       name="description"
       content="Transform your pet's photo into one-of-a-kind commissioned pet portraits in oils. Each painting is a custom creation that captures the spirit of your furry friend. Order today!"
     />
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../src/css/styles.css" />
+
+    <!-- Assets (root-absolute) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -21,32 +46,31 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="alternate"
-      hreflang="sv"
-      href="https://www.pet-art.net/se/djurportratt-olja.galleri.html"
-    />
   </head>
 
   <body>
-    <!-- Header with Navigation -->
+    <!-- Header with Navigation (unified) -->
     <header>
-      <a href="../index.html"
+      <a href="/"
         ><img
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
       /></a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger">
         <span><i class="fa-solid fa-bars"></i></span>
         <span class="sr-only">Menu</span>
       </label>
+
       <nav aria-label="Primary Navigation">
         <ul>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li class="active">
-            <a href="pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
+            <a href="/html/pet-portraits-oils-gallery.html"
+              >Pet Portrait Gallery</a
+            >
           </li>
           <li class="dropdown">
             <a href="#"
@@ -54,21 +78,27 @@
             ></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pet-portrait-commission-prices.html"
+                <a href="/html/pet-portrait-commission-prices.html"
                   >Prices & How It Works</a
                 >
               </li>
-              <li><a href="pet-portrait-testimonials.html">Testimonials</a></li>
               <li>
-                <a href="photo-tips-portrait-commissions.html">Photo Tips</a>
+                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+              </li>
+              <li>
+                <a href="/html/photo-tips-portrait-commissions.html"
+                  >Photo Tips</a
+                >
               </li>
             </ul>
           </li>
           <li>
-            <a href="wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
+            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
           </li>
-          <li><a href="about-pet-portrait-artist.html">About Artist</a></li>
-          <li><a href="contact-pet-portrait-artist.html">Contact</a></li>
+          <li>
+            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
+          </li>
+          <li><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -82,7 +112,7 @@
           Commissioned Pet Portraits in Oils: A Gallery of Exquisite Paintings
         </h1>
         <button
-          onclick="window.location.href='contact-pet-portrait-artist.html'"
+          onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
           class="head-button"
           title="Go to top"
         >
@@ -1045,18 +1075,14 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (unified) -->
     <footer>
       <div class="footer-flex-item">
         <h3 class="footer-headline">Menu</h3>
         <ul>
-          <li><a href="terms-privacy.html">Terms and Privacy</a></li>
-          <li><a href="petart-with-heart-sitemap.html">Site Map</a></li>
-          <li>
-            <a href="../se/index.html" hreflang="sv" lang="sv"
-              >Site In Swedish</a
-            >
-          </li>
+          <li><a href="/html/terms-privacy.html">Terms and Privacy</a></li>
+          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
+          <li><a href="/se/" hreflang="sv" lang="sv">Site In Swedish</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -1080,7 +1106,7 @@
         </button>
       </div>
       <div class="footer-flex-item wide">
-        <a href="../index.html"
+        <a href="/"
           ><img
             class="footer-logo"
             loading="lazy"
@@ -1093,8 +1119,10 @@
         Katja Turnsek
       </div>
     </footer>
-    <script defer src="../src/js/analytics.js"></script>
-    <script defer src="../src/js/up.js"></script>
-    <script defer src="../src/js/gallery.js"></script>
+
+    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/analytics.js"></script>
+    <script defer src="/src/js/up.js"></script>
+    <script defer src="/src/js/gallery.js"></script>
   </body>
 </html>

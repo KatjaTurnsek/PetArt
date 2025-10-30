@@ -4,16 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Get in Touch for Pet Art with Heart Portraits | Contact Me</title>
+
+    <!-- Canonical (non-www) -->
     <link
       rel="canonical"
-      href="https://www.pet-art.net/html/contact-pet-portrait-artist.html"
+      href="https://pet-art.net/html/contact-pet-portrait-artist.html"
     />
+
+    <!-- Hreflang -->
+    <link
+      rel="alternate"
+      href="https://pet-art.net/html/contact-pet-portrait-artist.html"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://pet-art.net/se/kontakta-djurportratt-konstnar.html"
+      hreflang="sv"
+    />
+
+    <!-- Social URL matches canonical -->
+    <meta
+      property="og:url"
+      content="https://pet-art.net/html/contact-pet-portrait-artist.html"
+    />
+
     <meta
       name="description"
       content="Reach out to pet portrait artist Katja and unleash your furry friend's personality on canvas. Let's bring your vision to life together! Join my client list now!"
     />
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../src/css/styles.css" />
+
+    <!-- Assets (root-absolute) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -21,17 +46,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="alternate"
-      hreflang="sv"
-      href="https://www.pet-art.net/se/kontakta-djurportratt-konstnar.html"
-    />
   </head>
 
   <body>
-    <!-- Header with Navigation -->
+    <!-- Header with Navigation (unified) -->
     <header>
-      <a href="../index.html"
+      <a href="/"
         ><img
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
@@ -44,9 +64,11 @@
       </label>
       <nav aria-label="Primary Navigation">
         <ul>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li>
-            <a href="pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
+            <a href="/html/pet-portraits-oils-gallery.html"
+              >Pet Portrait Gallery</a
+            >
           </li>
           <li class="dropdown">
             <a href="#"
@@ -54,22 +76,28 @@
             ></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pet-portrait-commission-prices.html"
+                <a href="/html/pet-portrait-commission-prices.html"
                   >Prices & How It Works</a
                 >
               </li>
-              <li><a href="pet-portrait-testimonials.html">Testimonials</a></li>
               <li>
-                <a href="photo-tips-portrait-commissions.html">Photo Tips</a>
+                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+              </li>
+              <li>
+                <a href="/html/photo-tips-portrait-commissions.html"
+                  >Photo Tips</a
+                >
               </li>
             </ul>
           </li>
           <li>
-            <a href="wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
+            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
           </li>
-          <li><a href="about-pet-portrait-artist.html">About Artist</a></li>
+          <li>
+            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
+          </li>
           <li class="active">
-            <a href="contact-pet-portrait-artist.html">Contact</a>
+            <a href="/html/contact-pet-portrait-artist.html">Contact</a>
           </li>
         </ul>
       </nav>
@@ -112,25 +140,23 @@
             />
           </p>
           <p class="contact">
-            Payments are done with <strong>Paypal</strong>, accepting all mayor
-            Debit/ Credit cards. The Client List Deposit is
-            <strong>2000 SEK</strong> &#40;cca. 175 EUR or 190 USD&#41;
+            Payments are done with <strong>PayPal</strong>, accepting all major
+            debit/credit cards. The Client List Deposit is
+            <strong>2000 SEK</strong> (approx. 175 EUR or 190 USD).
           </p>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (unified) -->
     <footer>
       <div class="footer-flex-item">
         <h3 class="footer-headline">Menu</h3>
         <ul>
-          <li><a href="terms-privacy.html">Terms and Privacy</a></li>
-          <li><a href="petart-with-heart-sitemap.html">Site Map</a></li>
+          <li><a href="/html/terms-privacy.html">Terms and Privacy</a></li>
+          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
           <li>
-            <a href="../se/index.html" hreflang="sv" lang="sv"
-              >Site In Swedish</a
-            >
+            <a href="/se/" hreflang="sv" lang="sv">Site In Swedish</a>
           </li>
         </ul>
       </div>
@@ -155,7 +181,7 @@
         </button>
       </div>
       <div class="footer-flex-item wide">
-        <a href="../index.html"
+        <a href="/"
           ><img
             class="footer-logo"
             loading="lazy"
@@ -168,7 +194,9 @@
         Katja Turnsek
       </div>
     </footer>
-    <script defer src="../src/js/analytics.js"></script>
-    <script defer src="../src/js/up.js"></script>
+
+    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/analytics.js"></script>
+    <script defer src="/src/js/up.js"></script>
   </body>
 </html>

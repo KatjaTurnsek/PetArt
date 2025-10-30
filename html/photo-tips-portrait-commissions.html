@@ -6,16 +6,41 @@
     <title>
       Photo Tips & Requirements for Perfect Custom Painted Pet Portraits
     </title>
+
+    <!-- Canonical (non-www) -->
     <link
       rel="canonical"
-      href="https://www.pet-art.net/html/photo-tips-portrait-commissions.html"
+      href="https://pet-art.net/html/photo-tips-portrait-commissions.html"
     />
+
+    <!-- Hreflang (EN self + Swedish equivalent) -->
+    <link
+      rel="alternate"
+      href="https://pet-art.net/html/photo-tips-portrait-commissions.html"
+      hreflang="en"
+    />
+    <link
+      rel="alternate"
+      href="https://pet-art.net/se/foto-tips-portrattbestallning.html"
+      hreflang="sv"
+    />
+
+    <!-- Social URL matches canonical -->
+    <meta
+      property="og:url"
+      content="https://pet-art.net/html/photo-tips-portrait-commissions.html"
+    />
+
     <meta
       name="description"
       content="Learn photo tips & requirements for custom hand-painted pet portraits. Capture perfect memories with artist Katja Turnsek at PetArt with Heart!"
     />
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../src/css/styles.css" />
+
+    <!-- Assets (root-absolute) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -23,32 +48,31 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="alternate"
-      hreflang="sv"
-      href="https://www.pet-art.net/se/foto-tips-portrattbestallning.html"
-    />
   </head>
 
   <body>
-    <!-- Header with Navigation -->
+    <!-- Header with Navigation (unified) -->
     <header>
-      <a href="../index.html"
+      <a href="/"
         ><img
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
       /></a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger">
         <span><i class="fa-solid fa-bars"></i></span>
         <span class="sr-only">Menu</span>
       </label>
+
       <nav aria-label="Primary Navigation">
         <ul>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li>
-            <a href="pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
+            <a href="/html/pet-portraits-oils-gallery.html"
+              >Pet Portrait Gallery</a
+            >
           </li>
           <li class="dropdown active">
             <a href="#"
@@ -56,21 +80,27 @@
             ></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pet-portrait-commission-prices.html"
+                <a href="/html/pet-portrait-commission-prices.html"
                   >Prices & How It Works</a
                 >
               </li>
-              <li><a href="pet-portrait-testimonials.html">Testimonials</a></li>
               <li>
-                <a href="photo-tips-portrait-commissions.html">Photo Tips</a>
+                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+              </li>
+              <li>
+                <a href="/html/photo-tips-portrait-commissions.html"
+                  >Photo Tips</a
+                >
               </li>
             </ul>
           </li>
           <li>
-            <a href="wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
+            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
           </li>
-          <li><a href="about-pet-portrait-artist.html">About Artist</a></li>
-          <li><a href="contact-pet-portrait-artist.html">Contact</a></li>
+          <li>
+            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
+          </li>
+          <li><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -82,7 +112,7 @@
         <figure title="Lines Animation" class="vert-lines"></figure>
         <h1>Photo Tips and Requirements for Custom Painted Pet Portraits</h1>
         <button
-          onclick="window.location.href='contact-pet-portrait-artist.html'"
+          onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
           class="head-button"
           title="Go to top"
         >
@@ -148,7 +178,7 @@
           <img
             class="img"
             src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
-            alt="Border collie i the snow"
+            alt="Border collie in the snow"
           />
           <h2>Positioning And Getting On Your Pets Level</h2>
           <h3>Capturing the Best Angle</h3>
@@ -237,7 +267,7 @@
             class="img"
             loading="lazy"
             src="/assets/images/border-collie-agility-photo-tips.webp"
-            alt="border collie agility training"
+            alt="Border collie agility training"
           />
           <h2>Photo size</h2>
           <p>
@@ -256,8 +286,10 @@
           <p>
             If you don't have the original sized photo and your are unsure if I
             can use it as reference,
-            <a href="contact-pet-portrait-artist.html">me an email</a> for
-            review.
+            <a href="/html/contact-pet-portrait-artist.html"
+              >send me an email</a
+            >
+            for review.
           </p>
         </div>
 
@@ -291,18 +323,14 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (unified) -->
     <footer>
       <div class="footer-flex-item">
         <h3 class="footer-headline">Menu</h3>
         <ul>
-          <li><a href="terms-privacy.html">Terms and Privacy</a></li>
-          <li><a href="petart-with-heart-sitemap.html">Site Map</a></li>
-          <li>
-            <a href="../se/index.html" hreflang="sv" lang="sv"
-              >Site In Swedish</a
-            >
-          </li>
+          <li><a href="/html/terms-privacy.html">Terms and Privacy</a></li>
+          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
+          <li><a href="/se/" hreflang="sv" lang="sv">Site In Swedish</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -326,7 +354,7 @@
         </button>
       </div>
       <div class="footer-flex-item wide">
-        <a href="../index.html"
+        <a href="/"
           ><img
             class="footer-logo"
             loading="lazy"
@@ -339,7 +367,9 @@
         Katja Turnsek
       </div>
     </footer>
-    <script defer src="../src/js/analytics.js"></script>
-    <script defer src="../src/js/up.js"></script>
+
+    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/analytics.js"></script>
+    <script defer src="/src/js/up.js"></script>
   </body>
 </html>

@@ -4,13 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Djurporträtt av Katja | Föreviga din bästa vän i fin konst</title>
-    <link rel="canonical" href="https://www.pet-art.net/se/" />
+
+    <!-- Canonical (non-www) -->
+    <link rel="canonical" href="https://pet-art.net/se/" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
+
     <meta
       name="description"
-      content="Förvandla din lurviga väns foto till ett levande unikt konstmästerverk med mina handmålade husdjursporträtt. Gå med i min kundlista nu!"
+      content="Förvandla din lurviga väns foto till ett levande, unikt konstmästerverk med mina handmålade djurporträtt. Gå med i min kundlista nu!"
     />
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../src/css/styles.css" />
+
+    <!-- Assets (root-absolute) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -18,13 +30,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="alternate" hreflang="en" href="https://www.pet-art.net/" />
   </head>
 
   <body>
     <!-- Header with Navigation -->
     <header>
-      <a href="index.html"
+      <a href="/se/"
         ><img
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
@@ -33,35 +44,41 @@
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger">
         <span><i class="fa-solid fa-bars"></i></span>
-        <span class="sr-only">Menu</span>
+        <span class="sr-only">Meny</span>
       </label>
-      <nav aria-label="Primary Navigation">
+      <nav aria-label="Primär navigation">
         <ul>
-          <li class="active"><a href="index.html">Hem</a></li>
+          <li class="active"><a href="/se/">Hem</a></li>
           <li>
-            <a href="djurportratt-olja.galleri.html">Djurporträtt galleri</a>
+            <a href="/se/djurportratt-olja.galleri.html"
+              >Djurporträtt galleri</a
+            >
           </li>
           <li class="dropdown">
             <a href="#"
-              >Beställningsinformation<i class="fas fa-chevron-down"></i
+              >Beställningsinformation <i class="fas fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="priser-for-djurportratt.html"
+                <a href="/se/priser-for-djurportratt.html"
                   >Priser och hur det fungerar</a
                 >
               </li>
               <li>
-                <a href="djurportratt-kundreferenser.html">Kundreferenser</a>
+                <a href="/se/djurportratt-kundreferenser.html"
+                  >Kundreferenser</a
+                >
               </li>
               <li>
-                <a href="foto-tips-portrattbestallning.html">Foto tips</a>
+                <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>
               </li>
             </ul>
           </li>
-          <li><a href="djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
-          <li><a href="om-djurportratt-konstnaren.html">Om konstnären</a></li>
-          <li><a href="kontakta-djurportratt-konstnar.html">Kontakt</a></li>
+          <li><a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
+          <li>
+            <a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a>
+          </li>
+          <li><a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a></li>
         </ul>
       </nav>
     </header>
@@ -73,9 +90,9 @@
         <figure title="Lines Animation" class="vert-lines"></figure>
         <h1>Föreviga ditt husdjurs hjärta och själ med Katjas djurporträtt</h1>
         <button
-          onclick="window.location.href='kontakta-djurportratt-konstnar.html'"
+          onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"
-          title="kundlista"
+          title="Kundlista"
         >
           Gå med i min kundlista
         </button>
@@ -86,16 +103,16 @@
         <div class="news-text">
           <h2 class="news">
             <i class="fa-solid fa-palette icon-color"></i> Nyhet: Karaktärsfulla
-            Djurporträtt i Olja
+            djurporträtt i olja
           </h2>
           <p>
-            Känslostarka och djärvt uttrycksfulla - fyllda med känsla och
+            Känslostarka och djärvt uttrycksfulla – fyllda med känsla och
             karaktär. Varje porträtt skapas med vått-i-vått-teknik och levande,
             medvetna penseldrag. Tar nu emot ett begränsat antal
             lanseringsbeställningar.
             <strong
-              ><a href="priser-for-djurportratt.html"
-                >Utforska Stilen <i class="fa-solid fa-arrow-right"></i></a
+              ><a href="/se/priser-for-djurportratt.html"
+                >Utforska stilen <i class="fa-solid fa-arrow-right"></i></a
             ></strong>
           </p>
         </div>
@@ -111,19 +128,15 @@
       <section class="main-flex">
         <h2>Varför välja beställningsporträtt av Katja</h2>
         <p>
-          Oavsett om du har en majestätisk katt, en lojal hund eller till och
-          med en charmig hamster, erbjuder <strong>djurporträtt</strong> det
-          perfekta sättet att fånga och bevara den unika gemenskapen ni delar.
-          Mina handmålade porträtt av djur är skapade med stor omsorg för att
-          fånga ditt husdjurs sanna personlighet.
+          Oavsett om du har en majestätisk katt, en lojal hund eller en charmig
+          hamster, erbjuder <strong>djurporträtt</strong> ett perfekt sätt att
+          fånga och bevara den unika gemenskapen ni delar. Mina handmålade verk
+          skapas med stor omsorg för att fånga ditt husdjurs sanna personlighet.
         </p>
         <p>
-          Genom att förvandla ditt foto till en
-          <strong>levande oljemålning</strong> ser mina
-          <strong>handmålade husdjursporträtt</strong> till att varje detalj hos
-          din älskade vän väcks till liv. Med min expertis i att skapa porträtt
-          med djur kan jag garantera en fantastisk representation som speglar
-          både deras utseende och personlighet.
+          Ditt foto förvandlas till en <strong>levande oljemålning</strong>.
+          <strong>Handmålade husdjursporträtt</strong> väcker varje detalj hos
+          din vän till liv och speglar både utseende och personlighet.
         </p>
 
         <!-- Gallery Grid -->
@@ -139,7 +152,7 @@
             <img
               class="image"
               src="/assets/images/pet-portrait-newfoundland-dog.webp"
-              alt="Djurporträtt av Newfoundland hund"
+              alt="Djurporträtt av Newfoundlandhund"
             />
           </figure>
           <figure class="gallery-item2 div3">
@@ -160,20 +173,20 @@
             <img
               class="image"
               src="/assets/images/client-picture-cat-with-portrait.webp"
-              alt="En kunds foto av katt med porträtt"
+              alt="Kundfoto av katt med porträtt"
             />
           </figure>
           <figure class="gallery-item2 div6">
             <img
               class="image"
               src="/assets/images/horse-painting-in-progress.webp"
-              alt="Häst oljemålning"
+              alt="Häst - oljemålning under arbete"
             />
           </figure>
         </div>
         <div class="centered-button">
           <button
-            onclick="window.location.href='djurportratt-olja.html'"
+            onclick="window.location.href='/se/djurportratt-olja-galleri.html'"
             class="button"
             title="Se galleri"
           >
@@ -191,31 +204,28 @@
             class="img"
             loading="lazy"
             src="/assets/images/portrait-oil-newfounlands.webp"
-            alt="Oljemålning av två Newfoundland hundar"
+            alt="Oljemålning av två Newfoundlandhundar"
           />
-          <h2>Släpp lös magin: Upptäck konstens mästerliga Värld</h2>
+          <h2>Släpp lös magin: Upptäck konstens mästerliga värld</h2>
           <p>
             Jag heter Katja Turnsek och är en konstnär bosatt utanför Göteborg.
           </p>
           <p>
-            Jag specialiserar mig på <strong>handmålade djurporträtt</strong>,
-            med hjälp av detaljer och konstnärlig känsla skapar jag verk som
-            fungerar som <strong>tidlösa minnen av din älskade vän</strong>.
+            Jag specialiserar mig på <strong>handmålade djurporträtt</strong> –
+            med detaljer och konstnärlig känsla skapar jag verk som blir
+            <strong>tidlösa minnen av din vän</strong>.
           </p>
           <p>
-            Varje penseldrag är fyllt av kärlek och engagemang, vilket
-            resulterar i ett utsökt konstverk som
-            <strong>fångar ditt husdjurs själ</strong>.
+            Varje penseldrag är fyllt av omsorg och engagemang för att
+            <strong>fånga ditt husdjurs själ</strong>.
           </p>
           <p>
-            Oavsett om du vill hedra en nuvarande lurvig vän eller skapa en
-            varaktig hyllning till en som har gått bort, är mina
-            beställningsporträtt det perfekta sättet att fira deras närvaro i
-            ditt liv.
+            Vill du hedra en nuvarande vän eller skapa en hyllning till en som
+            gått bort? Mina beställningsporträtt firar deras närvaro i ditt liv.
           </p>
           <p>
-            Varje porträtt skapas med passion och precision, vilket säkerställer
-            att det blir ett ovärderligt arvegods för kommande generationer.
+            Varje porträtt skapas med passion och precision – ett ovärderligt
+            arvegods för kommande generationer.
           </p>
         </div>
 
@@ -226,23 +236,19 @@
             src="/assets/images/pet-portrait-artist-painting.webp"
             alt="Konstnär målar en katt i olja"
           />
-          <h2>Förvandla ditt foto till handmålade husdjursporträtt</h2>
+          <h2>Förvandla ditt foto till ett handmålat djurporträtt</h2>
+          <p>Upptäck skönheten i handmålade djurporträtt.</p>
           <p>
-            Upptäck skönheten och konstnärskapet i mina handmålade djurporträtt
-            idag.
+            Låt mig förvandla ditt foto till en extraordinär oljemålning som för
+            alltid påminner om bandet ni delar.
           </p>
           <p>
-            Låt mig förvandla ditt värdefulla foto till en extraordinär
-            oljemålning som för alltid kommer att påminna dig om det speciella
-            bandet du delar med ditt älskade husdjur.
-          </p>
-          <p>
-            <strong>Processen är enkel</strong> - gå med i min kundlista och
-            dela alla idéer eller speciella önskemål du har.
+            <strong>Så funkar det:</strong> Gå med i min kundlista och dela dina
+            idéer och önskemål.
           </p>
           <div class="centered-button">
             <button
-              onclick="window.location.href='kontakta-djurportratt-konstnar.html'"
+              onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
               class="button"
               title="Gå med i kundlista"
             >
@@ -265,7 +271,7 @@
               visualized Maggie so well.
             </p>
             <p>
-              The shimmering light in the soft fur, the kindness in her eyes -
+              The shimmering light in the soft fur, the kindness in her eyes –
               truly beautiful!
             </p>
             <p>Annika Lekman</p>
@@ -275,15 +281,15 @@
               class="testimonial-img"
               loading="lazy"
               src="/assets/images/pet-portrait-client-photo.webp"
-              alt="Hund med porträtt kundreferens"
+              alt="Hund med porträtt – kundreferens"
             />
           </div>
         </blockquote>
         <div class="centered-button">
           <button
-            onclick="window.location.href='djurportratt-kundreferenser.html'"
+            onclick="window.location.href='/se/djurportratt-kundreferenser.html'"
             class="button"
-            title="kundreferenser"
+            title="Kundreferenser"
           >
             Läs fler referenser
           </button>
@@ -296,11 +302,9 @@
       <div class="footer-flex-item">
         <h3 class="footer-headline">Meny</h3>
         <ul>
-          <li><a href="villkor.html">Villkor</a></li>
-          <li><a href="sajtmap.html">Sajtmap</a></li>
-          <li>
-            <a href="../index.html" hreflang="en" lang="en">Sida på engelska</a>
-          </li>
+          <li><a href="/se/villkor.html">Villkor</a></li>
+          <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
+          <li><a href="/" hreflang="en" lang="en">Sida på engelska</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -319,25 +323,27 @@
             ><i class="fa-brands fa-instagram fa-2x"></i
           ></a>
         </div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <button onclick="topFunction()" id="myBtn" title="Till toppen">
           <i class="fa-solid fa-arrow-up fa-2x"></i>
         </button>
       </div>
       <div class="footer-flex-item wide">
-        <a href="index.html"
+        <a href="/se/"
           ><img
             class="footer-logo"
             loading="lazy"
-            src="/assets/images/petart-logotype-bw.webp"
+            src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotyp"
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">
-        &copy; 2025 - Alla rättigheter förbehållna | Pet Art with Heart |
+        &copy; 2025 – Alla rättigheter förbehållna | Pet Art with Heart |
         Webbsida av Katja Turnsek
       </div>
     </footer>
-    <script defer src="../src/js/analytics.js"></script>
-    <script defer src="../src/js/up.js"></script>
+
+    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/analytics.js"></script>
+    <script defer src="/src/js/up.js"></script>
   </body>
 </html>

@@ -3,14 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Custom Pet Portraits | Eternalize Your Companion in Fine Art</title>
-    <link rel="canonical" href="https://www.pet-art.net/" />
+
+    <!-- Canonical: homepage (www version) -->
+    <link rel="canonical" href="https://pet-art.net/" />
+
+    <!-- Hreflang: EN home, SV home, x-default -->
+    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
+    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
+
     <meta
       name="description"
       content="Transform your furry friend's photo into a vibrant one-of-a-kind Fine Art masterpiece with my hand-painted pet portraits. Join my client list now!"
     />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="src/css/styles.css" />
+
+    <!-- Social URL matches canonical -->
+    <meta property="og:url" content="https://pet-art.net/" />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -18,30 +35,32 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <meta name="msvalidate.01" content="2154CBD7288F960A235467F56F34FF50" />
-    <link rel="alternate" hreflang="sv" href="https://www.pet-art.net/se/" />
   </head>
 
   <body>
     <!-- Header with Navigation -->
     <header>
-      <a href="index.html"
+      <a href="/"
         ><img
           class="logo-header"
           fetchpriority="high"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
       /></a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger">
         <span><i class="fa-solid fa-bars"></i></span>
         <span class="sr-only">Menu</span>
       </label>
+
       <nav aria-label="Primary Navigation">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="/">Home</a></li>
           <li>
-            <a href="html/pet-portraits-oils-gallery.html"
+            <a href="/html/pet-portraits-oils-gallery.html"
               >Pet Portrait Gallery</a
             >
           </li>
@@ -51,27 +70,27 @@
             ></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="html/pet-portrait-commission-prices.html"
+                <a href="/html/pet-portrait-commission-prices.html"
                   >Prices & How It Works</a
                 >
               </li>
               <li>
-                <a href="html/pet-portrait-testimonials.html">Testimonials</a>
+                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
               </li>
               <li>
-                <a href="html/photo-tips-portrait-commissions.html"
+                <a href="/html/photo-tips-portrait-commissions.html"
                   >Photo Tips</a
                 >
               </li>
             </ul>
           </li>
           <li>
-            <a href="html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
+            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
           </li>
           <li>
-            <a href="html/about-pet-portrait-artist.html">About Artist</a>
+            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
           </li>
-          <li><a href="html/contact-pet-portrait-artist.html">Contact</a></li>
+          <li><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -85,7 +104,7 @@
           Immortalize the Heart and Soul of Your Pet with Katja's Pet Portraits
         </h1>
         <button
-          onclick="window.location.href='html/contact-pet-portrait-artist.html'"
+          onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
           class="head-button"
           title="Go to top"
         >
@@ -105,14 +124,14 @@
             wet-on-wet technique with rich, intentional brushwork. Now accepting
             limited launch commissions.
             <strong
-              ><a href="html/pet-portrait-commission-prices.html"
+              ><a href="/html/pet-portrait-commission-prices.html"
                 >Discover the Style <i class="fa-solid fa-arrow-right"></i></a
             ></strong>
           </p>
         </div>
         <div class="news-image">
           <img
-            src="../../assets/images/painterly-pet-portraits.webp"
+            src="/assets/images/painterly-pet-portraits.webp"
             alt="Fine art oil portrait of a dog painted in wet-on-wet style"
           />
         </div>
@@ -186,7 +205,7 @@
         </div>
         <div class="centered-button">
           <button
-            onclick="window.location.href='html/pet-portraits-oils-gallery.html'"
+            onclick="window.location.href='/html/pet-portraits-oils-gallery.html'"
             class="button"
             title="View Gallery"
           >
@@ -217,8 +236,9 @@
           </p>
           <p>
             Every stroke of the brush is infused with love and dedication,
-            resulting in an exquisite <strong>Fine Art</strong> that captures
-            the spirit and soul of your pet.
+            resulting in an exquisite
+            <strong>Fine Art</strong> that captures the spirit and soul of your
+            pet.
           </p>
           <p>
             Whether you want to honor a current furry friend or create a lasting
@@ -248,7 +268,7 @@
           </p>
           <div class="centered-button">
             <button
-              onclick="window.location.href='html/contact-pet-portrait-artist.html'"
+              onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
               class="button"
               title="View Gallery"
             >
@@ -287,7 +307,7 @@
         </blockquote>
         <div class="centered-button">
           <button
-            onclick="window.location.href='html/pet-portrait-testimonials.html'"
+            onclick="window.location.href='/html/pet-portrait-testimonials.html'"
             class="button"
             title="View Gallery"
           >
@@ -302,11 +322,9 @@
       <div class="footer-flex-item">
         <h3 class="footer-headline">Menu</h3>
         <ul>
-          <li><a href="html/terms-privacy.html">Terms and Privacy</a></li>
-          <li><a href="html/petart-with-heart-sitemap.html">Site Map</a></li>
-          <li>
-            <a href="se/index.html" hreflang="sv" lang="sv">Site In Swedish</a>
-          </li>
+          <li><a href="/html/terms-privacy.html">Terms and Privacy</a></li>
+          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
+          <li><a href="/se/" hreflang="sv" lang="sv">Site In Swedish</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -330,7 +348,7 @@
         </button>
       </div>
       <div class="footer-flex-item wide">
-        <a href="index.html"
+        <a href="/"
           ><img
             class="footer-logo"
             loading="lazy"
@@ -343,7 +361,9 @@
         Katja Turnsek
       </div>
     </footer>
-    <script defer src="./src/js/analytics.js"></script>
-    <script defer src="./src/js/up.js"></script>
+
+    <!-- JS -->
+    <script defer src="/src/js/analytics.js"></script>
+    <script defer src="/src/js/up.js"></script>
   </body>
 </html>

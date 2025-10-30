@@ -3,14 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sajtmap | Letar du efter något?</title>
-    <link rel="canonical" href="https://www.pet-art.net/se/sajtmap.html" />
+    <title>Sajtkarta | Letar du efter något?</title>
+
+    <!-- Canonical (non-www) -->
+    <link rel="canonical" href="https://pet-art.net/se/sajtmap.html" />
+
+    <!-- Hreflang -->
+    <link
+      rel="alternate"
+      href="https://pet-art.net/se/sajtmap.html"
+      hreflang="sv"
+    />
+    <link
+      rel="alternate"
+      href="https://pet-art.net/html/petart-with-heart-sitemap.html"
+      hreflang="en"
+    />
+
+    <!-- Social URL matches canonical -->
+    <meta property="og:url" content="https://pet-art.net/se/sajtmap.html" />
+
     <meta
       name="description"
-      content="Sajtmap att hjälpa kunder surfa runt och enkelt hitta information på min djurporträtt webbsida PetArt with Heart"
+      content="Sajtkarta som hjälper dig att enkelt hitta information på min djurporträtt-webbplats Pet Art with Heart."
     />
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../src/css/styles.css" />
+
+    <!-- Assets (root-absolute) -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -18,17 +40,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://www.pet-art.net/html/petart-with-heart-sitemap.html"
-    />
   </head>
 
   <body>
     <!-- Header with Navigation -->
     <header>
-      <a href="index.html"
+      <a href="/se/"
         ><img
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
@@ -37,35 +54,41 @@
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger">
         <span><i class="fa-solid fa-bars"></i></span>
-        <span class="sr-only">Menu</span>
+        <span class="sr-only">Meny</span>
       </label>
-      <nav aria-label="Primary Navigation">
+      <nav aria-label="Primär navigation">
         <ul>
-          <li><a href="index.html">Hem</a></li>
+          <li><a href="/se/">Hem</a></li>
           <li>
-            <a href="djurportratt-olja.galleri.html">Djurporträtt galleri</a>
+            <a href="/se/djurportratt-olja.galleri.html"
+              >Djurporträtt galleri</a
+            >
           </li>
           <li class="dropdown">
             <a href="#"
-              >Beställningsinformation<i class="fas fa-chevron-down"></i
+              >Beställningsinformation <i class="fas fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="priser-for-djurportratt.html"
+                <a href="/se/priser-for-djurportratt.html"
                   >Priser och hur det fungerar</a
                 >
               </li>
               <li>
-                <a href="djurportratt-kundreferenser.html">Kundreferenser</a>
+                <a href="/se/djurportratt-kundreferenser.html"
+                  >Kundreferenser</a
+                >
               </li>
               <li>
-                <a href="foto-tips-portrattbestallning.html">Foto tips</a>
+                <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>
               </li>
             </ul>
           </li>
-          <li><a href="djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
-          <li><a href="om-djurportratt-konstnaren.html">Om konstnären</a></li>
-          <li><a href="kontakta-djurportratt-konstnar.html">Kontakt</a></li>
+          <li><a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
+          <li>
+            <a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a>
+          </li>
+          <li><a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a></li>
         </ul>
       </nav>
     </header>
@@ -76,65 +99,69 @@
 
       <!-- Introduction Article -->
       <section class="main-flex">
-        <h1 class="contact">Sajtmap</h1>
+        <h1 class="contact">Sajtkarta</h1>
         <h2>Hitta det du letar efter!</h2>
+
         <h3>Hem</h3>
         <p>
-          <a href="index.html"
+          <a href="/se/"
             >Djurporträtt av Katja | Föreviga din bästa vän i fin konst</a
           >
         </p>
+
         <h3>Djurporträtt galleri</h3>
         <p>
-          <a href="djurportratt-olja.galleri.html"
-            >Djursporträtt i olja | Galleri med handmålade oljemålningar</a
+          <a href="/se/djurportratt-olja.galleri.html"
+            >Djurporträtt i olja | Galleri med handmålade oljemålningar</a
           >
         </p>
+
         <h3>Beställningsinformation</h3>
         <p>
-          <a href="priser-for-djurportratt.html"
+          <a href="/se/priser-for-djurportratt.html"
             >Priser för djurporträtt | Specialbeställda oljemålningar</a
           >
         </p>
         <p>
-          <a href="djurportratt-kundreferenser.html"
+          <a href="/se/djurportratt-kundreferenser.html"
             >Hjärtliga kundomdömen som värmer själen | Nöjda kunder</a
           >
         </p>
         <p>
-          <a href="foto-tips-portrattbestallning.html"
-            >Djurporträtt målade från fotografier | Foto tips och kvalitetskrav
-            information</a
+          <a href="/se/foto-tips-portrattbestallning.html"
+            >Djurporträtt från fotografier | Fototips och kvalitetskrav</a
           >
         </p>
+
         <h3>Köp djurmotiv</h3>
         <p>
-          <a href="djurmotiv-olja-galleri.html"
-            >Vilda djur i olja handmålade av Katja Turnsek | Original till
-            salu</a
+          <a href="/se/djurmotiv-olja-galleri.html"
+            >Vilda djur i olja av Katja Turnsek | Original till salu</a
           >
         </p>
+
         <h3>Om konstnären</h3>
         <p>
-          <a href="om-djurportratt-konstnaren.html"
-            >Djurporträtt konstnär | Skapar meningsfull konst med passion</a
+          <a href="/se/om-djurportratt-konstnaren.html"
+            >Djurporträttkonstnär | Skapar meningsfull konst med passion</a
           >
         </p>
-        <h3>Kontact</h3>
+
+        <h3>Kontakt</h3>
         <p>
-          <a href="kontakta-djurportratt-konstnar.html"
-            >Hör av dig för Pet Art with Heart porträtt | Kontakta
-            djurkonstnär</a
+          <a href="/se/kontakta-djurportratt-konstnar.html"
+            >Kontakta djurkonstnären | Pet Art with Heart</a
           >
         </p>
-        <h3>More</h3>
+
+        <h3>Mer</h3>
         <p>
-          <a href="villkor.html"
-            >Villkor och avskildhet för specialbeställda djurporträtt</a
+          <a href="/se/villkor.html"
+            >Villkor och integritet för specialbeställda djurporträtt</a
           >
         </p>
-        <p><a href="sajtmap.html">Site Map</a></p>
-        <p><a href="../index.html">Webbsida på engelska</a></p>
+        <p><a href="/se/sajtmap.html">Sajtkarta</a></p>
+        <p><a href="/">Webbplats på engelska</a></p>
       </section>
     </main>
 
@@ -143,11 +170,9 @@
       <div class="footer-flex-item">
         <h3 class="footer-headline">Meny</h3>
         <ul>
-          <li><a href="villkor.html">Villkor</a></li>
-          <li><a href="sajtmap.html">Sajtmap</a></li>
-          <li>
-            <a href="../index.html" hreflang="en" lang="en">Sida på engelska</a>
-          </li>
+          <li><a href="/se/villkor.html">Villkor</a></li>
+          <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
+          <li><a href="/" hreflang="en" lang="en">Sida på engelska</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -166,12 +191,12 @@
             ><i class="fa-brands fa-instagram fa-2x"></i
           ></a>
         </div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <button onclick="topFunction()" id="myBtn" title="Till toppen">
           <i class="fa-solid fa-arrow-up fa-2x"></i>
         </button>
       </div>
       <div class="footer-flex-item wide">
-        <a href="index.html"
+        <a href="/se/"
           ><img
             class="footer-logo"
             loading="lazy"
@@ -180,11 +205,13 @@
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">
-        &copy; 2025 - Alla rättigheter förbehållna | Pet Art with Heart |
+        &copy; 2025 – Alla rättigheter förbehållna | Pet Art with Heart |
         Webbsida av Katja Turnsek
       </div>
     </footer>
-    <script defer src="../src/js/analytics.js"></script>
-    <script defer src="../src/js/up.js"></script>
+
+    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/analytics.js"></script>
+    <script defer src="/src/js/up.js"></script>
   </body>
 </html>
