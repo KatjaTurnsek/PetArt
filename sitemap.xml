@@ -1,117 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- Canonical domain: non-www, one URL per page -->
+  <url>
+    <loc>https://pet-art.net/</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>1.00</priority>
+  </url>
 
-<url>
-  <loc>https://pet-art.net/</loc>
-  <lastmod>2024-12-18T11:43:48+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/index.html</loc>
-  <lastmod>2024-12-18T11:43:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/pet-portraits-oils-gallery.html</loc>
-  <lastmod>2024-12-18T11:44:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/pet-portrait-commission-prices.html</loc>
-  <lastmod>2024-12-18T11:44:49+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/pet-portrait-testimonials.html</loc>
-  <lastmod>2024-12-18T11:44:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/photo-tips-portrait-commissions.html</loc>
-  <lastmod>2024-12-18T11:44:48+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/wildlife-art-oils-gallery.html</loc>
-  <lastmod>2024-12-18T11:44:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/about-pet-portrait-artist.html</loc>
-  <lastmod>2024-12-18T11:44:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/contact-pet-portrait-artist.html</loc>
-  <lastmod>2024-12-18T11:44:49+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/terms-privacy.html</loc>
-  <lastmod>2024-12-18T11:44:49+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/html/petart-with-heart-sitemap.html</loc>
-  <lastmod>2024-12-18T11:44:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/index.html</loc>
-  <lastmod>2024-12-18T11:44:51+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/djurportratt-olja.galleri.html</loc>
-  <lastmod>2024-12-18T11:44:54+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/priser-for-djurportratt.html</loc>
-  <lastmod>2024-12-18T11:44:51+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/djurportratt-kundreferenser.html</loc>
-  <lastmod>2024-12-18T11:44:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/foto-tips-portrattbestallning.html</loc>
-  <lastmod>2024-12-18T11:44:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/djurmotiv-olja-galleri.html</loc>
-  <lastmod>2024-12-18T11:44:53+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/om-djurportratt-konstnaren.html</loc>
-  <lastmod>2024-12-18T11:44:51+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/kontakta-djurportratt-konstnar.html</loc>
-  <lastmod>2024-12-18T11:44:52+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/villkor.html</loc>
-  <lastmod>2024-12-18T11:44:52+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://pet-art.net/se/sajtmap.html</loc>
-  <lastmod>2024-12-18T11:44:52+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
+  <!-- English -->
+  <url>
+    <loc>https://pet-art.net/html/pet-portraits-oils-gallery.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/pet-portrait-commission-prices.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/pet-portrait-testimonials.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/photo-tips-portrait-commissions.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/wildlife-art-oils-gallery.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/about-pet-portrait-artist.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/contact-pet-portrait-artist.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/terms-privacy.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/html/petart-with-heart-sitemap.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 
-
+  <!-- Swedish -->
+  <url>
+    <loc>https://pet-art.net/se/</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/djurportratt-olja-galleri.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/priser-for-djurportratt.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/djurportratt-kundreferenser.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/foto-tips-portrattbestallning.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/djurmotiv-olja-galleri.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/om-djurportratt-konstnaren.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/kontakta-djurportratt-konstnar.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/villkor.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/sajtmap.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 </urlset>
