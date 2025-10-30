@@ -80,6 +80,10 @@
   gap: 40px;
 }
 
+.news-offer a {
+  color: #8a8735;
+}
+
 h2.news {
   font-size: 25px;
   line-height: 35px;
