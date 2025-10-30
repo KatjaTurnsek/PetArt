@@ -1,31 +1,22 @@
-# Canonical to https://pet-art.net (non-www), loop-safe
+# Minimal, loop-safe; canonical to https://pet-art.net
 DirectoryIndex index.html
 RewriteEngine On
 
-# 1) Canonical host + HTTPS
-#    - Redirect www → non-www
-#    - Redirect http → https (covers direct and proxied)
-RewriteCond %{HTTP_HOST} ^www\.pet-art\.net$ [OR]
-RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP:X-Forwarded-Proto} =http
-RewriteRule ^ https://pet-art.net%{REQUEST_URI} [R=301,L,NE]
-
-# 2) Normalize /index.html → /
-#    Works in any subdirectory: / → /, /se/index.html → /se/
-RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
-RewriteRule ^ %1 [R=301,L]
-
-# 3) Never rewrite static assets (prevents internal rewrite loops)
-#    We place this AFTER redirects so assets still get canonical host/https.
+# 0) Never rewrite static assets (prevents asset redirect loops)
 RewriteRule \.(?:css|js|mjs|map|json|xml|txt|png|jpe?g|webp|gif|svg|ico|avif|woff2?|ttf|eot)$ - [L,NC]
 
-# 4) Basic protection
+# 1) Canonical: if host is *www* OR proxy says http → redirect to https://pet-art.net
+RewriteCond %{HTTP_HOST} ^www\.pet-art\.net$ [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^ https://pet-art.net%{REQUEST_URI} [R=301,L]
+
+# 2) Basic protection
 RedirectMatch 404 (?i)\.git
 <FilesMatch "^\.">
   Require all denied
 </FilesMatch>
 
-# 5) (Optional) Caching
+# 3) (Optional) Caching
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/avif "access plus 1 year"
