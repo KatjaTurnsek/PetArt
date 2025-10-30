@@ -1,0 +1,39 @@
+# Canonical to https://pet-art.net (non-www), loop-safe
+DirectoryIndex index.html
+RewriteEngine On
+
+# 1) Canonical host + HTTPS
+#    - Redirect www → non-www
+#    - Redirect http → https (covers direct and proxied)
+RewriteCond %{HTTP_HOST} ^www\.pet-art\.net$ [OR]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^ https://pet-art.net%{REQUEST_URI} [R=301,L,NE]
+
+# 2) Normalize /index.html → /
+#    Works in any subdirectory: / → /, /se/index.html → /se/
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# 3) Never rewrite static assets (prevents internal rewrite loops)
+#    We place this AFTER redirects so assets still get canonical host/https.
+RewriteRule \.(?:css|js|mjs|map|json|xml|txt|png|jpe?g|webp|gif|svg|ico|avif|woff2?|ttf|eot)$ - [L,NC]
+
+# 4) Basic protection
+RedirectMatch 404 (?i)\.git
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# 5) (Optional) Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/gif  "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
