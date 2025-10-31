@@ -35,6 +35,20 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
+    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-ideal-photos.webp"
+      media="(min-width: 769px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-ideal-photos-mobile.webp"
+      media="(max-width: 768px)"
+    />
+
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -63,7 +77,7 @@
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li>
-            <a href="/se/djurportratt-olja-galleri.html"
+            <a href="/se/djurportratt-olja.galleri.html"
               >Djurporträtt galleri</a
             >
           </li>
@@ -99,9 +113,32 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img-photo-tips">
+      <section class="main-img main-img-photo-tips">
+        <!-- LCP image (desktop + mobile) -->
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/pet-portraits-ideal-photos-mobile.webp"
+            />
+            <!-- Desktop/default -->
+            <img
+              src="/assets/images/pet-portraits-ideal-photos.webp"
+              alt="Exempel på idealiska husdjursfoton för beställning av målat porträtt"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
+
         <h1>Foto tips och kvalitetskrav för djurporträtt</h1>
+
         <button
           onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"

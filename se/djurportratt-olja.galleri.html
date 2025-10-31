@@ -32,6 +32,20 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
+    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-portrait-progress-cat.webp"
+      media="(min-width: 769px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-portrait-progress-cat-mobile.webp"
+      media="(max-width: 768px)"
+    />
+
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -60,7 +74,7 @@
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li class="active">
-            <a href="/se/djurportratt-olja-galleri.html"
+            <a href="/se/djurportratt-olja.galleri.html"
               >Djurporträtt galleri</a
             >
           </li>
@@ -96,9 +110,32 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img-gallery">
+      <section class="main-img main-img-gallery">
+        <!-- LCP image (desktop + mobile) -->
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/oil-portrait-progress-cat-mobile.webp"
+            />
+            <!-- Desktop/default -->
+            <img
+              src="/assets/images/oil-portrait-progress-cat.webp"
+              alt="Djurporträtt i olja under arbete - närbild av kattmotiv på duk"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
+
         <h1>Djurporträtt i olja: Ett galleri med magnifika oljemålningar</h1>
+
         <button
           onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"
@@ -124,10 +161,10 @@
           dig för att förverkliga din vision, använder ditt
           <strong>favoritfoto som referens</strong> och införlivar alla idéer
           eller speciella önskemål du har. Från orienteringen av porträttet till
-          val av bakgrunder, färger och storlekar – allt anpassas efter dina
+          val av bakgrunder, färger och storlekar - allt anpassas efter dina
           önskemål.
         </p>
-        <h3>Porträtt målade år 2020–2024</h3>
+        <h3>Porträtt målade år 2020-2024</h3>
 
         <!-- Gallery Grid -->
         <div class="gallery-grid">

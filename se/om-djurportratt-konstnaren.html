@@ -37,6 +37,20 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
+    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+      media="(min-width: 769px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp"
+      media="(max-width: 768px)"
+    />
+
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -101,9 +115,34 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img-about">
+      <section class="main-img main-img-about">
+        <!-- LCP image (desktop + mobile) -->
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="
+                /assets/images/pet-portrait-artist-katja-turnsek-mobile.webp
+              "
+            />
+            <!-- Desktop/default -->
+            <img
+              src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+              alt="Djurkonstnären Katja Turnsek i ateljén"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
+
         <h1>Djurkonstnär Katja Turnsek: PetArt with Heart</h1>
+
         <button
           onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"

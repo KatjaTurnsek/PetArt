@@ -66,7 +66,7 @@
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li>
-            <a href="/se/djurportratt-olja-galleri.html"
+            <a href="/se/djurportratt-olja.galleri.html"
               >Djurporträtt galleri</a
             >
           </li>
@@ -104,9 +104,32 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img-shop">
+      <section class="main-img main-img-shop">
+        <!-- LCP image (desktop + mobile) -->
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/wildlife-art-for-sale-mobile.webp"
+            />
+            <!-- Desktop/default -->
+            <img
+              src="/assets/images/wildlife-art-for-sale.webp"
+              alt="Originala oljemålningar av vilda djur till salu"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
+
         <h1>Upptäck fängslande konst av vilda djur: oljemålningar till salu</h1>
+
         <button
           onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"

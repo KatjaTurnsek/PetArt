@@ -25,12 +25,26 @@
 
     <meta
       name="description"
-      content="Beställ ett unikt djurporträtt i olja – skräddarsytt efter dina önskemål. Se priser, tillgängliga storlekar och få leverans med FedEx förstklassig service."
+      content="Beställ ett unikt djurporträtt i olja - skräddarsytt efter dina önskemål. Se priser, tillgängliga storlekar och få leverans med FedEx förstklassig service."
     />
 
     <!-- Assets (root-absolute) -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
+
+    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-painting-brushes.webp"
+      media="(min-width: 769px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-painting-brushes-mobile.webp"
+      media="(max-width: 768px)"
+    />
 
     <!-- Icons -->
     <link
@@ -99,15 +113,40 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img-prices">
+      <section class="main-img main-img-prices">
+        <!-- Real image for LCP (desktop + mobile) -->
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/oil-painting-brushes-mobile.webp"
+            />
+
+            <!-- Desktop/default -->
+            <img
+              src="/assets/images/oil-painting-brushes.webp"
+              alt="Oljemålade penslar och palett som används för handmålade djurporträtt"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
+
         <h1>Prissättning för djurporträtt och hur det fungerar</h1>
+
         <a
           href="/se/kontakta-djurportratt-konstnar.html"
           class="head-button"
           title="Kundlista"
-          >Gå med i min kundlista</a
         >
+          Gå med i min kundlista
+        </a>
       </section>
 
       <!-- Introduction Article -->

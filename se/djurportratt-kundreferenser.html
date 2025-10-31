@@ -61,7 +61,7 @@
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li>
-            <a href="/se/djurportratt-olja-galleri.html"
+            <a href="/se/djurportratt-olja.galleri.html"
               >Djurporträtt galleri</a
             >
           </li>
@@ -97,9 +97,32 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img-testimonials">
+      <section class="main-img main-img-testimonials">
+        <!-- LCP image (desktop + mobile) -->
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/pet-oil-portrait-testimonials-mobile.webp"
+            />
+            <!-- Desktop/default -->
+            <img
+              src="/assets/images/pet-oil-portrait-testimonials.webp"
+              alt="Nöjda kunder med sina handmålade djurporträtt i olja"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
+
         <h1>Kundberättelser: Hjärtliga Kundomdömen som värmer själen</h1>
+
         <button
           onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"

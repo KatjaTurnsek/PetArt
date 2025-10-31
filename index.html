@@ -24,8 +24,23 @@
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-    <!-- CSS -->
+    <!-- Assets (root-absolute) -->
     <link rel="stylesheet" href="/src/css/styles.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-in-progress.webp"
+      media="(min-width: 769px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-in-progress-mobile.web"
+      media="(max-width: 768px)"
+    />
 
     <!-- Icons -->
     <link
@@ -103,6 +118,28 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img">
+        <div class="main-img__bg" aria-hidden="true">
+          <picture>
+            <!-- Mobile image -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/pet-portraits-in-progress-mobile.webp"
+            />
+
+            <!-- Desktop/default image -->
+            <img
+              src="/assets/images/pet-portraits-in-progress.webp"
+              alt="Custom pet portrait in oil — work in progress on the easel"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="800"
+              onload="this.closest('.main-img').classList.add('ready')"
+            />
+          </picture>
+        </div>
+
         <figure title="Lines Animation" class="vert-lines"></figure>
         <h1>
           Immortalize the Heart and Soul of Your Pet with Katja's Pet Portraits
