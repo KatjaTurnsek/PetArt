@@ -104,7 +104,7 @@ figure.gallery-item2 {
 
 /* Hide element on Tablet/Phone */
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 768px) {
   .testimonial-flex {
     flex-direction: column;
     padding: 0 0 0 20px;
