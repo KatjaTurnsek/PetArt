@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Hör av dig för Pet Art with Heart porträtt | Kontakta djurkonstnär
+      Hör av dig för Pet Art with Heart-porträtt | Kontakta djurkonstnär
     </title>
 
     <!-- Canonical (non-www) -->
@@ -30,9 +30,15 @@
       hreflang="x-default"
     />
 
+    <!-- Social URL matches canonical -->
+    <meta
+      property="og:url"
+      content="https://pet-art.net/se/kontakta-djurportratt-konstnar.html"
+    />
+
     <meta
       name="description"
-      content="Hör av dig till porträttkonstnären Katja och släpp loss din lurviga bästa väns personlighet på duk. Låt oss föra din vision till liv tillsammans! Gå med i min kundlista nu!"
+      content="Kontakta porträttkonstnären Katja - låt oss föra din lurviga väns personlighet till duk. Gå med i min kundlista och beställ ditt djurporträtt idag!"
     />
 
     <!-- Assets (root-absolute) -->
@@ -64,6 +70,10 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotyp"
+          loading="lazy"
+          decoding="async"
+          width="220"
+          height="60"
         />
       </a>
       <input id="toggler" class="toggler" type="checkbox" />
@@ -79,7 +89,6 @@
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li>
-            <!-- keep the dot for now -->
             <a href="/se/djurportratt-olja-galleri.html"
               >Djurporträtt galleri</a
             >
@@ -127,36 +136,41 @@
         <div class="contact-flex-item1">
           <h1 class="contact">Gå med i kundlistan: Beställ ditt porträtt</h1>
           <p>
-            Beställ ditt djurporträtt idag genom att gå med i min kundlista.
-            Skicka <strong>ett meddelande</strong> till mig så skickar jag
-            betalningsinformation.
+            Beställ ditt djurporträtt genom att gå med i min kundlista. Skicka
+            <strong>ett meddelande</strong> till mig så återkommer jag med
+            <strong>betalningsinformation</strong>.
           </p>
           <h2 class="contact">Låt oss föra din vision till liv tillsammans!</h2>
           <p>
-            För att <strong>köpa original konst av vilda djur</strong>, skicka
-            e-post.
+            Vill du <strong>köpa originalkonst av vilda djur</strong>? Skicka
+            ett mejl så hjälper jag dig.
           </p>
           <h3 class="contact">
             E-post:
             <a
               class="contact"
-              href="mailto:katja@pet-art.net?subject=Inquiry%20Artwork%20by%20Katja%20Turnsek"
+              href="mailto:katja@pet-art.net?subject=Förfrågan%20om%20konst%20–%20Katja%20Turnsek&body=Hej%20Katja,%0D%0A%0D%0AJag%20är%20intresserad%20av%20..."
               >katja@pet-art.net</a
             >
           </h3>
+          <p class="contact" aria-live="polite">
+            Betalningar kan göras via banköverföring, Swish eller PayPal.
+            Depositionen för att hamna på min kundlista är
+            <strong>2000&nbsp;SEK</strong>.
+          </p>
         </div>
+
         <div class="contact-flex-item2">
           <p>
             <img
               class="image"
               src="/assets/images/contact-pet-portrait-artist.webp"
               alt="Målning av ett hundporträtt"
+              loading="lazy"
+              decoding="async"
+              width="900"
+              height="600"
             />
-          </p>
-          <p class="contact">
-            Betalningar görs via banköverföring, Swish eller PayPal.
-            Depositionen för att hamna på min kundlista är
-            <strong>2000 SEK</strong>.
           </p>
         </div>
       </section>
@@ -180,6 +194,7 @@
             href="https://www.facebook.com/PetPortraitsArtist"
             class="btn-social-fb"
             aria-label="Facebook"
+            rel="noopener"
           >
             <svg class="icon icon-lg" role="img">
               <use href="/assets/icons.svg?v=3#icon-facebook"></use>
@@ -190,6 +205,7 @@
             href="https://www.instagram.com/katjapetportraits"
             class="btn-social-fb btn-social-in"
             aria-label="Instagram"
+            rel="noopener"
           >
             <svg class="icon icon-lg" role="img">
               <use href="/assets/icons.svg?v=3#icon-instagram"></use>
@@ -212,8 +228,11 @@
           <img
             class="footer-logo"
             loading="lazy"
+            decoding="async"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotyp"
+            width="220"
+            height="60"
           />
         </a>
       </div>

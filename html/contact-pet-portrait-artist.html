@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== LCP preload FIRST ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/contact-pet-portrait-artist.webp"
+      imagesrcset="/assets/images/contact-pet-portrait-artist.webp"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
     <title>Get in Touch for Pet Art with Heart Portraits | Contact Me</title>
 
     <!-- Canonical (non-www) -->
@@ -63,6 +74,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -157,7 +170,7 @@
               alt="Painting a dog portrait"
               width="1200"
               height="800"
-              decoding="async"
+              loading="eager"
               fetchpriority="high"
             />
           </p>
@@ -223,6 +236,7 @@
             loading="lazy"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotype"
+            decoding="async"
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">

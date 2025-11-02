@@ -3,6 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-ideal-photos-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/pet-portraits-ideal-photos-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-ideal-photos.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/pet-portraits-ideal-photos.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
     <title>
       Photo Tips & Requirements for Perfect Custom Painted Pet Portraits
     </title>
@@ -33,26 +54,12 @@
 
     <meta
       name="description"
-      content="Learn photo tips & requirements for custom hand-painted pet portraits. Capture perfect memories with artist Katja Turnsek at PetArt with Heart!"
+      content="Learn photo tips & requirements for custom hand-painted pet portraits. Capture perfect memories with artist Katja Turnsek at Pet Art with Heart."
     />
 
     <!-- Assets (root-absolute) -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
-
-    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos.webp"
-      media="(min-width: 769px)"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos-mobile.webp"
-      media="(max-width: 768px)"
-    />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -79,6 +86,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -109,7 +118,7 @@
             <ul class="dropdown-menu">
               <li>
                 <a href="/html/pet-portrait-commission-prices.html"
-                  >Prices & How It Works</a
+                  >Prices &amp; How It Works</a
                 >
               </li>
               <li>
@@ -137,25 +146,28 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-photo-tips">
-        <!-- Real image for LCP (desktop + mobile) -->
-        <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/pet-portraits-ideal-photos-mobile.webp"
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/pet-portraits-ideal-photos.webp"
-              alt="Ideal pet photo examples for commissioning a painted portrait"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+        <div class="main-img__bg">
+          <img
+            id="hero-lcp"
+            src="/assets/images/pet-portraits-ideal-photos.webp"
+            srcset="
+              /assets/images/pet-portraits-ideal-photos-mobile.webp  768w,
+              /assets/images/pet-portraits-ideal-photos.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Ideal pet photo examples for commissioning a painted portrait"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
@@ -175,15 +187,14 @@
       <section class="main-flex">
         <h2>Photo Is Key</h2>
         <p>
-          The photographs I receive and use as references for my artwork is the
-          absolutely most significant part of the painting process. Since I work
-          from photographs, the completed portrait depends on the quality of the
-          photos you send me. Photo is key, so please provide with the best
-          photos you have and try to send as many photos as possible.
+          The photographs I receive and use as references for my artwork are the
+          most significant part of the painting process. Since I work from
+          photos, the final portrait depends on the quality of the images you
+          send. Please provide the best photos you have—and as many as you can.
         </p>
         <p>
-          If you would like to photograph your pet specifically for a portrait,
-          you might find the information below very helpful.
+          If you’d like to photograph your pet specifically for a portrait, the
+          tips below will help you capture ideal references.
         </p>
       </section>
 
@@ -192,67 +203,66 @@
         <div class="article-flex-item1">
           <img
             class="img"
+            loading="lazy"
+            decoding="async"
             src="/assets/images/photo-tips-painted-pet-portraits.webp"
             alt="Photo of two border collies"
           />
-          <h2>Mobile Phone, System Camera or Old Paper-based Photos?</h2>
+          <h2>Mobile Phone, System Camera, or Old Paper Photos?</h2>
           <h3>Mobile Phones and Tablets</h3>
           <p>
-            Today, it's easier than ever to capture and share precious moments
-            thanks to mobile phones and tablets that we carry everywhere.
+            Today it’s easier than ever to capture and share moments with the
+            devices we carry everywhere. While convenient, mobile photos often
+            fall short as portrait references.
           </p>
           <p>
-            While these devices let us snap photos on the go, their quality
-            often falls short as a reference for portraits.
+            Good lighting and proximity help, but artists can spot the clarity
+            difference between mobile photos and those from a quality digital
+            camera.
+          </p>
+
+          <h3>Old Paper Photos</h3>
+          <p>
+            Many treasured memories live in older prints, though they often lack
+            modern portrait clarity. You can mail these to my studio for review.
+            Usable photos will be scanned in high resolution and the originals
+            returned with your artwork.
           </p>
           <p>
-            Though good lighting and proximity can help, an artist can easily
-            spot the clarity difference between mobile photos and those from a
-            high-quality digital camera.
-          </p>
-          <h3>Old Paper-based Photos</h3>
-          <p>
-            Many treasured memories are in old analog photos, though they often
-            lack portrait quality.
-          </p>
-          <p>
-            Mail these to my studio for review; usable ones will be scanned in
-            high resolution, and the original returned with the artwork.
-          </p>
-          <p>
-            If your pet is alive, consider taking new digital photos or ask for
-            help from family or friends.
+            If your pet is alive, consider taking new digital photos—or ask a
+            friend to help—to achieve the best result.
           </p>
         </div>
 
         <div class="article-flex-item2">
           <img
             class="img"
+            loading="lazy"
+            decoding="async"
             src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
             alt="Border collie in the snow"
           />
-          <h2>Positioning And Getting On Your Pets Level</h2>
+          <h2>Positioning and Getting on Your Pet’s Level</h2>
           <h3>Capturing the Best Angle</h3>
           <p>
-            When photographing your pet, avoid looking down at them. Instead,
-            capture their image from their eye level, as this perspective aligns
-            with how the portrait will be viewed when hung on your wall.
+            Avoid photographing your pet from above. Instead, shoot at their eye
+            level so the perspective matches how the portrait will be viewed on
+            your wall.
           </p>
           <p>
-            For small animals, crouch down to their level or place them on a
-            raised surface like a table. For larger pets, standing at their eye
-            level is usually sufficient.
+            For small animals, crouch down or place them on a raised surface.
+            For larger pets, stand at their eye level.
           </p>
+
           <h3>Perfecting the Shot</h3>
           <p>
-            Visualize the final photo through the camera lens before clicking
-            the shutter—if it looks good, take the shot!
+            Visualize the final photo through the viewfinder—if it looks good,
+            take the shot.
           </p>
           <p>
-            Aim to capture your pet gazing slightly to the left or right of the
-            camera, as this adds depth and prevents their face from appearing
-            flat. Ensure both eyes are visible for a balanced and engaging
-            portrait.
+            Aim for your pet to gaze slightly to the left or right of the camera
+            to add depth (and avoid a flat look). Ensure both eyes are visible
+            for a balanced, engaging portrait.
           </p>
         </div>
       </section>
@@ -264,47 +274,47 @@
         <div class="article-flex-item1">
           <img
             class="img"
+            loading="lazy"
+            decoding="async"
             src="/assets/images/photo-tip-oil-pet-portraits.webp"
             alt="Photo of border collie"
           />
           <h2>Natural Lighting</h2>
           <p>
-            Whenever it is possible, try to take photos outside in natural
-            lighting rather than inside with flash.
+            Whenever possible, take photos outside in natural light rather than
+            indoors with flash.
           </p>
           <p>
-            Even though it is often preferred to take photos on a sunny day, try
-            to avoid photos with strong sunlight or too dark shadows which would
-            make the pets colors fade away.
+            Sunny days are great, but avoid harsh, direct sunlight or deep
+            shadows that can wash out your pet’s colors.
           </p>
           <p>
-            If you are unable to take photos outside, take photos indoors and
-            place your pet close to a window without flash. Some natural
-            daylight will
+            If you must shoot indoors, place your pet near a window and avoid
+            flash. Soft daylight will keep colors true and details visible.
           </p>
         </div>
 
         <div class="article-flex-item2">
           <img
             class="img"
+            loading="lazy"
+            decoding="async"
             src="/assets/images/photo-requirements-custom-pet-portraits.webp"
             alt="Photo of a dog filling the entire frame"
           />
-          <h2>Fill The Entire Frame</h2>
+          <h2>Fill the Entire Frame</h2>
           <p>
             For a full-body portrait, keep your pet close in the frame with a
-            bit of background, ensuring they're the main focus. If your pet is
-            too far, the details may not be sharp.
+            bit of background so they remain the focus. If they’re too far away,
+            details won’t be sharp.
           </p>
           <p>
-            For a head and chest portrait, fill the frame with your pet's full
-            head and neck without cropping any desired parts. Using a full-body
-            shot to zoom in for detail won't work, as zooming often blurs the
-            image.
+            For a head-and-chest portrait, fill the frame with your pet’s full
+            head and neck without cropping desired parts. Don’t rely on zooming
+            into a distant full-body shot—zooming blurs detail.
           </p>
           <p>
-            I paint only what I see, so it's best to start with clear, close
-            images.
+            I paint what I see, so it’s best to start with clear, close images.
           </p>
         </div>
       </section>
@@ -317,30 +327,27 @@
           <img
             class="img"
             loading="lazy"
+            decoding="async"
             src="/assets/images/border-collie-agility-photo-tips.webp"
             alt="Border collie agility training"
           />
-          <h2>Photo size</h2>
+          <h2>Photo Size</h2>
           <p>
-            Try to email me your photos in original size, downloaded directly
-            from your camera. If photos are reduced in size they are less clear,
-            sharp and much important information is lost.
+            Please email photos in their original size, downloaded directly from
+            your camera. Reduced images lose clarity and important detail.
           </p>
           <p>
-            The amount of pixels can vary depending on which digital camera you
-            were using, my own camera creates 5472 x 3648 pixel images.
+            Pixel counts vary by camera (for reference, my camera produces
+            5472×3648 px images), but any large, original image works perfectly
+            via email or cloud sharing.
           </p>
           <p>
-            I can accept any large size image though email or dropbox, so please
-            send them at their original size.
-          </p>
-          <p>
-            If you don't have the original sized photo and your are unsure if I
-            can use it as reference,
+            If you don’t have the original file and you’re unsure whether it’s
+            usable,
             <a href="/html/contact-pet-portrait-artist.html"
               >send me an email</a
             >
-            for review.
+            for a quick review.
           </p>
         </div>
 
@@ -348,27 +355,25 @@
           <img
             class="img"
             loading="lazy"
+            decoding="async"
             src="/assets/images/border-collie-paying-ball.webp"
-            alt="Border collie playing with ball"
+            alt="Border collie playing with a ball"
           />
           <h2>Be Patient and Have Fun</h2>
           <p>
-            Capturing your pet's personality takes time, patience, and a relaxed
+            Capturing your pet’s personality takes time, patience, and a relaxed
             environment.
           </p>
           <p>
-            Don't rush; use treats or toys to keep your pet comfortable, and
-            carry a camera to catch those natural, joyful moments. A happy face
-            is always the most beautiful!
+            Don’t rush—use treats or toys to keep them comfortable and keep your
+            camera handy to catch natural, joyful moments. A happy face is
+            always the most beautiful.
           </p>
           <p>
-            Be creative, and look for spontaneous, “wow” moments in your pet's
-            everyday life.
-          </p>
-          <p>
+            Be creative and look for spontaneous “wow” moments in everyday life.
             If your pet has passed and you only have older photos, feel free to
             email them for review; while a large oil painting may not be
-            possible, other portrait options are available.
+            possible, other portrait options can work beautifully.
           </p>
         </div>
       </section>
@@ -424,6 +429,7 @@
           ><img
             class="footer-logo"
             loading="lazy"
+            decoding="async"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotype"
         /></a>

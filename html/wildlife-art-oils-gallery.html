@@ -39,18 +39,20 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
+    <!-- Hero/LCP image preloads (Desktop first, mobile second) -->
     <link
       rel="preload"
       as="image"
       href="/assets/images/wildlife-art-for-sale.webp"
       media="(min-width: 769px)"
+      fetchpriority="high"
     />
     <link
       rel="preload"
       as="image"
       href="/assets/images/wildlife-art-for-sale-mobile.webp"
       media="(max-width: 768px)"
+      fetchpriority="high"
     />
 
     <!-- Google Fonts -->
@@ -72,9 +74,6 @@
   </head>
 
   <body>
-    <!-- Dynamic Converter -->
-    <script src="https://converter.dynamicconverter.com/accounts/6/6148.js"></script>
-
     <!-- Header with Navigation -->
     <header>
       <a href="/"
@@ -82,6 +81,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -112,7 +113,7 @@
             <ul class="dropdown-menu">
               <li>
                 <a href="/html/pet-portrait-commission-prices.html"
-                  >Prices & How It Works</a
+                  >Prices &amp; How It Works</a
                 >
               </li>
               <li>
@@ -202,8 +203,9 @@
         <p>
           If you're interested in acquiring original wildlife art, please take a
           moment to explore my gallery of wildlife oil paintings. Additionally,
-          prints may also available for those who wish to bring the beauty of
-          animal artwork into their homes at a more affordable price.
+          prints may also <strong>be</strong> available for those who wish to
+          bring the beauty of animal artwork into their homes at a more
+          affordable price.
         </p>
         <h3>Convert prices to your currency below</h3>
         <span id="currency_select" class="currency-select"></span>
@@ -216,6 +218,8 @@
             class="img"
             src="/assets/images/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment.webp"
             alt="Oil Painting of Scottish Wildcat cub"
+            loading="lazy"
+            decoding="async"
           />
           <h2>"Wonderment" - Scottish Wildcat</h2>
           <p class="painting-info"><strong>Medium:</strong> Oils on Canvas</p>
@@ -240,6 +244,8 @@
             class="img"
             src="/assets/images/wildlife-art/red-fox-oil-painting-curious-encounter.webp"
             alt="Oil Painting of Red Fox"
+            loading="lazy"
+            decoding="async"
           />
           <h2>"Curious Encounter" - Red Fox</h2>
           <p class="painting-info">
@@ -323,7 +329,13 @@
       </div>
     </footer>
 
+    <!-- Scripts (root-absolute) -->
     <script defer src="/src/js/analytics.js"></script>
     <script defer src="/src/js/up.js"></script>
+    <!-- Dynamic Converter (deferred, at end for performance) -->
+    <script
+      defer
+      src="https://converter.dynamicconverter.com/accounts/6/6148.js"
+    ></script>
   </body>
 </html>

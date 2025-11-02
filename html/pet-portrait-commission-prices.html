@@ -3,6 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== LCP preloads FIRST (desktop + mobile) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-painting-brushes-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/oil-painting-brushes-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-painting-brushes.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/oil-painting-brushes.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
     <title>Pet Portrait Commission Pricing | Customized Oil Paintings</title>
 
     <!-- Canonical (non-www) -->
@@ -38,20 +59,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-painting-brushes.webp"
-      media="(min-width: 769px)"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-painting-brushes-mobile.webp"
-      media="(max-width: 768px)"
-    />
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -77,6 +84,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -135,24 +144,27 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-prices">
-        <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/oil-painting-brushes-mobile.webp"
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/oil-painting-brushes.webp"
-              alt="Oil painting brushes and palette used for custom pet portraits"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+        <div class="main-img__bg">
+          <img
+            id="hero-lcp"
+            src="/assets/images/oil-painting-brushes.webp"
+            srcset="
+              /assets/images/oil-painting-brushes-mobile.webp  768w,
+              /assets/images/oil-painting-brushes.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Oil painting brushes and palette used for custom pet portraits"
+            fetchpriority="high"
+            loading="eager"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center right;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
@@ -247,6 +259,7 @@
                 loading="lazy"
                 src="/assets/images/pet-portraits/french-bulldog-painterly-oil-portraits.webp"
                 alt="Finished painterly French bulldog portrait in oil"
+                decoding="async"
               />
               <figcaption>Final Portrait</figcaption>
             </figure>
@@ -256,6 +269,7 @@
                 loading="lazy"
                 src="/assets/images/pet-portraits/detail-painterly-oil-portraits.webp"
                 alt="Brushstroke detail of oil painting"
+                decoding="async"
               />
               <figcaption>Brushstroke Detail</figcaption>
             </figure>
@@ -265,6 +279,7 @@
                 loading="lazy"
                 src="/assets/images/pet-portraits/reference-photo-french-bulldog.webp"
                 alt="Reference photo of a French bulldog"
+                decoding="async"
               />
               <figcaption>Reference Photo</figcaption>
             </figure>
@@ -354,6 +369,8 @@
             class="img"
             src="/assets/images/brushes-infornt-of-oil-painting.webp"
             alt="Paint brushes in front of pet portrait"
+            loading="lazy"
+            decoding="async"
           />
           <h2>Understanding How Pet Portrait Commissions Work</h2>
           <p>The “best” size depends on a few factors:</p>
@@ -388,6 +405,8 @@
             class="img"
             src="/assets/images/border-collie-chatt-holding-paint-brush.webp"
             alt="Border collie holding paint brush"
+            loading="lazy"
+            decoding="async"
           />
           <h2>Enhancing Your Pet’s Essence with High-Quality Photos</h2>
           <p>Your <strong>photos are pivotal</strong> to the outcome.</p>
@@ -433,6 +452,7 @@
               loading="lazy"
               src="/assets/images/dog-portrait-client-picture.webp"
               alt="Dog with portrait — client testimonial"
+              decoding="async"
             />
           </div>
         </blockquote>
@@ -456,6 +476,7 @@
             loading="lazy"
             src="/assets/images/portrait-gift-voucher-package.webp"
             alt="Pet portrait gift voucher package"
+            decoding="async"
           />
           <h2>Are You Buying a Portrait as a Gift?</h2>
           <p>
@@ -474,6 +495,7 @@
             loading="lazy"
             src="/assets/images/pet-portrait-packaging.webp"
             alt="Pet portrait packaging"
+            decoding="async"
           />
           <h2>Shipping and Availability</h2>
           <p>
@@ -543,6 +565,7 @@
             loading="lazy"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotype"
+            decoding="async"
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">

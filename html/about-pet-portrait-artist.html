@@ -3,6 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== LCP preloads FIRST (desktop + mobile) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
     <title>Pet Portrait Artist | Creating Meaningful Art with Passion</title>
 
     <!-- Canonical (non-www) -->
@@ -38,20 +59,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portrait-artist-katja-turnsek.webp"
-      media="(min-width: 769px)"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp"
-      media="(max-width: 768px)"
-    />
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -77,6 +84,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -136,26 +145,27 @@
       <!-- Hero Section -->
       <section class="main-img main-img-about">
         <!-- LCP image (desktop + mobile) -->
-        <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="
-                /assets/images/pet-portrait-artist-katja-turnsek-mobile.webp
-              "
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
-              alt="Pet portrait artist Katja Turnsek in the studio"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+        <div class="main-img__bg">
+          <img
+            id="hero-lcp"
+            src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+            srcset="
+              /assets/images/pet-portrait-artist-katja-turnsek-mobile.webp  768w,
+              /assets/images/pet-portrait-artist-katja-turnsek.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Pet portrait artist Katja Turnsek in the studio"
+            fetchpriority="high"
+            loading="eager"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center right;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
@@ -242,6 +252,7 @@
               src="/assets/images/magazines.webp"
               alt="As Seen in Magazines"
               loading="lazy"
+              decoding="async"
             />
           </p>
         </div>
@@ -275,6 +286,7 @@
               loading="lazy"
               src="/assets/images/pet-art-studio1.webp"
               alt="Art supplies on wall"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item div2">
@@ -283,6 +295,7 @@
               loading="lazy"
               src="/assets/images/pet-art-studio2.webp"
               alt="Chair in portrait studio"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item div3">
@@ -291,6 +304,7 @@
               loading="lazy"
               src="/assets/images/pet-art-studio3.webp"
               alt="Oil brushes in a jar"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item div4">
@@ -299,6 +313,7 @@
               loading="lazy"
               src="/assets/images/pet-art-studio4.webp"
               alt="Pet portrait studio workspace"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item div5">
@@ -307,6 +322,7 @@
               loading="lazy"
               src="/assets/images/pet-art-studio5.webp"
               alt="Art studio interior"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item div6">
@@ -315,6 +331,7 @@
               loading="lazy"
               src="/assets/images/pet-art-studio6.webp"
               alt="Dog sitting on sofa in studio"
+              decoding="async"
             />
           </figure>
         </div>
@@ -376,6 +393,7 @@
             loading="lazy"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotype"
+            decoding="async"
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">

@@ -4,43 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Custom Pet Portraits | Eternalize Your Companion in Fine Art</title>
-
-    <!-- Canonical: homepage (www version) -->
-    <link rel="canonical" href="https://pet-art.net/" />
-
-    <!-- Hreflang: EN home, SV home, x-default -->
-    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
-    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
-    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
-
-    <meta
-      name="description"
-      content="Transform your furry friend's photo into a vibrant one-of-a-kind Fine Art masterpiece with my hand-painted pet portraits. Join my client list now!"
-    />
-
-    <!-- Social URL matches canonical -->
-    <meta property="og:url" content="https://pet-art.net/" />
-
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-    <!-- Assets (root-absolute) -->
-    <link rel="stylesheet" href="/src/css/styles.css" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-    <!-- Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-in-progress.webp"
-      media="(min-width: 769px)"
-    />
+    <!-- ===== LCP preloads FIRST (desktop + mobile) ===== -->
     <link
       rel="preload"
       as="image"
       href="/assets/images/pet-portraits-in-progress-mobile.webp"
       media="(max-width: 768px)"
+      imagesrcset="/assets/images/pet-portraits-in-progress-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
     />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portraits-in-progress.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/pet-portraits-in-progress.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
+    <title>Custom Pet Portraits | Eternalize Your Companion in Fine Art</title>
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://pet-art.net/" />
+    <!-- Hreflang -->
+    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
+    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
+    <meta
+      name="description"
+      content="Transform your furry friend's photo into a vibrant one-of-a-kind Fine Art masterpiece with my hand-painted pet portraits. Join my client list now!"
+    />
+    <meta property="og:url" content="https://pet-art.net/" />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS after preloads -->
+    <link rel="stylesheet" href="/src/css/styles.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
     <!-- Google Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,6 +75,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -131,24 +135,27 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img">
-        <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile image -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/pet-portraits-in-progress-mobile.webp"
-            />
-            <!-- Desktop/default image -->
-            <img
-              src="/assets/images/pet-portraits-in-progress.webp"
-              alt="Custom pet portrait in oil — work in progress on the easel"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+        <div class="main-img__bg">
+          <img
+            id="hero-lcp"
+            src="/assets/images/pet-portraits-in-progress.webp"
+            srcset="
+              /assets/images/pet-portraits-in-progress-mobile.webp  768w,
+              /assets/images/pet-portraits-in-progress.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Custom pet portrait in oil — work in progress on the easel"
+            fetchpriority="high"
+            loading="eager"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center right;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
@@ -195,6 +202,8 @@
           <img
             src="/assets/images/painterly-pet-portraits.webp"
             alt="Fine art oil portrait of a dog painted in wet-on-wet style"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>
@@ -227,6 +236,8 @@
               class="image"
               src="/assets/images/dog-portrait-white-terrier.webp"
               alt="Dog Portrait of a White Terrier"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item2 div2">
@@ -234,6 +245,8 @@
               class="image"
               src="/assets/images/pet-portrait-newfoundland-dog.webp"
               alt="Pet Portrait of Newfoundland Dog"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item2 div3">
@@ -241,6 +254,8 @@
               class="image"
               src="/assets/images/framed-cat-painting.webp"
               alt="Framed Cat Painting"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item2 div4">
@@ -248,6 +263,8 @@
               class="image"
               src="/assets/images/oil-painting-rabbit-grace.webp"
               alt="Oil Portrait of a Rabbit"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item2 div5">
@@ -255,6 +272,8 @@
               class="image"
               src="/assets/images/client-picture-cat-with-portrait.webp"
               alt="Client Picture Cat with Portrait"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
           <figure class="gallery-item2 div6">
@@ -262,6 +281,8 @@
               class="image"
               src="/assets/images/horse-painting-in-progress.webp"
               alt="Horse Oil Painting in Progress"
+              loading="lazy"
+              decoding="async"
             />
           </figure>
         </div>
@@ -286,6 +307,7 @@
             loading="lazy"
             src="/assets/images/portrait-oil-newfounlands.webp"
             alt="Oil Portraits of two Newfoundlands"
+            decoding="async"
           />
           <h2>
             Capturing Memories: Hand-Painted Pet Portraits by Katja Turnsek
@@ -316,6 +338,7 @@
             loading="lazy"
             src="/assets/images/pet-portrait-artist-painting.webp"
             alt="Artist Painting a Cat in Oils"
+            decoding="async"
           />
           <h2>Transform Your Photo into Hand-Painted Pet Portraits</h2>
           <p>
@@ -364,6 +387,7 @@
               loading="lazy"
               src="/assets/images/pet-portrait-client-photo.webp"
               alt="Dog with Portrait client testimonial"
+              decoding="async"
             />
           </div>
         </blockquote>
@@ -431,6 +455,7 @@
             loading="lazy"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotype"
+            decoding="async"
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">

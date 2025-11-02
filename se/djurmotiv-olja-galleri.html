@@ -3,10 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Djurporträtt målade från fotografier | Foto tips och kvalitetskrav
-      information
-    </title>
+
+    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/wildlife-art-for-sale-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/wildlife-art-for-sale-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/wildlife-art-for-sale.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/wildlife-art-for-sale.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
+    <title>Vilda djur i olja av Katja Turnsek | Djurmotiv till salu</title>
 
     <!-- Canonical (non-www) -->
     <link
@@ -14,7 +32,7 @@
       href="https://pet-art.net/se/djurmotiv-olja-galleri.html"
     />
 
-    <!-- Hreflang -->
+    <!-- Hreflang (SV self + EN equivalent) -->
     <link
       rel="alternate"
       href="https://pet-art.net/se/djurmotiv-olja-galleri.html"
@@ -26,28 +44,20 @@
       hreflang="en"
     />
 
+    <!-- Social URL matches canonical -->
+    <meta
+      property="og:url"
+      content="https://pet-art.net/se/djurmotiv-olja-galleri.html"
+    />
+
     <meta
       name="description"
-      content="Tips och kvalitetskrav för handmålade eller tecknade djurporträtt från foton, information om foton du behöver för att komma igång."
+      content="Utforska en liten kollektion av originalmålningar i olja med vilda djur av Katja Turnsek. Köp original och beställ tryck av djurmotiv."
     />
 
     <!-- Assets (root-absolute) -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
-
-    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos.webp"
-      media="(min-width: 769px)"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos-mobile.webp"
-      media="(max-width: 768px)"
-    />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,6 +77,9 @@
   </head>
 
   <body>
+    <!-- (Optional) Valutaomvandlare – samma som EN-sidan -->
+    <script src="https://converter.dynamicconverter.com/accounts/6/6148.js"></script>
+
     <!-- Header with Navigation -->
     <header>
       <a href="/se/">
@@ -74,6 +87,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotyp"
+          loading="lazy"
+          decoding="async"
         />
       </a>
 
@@ -91,12 +106,11 @@
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li>
-            <!-- Rättad URL: bindestreck, inte punkt -->
             <a href="/se/djurportratt-olja-galleri.html"
               >Djurporträtt galleri</a
             >
           </li>
-          <li class="dropdown active">
+          <li class="dropdown">
             <a href="#">
               Beställningsinformation
               <svg class="icon" aria-hidden="true">
@@ -119,7 +133,9 @@
               </li>
             </ul>
           </li>
-          <li><a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
+          <li class="active">
+            <a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a>
+          </li>
           <li>
             <a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a>
           </li>
@@ -131,55 +147,64 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="main-img main-img-photo-tips">
-        <!-- LCP image (desktop + mobile) -->
+      <section class="main-img main-img-shop">
         <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/pet-portraits-ideal-photos-mobile.webp"
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/pet-portraits-ideal-photos.webp"
-              alt="Exempel på idealiska husdjursfoton för beställning av målat porträtt"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+          <img
+            id="hero-lcp"
+            src="/assets/images/wildlife-art-for-sale.webp"
+            srcset="
+              /assets/images/wildlife-art-for-sale-mobile.webp  768w,
+              /assets/images/wildlife-art-for-sale.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Originalmålning i olja med vilda djur – redo för försäljning"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
 
-        <h1>Foto tips och kvalitetskrav för djurporträtt</h1>
+        <h1>Upptäck fängslande djurmotiv: Originalmålningar till salu</h1>
 
         <button
           onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
           class="head-button"
-          title="Kundlista"
+          title="Köp konst"
         >
-          Gå med i min kundlista
+          Köp konst
         </button>
       </section>
 
       <!-- Introduction Article -->
       <section class="main-flex">
-        <h2>Fotot är nyckeln</h2>
+        <h2>Djurmotiv i olja – originalmålningar</h2>
         <p>
-          Fotografierna jag får och använder som referens för mina konstverk är
-          den absolut viktigaste delen i måleriprocessen. Eftersom jag utgår
-          ifrån foton, beror kvalitén på det färdiga porträttet på de bilder du
-          skickar mig.
+          Fördjupa dig i vildmarkens uttryck genom min lilla kollektion av
+          <strong>originalmålningar i olja</strong>. Med en blandning av tydliga
+          penseldrag och noggranna detaljer vill jag förmedla naturens ljus,
+          rörelse och närvaro.
         </p>
         <p>
-          Fotot är nyckeln – försök därför att förse mig med de absolut bästa
-          fotografierna du har. Om du vill fotografera ditt djur specifikt för
-          ett porträtt kommer du ha extra nytta av informationen nedan.
+          Jag startar ofta med akryl och övergår sedan till olja under
+          målningsprocessen, vilket ger varje verk djup och lyster.
         </p>
+        <h3>Original till salu</h3>
+        <p>
+          Ta gärna en titt på verken nedan. <em>Tryck kan också finnas</em> för
+          dig som vill ta in djurmotiv i hemmet till en lägre kostnad.
+        </p>
+        <h3>Välj valuta nedan</h3>
+        <span id="currency_select" class="currency-select"></span>
       </section>
 
       <!-- Article with Images and Information -->
@@ -187,173 +212,67 @@
         <div class="article-flex-item1">
           <img
             class="img"
-            src="/assets/images/photo-tips-painted-pet-portraits.webp"
-            alt="Foto av två border collies"
-          />
-          <h2>Mobil, systemkamera eller gamla pappersfotografier?</h2>
-          <h3>Mobiler och surfplattor</h3>
-          <p>
-            Idag är det enklare än någonsin att fånga och dela värdefulla
-            ögonblick tack vare mobiltelefoner och surfplattor som vi bär med
-            oss överallt.
-          </p>
-          <p>
-            Även om dessa enheter låter oss ta bilder i farten, räcker
-            kvaliteten ofta inte till som referens för ett porträtt.
-          </p>
-          <p>
-            Bra ljus kan hjälpa, men skillnaden i skärpa mellan mobilbilder och
-            foton från en högkvalitativ digitalkamera syns tydligt för en
-            konstnär.
-          </p>
-          <h3>Gamla pappersfotografier</h3>
-          <p>
-            Många dyrbara minnen finns i analoga foton, men de håller ofta inte
-            tillräcklig kvalitet för ett porträtt.
-          </p>
-          <p>
-            Skicka dem gärna till min ateljé för granskning; användbara bilder
-            skannas i hög upplösning och originalen returneras tillsammans med
-            konstverket.
-          </p>
-          <p>
-            Om ditt husdjur är vid liv, ta gärna nya digitala foton eller be
-            familj/vänner om hjälp.
-          </p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
-            alt="Border collie i snön"
-          />
-          <h2>Positionering – fota från djurets nivå</h2>
-          <h3>Fånga den bästa vinkeln</h3>
-          <p>
-            Undvik att titta ner på djuret. Fota från ögonhöjd – samma
-            perspektiv som när porträttet ses på väggen.
-          </p>
-          <p>
-            För små djur: gå ner på huk till deras nivå eller placera dem på ett
-            bord. För större djur räcker ögonhöjd.
-          </p>
-          <h3>Perfekta bilden</h3>
-          <p>
-            Föreställ dig slutresultatet genom linsen innan du trycker – känns
-            det rätt, ta bilden!
-          </p>
-          <p>
-            Låt djuret titta lite åt vänster eller höger om kameran för mer djup
-            och undvik ett platt uttryck. Se till att båda ögonen syns.
-          </p>
-        </div>
-      </section>
-
-      <hr class="hr" />
-
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            src="/assets/images/photo-tip-oil-pet-portraits.webp"
-            alt="Foto av border collie"
-          />
-          <h2>Naturligt ljus</h2>
-          <p>
-            Fota utomhus i naturligt ljus om möjligt, hellre än inomhus med
-            blixt.
-          </p>
-          <p>
-            Undvik hårt solljus och djupa skuggor som bleker färger. Inomhus:
-            placera djuret nära ett fönster utan blixt.
-          </p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            src="/assets/images/photo-requirements-custom-pet-portraits.webp"
-            alt="Foto av en hund som fyller hela bildramen"
-          />
-          <h2>Fyll hela ramen</h2>
-          <p>
-            För helkropp: fyll ramen med djuret och lite bakgrund, så det blir
-            huvudfokus. Är djuret för långt bort blir detaljerna oskarpa.
-          </p>
-          <p>
-            För huvud/bröst: fyll ramen med hela huvudet och halsen utan oönskad
-            beskärning. Att zooma in från en helkroppsbild ger oftast suddighet.
-          </p>
-          <p>Jag målar det jag ser – börja med tydliga närbilder.</p>
-        </div>
-      </section>
-
-      <hr class="hr" />
-
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
+            src="/assets/images/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment.webp"
+            alt="Oljemålning av skotsk vildkattunge"
             loading="lazy"
-            src="/assets/images/border-collie-agility-photo-tips.webp"
-            alt="Border collie på agilityträning"
+            decoding="async"
           />
-          <h2>Fotostorlek</h2>
-          <p>
-            Skicka foton i originalstorlek, direkt från kameran. Nerkrympta
-            bilder blir mindre klara och tappar viktig information.
+          <h2>”Wonderment” – Skotsk vildkatt</h2>
+          <p class="painting-info"><strong>Teknik:</strong> Olja på duk</p>
+          <p class="painting-info"><strong>Storlek:</strong> 85×70 cm</p>
+          <p class="painting-info">
+            <strong>Pris:</strong>
+            <span class="dcconvert" data-amount="42000">42000 SEK</span>
           </p>
-          <p>Min kamera producerar t.ex. 5472 × 3648 px – ditt kan variera.</p>
-          <p>
-            Jag kan ta emot alla storlekar via e-post eller Dropbox – skicka
-            gärna i originalstorlek.
-          </p>
-          <p>
-            Osäker om ett foto duger?
-            <a href="/se/kontakta-djurportratt-konstnar.html"
-              >Skicka mig ett mejl</a
+          <div class="centered-button">
+            <button
+              onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
+              class="button"
+              title="Köp målning"
             >
-            för granskning.
-          </p>
+              Köp ”Wonderment”
+            </button>
+          </div>
         </div>
 
         <div class="article-flex-item2">
           <img
             class="img"
+            src="/assets/images/wildlife-art/red-fox-oil-painting-curious-encounter.webp"
+            alt="Oljemålning av röd räv"
             loading="lazy"
-            src="/assets/images/border-collie-paying-ball.webp"
-            alt="Border collie som leker med boll"
+            decoding="async"
           />
-          <h2>Ha tålamod och ha kul</h2>
-          <p>
-            Det tar tid, tålamod och en lugn miljö att fånga personligheten.
+          <h2>”Curious Encounter” – Röd räv</h2>
+          <p class="painting-info">
+            <strong>Teknik:</strong> Olja på duk &#40;pågående arbete&#41;
           </p>
-          <p>
-            Stressa inte – använd godis/leksaker, håll kameran redo och fånga
-            naturliga ögonblick. Ett glatt uttryck blir vackrast.
+          <p class="painting-info"><strong>Storlek:</strong> 50×70 cm</p>
+          <p class="painting-info">
+            <strong>Pris:</strong>
+            <span class="dcconvert" data-amount="32000">32000 SEK</span>
           </p>
-          <p>
-            Har ditt husdjur gått bort och du bara har äldre foton? Skicka dem
-            ändå – även om stor olja inte alltid är möjlig finns andra
-            alternativ.
-          </p>
+          <div class="centered-button">
+            <button
+              onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
+              class="button"
+              title="Köp målning"
+            >
+              Köp ”Curious Encounter”
+            </button>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (unified) -->
     <footer>
       <div class="footer-flex-item">
         <h3 class="footer-headline">Meny</h3>
         <ul>
           <li><a href="/se/villkor.html">Villkor</a></li>
           <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
-          <li>
-            <a href="/" hreflang="en" lang="en">Sida på engelska</a>
-          </li>
+          <li><a href="/" hreflang="en" lang="en">Sida på engelska</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -396,6 +315,7 @@
           <img
             class="footer-logo"
             loading="lazy"
+            decoding="async"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotyp"
           />

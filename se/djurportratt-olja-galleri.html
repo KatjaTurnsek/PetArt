@@ -3,24 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Djursporträtt i olja | Galleri med handmålade oljemålningar</title>
+
+    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-portrait-progress-cat-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/oil-portrait-progress-cat-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-portrait-progress-cat.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/oil-portrait-progress-cat.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
+    <title>Djurporträtt i olja | Galleri med handmålade oljemålningar</title>
 
     <!-- Canonical (non-www) -->
     <link
       rel="canonical"
-      href="https://pet-art.net/se/djurporträtt-oilja-galleri.html"
+      href="https://pet-art.net/se/djurportratt-olja-galleri.html"
     />
 
     <!-- Hreflang -->
     <link
       rel="alternate"
-      href="https://pet-art.net/se/djurporträtt-oilja-galleri.html"
+      href="https://pet-art.net/se/djurportratt-olja-galleri.html"
       hreflang="sv"
     />
     <link
       rel="alternate"
       href="https://pet-art.net/html/pet-portraits-oils-gallery.html"
       hreflang="en"
+    />
+
+    <!-- Social URL matches canonical -->
+    <meta
+      property="og:url"
+      content="https://pet-art.net/se/djurportratt-olja-galleri.html"
     />
 
     <meta
@@ -31,20 +58,6 @@
     <!-- Assets (root-absolute) -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
-
-    <!-- Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-portrait-progress-cat.webp"
-      media="(min-width: 769px)"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-portrait-progress-cat-mobile.webp"
-      media="(max-width: 768px)"
-    />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,8 +84,11 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotyp"
+          loading="lazy"
+          decoding="async"
         />
       </a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger" aria-label="Öppna meny">
         <span>
@@ -82,11 +98,12 @@
         </span>
         <span class="sr-only">Meny</span>
       </label>
+
       <nav aria-label="Primär navigation">
         <ul>
           <li><a href="/se/">Hem</a></li>
           <li class="active">
-            <a href="/se/djurporträtt-oilja-galleri.html"
+            <a href="/se/djurportratt-olja-galleri.html"
               >Djurporträtt galleri</a
             >
           </li>
@@ -126,25 +143,28 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-gallery">
-        <!-- LCP image (desktop + mobile) -->
         <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/oil-portrait-progress-cat-mobile.webp"
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/oil-portrait-progress-cat.webp"
-              alt="Djurporträtt i olja under arbete - närbild av kattmotiv på duk"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+          <img
+            id="hero-lcp"
+            src="/assets/images/oil-portrait-progress-cat.webp"
+            srcset="
+              /assets/images/oil-portrait-progress-cat-mobile.webp  768w,
+              /assets/images/oil-portrait-progress-cat.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Djurporträtt i olja under arbete btn-social-in närbild av kattmotiv på duk"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
@@ -188,59 +208,76 @@
               class="image"
               src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
               alt="Oljemålning av Masquerade"
+              loading="lazy"
+              decoding="async"
               onclick="openModal();setCurrentSlide(1)"
             />
             <figcaption class="gallery-caption">
               Kattporträtt av Masquerade
             </figcaption>
           </figure>
+
           <figure class="gallery-item div2">
             <img
               class="image"
               src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
               alt="Oljemålning av Grace"
+              loading="lazy"
+              decoding="async"
               onclick="openModal();setCurrentSlide(2)"
             />
             <figcaption class="gallery-caption">
               Kanin i olja av Grace
             </figcaption>
           </figure>
+
           <figure class="gallery-item div3">
             <img
               class="image"
               src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
               alt="Oljemålning av Odessa"
+              loading="lazy"
+              decoding="async"
               onclick="openModal();setCurrentSlide(3)"
             />
             <figcaption class="gallery-caption">
               Kattmålning av Odessa
             </figcaption>
           </figure>
+
           <figure class="gallery-item div4">
             <img
               class="image"
               src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
               alt="Oljemålning av Juanita"
+              loading="lazy"
+              decoding="async"
               onclick="openModal();setCurrentSlide(4)"
             />
             <figcaption class="gallery-caption">
               Norsk skogskatt Juanita
             </figcaption>
           </figure>
+
           <figure class="gallery-item div5">
             <img
               class="image"
               src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp"
               alt="Oljemålning av Saga"
+              loading="lazy"
+              decoding="async"
               onclick="openModal();setCurrentSlide(5)"
             />
             <figcaption class="gallery-caption">Kattmålning av Saga</figcaption>
           </figure>
+
           <figure class="gallery-item div6">
             <img
               class="image"
               src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
               alt="Oljemålning av Lennon"
+              loading="lazy"
+              decoding="async"
               onclick="openModal();setCurrentSlide(6)"
             />
             <figcaption class="gallery-caption">
@@ -265,6 +302,7 @@
           >
             &times;
           </button>
+
           <div class="modal-content" role="document">
             <figure class="mySlides">
               <p class="numbertext">1 / 36</p>
@@ -272,61 +310,78 @@
                 src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
                 alt="Katt Masquerade"
                 class="lightbox-image"
+                loading="lazy"
+                decoding="async"
               />
               <figcaption class="caption">
                 Kattporträtt av Masquerade, Storlek: 30x25cm, målad år: 2020
               </figcaption>
             </figure>
+
             <figure class="mySlides">
               <p class="numbertext">2 / 36</p>
               <img
                 src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
                 alt="Kanin Grace"
                 class="lightbox-image"
+                loading="lazy"
+                decoding="async"
               />
               <figcaption class="caption">
                 Kaninmålning av Grace, Storlek: 60x50cm, målad år: 2021
               </figcaption>
             </figure>
+
             <figure class="mySlides">
               <p class="numbertext">3 / 36</p>
               <img
                 src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
                 alt="Katt Odessa"
                 class="lightbox-image"
+                loading="lazy"
+                decoding="async"
               />
               <figcaption class="caption">
                 Kattmålning av Odessa, Storlek: 30x25cm, målad år: 2020
               </figcaption>
             </figure>
+
             <figure class="mySlides">
               <p class="numbertext">4 / 36</p>
               <img
                 src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
                 alt="Katt Juanita"
                 class="lightbox-image"
+                loading="lazy"
+                decoding="async"
               />
               <figcaption class="caption">
                 Norsk skogskatt Juanita, Storlek: 30x25cm, målad år: 2024
               </figcaption>
             </figure>
+
             <figure class="mySlides">
               <p class="numbertext">5 / 36</p>
               <img
                 src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp"
                 alt="Katt Saga"
                 class="lightbox-image"
+                loading="lazy"
+                decoding="async"
               />
               <figcaption class="caption">
                 Kattmålning av Saga, Storlek: 30x25cm, målad år: 2020
               </figcaption>
             </figure>
+
             <figure class="mySlides">
               <p class="numbertext">6 / 36</p>
               <img
                 src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
                 alt="Hund Lennon"
                 class="lightbox-image"
+                loading="lazy"
+                decoding="async"
               />
               <figcaption class="caption">
                 Hundporträtt av Flat Coated Retriever Lennon, Storlek: 40x30cm,
@@ -374,12 +429,185 @@
           mitt målerisätt kan du förvänta dig inget mindre än ett fantastiskt
           djurporträtt skapat i min signaturstil.
         </p>
-        <h3>Porträtt målade år 2017–2019</h3>
+        <h3>Porträtt målade år 2017-2019</h3>
 
-        <!-- (Grids unchanged except for absolute paths) -->
+        <!-- Galleri-rad -->
+        <div class="gallery-grid">
+          <figure class="gallery-item div1">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp"
+              alt="Hundporträtt i olja av Boston Terrier Bella"
+              onclick="openModal();setCurrentSlide(7)"
+            />
+            <figcaption class="gallery-caption">
+              Hundporträtt i olja - Boston Terrier Bella
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div2">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp"
+              alt="Kattporträtt i olja av Maggie"
+              onclick="openModal();setCurrentSlide(8)"
+            />
+            <figcaption class="gallery-caption">
+              Kattporträtt i olja - Maggie
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div3">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp"
+              alt="Hundporträtt i olja av Sadie"
+              onclick="openModal();setCurrentSlide(9)"
+            />
+            <figcaption class="gallery-caption">
+              Hundporträtt i olja - Sadie
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div4">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp"
+              alt="Hundporträtt i snö - Viruta"
+              onclick="openModal();setCurrentSlide(10)"
+            />
+            <figcaption class="gallery-caption">
+              Hund i snö - Viruta (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div5">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp"
+              alt="Schnauzerporträtt i olja av Dixie och Charlie"
+              onclick="openModal();setCurrentSlide(11)"
+            />
+            <figcaption class="gallery-caption">
+              Schnauzer i olja - Dixie & Charlie
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div6">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp"
+              alt="Flatcoated retriever i snö - Laddie, oljemålning"
+              onclick="openModal();setCurrentSlide(12)"
+            />
+            <figcaption class="gallery-caption">
+              Flatcoated retriever i snö - Laddie (olja)
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Galleri-rad -->
+        <div class="gallery-grid">
+          <figure class="gallery-item div1">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp"
+              alt="Porträtt i olja av labrador retriever Mazie"
+              onclick="openModal();setCurrentSlide(13)"
+            />
+            <figcaption class="gallery-caption">
+              Labrador retriever - Mazie (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div2">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp"
+              alt="Newfoundlandhund i olja - Mitzy"
+              onclick="openModal();setCurrentSlide(14)"
+            />
+            <figcaption class="gallery-caption">
+              Newfoundland - Mitzy (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div3">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp"
+              alt="Terrierporträtt i olja - Ferguson"
+              onclick="openModal();setCurrentSlide(15)"
+            />
+            <figcaption class="gallery-caption">
+              Terrier i olja - Ferguson
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div4">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp"
+              alt="Agilitymålning i olja - Tervueren Jedi"
+              onclick="openModal();setCurrentSlide(16)"
+            />
+            <figcaption class="gallery-caption">
+              Agility - Tervueren Jedi (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div5">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp"
+              alt="Hundporträtt i olja - vit terrier Winston"
+              onclick="openModal();setCurrentSlide(17)"
+            />
+            <figcaption class="gallery-caption">
+              Vit terrier - Winston (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div6">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp"
+              alt="Arabhäst i olja - Wangelisa"
+              onclick="openModal();setCurrentSlide(18)"
+            />
+            <figcaption class="gallery-caption">
+              Arabhäst - Wangelisa (olja)
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       <!-- Article -->
+
       <section class="main-flex">
         <h2>Djurporträtt i olja: Måleritekniker</h2>
         <p>
@@ -388,9 +616,268 @@
           måleriprocessen. Denna metod ger mig möjlighet att uppnå en harmonisk
           palett som skapar djup och ljus i mina handmålade oljemålningar.
         </p>
-        <h3>Porträtt målade år 2011–2016</h3>
+        <h3>Porträtt målade år 2011-2016</h3>
 
-        <!-- (Grids unchanged except for absolute paths) -->
+        <!-- Galleri-rad -->
+        <div class="gallery-grid">
+          <figure class="gallery-item div1">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp"
+              alt="Hundporträtt i olja - Border collie Chatt"
+              onclick="openModal();setCurrentSlide(19)"
+            />
+            <figcaption class="gallery-caption">
+              Border collie - Chatt (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div2">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp"
+              alt="Kattporträtt i olja - Hoover"
+              onclick="openModal();setCurrentSlide(20)"
+            />
+            <figcaption class="gallery-caption">
+              Kattporträtt - Hoover (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div3">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp"
+              alt="Hundporträtt i olja - Rough collie Maggie"
+              onclick="openModal();setCurrentSlide(21)"
+            />
+            <figcaption class="gallery-caption">
+              Rough collie - Maggie (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div4">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp"
+              alt="Hundporträtt i olja - Springer spaniel Rapp"
+              onclick="openModal();setCurrentSlide(22)"
+            />
+            <figcaption class="gallery-caption">
+              Springer spaniel - Rapp (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div5">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp"
+              alt="Oljemålning av Midge, Finnegan och Morgan"
+              onclick="openModal();setCurrentSlide(23)"
+            />
+            <figcaption class="gallery-caption">
+              Tre hundar - Midge, Finnegan & Morgan (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div6">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp"
+              alt="Hundporträtt i olja - Faraohund Griffyn"
+              onclick="openModal();setCurrentSlide(24)"
+            />
+            <figcaption class="gallery-caption">
+              Faraohund - Griffyn (olja)
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Galleri-rad -->
+        <div class="gallery-grid">
+          <figure class="gallery-item div1">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp"
+              alt="Hundporträtt i olja - Shiba inu Aiko och Zuki"
+              onclick="openModal();setCurrentSlide(25)"
+            />
+            <figcaption class="gallery-caption">
+              Shiba inu - Aiko & Zuki (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div2">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp"
+              alt="Hundporträtt i olja - Clumber spaniel Duncan"
+              onclick="openModal();setCurrentSlide(26)"
+            />
+            <figcaption class="gallery-caption">
+              Clumber spaniel - Duncan (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div3">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp"
+              alt="Hundporträtt i olja - Beagle Elvis"
+              onclick="openModal();setCurrentSlide(27)"
+            />
+            <figcaption class="gallery-caption">
+              Beagle - Elvis (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div4">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/dog-portrait-nicki.webp"
+              alt="Hundporträtt - Nicki"
+              onclick="openModal();setCurrentSlide(28)"
+            />
+            <figcaption class="gallery-caption">
+              Hundporträtt - Nicki
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div5">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp"
+              alt="Hundporträtt i olja - Schäfer Georgie"
+              onclick="openModal();setCurrentSlide(29)"
+            />
+            <figcaption class="gallery-caption">
+              Schäfer - Georgie (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div6">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp"
+              alt="Oljemålning - Hästar på ängen"
+              onclick="openModal();setCurrentSlide(30)"
+            />
+            <figcaption class="gallery-caption">
+              Hästar på ängen (olja)
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Galleri-rad -->
+        <div class="gallery-grid">
+          <figure class="gallery-item div1">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp"
+              alt="Hundporträtt i olja - Newfoundland Nalle och Azlan"
+              onclick="openModal();setCurrentSlide(31)"
+            />
+            <figcaption class="gallery-caption">
+              Newfoundland - Nalle & Azlan (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div2">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp"
+              alt="Hundporträtt i olja - Faraohund Vilda"
+              onclick="openModal();setCurrentSlide(32)"
+            />
+            <figcaption class="gallery-caption">
+              Faraohund - Vilda (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div3">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp"
+              alt="Hundporträtt i olja - American cocker spaniel Kenzie"
+              onclick="openModal();setCurrentSlide(33)"
+            />
+            <figcaption class="gallery-caption">
+              American cocker spaniel - Kenzie (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div4">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp"
+              alt="Oljemålning - Amerikansk bulldogg ”Tigerbull” springer i vatten"
+              onclick="openModal();setCurrentSlide(34)"
+            />
+            <figcaption class="gallery-caption">
+              Amerikansk bulldogg i vatten - ”Tigerbull” (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div5">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp"
+              alt="Hundporträtt i olja - Welsh terrier Daisy"
+              onclick="openModal();setCurrentSlide(35)"
+            />
+            <figcaption class="gallery-caption">
+              Welsh terrier - Daisy (olja)
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item div6">
+            <img
+              class="image"
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp"
+              alt="Kattporträtt i olja - Gala"
+              onclick="openModal();setCurrentSlide(36)"
+            />
+            <figcaption class="gallery-caption">
+              Kattporträtt - Gala (olja)
+            </figcaption>
+          </figure>
+        </div>
       </section>
     </main>
 
@@ -401,7 +888,14 @@
         <ul>
           <li><a href="/se/villkor.html">Villkor</a></li>
           <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
-          <li><a href="/" hreflang="en" lang="en">Sida på engelska</a></li>
+          <li>
+            <a
+              href="/html/pet-portraits-oils-gallery.html"
+              hreflang="en"
+              lang="en"
+              >Sida på engelska</a
+            >
+          </li>
         </ul>
       </div>
       <div class="footer-flex-item">
@@ -444,13 +938,14 @@
           <img
             class="footer-logo"
             loading="lazy"
+            decoding="async"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotyp"
           />
         </a>
       </div>
       <div class="footer-flex-item wide wide2">
-        &copy; 2025 – Alla rättigheter förbehållna | Pet Art with Heart |
+        &copy; 2025 - Alla rättigheter förbehållna | Pet Art with Heart |
         Webbsida av Katja Turnsek
       </div>
     </footer>

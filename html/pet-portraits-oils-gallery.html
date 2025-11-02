@@ -3,6 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-portrait-progress-cat-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/oil-portrait-progress-cat-mobile.webp"
+      imagesizes="(max-width: 768px) 100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-portrait-progress-cat.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/oil-portrait-progress-cat.webp"
+      imagesizes="(min-width: 769px) 1200px"
+      fetchpriority="high"
+    />
+
     <title>Commissioned Pet Portraits in Oils | Gallery with Paintings</title>
 
     <!-- Canonical (non-www) -->
@@ -38,20 +59,6 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- 2) Hero/LCP image preloads (Desktop first, mobile second) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-portrait-progress-cat.webp"
-      media="(min-width: 769px)"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-portrait-progress-cat-mobile.webp"
-      media="(max-width: 768px)"
-    />
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -77,6 +84,8 @@
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
+          loading="lazy"
+          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -135,25 +144,28 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-gallery">
-        <!-- Real image for LCP (desktop + mobile) -->
-        <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/oil-portrait-progress-cat-mobile.webp"
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/oil-portrait-progress-cat.webp"
-              alt="Oil pet portrait in progress — close-up of cat on canvas"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+        <div class="main-img__bg">
+          <img
+            id="hero-lcp"
+            src="/assets/images/oil-portrait-progress-cat.webp"
+            srcset="
+              /assets/images/oil-portrait-progress-cat-mobile.webp  768w,
+              /assets/images/oil-portrait-progress-cat.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Oil pet portrait in progress — close-up of cat on canvas"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="800"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            "
+          />
         </div>
 
         <figure title="Lines Animation" class="vert-lines"></figure>
@@ -196,6 +208,8 @@
           <figure class="gallery-item div1">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
               alt="Oil Painting Masquerade"
               onclick="openModal();setCurrentSlide(1)"
@@ -207,6 +221,8 @@
           <figure class="gallery-item div2">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
               alt="Oil Painting Grace"
               onclick="openModal();setCurrentSlide(2)"
@@ -218,6 +234,8 @@
           <figure class="gallery-item div3">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
               alt="Oil Painting Odessa"
               onclick="openModal();setCurrentSlide(3)"
@@ -229,6 +247,8 @@
           <figure class="gallery-item div4">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
               alt="Oil Painting Juanita"
               onclick="openModal();setCurrentSlide(4)"
@@ -240,6 +260,8 @@
           <figure class="gallery-item div5">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp"
               alt="Oil Painting Saga"
               onclick="openModal();setCurrentSlide(5)"
@@ -251,6 +273,8 @@
           <figure class="gallery-item div6">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
               alt="Oil Painting Lennon"
               onclick="openModal();setCurrentSlide(6)"
@@ -281,6 +305,8 @@
             <figure class="mySlides">
               <p class="numbertext">1 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
                 alt="Cat Masquerade"
                 class="lightbox-image"
@@ -292,6 +318,8 @@
             <figure class="mySlides">
               <p class="numbertext">2 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
                 alt="Rabbit Grace"
                 class="lightbox-image"
@@ -303,6 +331,8 @@
             <figure class="mySlides">
               <p class="numbertext">3 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
                 alt="Cat Odessa"
                 class="lightbox-image"
@@ -314,6 +344,8 @@
             <figure class="mySlides">
               <p class="numbertext">4 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
                 alt="Cat Juanita"
                 class="lightbox-image"
@@ -325,6 +357,8 @@
             <figure class="mySlides">
               <p class="numbertext">5 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp"
                 alt="Cat Saga"
                 class="lightbox-image"
@@ -336,6 +370,8 @@
             <figure class="mySlides">
               <p class="numbertext">6 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
                 alt="Dog Lennon"
                 class="lightbox-image"
@@ -348,6 +384,8 @@
             <figure class="mySlides">
               <p class="numbertext">7 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp"
                 alt="Dog Bella"
                 class="lightbox-image"
@@ -360,6 +398,8 @@
             <figure class="mySlides">
               <p class="numbertext">8 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp"
                 alt="Cat Maggie"
                 class="lightbox-image"
@@ -371,6 +411,8 @@
             <figure class="mySlides">
               <p class="numbertext">9 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp"
                 alt="Dog Sadie"
                 class="lightbox-image"
@@ -382,6 +424,8 @@
             <figure class="mySlides">
               <p class="numbertext">10 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp"
                 alt="Dog Viruta"
                 class="lightbox-image"
@@ -393,6 +437,8 @@
             <figure class="mySlides">
               <p class="numbertext">11 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp"
                 alt="Dogs Dixie and Charlie"
                 class="lightbox-image"
@@ -404,6 +450,8 @@
             <figure class="mySlides">
               <p class="numbertext">12 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp"
                 alt="Dog Laddie"
                 class="lightbox-image"
@@ -416,6 +464,8 @@
             <figure class="mySlides">
               <p class="numbertext">13 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp"
                 alt="Dog Mazie"
                 class="lightbox-image"
@@ -428,6 +478,8 @@
             <figure class="mySlides">
               <p class="numbertext">14 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp"
                 alt="Dog Mitzy"
                 class="lightbox-image"
@@ -440,6 +492,8 @@
             <figure class="mySlides">
               <p class="numbertext">15 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp"
                 alt="Dog Ferguson"
                 class="lightbox-image"
@@ -452,6 +506,8 @@
             <figure class="mySlides">
               <p class="numbertext">16 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp"
                 alt="Dog Jedi"
                 class="lightbox-image"
@@ -464,6 +520,8 @@
             <figure class="mySlides">
               <p class="numbertext">17 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp"
                 alt="Dog Winston"
                 class="lightbox-image"
@@ -476,6 +534,8 @@
             <figure class="mySlides">
               <p class="numbertext">18 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp"
                 alt="Horse Wangelisa"
                 class="lightbox-image"
@@ -488,6 +548,8 @@
             <figure class="mySlides">
               <p class="numbertext">19 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp"
                 alt="Dog Chatt"
                 class="lightbox-image"
@@ -500,6 +562,8 @@
             <figure class="mySlides">
               <p class="numbertext">20 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp"
                 alt="Cat Hoover"
                 class="lightbox-image"
@@ -511,6 +575,8 @@
             <figure class="mySlides">
               <p class="numbertext">21 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp"
                 alt="Dog Maggie"
                 class="lightbox-image"
@@ -522,6 +588,8 @@
             <figure class="mySlides">
               <p class="numbertext">22 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp"
                 alt="Dog Rapp"
                 class="lightbox-image"
@@ -534,6 +602,8 @@
             <figure class="mySlides">
               <p class="numbertext">23 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp"
                 alt="Dogs Midge, Finnegan and Morgan"
                 class="lightbox-image"
@@ -546,6 +616,8 @@
             <figure class="mySlides">
               <p class="numbertext">24 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp"
                 alt="Dog Griffyn"
                 class="lightbox-image"
@@ -558,6 +630,8 @@
             <figure class="mySlides">
               <p class="numbertext">25 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp"
                 alt="Dogs Aiko and Zuki"
                 class="lightbox-image"
@@ -570,6 +644,8 @@
             <figure class="mySlides">
               <p class="numbertext">26 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp"
                 alt="Dog Duncan"
                 class="lightbox-image"
@@ -582,6 +658,8 @@
             <figure class="mySlides">
               <p class="numbertext">27 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp"
                 alt="Dog Elvis"
                 class="lightbox-image"
@@ -593,6 +671,8 @@
             <figure class="mySlides">
               <p class="numbertext">28 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/dog-portrait-nicki.webp"
                 alt="Dog Nicki"
                 class="lightbox-image"
@@ -604,6 +684,8 @@
             <figure class="mySlides">
               <p class="numbertext">29 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp"
                 alt="Dog Georgie"
                 class="lightbox-image"
@@ -616,6 +698,8 @@
             <figure class="mySlides">
               <p class="numbertext">30 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp"
                 alt="Horses"
                 class="lightbox-image"
@@ -628,6 +712,8 @@
             <figure class="mySlides">
               <p class="numbertext">31 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp"
                 alt="Dogs Nalle and Azlan"
                 class="lightbox-image"
@@ -640,6 +726,8 @@
             <figure class="mySlides">
               <p class="numbertext">32 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp"
                 alt="Dog Vilda"
                 class="lightbox-image"
@@ -651,6 +739,8 @@
             <figure class="mySlides">
               <p class="numbertext">33 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp"
                 alt="Dog Kenzie"
                 class="lightbox-image"
@@ -662,6 +752,8 @@
             <figure class="mySlides">
               <p class="numbertext">34 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp"
                 alt="Dog Tigerbull"
                 class="lightbox-image"
@@ -674,6 +766,8 @@
             <figure class="mySlides">
               <p class="numbertext">35 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp"
                 alt="Dog Daisy"
                 class="lightbox-image"
@@ -685,6 +779,8 @@
             <figure class="mySlides">
               <p class="numbertext">36 / 36</p>
               <img
+                loading="lazy"
+                decoding="async"
                 src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp"
                 alt="Cat Gala"
                 class="lightbox-image"
@@ -734,13 +830,15 @@
           vibrancy, vitality, and luminosity. With my hand-painted approach, you
           can expect a stunning pet portrait created in my signature style.
         </p>
-        <h3>Painted Year 2017–2019</h3>
+        <h3>Painted Year 2017-2019</h3>
 
         <!-- Gallery Grid -->
         <div class="gallery-grid">
           <figure class="gallery-item div1">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp"
               alt="Oil Painting Bella"
               onclick="openModal();setCurrentSlide(7)"
@@ -752,6 +850,8 @@
           <figure class="gallery-item div2">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp"
               alt="Oil Painting Maggie"
               onclick="openModal();setCurrentSlide(8)"
@@ -763,6 +863,8 @@
           <figure class="gallery-item div3">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp"
               alt="Oil Painting Sadie"
               onclick="openModal();setCurrentSlide(9)"
@@ -774,6 +876,8 @@
           <figure class="gallery-item div4">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp"
               alt="Oil Painting Viruta"
               onclick="openModal();setCurrentSlide(10)"
@@ -785,6 +889,8 @@
           <figure class="gallery-item div5">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp"
               alt="Oil Painting Dixie and Charlie"
               onclick="openModal();setCurrentSlide(11)"
@@ -796,6 +902,8 @@
           <figure class="gallery-item div6">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp"
               alt="Oil Painting Laddie"
               onclick="openModal();setCurrentSlide(12)"
@@ -811,6 +919,8 @@
           <figure class="gallery-item div1">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp"
               alt="Oil Painting Mazie"
               onclick="openModal();setCurrentSlide(13)"
@@ -822,6 +932,8 @@
           <figure class="gallery-item div2">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp"
               alt="Oil Painting Mitzy"
               onclick="openModal();setCurrentSlide(14)"
@@ -833,6 +945,8 @@
           <figure class="gallery-item div3">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp"
               alt="Oil Painting Ferguson"
               onclick="openModal();setCurrentSlide(15)"
@@ -844,6 +958,8 @@
           <figure class="gallery-item div4">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp"
               alt="Oil Painting Jedi"
               onclick="openModal();setCurrentSlide(16)"
@@ -855,6 +971,8 @@
           <figure class="gallery-item div5">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp"
               alt="Oil Painting Winston"
               onclick="openModal();setCurrentSlide(17)"
@@ -866,6 +984,8 @@
           <figure class="gallery-item div6">
             <img
               class="image"
+              loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp"
               alt="Oil Painting Wangelisa"
               onclick="openModal();setCurrentSlide(18)"
@@ -891,7 +1011,7 @@
           on premium linen canvases. These canvases are gallery-wrapped and
           stretched to wooden stretcher bars for a truly professional finish.
         </p>
-        <h3>Painted Year 2011–2016</h3>
+        <h3>Painted Year 2011-2016</h3>
 
         <!-- Gallery Grid -->
         <div class="gallery-grid">
@@ -899,6 +1019,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp"
               alt="Oil Painting Chatt"
               onclick="openModal();setCurrentSlide(19)"
@@ -911,6 +1032,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp"
               alt="Oil Painting Hoover"
               onclick="openModal();setCurrentSlide(20)"
@@ -923,6 +1045,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp"
               alt="Oil Painting Maggie"
               onclick="openModal();setCurrentSlide(21)"
@@ -935,6 +1058,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp"
               alt="Oil Painting Rapp"
               onclick="openModal();setCurrentSlide(22)"
@@ -947,6 +1071,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp"
               alt="Painting of Midge, Finnegan and Morgan"
               onclick="openModal();setCurrentSlide(23)"
@@ -959,6 +1084,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp"
               alt="Oil Painting Griffyn"
               onclick="openModal();setCurrentSlide(24)"
@@ -975,6 +1101,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp"
               alt="Oil Painting Aiko and Zuki"
               onclick="openModal();setCurrentSlide(25)"
@@ -987,6 +1114,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp"
               alt="Oil Painting Duncan"
               onclick="openModal();setCurrentSlide(26)"
@@ -999,6 +1127,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp"
               alt="Oil Painting Elvis"
               onclick="openModal();setCurrentSlide(27)"
@@ -1011,6 +1140,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/dog-portrait-nicki.webp"
               alt="Oil Painting Nicki"
               onclick="openModal();setCurrentSlide(28)"
@@ -1023,6 +1153,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp"
               alt="Oil Painting Georgie"
               onclick="openModal();setCurrentSlide(29)"
@@ -1035,6 +1166,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp"
               alt="Oil Painting Horses on Meadow"
               onclick="openModal();setCurrentSlide(30)"
@@ -1051,6 +1183,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp"
               alt="Oil Painting Nalle and Azlan"
               onclick="openModal();setCurrentSlide(31)"
@@ -1063,6 +1196,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp"
               alt="Oil Painting Vilda"
               onclick="openModal();setCurrentSlide(32)"
@@ -1075,6 +1209,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp"
               alt="Oil Painting Kenzie"
               onclick="openModal();setCurrentSlide(33)"
@@ -1087,6 +1222,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp"
               alt="Oil Painting Tigerbull"
               onclick="openModal();setCurrentSlide(34)"
@@ -1099,6 +1235,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp"
               alt="Oil Painting Daisy"
               onclick="openModal();setCurrentSlide(35)"
@@ -1111,6 +1248,7 @@
             <img
               class="image"
               loading="lazy"
+              decoding="async"
               src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp"
               alt="Oil Painting Gala"
               onclick="openModal();setCurrentSlide(36)"
@@ -1173,6 +1311,7 @@
           ><img
             class="footer-logo"
             loading="lazy"
+            decoding="async"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotype"
         /></a>
