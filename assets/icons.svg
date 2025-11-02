@@ -22,6 +22,15 @@
     <circle cx="12" cy="17.5" r="1.5" fill="currentColor"/>
   </symbol>
 
+<!-- Hamburger / menu -->
+<symbol id="icon-bars" viewBox="0 0 24 24">
+  <path d="M3 6h18M3 12h18M3 18h18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"/>
+</symbol>
+
   <!-- Arrow Right (from your file; stroke icon) -->
   <symbol id="icon-arrow-right" viewBox="0 0 24 24">
     <path d="M13.2 5.4L19.8 12l-6.6 6.6M4.2 12h15.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>

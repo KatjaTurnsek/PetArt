@@ -534,17 +534,15 @@ footer ul {
 
 /* ===== SVG ICON NORMALIZATION & CONTEXT RULES ===== */
 
-/* 1) Base icon: behaves like FA inline icons */
 .icon {
-  width: 1em; /* default = same as text size */
+  width: 1em;
   height: 1em;
-  fill: currentColor; /* inherit text color */
-  vertical-align: -0.15em; /* optical baseline alignment */
+  fill: currentColor;
+  vertical-align: -0.15em;
   display: inline-block;
   line-height: 1;
 }
 
-/* 2) Size utilities (match FA sizes) */
 .icon-sm {
   width: 0.875em;
   height: 0.875em;
@@ -552,13 +550,12 @@ footer ul {
 .icon-lg {
   width: 2em;
   height: 2em;
-} /* <- match fa-2x */
+}
 .icon-2x {
   width: 2em;
   height: 2em;
-} /* alias for clarity */
+}
 
-/* 3) Spacing helpers when icon is next to text */
 .icon-left {
   margin-right: 0.4em;
 }
@@ -566,16 +563,10 @@ footer ul {
   margin-left: 0.4em;
 }
 
-/* 4) Header/burger: keep icon centered in the dark box */
 .burger {
   display: none;
 }
-.burger .icon {
-  width: 1.4em;
-  height: 1.4em;
-}
 
-/* 5) Dropdown chevron: inline with label */
 .dropdown > a {
   display: inline-flex;
   align-items: center;
@@ -587,7 +578,6 @@ footer ul {
   transform: translateY(1px);
 }
 
-/* 6) “News” palette icon next to H2 text */
 .news .icon {
   margin-right: 0.35em;
   transform: translateY(1px);
@@ -596,7 +586,6 @@ footer ul {
   color: var(--green);
 }
 
-/* 7) Link-with-icon patterns (e.g., “Discover the Style →”) */
 a .icon {
   transform: translateY(1px);
 }
@@ -837,7 +826,7 @@ a .icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 40px;
     color: var(--white);
     top: 0;
     right: 0;
