@@ -39,12 +39,14 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- Hero/LCP image preloads (Desktop first, mobile second) -->
+    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
     <link
       rel="preload"
       as="image"
       href="/assets/images/wildlife-art-for-sale.webp"
       media="(min-width: 769px)"
+      imagesrcset="/assets/images/wildlife-art-for-sale.webp 1200w"
+      imagesizes="1200px"
       fetchpriority="high"
     />
     <link
@@ -52,6 +54,8 @@
       as="image"
       href="/assets/images/wildlife-art-for-sale-mobile.webp"
       media="(max-width: 768px)"
+      imagesrcset="/assets/images/wildlife-art-for-sale-mobile.webp 768w"
+      imagesizes="100vw"
       fetchpriority="high"
     />
 
