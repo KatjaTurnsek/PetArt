@@ -201,7 +201,7 @@
           orientation of the portrait to backgrounds, colors, and painting size,
           everything is tailored to your preferences.
         </p>
-        <h3>Painted Year 2020–2024</h3>
+        <h3>Painted Year 2020-2024</h3>
 
         <!-- Gallery Grid -->
         <div class="gallery-grid">
@@ -290,13 +290,14 @@
           id="lightboxModal"
           class="modal"
           role="dialog"
-          aria-hidden="true"
+          aria-modal="true"
           tabindex="-1"
+          hidden
         >
           <button
             id="closeLightboxButton"
             class="close"
-            onclick="closeModal()"
+            type="button"
             aria-label="Close lightbox"
           >
             &times;
@@ -790,18 +791,10 @@
               </figcaption>
             </figure>
 
-            <button
-              class="prev"
-              onclick="plusSlides(-1)"
-              aria-label="Previous slide"
-            >
+            <button class="prev" type="button" aria-label="Previous slide">
               &#10094;
             </button>
-            <button
-              class="next"
-              onclick="plusSlides(1)"
-              aria-label="Next slide"
-            >
+            <button class="next" type="button" aria-label="Next slide">
               &#10095;
             </button>
           </div>

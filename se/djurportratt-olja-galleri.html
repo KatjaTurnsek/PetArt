@@ -287,125 +287,537 @@
         </div>
 
         <!-- Lightbox Modal -->
-        <div
-          id="lightboxModal"
-          class="modal"
-          role="dialog"
-          aria-hidden="true"
-          tabindex="-1"
-        >
-          <button
-            id="closeLightboxButton"
-            class="close"
-            onclick="closeModal()"
-            aria-label="Stäng ljuslåda"
-          >
-            &times;
-          </button>
+<div
+  id="lightboxModal"
+  class="modal"
+  role="dialog"
+  aria-modal="true"
+  tabindex="-1"
+  hidden
+>
+  <button
+    id="closeLightboxButton"
+    class="close"
+    type="button"
+    aria-label="Stäng bildvisning"
+  >
+    &times;
+  </button>
 
-          <div class="modal-content" role="document">
-            <figure class="mySlides">
-              <p class="numbertext">1 / 36</p>
-              <img
-                src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
-                alt="Katt Masquerade"
-                class="lightbox-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="caption">
-                Kattporträtt av Masquerade, Storlek: 30x25cm, målad år: 2020
-              </figcaption>
-            </figure>
+  <div class="modal-content" role="document">
+    <figure class="mySlides">
+      <p class="numbertext">1 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/cat-portrait-masquerade.webp"
+        alt="Katt Masquerade"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kattporträtt av Masquerade, Storlek: 30x25cm, målad år: 2020
+      </figcaption>
+    </figure>
 
-            <figure class="mySlides">
-              <p class="numbertext">2 / 36</p>
-              <img
-                src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
-                alt="Kanin Grace"
-                class="lightbox-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="caption">
-                Kaninmålning av Grace, Storlek: 60x50cm, målad år: 2021
-              </figcaption>
-            </figure>
+    <figure class="mySlides">
+      <p class="numbertext">2 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/rabbit-oil-painting-grace.webp"
+        alt="Kanin Grace"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kaninmålning av Grace, Storlek: 60x50cm, målad år: 2021
+      </figcaption>
+    </figure>
 
-            <figure class="mySlides">
-              <p class="numbertext">3 / 36</p>
-              <img
-                src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
-                alt="Katt Odessa"
-                class="lightbox-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="caption">
-                Kattmålning av Odessa, Storlek: 30x25cm, målad år: 2020
-              </figcaption>
-            </figure>
+    <figure class="mySlides">
+      <p class="numbertext">3 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/cat-painting-oil-odessa.webp"
+        alt="Katt Odessa"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kattmålning av Odessa, Storlek: 30x25cm, målad år: 2020
+      </figcaption>
+    </figure>
 
-            <figure class="mySlides">
-              <p class="numbertext">4 / 36</p>
-              <img
-                src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
-                alt="Katt Juanita"
-                class="lightbox-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="caption">
-                Norsk skogskatt Juanita, Storlek: 30x25cm, målad år: 2024
-              </figcaption>
-            </figure>
+    <figure class="mySlides">
+      <p class="numbertext">4 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp"
+        alt="Katt Juanita"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Norsk skogskatt Juanita, Storlek: 30x25cm, målad år: 2024
+      </figcaption>
+    </figure>
 
-            <figure class="mySlides">
-              <p class="numbertext">5 / 36</p>
-              <img
-                src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp"
-                alt="Katt Saga"
-                class="lightbox-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="caption">
-                Kattmålning av Saga, Storlek: 30x25cm, målad år: 2020
-              </figcaption>
-            </figure>
+    <figure class="mySlides">
+      <p class="numbertext">5 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/cat-oil-portrait-saga.webp"
+        alt="Katt Saga"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kattmålning av Saga, Storlek: 30x25cm, målad år: 2020
+      </figcaption>
+    </figure>
 
-            <figure class="mySlides">
-              <p class="numbertext">6 / 36</p>
-              <img
-                src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
-                alt="Hund Lennon"
-                class="lightbox-image"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="caption">
-                Hundporträtt av Flat Coated Retriever Lennon, Storlek: 40x30cm,
-                målad år: 2024
-              </figcaption>
-            </figure>
+    <figure class="mySlides">
+      <p class="numbertext">6 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp"
+        alt="Hund Lennon"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundporträtt av Flat Coated Retriever Lennon, Storlek: 40x30cm, målad år: 2024
+      </figcaption>
+    </figure>
 
-            <button
-              class="prev"
-              onclick="plusSlides(-1)"
-              aria-label="Föregående bild"
-            >
-              &#10094;
-            </button>
-            <button
-              class="next"
-              onclick="plusSlides(1)"
-              aria-label="Nästa bild"
-            >
-              &#10095;
-            </button>
-          </div>
-        </div>
-      </section>
+    <figure class="mySlides">
+      <p class="numbertext">7 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp"
+        alt="Hund Bella"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundmålning av Boston Terrier Bella, Storlek: 30x30cm, målad år: 2018
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">8 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/cat-painting-oil-maggie.webp"
+        alt="Katt Maggie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kattporträtt av Maggie, Storlek: 30x25cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">9 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/dog-oil-painting-sadie.webp"
+        alt="Hund Sadie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundporträtt i olja av Sadie, Storlek: 35x25cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">10 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp"
+        alt="Hund Viruta"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundporträtt i olja av Viruta, Storlek: 40x30cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">11 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp"
+        alt="Hundar Dixie och Charlie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Schnauzers i olja: Dixie och Charlie, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">12 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp"
+        alt="Hund Laddie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Flat Coated Retriever i snö, Laddie, Storlek: 35x25cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">13 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp"
+        alt="Hund Mazie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Porträtt av labrador retriever Mazie, Storlek: 35x30cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">14 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp"
+        alt="Hund Mitzy"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Oljeporträtt av Newfoundland-hunden Mitzy, Storlek: 40x30cm, målad år: 2019
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">15 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp"
+        alt="Hund Ferguson"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundmålning i olja av terriern Ferguson, Storlek: 35x30cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">16 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp"
+        alt="Hund Jedi"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Agilitymålning av Tervueren Jedi, Storlek: 60x40cm, målad år: 2019
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">17 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp"
+        alt="Hund Winston"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundporträtt av vit terrier Winston, Storlek: 25x25cm, målad år: 2017
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">18 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp"
+        alt="Häst Wangelisa"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Arabhäst i olja: Wangelisa, Storlek: 40x30cm, målad år: 2018
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">19 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp"
+        alt="Hund Chatt"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Oljeporträtt av border collien Chatt, Storlek: 35x35cm, målad år: 2014
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">20 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/cat-oil-portrait-hoover.webp"
+        alt="Katt Hoover"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kattporträtt av Hoover, Storlek: 35x35cm, målad år: 2014
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">21 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp"
+        alt="Hund Maggie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Oljeporträtt av rough collie Maggie, målad år: 2016
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">22 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp"
+        alt="Hund Rapp"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Springer spaniel i olja: Rapp, Storlek: 40x40cm, målad år: 2014
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">23 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp"
+        alt="Hundar Midge, Finnegan och Morgan"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Oljemålning av hundarna Midge, Finnegan och Morgan, Storlek: 90x65cm, målad år: 2015
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">24 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp"
+        alt="Hund Griffyn"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Faraohund i olja: Griffyn, Storlek: 65x45cm, målad år: 2014
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">25 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp"
+        alt="Hundar Aiko och Zuki"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Målning av shiba inu Aiko och Zuki, Storlek: 58x47cm, målad år: 2011
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">26 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp"
+        alt="Hund Duncan"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Clumber spaniel-porträtt i olja: Duncan, Storlek: 35x35cm, målad år: 2013
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">27 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp"
+        alt="Hund Elvis"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Beagle-porträtt i olja: Elvis, Storlek: 40x35cm, målad år: 2013
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">28 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/dog-portrait-nicki.webp"
+        alt="Hund Nicki"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Hundporträtt av Nicki, Storlek: 30x27cm, målad år: 2014
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">29 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp"
+        alt="Hund Georgie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Schäfer i olja: Georgie, Storlek: 60x50cm, målad år: 2015
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">30 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp"
+        alt="Hästar"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Oljemålning av hästar på ängen, Storlek: 128x88cm, målad år: 2012
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">31 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp"
+        alt="Hundar Nalle och Azlan"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Newfoundland i olja: Nalle och Azlan, Storlek: 60x50cm, målad år: 2015
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">32 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp"
+        alt="Hund Vilda"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Faraohund-porträtt i olja: Vilda, Storlek: 50x35cm, målad år: 2012
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">33 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp"
+        alt="Hund Kenzie"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        American cocker spaniel Kenzie, målad år: 2016
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">34 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp"
+        alt="Hund Tigerbull"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Amerikansk bulldogg springer i vatten, ”Tigerbull”, Storlek: 82x55cm, målad år: 2012
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">35 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp"
+        alt="Hund Daisy"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Welsh terrier-porträtt: Daisy, målad år: 2015
+      </figcaption>
+    </figure>
+
+    <figure class="mySlides">
+      <p class="numbertext">36 / 36</p>
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/pet-portraits/cat-oil-portrait-gala.webp"
+        alt="Katt Gala"
+        class="lightbox-image"
+      />
+      <figcaption class="caption">
+        Kattmålning av Gala, Storlek: 42x35cm, målad år: 2013
+      </figcaption>
+    </figure>
+
+    <button class="prev" type="button" aria-label="Föregående bild">
+      &#10094;
+    </button>
+    <button class="next" type="button" aria-label="Nästa bild">
+      &#10095;
+    </button>
+  </div>
+</div>
+
 
       <!-- Article -->
       <section class="main-flex">
