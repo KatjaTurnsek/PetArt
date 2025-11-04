@@ -3,66 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Return & Refund Policy | Pet Art With Heart</title>
 
-    <title>Wildlife Art in Oils by Katja Turnsek | Animal Art for Sale</title>
+    <!-- Canonical (non-www) -->
+    <link rel="canonical" href="https://pet-art.net/html/terms-privacy.html" />
 
-    <!-- Canonical -->
-    <link
-      rel="canonical"
-      href="https://pet-art.net/html/wildlife-art-oils-gallery.html"
-    />
-
-    <!-- Hreflang (EN page + Swedish equivalent) -->
+    <!-- Hreflang (EN self + Swedish equivalent) -->
     <link
       rel="alternate"
-      href="https://pet-art.net/html/wildlife-art-oils-gallery.html"
+      href="https://pet-art.net/html/terms-privacy.html"
       hreflang="en"
     />
     <link
       rel="alternate"
-      href="https://pet-art.net/se/djurmotiv-olja-galleri.html"
+      href="https://pet-art.net/se/villkor.html"
       hreflang="sv"
-    />
-
-    <meta
-      name="description"
-      content="Immerse yourself in the captivating world of wildlife art and explore my small collection of original wildlife oil paintings. Buy originals and prints today!"
     />
 
     <!-- Social URL matches canonical -->
     <meta
       property="og:url"
-      content="https://pet-art.net/html/wildlife-art-oils-gallery.html"
+      content="https://pet-art.net/html/terms-privacy.html"
+    />
+
+    <meta
+      name="description"
+      content="Custom pet portraits are non-returnable. If your artwork arrives damaged, we'll remake it at no cost. Report within 7 days. Policy applies worldwide."
     />
 
     <!-- Assets (root-absolute) -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/src/css/styles.css" />
 
-    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/wildlife-art-for-sale.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/wildlife-art-for-sale.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/wildlife-art-for-sale-mobile.webp"
-      media="(max-width: 768px)"
-      imagesrcset="/assets/images/wildlife-art-for-sale-mobile.webp 768w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       rel="preload"
       as="style"
@@ -121,15 +96,15 @@
   </head>
 
   <body>
-    <!-- Header with Navigation -->
+    <!-- Header with Navigation (unified) -->
     <header>
       <a href="/"
         ><img
+          loading="lazy"
+          decoding="async"
           class="logo-header"
           src="/assets/images/petart-with-heart-logotype.svg"
           alt="Pet Art with Heart logotype"
-          loading="lazy"
-          decoding="async"
       /></a>
 
       <input id="toggler" class="toggler" type="checkbox" />
@@ -160,7 +135,7 @@
             <ul class="dropdown-menu">
               <li>
                 <a href="/html/pet-portrait-commission-prices.html"
-                  >Prices &amp; How It Works</a
+                  >Prices & How It Works</a
                 >
               </li>
               <li>
@@ -173,7 +148,7 @@
               </li>
             </ul>
           </li>
-          <li class="active">
+          <li>
             <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
           </li>
           <li>
@@ -186,137 +161,92 @@
 
     <!-- Main Content -->
     <main>
-      <!-- Hero Section -->
-      <section class="main-img main-img-shop">
-        <!-- Real image for LCP (desktop + mobile) -->
-        <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/wildlife-art-for-sale-mobile.webp"
-            />
-
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/wildlife-art-for-sale.webp"
-              alt="Original wildlife painting in oil on canvas ready for sale"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
-        </div>
-
-        <figure title="Lines Animation" class="vert-lines"></figure>
-
-        <h1>Discover Captivating Wildlife Art: Original Paintings for Sale</h1>
-
-        <button
-          onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
-          class="head-button"
-          title="Buy artwork"
-        >
-          Buy Artwork
-        </button>
-      </section>
+      <hr class="hr-contact" />
 
       <!-- Introduction Article -->
       <section class="main-flex">
-        <h2>Wildlife Art: A Gallery of Original Wild Animal Oil Paintings</h2>
-        <p>
-          Immerse yourself in the captivating world of wildlife art with my
-          small collection of <strong>original wildlife art for sale</strong>,
-          featuring wild animal artwork. Through my unique painting style, I aim
-          to convey the vibrancy and beauty of nature.
-        </p>
-        <p>
-          Combining bold brushstrokes with intricate details, I create a
-          mesmerizing interplay of light and shadow that brings these wildlife
-          animals from my original wildlife oil paintings to life. Every stroke
-          is infused with passion and precision, resulting in
-          <strong>captivating pieces</strong> that capture the essence of the
-          wild.
-        </p>
-        <p>
-          Starting with acrylics and seamlessly transitioning to oils during the
-          painting process, I ensure that each original wildlife oil painting,
-          part of my wildlife art collection, is created with utmost care and
-          attention to detail.
-        </p>
-        <h3>Original Wildlife Art for Sale</h3>
-        <p>
-          If you're interested in acquiring original wildlife art, please take a
-          moment to explore my gallery of wildlife oil paintings. Additionally,
-          prints may also <strong>be</strong> available for those who wish to
-          bring the beauty of animal artwork into their homes at a more
-          affordable price.
-        </p>
-        <h3>Convert prices to your currency below</h3>
-        <span id="currency_select" class="currency-select"></span>
-      </section>
+        <h1 class="contact">
+          Return &amp; Refund Policy for Custom Pet Portraits
+        </h1>
+        <h2>Last updated: Nov 2025</h2>
 
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            src="/assets/images/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment.webp"
-            alt="Oil Painting of Scottish Wildcat cub"
-            loading="lazy"
-            decoding="async"
-          />
-          <h2>"Wonderment" - Scottish Wildcat</h2>
-          <p class="painting-info"><strong>Medium:</strong> Oils on Canvas</p>
-          <p class="painting-info"><strong>Size:</strong> 85x70cm</p>
-          <p class="painting-info">
-            <strong>Price:</strong>
-            <span class="dcconvert" data-amount="42000">42000 SEK</span>
-          </p>
-          <div class="centered-button">
-            <button
-              onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
-              class="button"
-              title="Buy Painting"
-            >
-              Buy "Wonderment"
-            </button>
-          </div>
-        </div>
+        <p>
+          At Pet Art With Heart, every portrait is custom-made by hand based on
+          the photos and instructions you provide. Because each artwork is
+          personal and created specifically for you,<strong
+            >we do not accept returns or refunds for change of mind or style
+            preference.</strong
+          >
+        </p>
+        <p>
+          However, your happiness matters — and we stand behind the quality of
+          every portrait.
+        </p>
 
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            src="/assets/images/wildlife-art/red-fox-oil-painting-curious-encounter.webp"
-            alt="Oil Painting of Red Fox"
-            loading="lazy"
-            decoding="async"
-          />
-          <h2>"Curious Encounter" - Red Fox</h2>
-          <p class="painting-info">
-            <strong>Medium:</strong> Oils on Canvas &#40;in progress&#41;
-          </p>
-          <p class="painting-info"><strong>Size:</strong> 50x70cm</p>
-          <p class="painting-info">
-            <strong>Price:</strong>
-            <span class="dcconvert" data-amount="32000">32000 SEK</span>
-          </p>
-          <div class="centered-button">
-            <button
-              onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
-              class="button"
-              title="Buy Painting"
+        <h3>Custom Artwork - Refunds &amp; Returns</h3>
+        <p>
+          Custom portraits are<strong>non-refundable and non-returnable</strong
+          >, except when:
+        </p>
+        <ul class="bullet-list">
+          <li>Your portrait arrives damaged in transit</li>
+          <li>You receive the wrong item</li>
+        </ul>
+        <p>
+          In these cases, we will<strong
+            >remake your portrait free of charge.</strong
+          >
+        </p>
+        <p>
+          To request a replacement, contact us within<strong>
+            7 days of delivery</strong
+          >
+          and include:
+        </p>
+        <ul class="bullet-list">
+          <li>Order number</li>
+          <li>Photos of the damaged artwork & packaging</li>
+          <li>Your reference photo</li>
+        </ul>
+        <p>
+          Once verified, a replacement portrait will be created within the
+          standard production time.
+        </p>
+        <p>No monetary refunds are issued on custom artwork.</p>
+
+        <h3>Damaged Delivery Instructions</h3>
+        <p>If your parcel appears damaged upon arrival:</p>
+        <ul class="bullet-list">
+          <li>Photograph the outer packaging</li>
+          <li>Photograph the artwork and internal packaging</li>
+          <li>
+            <a
+              href="mailto:katja@pet-art.net?subject=Inquiry%20Artwork%20by%20Katja%20Turnsek"
+              >katja@pet-art.net</a
             >
-              Buy "Curious Encounter"
-            </button>
-          </div>
-        </div>
+          </li>
+          <li>Keep all packaging until the claim is processed</li>
+        </ul>
+
+        <h3>Exchanges</h3>
+        <p>We do not accept exchanges.</p>
+
+        <h3>Worldwide Coverage</h3>
+        <p>This policy applies to all orders worldwide.</p>
+        <p></p>
+
+        <h3>Need Help?</h3>
+        <p>
+          Email:
+          <a
+            href="mailto:katja@pet-art.net?subject=Inquiry%20Artwork%20by%20Katja%20Turnsek"
+            >katja@pet-art.net</a
+          >
+        </p>
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (unified) -->
     <footer>
       <div class="footer-flex-item">
         <h3 class="footer-headline">Menu</h3>
@@ -380,10 +310,5 @@
     <!-- Scripts (root-absolute) -->
     <script defer src="/src/js/analytics.js"></script>
     <script defer src="/src/js/up.js"></script>
-    <!-- Dynamic Converter (deferred, at end for performance) -->
-    <script
-      defer
-      src="https://converter.dynamicconverter.com/accounts/6/6148.js"
-    ></script>
   </body>
 </html>

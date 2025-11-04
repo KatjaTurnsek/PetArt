@@ -1,5 +1,40 @@
 # Minimal, loop-safe; canonical to https://pet-art.net
 DirectoryIndex index.html
+
+# --- Legacy redirects (old -> final). Keep ABOVE RewriteEngine On ---
+
+# EN core pages
+Redirect 301 /prices.htm                              https://pet-art.net/html/pet-portrait-commission-prices.html
+Redirect 301 /pet-portrait-order-information.htm      https://pet-art.net/html/pet-portrait-commission-prices.html
+Redirect 301 /pet-portraits-framing.htm               https://pet-art.net/html/pet-portrait-commission-prices.html
+Redirect 301 /gift-vouchers.htm                       https://pet-art.net/html/pet-portrait-commission-prices.html
+Redirect 301 /pet-portraits-testimonials.htm          https://pet-art.net/html/pet-portrait-testimonials.html
+Redirect 301 /pet-portraits-from-photographs.htm      https://pet-art.net/html/photo-tips-portrait-commissions.html
+Redirect 301 /studio-surroundings.htm                 https://pet-art.net/html/about-pet-portrait-artist.html
+Redirect 301 /pet-portrait-artist.htm                 https://pet-art.net/html/about-pet-portrait-artist.html
+Redirect 301 /pet-portraits-contact-artist.htm        https://pet-art.net/html/contact-pet-portrait-artist.html
+Redirect 301 /terms-privacy.htm                       https://pet-art.net/html/terms-privacy.html
+Redirect 301 /pet-art-sitemap.htm                     https://pet-art.net/html/petart-with-heart-sitemap.html
+
+# SV core pages
+Redirect 301 /se/priser.htm                           https://pet-art.net/se/priser-for-djurportratt.html
+Redirect 301 /se/bestallnings-information.htm         https://pet-art.net/se/priser-for-djurportratt.html
+Redirect 301 /se/konst-inramning.htm                  https://pet-art.net/se/priser-for-djurportratt.html
+Redirect 301 /se/presentkort.htm                      https://pet-art.net/se/priser-for-djurportratt.html
+Redirect 301 /se/foto-tips.htm                        https://pet-art.net/se/foto-tips-portrattbestallning.html
+Redirect 301 /se/referenser-foton.htm                 https://pet-art.net/se/djurportratt-kundreferenser.html
+Redirect 301 /se/djurportratt-konstnar-katja.htm      https://pet-art.net/se/om-djurportratt-konstnaren.html
+Redirect 301 /se/studio-omgivning.htm                 https://pet-art.net/se/om-djurportratt-konstnaren.html
+Redirect 301 /se/kontakta-katja-turnsek.htm           https://pet-art.net/se/kontakta-djurportratt-konstnar.html
+
+# Fix Swedish typo variant reported by GSC
+Redirect 301 /se/djurportratt-olja.galleri.html       https://pet-art.net/se/djurportratt-olja-galleri.html
+
+# Catch-alls for old artwork/detail pages now replaced by gallery
+# (Specific lines above take precedence.)
+RedirectMatch 301 ^/([A-Za-z0-9-]+)\.htm$             https://pet-art.net/html/pet-portraits-oils-gallery.html
+RedirectMatch 301 ^/se/([A-Za-z0-9-]+)\.htm$          https://pet-art.net/se/djurportratt-olja-galleri.html
+
 RewriteEngine On
 
 # 0) Never rewrite static assets (prevents asset redirect loops)

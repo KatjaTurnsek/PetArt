@@ -54,6 +54,11 @@
     <priority>0.64</priority>
   </url>
   <url>
+    <loc>https://pet-art.net/html/return-policy.html.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
     <loc>https://pet-art.net/html/petart-with-heart-sitemap.html</loc>
     <lastmod>2025-10-30T08:00:00+01:00</lastmod>
     <priority>0.64</priority>
@@ -102,6 +107,11 @@
   </url>
   <url>
     <loc>https://pet-art.net/se/villkor.html</loc>
+    <lastmod>2025-10-30T08:00:00+01:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://pet-art.net/se/returpolicy.html</loc>
     <lastmod>2025-10-30T08:00:00+01:00</lastmod>
     <priority>0.64</priority>
   </url>
