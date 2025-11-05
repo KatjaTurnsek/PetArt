@@ -1,0 +1,20 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+.pnpm-store/   # only matters if you ever try pnpm
+
+# Builds / caches
+build/
+.cache/
+
+# Dist: ignore everything except the bundle you serve
+dist/*
+!dist/styles.min.css
+# (optional) keep the source map or date-stamped bundle too:
+# !dist/styles.min.css.map
+# !dist/styles.*.min.css
