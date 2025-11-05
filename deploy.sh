@@ -1,50 +1,38 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ── SETTINGS ──────────────────────────────────────────────────────────────────
-# Your real document root on this server. $HOME usually resolves to:
-# /home/sites/17b/a/a62d00fdda
+REPO_ROOT="$(pwd)"
 DOCROOT="$HOME/public_html"
 
-# If you changed your structure, update these paths accordingly.
-DIST_FILE="dist/styles.min.css"
+echo "=== Deploy start ==="
+echo "SRC : $REPO_ROOT"
+echo "DST : $DOCROOT"
+date
 
-# ── PRE-FLIGHT ────────────────────────────────────────────────────────────────
-echo "Deploying to: $DOCROOT"
-
-# Ensure target exists
-mkdir -p "$DOCROOT"
-
-# Warn if the built CSS bundle is missing (you usually build locally)
-if [[ ! -f "$DIST_FILE" ]]; then
-  echo "WARNING: $DIST_FILE not found."
-  echo "         Run: npm run build:css   (locally)   before deploying."
+# sanity
+if [ ! -d "$DOCROOT" ]; then
+  echo "ERROR: DOCROOT missing: $DOCROOT"
+  exit 1
 fi
 
-# Optional: write a tiny deploy marker (commit + time)
-DEPLOY_INFO="$DOCROOT/.deploy-info"
-{
-  echo "Deployed: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-  echo "Commit:   $(git rev-parse --short HEAD || echo 'unknown')"
-} > "$DEPLOY_INFO" 2>/dev/null || true
+# optional marker to verify deploys landed
+MARKER="$DOCROOT/.deploy_marker_$(date +%Y%m%d_%H%M%S)"
+echo "Deployed from $REPO_ROOT at $(date)" > "$MARKER"
 
-# ── RSYNC (publish) ───────────────────────────────────────────────────────────
-# -a : archive (permissions, times)
-# -v : verbose
-# --delete : remove files in DOCROOT that no longer exist in repo
-# --filter 'P .git/' : PROTECT the .git folder already in public_html (don’t delete it)
-# Exclude common dev stuff from being published
+# copy only what the live site needs
+# (keep .htaccess, HTML, assets, dist, etc.; skip node_modules, tooling, dot-repo dirs)
 rsync -av --delete \
-  --filter='P .git/' \
-  --exclude=".git" \
-  --exclude=".github" \
+  --exclude=".git/" \
+  --exclude=".github/" \
+  --exclude=".gitignore" \
+  --exclude="node_modules/" \
+  --exclude="tools/" \
+  --exclude=".vscode/" \
   --exclude=".DS_Store" \
-  --exclude="node_modules" \
-  --exclude="tools" \
+  --exclude="package*.json" \
+  --exclude="postcss.config.*" \
   --exclude="README.md" \
-  --exclude="postcss.config.cjs" \
-  --exclude="package-lock.json" \
-  --exclude="*.map" \
-  ./ "$DOCROOT"/
+  --exclude="LICENSE" \
+  "$REPO_ROOT"/ "$DOCROOT"/
 
-echo "✅ Deploy complete → $DOCROOT"
+echo "=== Deploy done. Marker: $(basename "$MARKER") ==="
