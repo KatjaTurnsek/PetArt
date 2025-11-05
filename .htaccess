@@ -31,27 +31,33 @@ Redirect 301 /se/kontakta-katja-turnsek.htm           https://pet-art.net/se/kon
 Redirect 301 /se/djurportratt-olja.galleri.html       https://pet-art.net/se/djurportratt-olja-galleri.html
 
 # Catch-alls for old artwork/detail pages now replaced by gallery
-# (Specific lines above take precedence.)
 RedirectMatch 301 ^/([A-Za-z0-9-]+)\.htm$             https://pet-art.net/html/pet-portraits-oils-gallery.html
 RedirectMatch 301 ^/se/([A-Za-z0-9-]+)\.htm$          https://pet-art.net/se/djurportratt-olja-galleri.html
 
 RewriteEngine On
 
-# 0) Never rewrite static assets (prevents asset redirect loops)
+# 0) Never rewrite static assets
 RewriteRule \.(?:css|js|mjs|map|json|xml|txt|png|jpe?g|webp|gif|svg|ico|avif|woff2?|ttf|eot)$ - [L,NC]
 
-# 1) Canonical: if host is *www* OR proxy says http → redirect to https://pet-art.net
-RewriteCond %{HTTP_HOST} ^www\.pet-art\.net$ [OR]
-RewriteCond %{HTTP:X-Forwarded-Proto} =http
+# Step A: non-www → apex
+RewriteCond %{HTTP_HOST} ^www\.pet-art\.net$ [NC]
 RewriteRule ^ https://pet-art.net%{REQUEST_URI} [R=301,L]
 
-# 2) Basic protection
+# Step B (CDN-safe): HTTP → HTTPS (no loops)
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://pet-art.net%{REQUEST_URI} [R=301,L]
+
+# Step C: /index.html → /
+RewriteRule ^(.*/)?index\.html$ https://pet-art.net/$1 [R=301,L]
+
+# Basic protection
 RedirectMatch 404 (?i)\.git
 <FilesMatch "^\.">
   Require all denied
 </FilesMatch>
 
-# 3) (Optional) Caching
+# Optional caching
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/avif "access plus 1 year"
