@@ -1,54 +1,56 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/sh
+# Portable deploy script for StackCP/shared hosting + local dry-runs
 
-# Runs inside the repo checkout (StackCP executes the script there)
+set -e  # stop on first failing command
+
 REPO_ROOT="$(pwd)"
-DOCROOT="$HOME/public_html"
+DOCROOT="${DOCROOT:-"$HOME/public_html"}"  # allows: DOCROOT=/tmp/foo sh ./deploy.sh
 
-echo "=== Deploy start ==="
-echo "whoami: $(whoami)"
-echo "SRC: $REPO_ROOT"
-echo "DST: $DOCROOT"
+log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
+
+log "=== Deploy start ==="
+log "whoami: $(whoami 2>/dev/null || printf unknown)"
+log "SRC: $REPO_ROOT"
+log "DST: $DOCROOT"
 date
 
+# Never run with sudo on shared hosting
+if [ -n "${SUDO_USER:-}" ]; then
+  log "ERROR: Do not run deploy.sh with sudo."
+  exit 1
+fi
+
 # Sanity checks
-if [ ! -d "$REPO_ROOT" ]; then
-  echo "ERROR: Repo root not found: $REPO_ROOT"
-  exit 1
-fi
+[ -d "$REPO_ROOT" ] || { log "ERROR: Repo root not found: $REPO_ROOT"; exit 1; }
+[ -d "$DOCROOT" ]   || { log "ERROR: DOCROOT not found: $DOCROOT"; exit 1; }
 
-if [ ! -d "$DOCROOT" ]; then
-  echo "ERROR: DOCROOT not found: $DOCROOT"
-  exit 1
-fi
-
-# Quick write test (verifies permissions in public_html)
-TESTFILE="$DOCROOT/.deploy_write_test"
-echo "write-test $(date)" > "$TESTFILE" || {
-  echo "ERROR: Cannot write to $DOCROOT (permissions/ownership?)"
+# Quick write test
+TMPTEST="$DOCROOT/.deploy_write_test.$(date +%s).$$"
+echo "write-test $(date)" > "$TMPTEST" || {
+  log "ERROR: Cannot write to $DOCROOT (permissions/ownership?)"
   exit 1
 }
+rm -f "$TMPTEST"
 
-# Marker to see when deploy landed
+# Marker
 MARKER="$DOCROOT/.deploy_marker_$(date +%Y%m%d_%H%M%S)"
-echo "Deployed from $REPO_ROOT at $(date)" > "$MARKER"
+echo "Deployed from $REPO_ROOT at $(date)" > "$MARKER" || true
 
-# Sync site → public_html
-# - NO sudo
-# - Protect destination .git (in case StackCP keeps one there)
-# - Don’t try to change perms/owners (shared hosting)
-rsync -av --delete \
-  --filter='protect .git/' \
-  --exclude=".git/" \
-  --exclude=".github/" \
-  --exclude=".gitignore" \
-  --exclude="node_modules/" \
-  --exclude=".vscode/" \
-  --exclude=".DS_Store" \
-  --exclude="tools/" \
-  --exclude="README.md" \
-  --exclude="LICENSE" \
-  --no-perms --no-owner --no-group --omit-dir-times \
-  "$REPO_ROOT"/ "$DOCROOT"/
+# Copy
+if command -v rsync >/dev/null 2>&1; then
+  log "Using rsync"
+  rsync -rltD --delete \
+    --exclude=".git/" --exclude=".github/" --exclude=".gitignore" \
+    --exclude="node_modules/" --exclude=".vscode/" --exclude=".DS_Store" \
+    --exclude="tools/" --exclude="README.md" --exclude="LICENSE" \
+    "$REPO_ROOT"/ "$DOCROOT"/
+else
+  log "rsync not found; using tar fallback (no deletions)"
+  ( cd "$REPO_ROOT" && tar -cf - \
+      --exclude='./.git' --exclude='./.github' --exclude='./.gitignore' \
+      --exclude='./node_modules' --exclude='./.vscode' --exclude='./.DS_Store' \
+      --exclude='./tools' --exclude='./README.md' --exclude='./LICENSE' . \
+    ) | ( cd "$DOCROOT" && tar -xpf - )
+fi
 
-echo "=== Deploy done. Marker: $(basename "$MARKER") ==="
+log "=== Deploy done. Marker: $(basename "$MARKER") ==="
