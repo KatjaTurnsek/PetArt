@@ -1,3 +1,14 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  "html.format.enable": false,
+  "eslint.format.enable": false,
+
+  "prettier.requireConfig": true,
+  "prettier.prettierPath": "node_modules/prettier"
 }

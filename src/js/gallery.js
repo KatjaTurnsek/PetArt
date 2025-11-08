@@ -26,10 +26,7 @@ function getTabbables(container) {
     container.querySelectorAll(
       'a[href],button:not([disabled]),textarea,input,select,details,[tabindex]:not([tabindex="-1"])'
     )
-  ).filter(
-    (el) =>
-      !el.hasAttribute("disabled") && el.getAttribute("aria-hidden") !== "true"
-  );
+  ).filter((el) => !el.hasAttribute("disabled") && el.getAttribute("aria-hidden") !== "true");
 }
 
 function trapTabKey(e, container) {

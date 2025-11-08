@@ -1,8 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Icons & PWA -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://pet-art.net/" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
+    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
+
+    <title>Hand-Painted Pet Oil Portraits | 25+ Years - Katja Turnsek</title>
+    <meta
+      name="description"
+      content="Give their story a canvas. Bespoke oil pet portraits from your photo by Katja Turnsek. Museum-grade materials, worldwide shipping. Limited spots — reserve today."
+    />
 
     <!-- LCP preloads (mobile & desktop) -->
     <link
@@ -14,7 +31,6 @@
       imagesizes="100vw"
       fetchpriority="high"
     />
-
     <link
       rel="preload"
       as="image"
@@ -25,22 +41,53 @@
       fetchpriority="high"
     />
 
-    <title>Custom Pet Portraits | Eternalize Your Companion in Fine Art</title>
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://pet-art.net/" />
-    <!-- Hreflang -->
-    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
-    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
-    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
-    <meta
-      name="description"
-      content="Transform your furry friend's photo into a vibrant one-of-a-kind Fine Art masterpiece with my hand-painted pet portraits. Join my client list now!"
-    />
-    <meta property="og:url" content="https://pet-art.net/" />
-
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- CSS -->
     <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pet-art.net/" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
+    <meta
+      property="og:title"
+      content="Hand-Painted Pet Oil Portraits | 25+ Years - Katja Turnsek"
+    />
+    <meta
+      property="og:description"
+      content="Give their story a canvas. Bespoke oil pet portraits from your photo by Katja Turnsek. Museum-grade materials, worldwide shipping. Limited spots — reserve today."
+    />
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Hand-painted oil portrait of a dog on linen canvas by artist Katja Turnsek."
+    />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="sv_SE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Hand-Painted Pet Oil Portraits | 25+ Years - Katja Turnsek"
+    />
+    <meta
+      name="twitter:description"
+      content="Give their story a canvas. Bespoke oil pet portraits from your photo by Katja Turnsek. Museum-grade materials, worldwide shipping. Limited spots — reserve today."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Hand-painted oil portrait of a dog on linen canvas by artist Katja Turnsek."
+    />
+    <meta name="twitter:domain" content="pet-art.net" />
 
     <!-- Google Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,18 +105,26 @@
       />
     </noscript>
 
+    <!-- Site verification -->
     <meta name="msvalidate.01" content="2154CBD7288F960A235467F56F34FF50" />
-    <meta
-      name="google-site-verification"
-      content="8qkdCEiXp3y_3GnkokwAWuULyIi1qx8L8QoLi9duJC4"
-    />
+    <meta name="google-site-verification" content="8qkdCEiXp3y_3GnkokwAWuULyIi1qx8L8QoLi9duJC4" />
 
+    <!-- JSON-LD: Organization (consolidated) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Pet Art With Heart",
+        "@id": "https://pet-art.net/#org",
         "url": "https://pet-art.net/",
+        "name": "Pet Art With Heart",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg"
+        },
+        "sameAs": [
+          "https://www.instagram.com/katjapetportraits",
+          "https://www.facebook.com/PetPortraitsArtist"
+        ],
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
           "name": "Return & Refund Policy — Custom Pet Portraits",
@@ -106,6 +161,142 @@
         }
       }
     </script>
+
+    <!-- JSON-LD: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://pet-art.net/#katja",
+        "name": "Katja Turnsek",
+        "url": "https://pet-art.net/",
+        "jobTitle": "Pet Portrait Artist",
+        "knowsAbout": ["Oil Painting", "Pet Portraits", "Animal Art"],
+        "sameAs": [
+          "https://www.instagram.com/katjapetportraits",
+          "https://www.facebook.com/PetPortraitsArtist"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: Service -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://pet-art.net/#custom-pet-portrait-service",
+        "name": "Custom Pet Portraits in Oil",
+        "serviceType": "Art Commission",
+        "description": "Hand-painted oil portraits of dogs, cats, and horses from client photos. Classic realism or expressive painterly style.",
+        "areaServed": { "@type": "Place", "name": "Worldwide" },
+        "provider": { "@type": "Person", "@id": "https://pet-art.net/#katja" },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://pet-art.net/html/pet-portrait-commission-prices.html",
+          "priceCurrency": "SEK",
+          "availability": "https://schema.org/LimitedAvailability"
+        }
+      }
+    </script>
+
+    <!-- JSON-LD: FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://pet-art.net/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I book and what does it cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Prices are by size and custom sizes are possible. A 2000 SEK deposit saves your spot and is deducted from the total."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What styles do you offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Detailed oil portraits and a painterly wet-on-wet style with expressive brushwork."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What payment schedule do you use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2000 SEK deposit to join the queue; up to 50% before painting begins (includes the deposit); remaining balance after you approve the finished portrait."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take and can you meet a deadline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Commissions are scheduled first-come-first-served. Shipping is door-to-door: typically a few days within Europe and about 3–7 days worldwide, longer around Christmas. Ask for current availability if you have a deadline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What photos do you need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Large, sharp, well-lit photos. Your references are pivotal to likeness and detail, and I can help you choose the best ones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will I see progress and can I request tweaks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You’ll receive work-in-progress updates for feedback, and minor finishing touches can be requested at the end."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is your cancellation policy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cancel within 7 days of ordering for a full refund. After 7 days or once work has started, a 20–50% fee applies to cover time and materials."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you accept returns or refunds?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Custom art is non-returnable and non-refundable. If your portrait arrives damaged or incorrect, it will be remade free of charge when reported within 7 days with photos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you ship worldwide and what about costs and currency?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, worldwide via trusted carriers. Detailed oil pricing includes free shipping; the painterly wet-on-wet launch pricing excludes shipping. Prices are in SEK; your bank’s conversion rates may apply."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I give this as a gift without photos yet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A gift voucher lets the recipient provide photos later; voucher package and shipping are free."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who owns the copyright and can I share my portrait online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Copyright remains with the artist. You may display your portrait for personal use and share photos online; commercial reproduction requires written permission."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -134,9 +325,7 @@
         <ul>
           <li class="active"><a href="/">Home</a></li>
           <li>
-            <a href="/html/pet-portraits-oils-gallery.html"
-              >Pet Portrait Gallery</a
-            >
+            <a href="/html/pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
           </li>
           <li class="dropdown">
             <a href="#">
@@ -147,17 +336,13 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="/html/pet-portrait-commission-prices.html"
-                  >Prices &amp; How It Works</a
-                >
+                <a href="/html/pet-portrait-commission-prices.html">Prices &amp; How It Works</a>
               </li>
               <li>
                 <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
               </li>
               <li>
-                <a href="/html/photo-tips-portrait-commissions.html"
-                  >Photo Tips</a
-                >
+                <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
               </li>
             </ul>
           </li>
@@ -190,26 +375,33 @@
             loading="eager"
             width="1200"
             height="800"
-            style="
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              object-position: center right;
-            "
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
           />
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
-        <h1>
-          Immortalize the Heart and Soul of Your Pet with Katja's Pet Portraits
-        </h1>
-        <button
-          onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
-          class="head-button"
-          title="Go to top"
-        >
-          Join My Client List Now
-        </button>
+        <!-- overlay above the image -->
+        <div class="main-img__overlay" aria-hidden="true"></div>
+
+        <!-- decorative vertical bars (right side) -->
+        <figure class="vert-lines" aria-hidden="true"></figure>
+
+        <!-- topmost content -->
+        <div class="main-img__content">
+          <h1>Immortalize Your Pet with a Hand-Painted Oil Portrait</h1>
+          <p class="lead">
+            Hand-painted by artist <strong>Katja Turnsek</strong> from your favorite photo -
+            <strong>25+ years</strong> of commissions, <strong>worldwide shipping</strong>,
+            museum-grade materials.
+          </p>
+
+          <a
+            href="/html/contact-pet-portrait-artist.html"
+            class="head-button"
+            aria-label="Join the client list — limited commissions available"
+          >
+            Reserve Your Spot
+          </a>
+        </div>
       </section>
 
       <!-- News Section -->
@@ -222,21 +414,14 @@
             New: Painterly Pet Portraits in Oil
           </h2>
           <p>
-            Emotive and boldly expressive, each portrait is created in a
-            wet-on-wet technique with rich, intentional brushwork. Now accepting
-            limited launch commissions.
-            <strong>
-              <a href="/html/pet-portrait-commission-prices.html">
-                Discover the Style
-                <svg
-                  class="icon"
-                  aria-hidden="true"
-                  style="margin-left: 0.25em"
-                >
-                  <use href="/assets/icons.svg#icon-arrow-right"></use>
-                </svg>
-              </a>
-            </strong>
+            Painterly oil portraits with expressive brushwork, lush color, and wet-in-wet layers -
+            designed to capture your pet's personality. Limited introductory pricing.
+            <a href="/html/pet-portrait-commission-prices.html">
+              Explore the painterly Style
+              <svg class="icon" aria-hidden="true" style="margin-left: 0.25em">
+                <use href="/assets/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </a>
           </p>
         </div>
         <div class="news-image">
@@ -251,23 +436,12 @@
 
       <!-- Introduction Article -->
       <section class="main-flex">
-        <h2>Why Choose a Custom Pet Portrait by Katja</h2>
+        <h2>Why choose my portraits</h2>
+        <h3>Hand-Painted Pet Portraits in Oil - A Timeless Tribute</h3>
         <p>
-          Whether you have a majestic cat, a loyal dog, or even a charming
-          hamster as your beloved companion,
-          <strong>pet portraits</strong> offer the ultimate way to capture and
-          preserve the unique connection you share. My hand-painted,
-          <strong>one-of-a-kind</strong> artwork masterpieces are created with
-          utmost care to capture the true essence of your pet.
-        </p>
-        <p>
-          Transforming your photo into a
-          <strong>vibrant fine art painting</strong> in oils, my
-          <strong>custom painted pet portraits</strong> ensure that every detail
-          of your furry friend is beautifully brought to life. With my long
-          experience in creating <strong>portraits with pets</strong>, I
-          guarantee a stunning representation that not only reflects their
-          appearance but also their personality.
+          Your pet's portrait isn't a copy of a photo, it's a living artwork that holds a moment in
+          time. I paint dogs, cats, and horses in oils on linen, blending realism with light,
+          texture, and character so you can feel their presence every time you pass the frame.
         </p>
 
         <!-- Gallery Grid -->
@@ -350,27 +524,20 @@
             alt="Oil Portraits of two Newfoundlands"
             decoding="async"
           />
-          <h2>
-            Capturing Memories: Hand-Painted Pet Portraits by Katja Turnsek
-          </h2>
-          <p>
-            My name is <strong>Katja Turnsek</strong>, an artist based outside
-            Gothenburg, Sweden. With and artistic flair, I create hand painted
-            pet portraits that serve as <strong> timeless memories</strong> of
-            your cherished companion.
-          </p>
-          <p>
-            Every stroke of the brush is infused with love and dedication,
-            resulting in an exquisite
-            <strong>Fine Art</strong> that captures the spirit and soul of your
-            pet.
-          </p>
-          <p>
-            Whether you want to honor a current furry friend or create a lasting
-            tribute for one who has crossed the rainbow bridge, my custom
-            painted pet portraits are the perfect way to celebrate their
-            presence in your life.
-          </p>
+          <h2>What makes my work different</h2>
+          <ul class="wet-bullets">
+            <li>
+              <strong>Fine art oils, not templates</strong> - every composition is designed for your
+              pet
+            </li>
+            <li>
+              <strong>Painterly option available</strong> - expressive wet-on-wet brushwork (limited
+              slots)
+            </li>
+            <li><strong>From your photos</strong> - I help you choose the best reference</li>
+            <li><strong>Ready to frame or hang</strong> - oild-out for depth</li>
+            <li><strong>Worldwide delivery</strong> - secure, tracked, carefully packaged</li>
+          </ul>
         </div>
 
         <div class="article-flex-item2">
@@ -381,16 +548,16 @@
             alt="Artist Painting a Cat in Oils"
             decoding="async"
           />
-          <h2>Transform Your Photo into Hand-Painted Pet Portraits</h2>
+          <h2>How it works (simple 4-step)</h2>
+          <ul class="wet-bullets">
+            <li><strong>Send photos</strong> - I'll help you pick the strongest reference</li>
+            <li><strong>Pick a size</strong> - and choose classic or painterly style</li>
+            <li><strong>Approve a concept</strong> - composition before paint touches canvas</li>
+            <li><strong>Receive your portrait</strong> - hand-painted and full of heart</li>
+          </ul>
           <p>
-            Discover the beauty and artistry of my hand-painted pet portraits
-            today. Let me transform your treasured photo into an extraordinary
-            <strong>oil painting</strong> that will forever remind you of the
-            special bond you share with your beloved pet.
-          </p>
-          <p>
-            <strong>The process is very simple</strong>, just join my client
-            list and share any ideas or special request you have.
+            <i>Note:</i> Availability is limited — I accept only a small number of commissions at a
+            time.
           </p>
           <div class="centered-button">
             <button
@@ -398,7 +565,7 @@
               class="button"
               title="View Gallery"
             >
-              Join My Client List Now
+              Reserve Your Spot
             </button>
           </div>
         </div>
@@ -408,18 +575,14 @@
 
       <!-- Testimonial Section -->
       <aside data-nosnippet class="main-flex">
-        <h2 class="right">Painting of Maggie</h2>
+        <h2 class="right">Loved by pet owners worldwide</h2>
         <blockquote class="testimonial-flex">
           <div class="testimonial-flex-item1">
             <p>
-              I wanted to capture a moment in time before it was lost. Now, it
-              is with me forever. Thank you, Katja, no one except you could have
-              visualized Maggie so well.
+              I wanted to capture a moment in time before it was lost. Now, it is with me forever.
+              Thank you, Katja, no one except you could have visualized Maggie so well.
             </p>
-            <p>
-              The shimmering light in the soft fur, the kindness in her eyes -
-              truly beautiful!
-            </p>
+            <p>The shimmering light in the soft fur, the kindness in her eyes - truly beautiful!</p>
             <p>Annika Lekman</p>
           </div>
           <div class="testimonial-flex-item2">
@@ -432,16 +595,243 @@
             />
           </div>
         </blockquote>
-        <div class="centered-button">
-          <button
-            onclick="window.location.href='/html/pet-portrait-testimonials.html'"
-            class="button"
-            title="View Gallery"
-          >
-            Read More Testimonials
-          </button>
-        </div>
+        <p>
+          Join pet lovers across Europe, North America, and beyond who've trusted me to tell their
+          companions' stories in oil and canvas.
+        </p>
       </aside>
+
+      <hr class="hr" />
+
+      <!-- FAQ section -->
+      <section id="faq" class="main-flex faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details>
+          <summary>
+            <span>How do I book and what does it cost?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Prices are by size, with custom sizes available. To save your spot, make a
+            <strong>2000 SEK deposit</strong> (this goes toward your total). See current sizes and
+            rates on
+            <a href="/html/pet-portrait-commission-prices.html">Prices &amp; How It Works</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>What styles do you offer?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            I paint detailed oil portraits and a new <em>painterly wet-on-wet</em> style (expressive
+            brushwork, limited launch pricing). <strong>Note:</strong> detailed oil pricing includes
+            free shipping; the launch offer does <strong>not</strong> include shipping.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>What payment schedule do you use?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            <strong>Deposit:</strong> 2000 SEK to join the queue.
+            <strong>Before I start:</strong> up to 50% (includes your deposit).
+            <strong>Final balance:</strong> after you approve the finished portrait.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>How long does it take and can you meet a deadline?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Commissions run on a first-come, first-served schedule. Shipping is
+            door-to-door—typically a few days within Europe and about
+            <strong>3-7 days worldwide</strong> (can be longer around Christmas). If you have a date
+            in mind, <a href="/html/contact-pet-portrait-artist.html">contact me</a> for current
+            availability.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>What photos do you need?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Your photos are pivotal, please send large, sharp, well-lit images. I'm happy to help
+            you choose. See <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a> or
+            <a href="/html/contact-pet-portrait-artist.html">ask me</a> for a quick consultation.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Will I see progress and can I request tweaks?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Yes. I share <strong>work-in-progress updates</strong> so you can give feedback as the
+            portrait develops. Minor finishing touches can be requested at the end.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>What's your cancellation policy?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Cancel within <strong>7 days</strong> of ordering for a full refund. After 7 days or
+            once work starts, a <strong>20-50% fee</strong> applies to cover time and materials.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Do you accept returns or offer refunds?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Custom art is <strong>non-returnable and non-refundable</strong>. If your portrait
+            arrives <strong>damaged</strong> or incorrect, I will
+            <strong>remake it free of charge</strong> - just report it within
+            <strong>7 days</strong> with photos of the packaging and artwork. See the full
+            <a href="/html/return-policy.html">Return &amp; Refund Policy</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Do you ship worldwide? What about costs and currency?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Yes, worldwide shipping via trusted carriers (e.g., FedEx Express). Detailed oil pricing
+            includes free shipping; the painterly wet-on-wet launch pricing excludes shipping.
+            Prices are listed in <strong>SEK</strong> - use the currency converter on the
+            <a href="/html/pet-portrait-commission-prices.html">Prices</a> page for an estimate.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Is this a good gift if I don't have photos yet?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Yes, choose a <strong>Gift Voucher</strong> so the recipient can provide photos later.
+            Packaging and shipping for the voucher are free.
+            <a href="/html/contact-pet-portrait-artist.html">Contact me</a> to arrange.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Who owns the copyright? Can I share my portrait online?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Copyright remains with the artist. You're welcome to display your portrait at home and
+            share photos online for personal use; commercial reproduction requires written
+            permission. See <a href="/html/terms-privacy.html">Terms &amp; Privacy</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>How do I start?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Message me with your favorite photos and size ideas, or just your budget. I'll suggest
+            the best option and reserve your spot.
+            <a href="/html/contact-pet-portrait-artist.html">
+              Join My Client List
+              <svg class="icon" aria-hidden="true" style="margin-left: 0.25em">
+                <use href="/assets/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </a>
+          </p>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- Additional Article with Images and Information -->
+      <section class="article-flex">
+        <div class="article-flex-item1">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/pet-portrait-artist-katja.webp"
+            alt="Pet portrait artist Katja Turnsek with her two dogs"
+            decoding="async"
+          />
+          <h2>About the artist</h2>
+          <h3>Meet Katja - Pet Portrait Artist with Heart</h3>
+          <p>
+            I'm a fine artist based near Gothenburg, Sweden. For over 25 years, I've helped families
+            memorialize their closest companions in oil.
+          </p>
+          <p>
+            My process is personal, collaborative, and quietly obsessive about the small things like
+            whiskers that catch the light, a particular tilt of the head, the glint of recognition
+            in the eye.
+          </p>
+        </div>
+
+        <div class="article-flex-item2">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/unboxing-finished-custom-petportrait.webp"
+            alt="Unboxing a finished custom pet portrait—archival packaging, ready to gift or hang"
+            decoding="async"
+          />
+          <h3>Ready to begin your custom pet portrait?</h3>
+          <p>Give your companion the tribute they deserve.</p>
+
+          <div class="centered-button">
+            <button
+              onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
+              class="button"
+              title="View Gallery"
+            >
+              Join My Client List Today
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -479,12 +869,7 @@
             </svg>
           </a>
         </div>
-        <button
-          onclick="topFunction()"
-          id="myBtn"
-          title="Go to top"
-          aria-label="Go to top"
-        >
+        <button onclick="topFunction()" id="myBtn" title="Go to top" aria-label="Go to top">
           <svg class="icon icon-lg" aria-hidden="true">
             <use href="/assets/icons.svg#icon-arrow-up"></use>
           </svg>
@@ -501,8 +886,7 @@
         /></a>
       </div>
       <div class="footer-flex-item wide wide2">
-        &copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by
-        Katja Turnsek
+        &copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja Turnsek
       </div>
     </footer>
 

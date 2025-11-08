@@ -1,6 +1,4 @@
-/* Hide element on Desktop */
 @media only screen and (min-width: 1200px) {
-  /* Navigation Desktop*/
   .burger {
     display: none;
   }
@@ -108,7 +106,6 @@
   }
 }
 
-/* Header */
 header {
   position: relative;
   height: 115px;
@@ -129,7 +126,6 @@ header {
   height: 73px;
 }
 
-/* Navigation */
 .toggler {
   display: none;
 }
@@ -146,7 +142,6 @@ nav {
   left: 0;
 }
 
-/* Desktop Section */
 body {
   color: var(--dark);
   background-color: var(--white);
@@ -161,7 +156,6 @@ main {
   width: 100%;
 }
 
-/* Main elements */
 .main-flex {
   width: 100%;
   max-width: 1200px;
@@ -205,7 +199,6 @@ main {
   border-bottom: 20px solid var(--grey);
 }
 
-/* Global elements */
 #myBtn {
   display: none;
   position: fixed;
@@ -317,12 +310,44 @@ main {
   min-height: 525px;
   padding: 0 60px;
   margin-bottom: 0;
+  text-align: left;
 }
 
 .main-img__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+
+.main-img .head-button {
+  margin-left: 60px;
+}
+
+.main-img__content {
+  max-width: 700px;
+  margin: 0;
+}
+
+.main-img__content {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 300;
+  margin: 0;
+  max-width: 60ch;
+  width: 100%;
+}
+
+.lead {
+  margin-left: 60px;
+  margin-top: 20px;
+  width: min(60ch, 100%);
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 300;
+}
+
+.main-img .lead strong {
+  font-weight: 600;
 }
 
 .main-img__bg picture,
@@ -334,40 +359,36 @@ main {
   display: block;
 }
 
-/* Desktop gradient overlay */
 .main-img::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.8) 23%,
-    rgba(138, 135, 53, 0) 56%
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 23%, rgba(138, 135, 53, 0) 56%);
   z-index: 1;
   pointer-events: none;
 }
 
-/* Text & CTA above lines/gradient */
 .main-img h1,
+.main-img h2,
+.main-img p,
 .main-img .head-button {
   position: relative;
   z-index: 3;
 }
 
-/* ---- VERTICAL LINES (on top of gradient) ---- */
 .main-img > .vert-lines {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: 0;
-  z-index: 2; /* above gradient, below text/CTA */
+  z-index: 2;
   pointer-events: none;
   border-left: 58px solid var(--orange);
-  /* Combine grow + fade for lines */
   opacity: 0;
-  animation: growFromBottom 3s ease-in-out forwards, fadeUp 400ms ease forwards;
+  animation:
+    growFromBottom 3s ease-in-out forwards,
+    fadeUp 400ms ease forwards;
   will-change: height, opacity, transform;
 }
 
@@ -379,7 +400,9 @@ main {
   right: 58px;
   border-left: 7px solid var(--white);
   opacity: 0;
-  animation: growFromBottom 2s ease-in-out forwards, fadeUp 400ms ease forwards;
+  animation:
+    growFromBottom 2s ease-in-out forwards,
+    fadeUp 400ms ease forwards;
   animation-delay: 0.5s, 0s;
   will-change: height, opacity, transform;
 }
@@ -392,7 +415,9 @@ main {
   right: 65px;
   border-left: 28px solid var(--green);
   opacity: 0;
-  animation: growFromBottom 4s ease-in-out forwards, fadeUp 400ms ease forwards;
+  animation:
+    growFromBottom 4s ease-in-out forwards,
+    fadeUp 400ms ease forwards;
   animation-delay: 0.5s, 0s;
   will-change: height, opacity, transform;
 }
@@ -419,8 +444,9 @@ main {
   }
 }
 
-/* ---- HERO overlays/text: CSS-only fade/slide on first paint ---- */
 .main-img h1,
+.main-img h2,
+.main-img p,
 .main-img .head-button {
   opacity: 0;
   transform: translateY(6px);
@@ -430,18 +456,24 @@ main {
 .main-img h1 {
   animation-delay: 120ms;
 }
+.main-img h2 {
+  animation-delay: 180ms;
+}
 .main-img .head-button {
   animation-delay: 240ms;
 }
+.main-img p {
+  animation-delay: 300ms;
+}
 
-/* Keep LCP image visible immediately */
 .main-img__bg img {
   opacity: 1;
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .main-img h1,
+  .main-img h2,
+  .main-img p,
   .main-img .head-button,
   .main-img > .vert-lines,
   .main-img > .vert-lines::before,
@@ -452,7 +484,96 @@ main {
   }
 }
 
-/* Footer */
+/* ===== FAQ ===== */
+.main-flex.faq {
+  padding-top: 10px;
+}
+
+.faq h2 {
+  font-family: "Oswald", serif;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+/* Item wrapper */
+.faq details {
+  border-top: 1px solid var(--dark);
+  background: var(--white);
+}
+
+/* Remove default marker */
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Clickable header */
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Oswald", serif;
+  font-size: 22px;
+  line-height: 30px;
+  color: var(--dark);
+  padding: 18px 0;
+  outline: none;
+  position: relative;
+}
+
+/* Hover/focus */
+.faq summary:hover {
+  color: var(--green);
+}
+.faq summary:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
+
+/* Right-aligned chevron using the same sprite icon */
+.faq summary::after {
+  content: "";
+  margin-left: auto;
+  width: 1.1em;
+  height: 1.1em;
+  background-color: currentColor;
+  -webkit-mask: url("/assets/icons.svg#icon-chevron-down") no-repeat center / contain;
+  mask: url("/assets/icons.svg#icon-chevron-down") no-repeat center / contain;
+  transition: transform 200ms ease;
+}
+
+.faq details[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.faq details > p {
+  margin: 0 0 18px 0;
+  padding: 0 0 18px 0;
+  font-size: 20px;
+  line-height: 35px;
+  color: var(--dark);
+  max-width: 70ch;
+}
+
+.faq details:last-of-type {
+  border-bottom: 1px solid var(--dark);
+}
+
+/* Tablet/phone tweaks */
+@media only screen and (max-width: 1199px) {
+  .faq summary {
+    font-size: 20px;
+    line-height: 28px;
+    padding: 16px 0;
+  }
+  .faq details > p {
+    font-size: 17px;
+    line-height: 28px;
+    max-width: none;
+  }
+}
+
 footer {
   width: 100%;
   position: relative;
@@ -524,8 +645,6 @@ footer ul {
   gap: 30px;
 }
 
-/* ===== SVG ICON NORMALIZATION & CONTEXT RULES ===== */
-
 .icon {
   width: 1em;
   height: 1em;
@@ -582,7 +701,6 @@ a .icon {
   transform: translateY(1px);
 }
 
-/* 8) Footer social icons */
 .footer-social a {
   display: inline-flex;
   align-items: center;
@@ -590,26 +708,22 @@ a .icon {
   line-height: 1;
 }
 .footer-social a .icon {
-  width: 2em; /* same as fa-2x */
+  width: 2em;
   height: 2em;
 }
 
-/* 9) Back-to-top button */
 #myBtn .icon {
-  width: 2em; /* same as fa-2x */
+  width: 2em;
   height: 2em;
 }
 
-/* 10) Prevent layout shifts around icons in buttons/links */
 .button .icon,
 .button-orange .icon,
 .head-button .icon {
   flex: 0 0 auto;
 }
 
-/* Hide element on Tablet/Phone */
 @media only screen and (max-width: 1199px) {
-  /* Header */
   header {
     height: 90px;
     min-height: 90px;
@@ -620,7 +734,6 @@ a .icon {
     height: auto;
   }
 
-  /* Navigation */
   .burger {
     position: absolute;
     display: flex;
@@ -683,9 +796,11 @@ a .icon {
     text-align: left;
     border-bottom: 1px solid var(--dark);
   }
+
   nav ul li:last-child {
     border-bottom: none;
   }
+
   nav ul li a {
     font-size: 18px;
     width: 100%;
@@ -695,6 +810,7 @@ a .icon {
   .dropdown {
     position: relative;
   }
+
   .dropdown li {
     margin-left: 0;
     border-bottom: none;
@@ -727,22 +843,34 @@ a .icon {
     width: 100%;
   }
 
-  /* Global elements */
+  #myBtn {
+    display: none !important;
+  }
+
   .main-img {
     min-height: 430px;
     padding: 0 30px;
   }
 
   .main-img::after {
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
-    );
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
   }
 
   .main-img__bg img {
     object-position: center center;
+  }
+
+  .main-img__content {
+    max-width: 100%;
+  }
+
+  .lead {
+    margin-left: 0;
+    font-size: 25px;
+  }
+
+  .main-img .head-button {
+    margin-left: 0;
   }
 
   .head-button {
@@ -775,7 +903,16 @@ a .icon {
     right: 55px;
   }
 
-  /* Footer */
+  .faq summary {
+    font-size: 18px;
+    line-height: 26px;
+    padding: 14px 0;
+  }
+  .faq details > p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
   footer {
     text-align: center;
     margin-top: 30px;
@@ -813,6 +950,7 @@ a .icon {
   .logo-header {
     padding-left: 30px;
   }
+
   .burger {
     position: absolute;
     display: flex;
@@ -831,9 +969,11 @@ a .icon {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
   }
+
   .main-flex {
     padding: 30px;
   }
+
   .article-flex {
     gap: 0;
     padding: 30px;
@@ -860,9 +1000,11 @@ a .icon {
   .vert-lines {
     border-left: 30px solid var(--orange);
   }
+
   .vert-lines:before {
     right: 30px;
   }
+
   .vert-lines:after {
     right: 37px;
   }
@@ -871,26 +1013,40 @@ a .icon {
     margin: 0 0 30px 0;
   }
 
-  /* Mobile hero overlay: uniform light wash */
   .main-img {
     min-height: 430px;
     padding: 0 30px;
   }
 
   .main-img::after {
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.4)
-    );
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
   }
 
   .main-img__bg img {
     object-position: center center;
   }
+
+  .main-img__content {
+    max-width: calc(100% - 90px);
+  }
+
+  footer ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  footer ul li {
+    width: 100%;
+  }
+
+  footer ul li a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+  }
 }
 
-/* Screen reader only */
 .sr-only {
   position: absolute;
   width: 1px;

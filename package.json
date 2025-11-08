@@ -6,13 +6,16 @@
   "scripts": {
     "build": "npm run build:css",
     "build:css": "postcss src/css/styles.css -o dist/styles.min.css",
-    "watch:css": "postcss src/css/styles.css -o dist/styles.min.css -w"
+    "watch:css": "postcss src/css/styles.css -o dist/styles.min.css -w",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "devDependencies": {
     "cssnano": "^7.1.2",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
-    "postcss-import": "^16.1.1"
+    "postcss-import": "^16.1.1",
+    "prettier": "^3.6.2"
   },
   "repository": {
     "type": "git",

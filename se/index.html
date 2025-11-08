@@ -1,10 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
 
-    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
+    <!-- Ikoner & PWA -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://pet-art.net/se/" />
+    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
+    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
+
+    <title>Handmålade djurporträtt i olja | 25+ år – Katja Turnsek</title>
+    <meta
+      name="description"
+      content="Ge deras historia en duk. Beställ ett handmålat djurporträtt i olja från ditt foto av Katja Turnsek. Museiklassade material och världsomspännande leverans. Begränsat antal platser – boka idag."
+    />
+
+    <!-- LCP-preloads (mobil & desktop) -->
     <link
       rel="preload"
       as="image"
@@ -24,29 +41,49 @@
       fetchpriority="high"
     />
 
-    <title>Djurporträtt av Katja | Föreviga din bästa vän i fin konst</title>
-
-    <!-- Canonical (non-www) -->
-    <link rel="canonical" href="https://pet-art.net/se/" />
-
-    <!-- Hreflang -->
-    <link rel="alternate" href="https://pet-art.net/se/" hreflang="sv" />
-    <link rel="alternate" href="https://pet-art.net/" hreflang="en" />
-    <link rel="alternate" href="https://pet-art.net/" hreflang="x-default" />
-
-    <!-- Social URL matches canonical -->
-    <meta property="og:url" content="https://pet-art.net/se/" />
-
-    <meta
-      name="description"
-      content="Förvandla din lurviga väns foto till ett levande, unikt konstmästerverk med mina handmålade djurporträtt. Gå med i min kundlista nu!"
-    />
-
-    <!-- Assets (root-absolute) -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- CSS -->
     <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
 
-    <!-- Google Fonts -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pet-art.net/se/" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
+    <meta property="og:title" content="Handmålade djurporträtt i olja | 25+ år – Katja Turnsek" />
+    <meta
+      property="og:description"
+      content="Ge deras historia en duk. Beställ ett handmålat djurporträtt i olja från ditt foto av Katja Turnsek. Museiklassade material och världsomspännande leverans. Begränsat antal platser – boka idag."
+    />
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Handmålat oljeporträtt av en hund på linnelduk av konstnären Katja Turnsek."
+    />
+    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:locale:alternate" content="en_GB" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Handmålade djurporträtt i olja | 25+ år – Katja Turnsek" />
+    <meta
+      name="twitter:description"
+      content="Ge deras historia en duk. Beställ ett handmålat djurporträtt i olja från ditt foto av Katja Turnsek. Museiklassade material och världsomspännande leverans. Begränsat antal platser – boka idag."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Handmålat oljeporträtt av en hund på linnelduk av konstnären Katja Turnsek."
+    />
+    <meta name="twitter:domain" content="pet-art.net" />
+
+    <!-- Google Fonts (icke-blockerande) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -62,15 +99,29 @@
       />
     </noscript>
 
+    <!-- Verifieringar (valfritt att visa även här) -->
+    <meta name="msvalidate.01" content="2154CBD7288F960A235467F56F34FF50" />
+    <meta name="google-site-verification" content="8qkdCEiXp3y_3GnkokwAWuULyIi1qx8L8QoLi9duJC4" />
+
+    <!-- JSON-LD: Organization (sammanfogad) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Pet Art With Heart",
+        "@id": "https://pet-art.net/#org",
         "url": "https://pet-art.net/",
+        "name": "Pet Art With Heart",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg"
+        },
+        "sameAs": [
+          "https://www.instagram.com/katjapetportraits",
+          "https://www.facebook.com/PetPortraitsArtist"
+        ],
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
-          "name": "Retur- och återbetalningspolicy — Beställda husdjursporträtt",
+          "name": "Retur- och återbetalningspolicy — Beställda djurporträtt",
           "merchantReturnLink": "https://pet-art.net/se/returpolicy.html",
           "applicableCountry": [
             "SE",
@@ -104,10 +155,148 @@
         }
       }
     </script>
+
+    <!-- JSON-LD: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://pet-art.net/#katja",
+        "name": "Katja Turnsek",
+        "url": "https://pet-art.net/",
+        "jobTitle": "Konstnär – djurporträtt i olja",
+        "knowsAbout": ["Oljemåleri", "Djurporträtt", "Djurkonst"],
+        "sameAs": [
+          "https://www.instagram.com/katjapetportraits",
+          "https://www.facebook.com/PetPortraitsArtist"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: Service (sv) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://pet-art.net/se/#custom-pet-portrait-service",
+        "name": "Beställningsporträtt i olja av husdjur",
+        "serviceType": "Konstuppdrag",
+        "description": "Handmålade oljeporträtt av hundar, katter och hästar från kundfoton. Klassisk realism eller mer målerisk, uttrycksfull stil.",
+        "inLanguage": "sv-SE",
+        "areaServed": { "@type": "Place", "name": "Hela världen" },
+        "provider": { "@type": "Person", "@id": "https://pet-art.net/#katja" },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://pet-art.net/se/priser-for-djurportratt.html",
+          "priceCurrency": "SEK",
+          "availability": "https://schema.org/LimitedAvailability"
+        }
+      }
+    </script>
+
+    <!-- JSON-LD: FAQ (sv) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://pet-art.net/se/#faq",
+        "inLanguage": "sv-SE",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Hur bokar jag och vad kostar det?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Priserna baseras på storlek och specialmått är möjliga. En handpenning på 2000 SEK reserverar din plats och dras av från totalsumman."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vilka stilar erbjuder du?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Detaljerade oljeporträtt eller en mer målerisk vått-i-vått-stil med uttrycksfulla penseldrag."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hur ser betalningsplanen ut?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "2000 SEK i handpenning för att gå in i kön; upp till 50 % innan målningen påbörjas (inklusive handpenningen); slutbetalning efter att du godkänt det färdiga porträttet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hur lång tid tar det och kan du hålla en deadline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Beställningar planeras i turordning. Frakt är dörr-till-dörr: vanligtvis några dagar inom Europa och cirka 3–7 dagar världen över (längre kring jul). Fråga om aktuell tillgänglighet om du har en deadline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vilka foton behöver du?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stora, skarpa och välbelysta bilder. Dina referenser är avgörande för likhet och detalj – jag hjälper dig gärna att välja de bästa."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Får jag se processen och kan jag önska justeringar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Du får uppdateringar under arbetets gång för feedback, och mindre slutjusteringar kan önskas i slutet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vad är din avbokningspolicy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Avboka inom 7 dagar från beställning för full återbetalning. Efter 7 dagar eller när arbetet påbörjats tillkommer en avgift på 20–50 % för att täcka tid och material."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Accepterar du returer eller återbetalningar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Måttbeställd konst kan inte returneras och återbetalas inte. Om porträttet anländer skadat eller felaktigt görs det om utan kostnad när det rapporteras inom 7 dagar med foton."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Skickar du världen över och hur funkar kostnader och valuta?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, världsomspännande via betrodda fraktbolag. Detaljerade oljeporträtt inkluderar fri frakt; lanseringspriset för den måleriska stilen exkluderar frakt. Priser anges i SEK – din banks växlingskurs kan tillkomma."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kan jag ge detta som present utan foton ännu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Presentkort låter mottagaren skicka in foton senare; paket och frakt för presentkortet ingår."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vem äger upphovsrätten och får jag dela mitt porträtt online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upphovsrätten ligger kvar hos konstnären. Du får gärna visa ditt porträtt i hemmet och dela foton online för privat bruk; kommersiell reproduktion kräver skriftligt tillstånd."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
-    <!-- Header with Navigation -->
+    <!-- Header med navigation -->
     <header>
       <a href="/se/">
         <img
@@ -118,61 +307,45 @@
           decoding="async"
         />
       </a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger" aria-label="Öppna meny">
         <span>
           <svg class="icon" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-bars"></use>
+            <use href="/assets/icons.svg#icon-bars"></use>
           </svg>
         </span>
         <span class="sr-only">Meny</span>
       </label>
+
       <nav aria-label="Primär navigation">
         <ul>
           <li class="active"><a href="/se/">Hem</a></li>
-          <li>
-            <!-- Rättad URL: bindestreck -->
-            <a href="/se/djurportratt-olja-galleri.html"
-              >Djurporträtt galleri</a
-            >
-          </li>
+          <li><a href="/se/djurportratt-olja-galleri.html">Djurporträtt galleri</a></li>
           <li class="dropdown">
             <a href="#">
               Beställningsinformation
               <svg class="icon" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+                <use href="/assets/icons.svg#icon-chevron-down"></use>
               </svg>
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <a href="/se/priser-for-djurportratt.html"
-                  >Priser och hur det fungerar</a
-                >
-              </li>
-              <li>
-                <a href="/se/djurportratt-kundreferenser.html"
-                  >Kundreferenser</a
-                >
-              </li>
-              <li>
-                <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>
-              </li>
+              <li><a href="/se/priser-for-djurportratt.html">Priser &amp; hur det fungerar</a></li>
+              <li><a href="/se/djurportratt-kundreferenser.html">Kundreferenser</a></li>
+              <li><a href="/se/foto-tips-portrattbestallning.html">Fototips</a></li>
             </ul>
           </li>
           <li><a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
-          <li>
-            <a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a>
-          </li>
+          <li><a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a></li>
           <li><a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Main Content -->
+    <!-- Huvudinnehåll -->
     <main>
-      <!-- Hero Section -->
+      <!-- Hero-sektion -->
       <section class="main-img">
-        <!-- LCP image (single <img> with srcset for best performance) -->
         <div class="main-img__bg" aria-hidden="true">
           <img
             id="hero-lcp"
@@ -188,81 +361,77 @@
             decoding="async"
             width="1200"
             height="800"
-            style="
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              object-position: center;
-            "
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
           />
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
+        <!-- överlägg ovanpå bilden -->
+        <div class="main-img__overlay" aria-hidden="true"></div>
 
-        <h1>Föreviga ditt husdjurs hjärta och själ med Katjas djurporträtt</h1>
+        <!-- dekorativa vertikala linjer -->
+        <figure class="vert-lines" aria-hidden="true"></figure>
 
-        <button
-          onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
-          class="head-button"
-          title="Kundlista"
-          aria-label="Gå med i min kundlista"
-        >
-          Gå med i min kundlista
-        </button>
+        <!-- översta innehåll -->
+        <div class="main-img__content">
+          <h1>Föreviga ditt husdjur med ett handmålat oljeporträtt</h1>
+          <p class="lead">
+            Handmålat av <strong>Katja Turnsek</strong> från ditt favoritfoto – över
+            <strong>25 år</strong> med beställningar, <strong>världsomspännande frakt</strong> och
+            museiklassade material.
+          </p>
+
+          <a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            class="head-button"
+            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+          >
+            Boka din plats
+          </a>
+        </div>
       </section>
 
-      <!-- Nyhetssektion -->
+      <!-- Nyhet -->
       <section class="news-offer">
         <div class="news-text">
           <h2 class="news">
-            <svg class="icon icon-inline icon-color" aria-hidden="true">
-              <use href="/assets/icons.svg?v=3#icon-palette"></use>
+            <svg class="icon icon-color" aria-hidden="true">
+              <use href="/assets/icons.svg#icon-palette"></use>
             </svg>
-            Nyhet: Karaktärsfulla djurporträtt i olja
+            Nyhet: Måleriska djurporträtt i olja
           </h2>
           <p>
-            Känslostarka och djärvt uttrycksfulla - fyllda med känsla och
-            karaktär. Varje porträtt skapas med vått-i-vått-teknik och levande,
-            medvetna penseldrag. Tar nu emot ett begränsat antal
-            lanseringsbeställningar.
-            <strong>
-              <a href="/se/priser-for-djurportratt.html">
-                Utforska stilen
-                <svg class="icon icon-inline" aria-hidden="true">
-                  <use href="/assets/icons.svg?v=3#icon-arrow-right"></use>
-                </svg>
-              </a>
-            </strong>
+            Måleriska oljeporträtt med uttrycksfulla penseldrag, rik färg och vått-i-vått-lager –
+            framtagna för att fånga din väns personlighet. Begränsat introduktionspris.
+            <a href="/se/priser-for-djurportratt.html">
+              Utforska den måleriska stilen
+              <svg class="icon" aria-hidden="true" style="margin-left: 0.25em">
+                <use href="/assets/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </a>
           </p>
         </div>
         <div class="news-image">
           <img
             src="/assets/images/painterly-pet-portraits.webp"
-            alt="Konstnärligt oljeporträtt av en hund målat i vått-i-vått-stil"
+            alt="Konstnärligt oljeporträtt av en hund i vått-i-vått-stil"
             loading="lazy"
             decoding="async"
-            width="900"
-            height="600"
           />
         </div>
       </section>
 
-      <!-- Introduction Article -->
+      <!-- Introduktion -->
       <section class="main-flex">
-        <h2>Varför välja beställningsporträtt av Katja</h2>
+        <h2>Varför välja mina porträtt</h2>
+        <h3>Handmålade djurporträtt i olja – en tidlös hyllning</h3>
         <p>
-          Oavsett om du har en majestätisk katt, en lojal hund eller en charmig
-          hamster, erbjuder <strong>djurporträtt</strong> ett perfekt sätt att
-          fånga och bevara den unika gemenskapen ni delar. Mina handmålade verk
-          skapas med stor omsorg för att fånga ditt husdjurs sanna personlighet.
-        </p>
-        <p>
-          Ditt foto förvandlas till en <strong>levande oljemålning</strong>.
-          <strong>Handmålade husdjursporträtt</strong> väcker varje detalj hos
-          din vän till liv och speglar både utseende och personlighet.
+          Ditt djurporträtt är inte en kopia av ett foto – det är ett levande konstverk som håller
+          ett ögonblick i tiden. Jag målar hundar, katter och hästar i olja på linne och förenar
+          realism med ljus, textur och karaktär så att du känner deras närvaro varje gång du går
+          förbi.
         </p>
 
-        <!-- Gallery Grid -->
+        <!-- Galleri -->
         <div class="gallery-grid">
           <figure class="gallery-item2 div1">
             <img
@@ -271,8 +440,6 @@
               alt="Hundporträtt av White Terrier"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="600"
             />
           </figure>
           <figure class="gallery-item2 div2">
@@ -282,19 +449,15 @@
               alt="Djurporträtt av Newfoundlandhund"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="600"
             />
           </figure>
           <figure class="gallery-item2 div3">
             <img
               class="image"
               src="/assets/images/framed-cat-painting.webp"
-              alt="Inramad oljemålning av katt"
+              alt="Inramad målning av katt"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="600"
             />
           </figure>
           <figure class="gallery-item2 div4">
@@ -304,30 +467,24 @@
               alt="Oljeporträtt av kanin"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="600"
             />
           </figure>
           <figure class="gallery-item2 div5">
             <img
               class="image"
               src="/assets/images/client-picture-cat-with-portrait.webp"
-              alt="Kundfoto av katt med porträtt"
+              alt="Kundfoto: katt med porträtt"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="600"
             />
           </figure>
           <figure class="gallery-item2 div6">
             <img
               class="image"
               src="/assets/images/horse-painting-in-progress.webp"
-              alt="Häst - oljemålning under arbete"
+              alt="Hästmålning under arbete"
               loading="lazy"
               decoding="async"
-              width="600"
-              height="600"
             />
           </figure>
         </div>
@@ -345,69 +502,62 @@
 
       <hr class="hr" />
 
-      <!-- Additional Article with Images and Information -->
+      <!-- Mer information -->
       <section class="article-flex">
         <div class="article-flex-item1">
           <img
             class="img"
             loading="lazy"
-            decoding="async"
             src="/assets/images/portrait-oil-newfounlands.webp"
-            alt="Oljemålning av två Newfoundlandhundar"
-            width="900"
-            height="600"
+            alt="Oljeporträtt av två Newfoundlandhundar"
+            decoding="async"
           />
-          <h2>Släpp lös magin: Upptäck konstens mästerliga värld</h2>
-          <p>
-            Jag heter Katja Turnsek och är en konstnär bosatt utanför Göteborg.
-          </p>
-          <p>
-            Jag specialiserar mig på <strong>handmålade djurporträtt</strong> -
-            med detaljer och konstnärlig känsla skapar jag verk som blir
-            <strong>tidlösa minnen av din vän</strong>.
-          </p>
-          <p>
-            Varje penseldrag är fyllt av omsorg och engagemang för att
-            <strong>fånga ditt husdjurs själ</strong>.
-          </p>
-          <p>
-            Vill du hedra en nuvarande vän eller skapa en hyllning till en som
-            gått bort? Mina beställningsporträtt firar deras närvaro i ditt liv.
-          </p>
-          <p>
-            Varje porträtt skapas med passion och precision - ett ovärderligt
-            arvegods för kommande generationer.
-          </p>
+          <h2>Vad som gör mitt arbete annorlunda</h2>
+          <ul class="wet-bullets">
+            <li>
+              <strong>Konst i olja, inga mallar</strong> – varje komposition utformas för ditt djur
+            </li>
+            <li>
+              <strong>Målerisk stil som val</strong> – uttrycksfull vått-i-vått (begränsade platser)
+            </li>
+            <li><strong>Från dina foton</strong> – jag hjälper dig att välja bästa referensen</li>
+            <li>
+              <strong>Klart för inramning eller upphängning</strong> – fernissad för skydd och djup
+            </li>
+            <li><strong>Leverans världen över</strong> – säker, spårbar och noggrant packad</li>
+          </ul>
         </div>
 
         <div class="article-flex-item2">
           <img
             class="img"
             loading="lazy"
-            decoding="async"
             src="/assets/images/pet-portrait-artist-painting.webp"
-            alt="Konstnär målar en katt i olja"
-            width="900"
-            height="600"
+            alt="Konstnär som målar en katt i olja"
+            decoding="async"
           />
-          <h2>Förvandla ditt foto till ett handmålat djurporträtt</h2>
-          <p>Upptäck skönheten i handmålade djurporträtt.</p>
+          <h2>Så går det till (4 enkla steg)</h2>
+          <ul class="wet-bullets">
+            <li>
+              <strong>Skicka foton</strong> – jag hjälper dig att välja den starkaste referensen
+            </li>
+            <li><strong>Välj storlek</strong> – och klassisk eller målerisk stil</li>
+            <li><strong>Godkänn skiss/komposition</strong> – innan färg når duken</li>
+            <li>
+              <strong>Ta emot ditt porträtt</strong> – handmålat, fernissat och fyllt av hjärta
+            </li>
+          </ul>
           <p>
-            Låt mig förvandla ditt foto till en extraordinär oljemålning som för
-            alltid påminner om bandet ni delar.
-          </p>
-          <p>
-            <strong>Så funkar det:</strong> Gå med i min kundlista och dela dina
-            idéer och önskemål.
+            <i>Obs:</i> Tillgängligheten är begränsad – jag tar bara emot ett fåtal beställningar åt
+            gången.
           </p>
           <div class="centered-button">
             <button
               onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
               class="button"
-              title="Gå med i kundlista"
-              aria-label="Gå med i min kundlista nu"
+              title="Boka din plats"
             >
-              Gå med i min kundlista nu
+              Boka din plats
             </button>
           </div>
         </div>
@@ -415,45 +565,264 @@
 
       <hr class="hr" />
 
-      <!-- Testimonial Section -->
+      <!-- Omdöme -->
       <aside data-nosnippet class="main-flex">
-        <h2 class="right">Målning av Maggie</h2>
+        <h2 class="right">Älskat av djurägare världen över</h2>
         <blockquote class="testimonial-flex">
           <div class="testimonial-flex-item1">
             <p>
-              I wanted to capture a moment in time before it was lost. Now, it
-              is with me forever. Thank you, Katja, no one except you could have
-              visualized Maggie so well.
+              I wanted to capture a moment in time before it was lost. Now, it is with me forever.
+              Thank you, Katja, no one except you could have visualized Maggie so well.
             </p>
-            <p>
-              The shimmering light in the soft fur, the kindness in her eyes -
-              truly beautiful!
-            </p>
+            <p>The shimmering light in the soft fur, the kindness in her eyes - truly beautiful!</p>
             <p>Annika Lekman</p>
           </div>
           <div class="testimonial-flex-item2">
             <img
               class="testimonial-img"
               loading="lazy"
-              decoding="async"
               src="/assets/images/pet-portrait-client-photo.webp"
-              alt="Hund med porträtt - kundreferens"
-              width="600"
-              height="600"
+              alt="Hund med porträtt – kundomdöme"
+              decoding="async"
             />
           </div>
         </blockquote>
-        <div class="centered-button">
-          <button
-            onclick="window.location.href='/se/djurportratt-kundreferenser.html'"
-            class="button"
-            title="Kundreferenser"
-            aria-label="Läs fler referenser"
-          >
-            Läs fler referenser
-          </button>
-        </div>
+        <p>
+          Förena dig med djurälskare i Europa, Nordamerika och längre bort som anförtrott mig att
+          berätta deras vänners historier i olja och på duk.
+        </p>
       </aside>
+
+      <hr class="hr" />
+
+      <!-- Vanliga frågor -->
+      <section id="faq" class="main-flex faq">
+        <h2>Vanliga frågor</h2>
+
+        <details>
+          <summary>
+            <span>Hur bokar jag och vad kostar det?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Priserna baseras på storlek och specialmått är möjliga. För att säkra en plats betalar
+            du <strong>2000 SEK i handpenning</strong> (dras av från totalen). Se aktuella storlekar
+            och priser på
+            <a href="/se/priser-for-djurportratt.html">Priser &amp; hur det fungerar</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Vilka stilar erbjuder du?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Jag målar detaljerade oljeporträtt och en ny <em>målerisk vått-i-vått-stil</em>
+            (uttrycksfulla penseldrag, introduktionspris).
+            <strong>Obs:</strong> detaljerade oljeporträtt inkluderar fri frakt;
+            lanseringserbjudandet för den måleriska stilen <strong>inkluderar inte</strong> frakt.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Hur ser betalningsplanen ut?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            <strong>Handpenning:</strong> 2000 SEK för plats i kön.
+            <strong>Innan start:</strong> upp till 50 % (inkl. handpenning).
+            <strong>Slutbetalning:</strong> efter att du godkänt det färdiga porträttet.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Hur lång tid tar det och kan du hålla en deadline?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Beställningar hanteras i turordning. Frakt är dörr-till-dörr—vanligtvis några dagar inom
+            Europa och cirka <strong>3–7 dagar världen över</strong> (längre kring jul). Har du ett
+            datum i åtanke? <a href="/se/kontakta-djurportratt-konstnar.html">Kontakta mig</a>
+            för aktuell tillgänglighet.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Vilka foton behöver du?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Stora, skarpa och välbelysta bilder. Jag hjälper gärna till att välja. Se
+            <a href="/se/foto-tips-portrattbestallning.html">Fototips</a> eller
+            <a href="/se/kontakta-djurportratt-konstnar.html">hör av dig</a> för snabb rådgivning.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Får jag se processen och kan jag önska justeringar?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Ja. Jag delar <strong>uppdateringar under arbetet</strong> så du kan ge feedback medan
+            porträttet växer fram. Mindre slutjusteringar kan önskas i slutet.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Vad är din avbokningspolicy?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Avboka inom <strong>7 dagar</strong> från beställning för full återbetalning. Efter 7
+            dagar eller när arbetet påbörjats tillkommer en avgift på <strong>20–50 %</strong> för
+            att täcka tid och material.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Accepterar du returer eller återbetalningar?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Måttbeställd konst är <strong>inte returnerbar och återbetalas inte</strong>. Om ditt
+            porträtt anländer <strong>skadat</strong> eller felaktigt görs det om utan kostnad –
+            rapportera inom <strong>7 dagar</strong> med foton. Se
+            <a href="/se/returpolicy.html">Returpolicy</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Skickar du världen över? Kostnader och valuta?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Ja, världsomspännande leverans via betrodda transportörer (t.ex. FedEx Express).
+            Detaljerade oljeporträtt inkluderar fri frakt; lanseringspriset för den måleriska stilen
+            exkluderar frakt. Priser anges i <strong>SEK</strong> — använd valutaväxlaren på
+            <a href="/se/priser-for-djurportratt.html">Priser</a> för en uppskattning.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Är detta en bra present om jag saknar foton än?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Ja, välj <strong>Presentkort</strong> så kan mottagaren skicka foton senare. Paket och
+            frakt för presentkortet ingår.
+            <a href="/se/kontakta-djurportratt-konstnar.html">Kontakta mig</a> för att ordna.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Vem äger upphovsrätten? Får jag dela mitt porträtt online?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Upphovsrätten ligger kvar hos konstnären. Du är välkommen att visa ditt porträtt hemma
+            och dela foton online för privat bruk; kommersiell reproduktion kräver skriftligt
+            tillstånd. Se <a href="/se/villkor.html">Villkor</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Hur börjar jag?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Skicka dina favoritfoton och storleksidéer – eller bara din budget. Jag föreslår bästa
+            alternativet och reserverar din plats.
+            <a href="/se/kontakta-djurportratt-konstnar.html">
+              Gå med i kundlistan
+              <svg class="icon" aria-hidden="true" style="margin-left: 0.25em">
+                <use href="/assets/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </a>
+          </p>
+        </details>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- Om konstnären / uppmaning -->
+      <section class="article-flex">
+        <div class="article-flex-item1">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/pet-portrait-artist-katja.webp"
+            alt="Konstnären Katja Turnsek med sina två hundar"
+            decoding="async"
+          />
+          <h2>Om konstnären</h2>
+          <h3>Möt Katja – djurporträtt med hjärta</h3>
+          <p>
+            Jag är en konstnär baserad nära Göteborg. I över 25 år har jag hjälpt familjer att
+            föreviga sina närmaste följeslagare i olja.
+          </p>
+          <p>
+            Processen är personlig, samarbetsinriktad och noggrann in i minsta detalj – från morrhår
+            som fångar ljuset till den där speciella blicken av igenkänning.
+          </p>
+        </div>
+
+        <div class="article-flex-item2">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/unboxing-finished-custom-petportrait.webp"
+            alt="Uppackning av färdigt beställningsporträtt – arkivbeständig förpackning, redo att ge bort eller hänga upp"
+            decoding="async"
+          />
+          <h3>Redo att börja ditt beställningsporträtt?</h3>
+          <p>Ge din vän den hyllning hen förtjänar.</p>
+
+          <div class="centered-button">
+            <button
+              onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
+              class="button"
+              title="Boka din plats"
+            >
+              Gå med i min kundlista idag
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -462,13 +831,13 @@
         <h3 class="footer-headline">Meny</h3>
         <ul>
           <li><a href="/se/villkor.html">Villkor</a></li>
-          <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
           <li><a href="/se/returpolicy.html">Returpolicy</a></li>
-          <li><a href="/" hreflang="en" lang="en">Engelska</a></li>
+          <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
+          <li><a href="/" hreflang="en" lang="en">English</a></li>
         </ul>
       </div>
       <div class="footer-flex-item">
-        <h3 class="footer-headline">Bli social</h3>
+        <h3 class="footer-headline">Följ mig</h3>
         <div class="footer-social">
           <a
             title="Facebook"
@@ -477,7 +846,7 @@
             aria-label="Facebook"
           >
             <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-facebook"></use>
+              <use href="/assets/icons.svg#icon-facebook"></use>
             </svg>
           </a>
           <a
@@ -487,18 +856,13 @@
             aria-label="Instagram"
           >
             <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-instagram"></use>
+              <use href="/assets/icons.svg#icon-instagram"></use>
             </svg>
           </a>
         </div>
-        <button
-          onclick="topFunction()"
-          id="myBtn"
-          title="Till toppen"
-          aria-label="Till toppen"
-        >
+        <button onclick="topFunction()" id="myBtn" title="Till toppen" aria-label="Till toppen">
           <svg class="icon icon-lg" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
+            <use href="/assets/icons.svg#icon-arrow-up"></use>
           </svg>
         </button>
       </div>
@@ -507,21 +871,18 @@
           <img
             class="footer-logo"
             loading="lazy"
-            decoding="async"
             src="/assets/images/petart-logotype-bw.svg"
             alt="Pet Art with Heart logotyp"
-            width="220"
-            height="60"
+            decoding="async"
           />
         </a>
       </div>
       <div class="footer-flex-item wide wide2">
-        &copy; 2025 - Alla rättigheter förbehållna | Pet Art with Heart |
-        Webbsida av Katja Turnsek
+        &copy; 2025 – Alla rättigheter förbehållna | Pet Art with Heart | Webbplats av Katja Turnsek
       </div>
     </footer>
 
-    <!-- Scripts (root-absolute) -->
+    <!-- JS -->
     <script defer src="/src/js/analytics.js"></script>
     <script defer src="/src/js/up.js"></script>
   </body>

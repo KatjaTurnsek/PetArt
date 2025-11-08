@@ -5,9 +5,7 @@
 
   // Do Not Track respect
   const dnt =
-    navigator.doNotTrack === "1" ||
-    window.doNotTrack === "1" ||
-    navigator.msDoNotTrack === "1";
+    navigator.doNotTrack === "1" || window.doNotTrack === "1" || navigator.msDoNotTrack === "1";
 
   // dataLayer + gtag shim
   window.dataLayer = window.dataLayer || [];
@@ -21,9 +19,7 @@
   (function loadTag() {
     const s = document.createElement("script");
     s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
-      GA_ID
-    )}`;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
     document.head.appendChild(s);
   })();
 
