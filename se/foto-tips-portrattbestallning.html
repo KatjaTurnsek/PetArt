@@ -176,7 +176,6 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-photo-tips">
-        <!-- LCP image (single <img> with srcset for best performance) -->
         <div class="main-img__bg" aria-hidden="true">
           <img
             id="hero-lcp"
@@ -196,17 +195,24 @@
           />
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
+        <div class="main-img__overlay" aria-hidden="true"></div>
+        <figure class="vert-lines" aria-hidden="true"></figure>
 
-        <h1>Fototips och kvalitetskrav för djurporträtt</h1>
+        <div class="main-img__content">
+          <h1>Fototips för djurporträtt</h1>
+          <p class="lead">
+            Få ut det bästa av ditt handmålade porträtt: lär dig vinklar, ljus och bildkvalitet som
+            gör störst skillnad för resultatet.
+          </p>
 
-        <button
-          onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
-          class="head-button"
-          title="Kundlista"
-        >
-          Gå med i min kundlista
-        </button>
+          <a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            class="head-button"
+            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+          >
+            Gå med i min kundlista
+          </a>
+        </div>
       </section>
 
       <!-- Introduction Article -->

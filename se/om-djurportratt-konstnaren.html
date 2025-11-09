@@ -178,38 +178,43 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-about">
-        <!-- LCP image (desktop + mobile) -->
         <div class="main-img__bg" aria-hidden="true">
-          <picture>
-            <!-- Mobile -->
-            <source
-              media="(max-width: 768px)"
-              type="image/webp"
-              srcset="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp"
-            />
-            <!-- Desktop/default -->
-            <img
-              src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
-              alt="Djurporträttkonstnären Katja Turnsek i ateljén"
-              fetchpriority="high"
-              decoding="async"
-              width="1200"
-              height="800"
-            />
-          </picture>
+          <img
+            id="hero-lcp"
+            src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+            srcset="
+              /assets/images/pet-portrait-artist-katja-turnsek-mobile.webp  768w,
+              /assets/images/pet-portrait-artist-katja-turnsek.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Djurporträttkonstnären Katja Turnsek i ateljén"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            width="1200"
+            height="800"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+          />
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
+        <div class="main-img__overlay" aria-hidden="true"></div>
+        <figure class="vert-lines" aria-hidden="true"></figure>
 
-        <h1>Djurporträttkonstnär Katja Turnsek – Pet Art with Heart</h1>
+        <div class="main-img__content">
+          <h1>Djurporträttkonstnär Katja Turnsek</h1>
+          <p class="lead">
+            25+ års erfarenhet av realistiska oljemålningar - med fokus på närvaro, ljus och
+            personlighet.
+          </p>
 
-        <button
-          onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
-          class="head-button"
-          title="Kundlista"
-        >
-          Gå med i min kundlista
-        </button>
+          <a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            class="head-button"
+            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+          >
+            Gå med i min kundlista
+          </a>
+        </div>
       </section>
 
       <!-- Introduction Article -->

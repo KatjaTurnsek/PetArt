@@ -175,7 +175,6 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-about">
-        <!-- LCP image (desktop + mobile) -->
         <div class="main-img__bg">
           <img
             id="hero-lcp"
@@ -185,7 +184,7 @@
               /assets/images/pet-portrait-artist-katja-turnsek.webp        1200w
             "
             sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Pet portrait artist Katja Turnsek in the studio"
+            alt="Pet portrait artist Katja Turnsek in her studio"
             fetchpriority="high"
             loading="eager"
             width="1200"
@@ -194,17 +193,26 @@
           />
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
+        <div class="main-img__overlay" aria-hidden="true"></div>
 
-        <h1>Pet Portrait Artist Katja Turnsek: Pet Art with Heart</h1>
+        <figure class="vert-lines" aria-hidden="true"></figure>
 
-        <button
-          onclick="window.location.href='/html/contact-pet-portrait-artist.html'"
-          class="head-button"
-          title="Join client list"
-        >
-          Join My Client List Now
-        </button>
+        <div class="main-img__content">
+          <h1>About Pet Portrait Artist Katja Turnsek</h1>
+          <p class="lead">
+            I create lifelike pet portraits with heart—blending classic realism and a more
+            <strong>painterly</strong> option. With <strong>25+ years</strong> of commissions, I
+            paint in archival oils on fine linen, capturing true character and presence.
+          </p>
+
+          <a
+            href="/html/contact-pet-portrait-artist.html"
+            class="head-button"
+            aria-label="Contact the artist — ask a question or join the client list"
+          >
+            Contact the Artist
+          </a>
+        </div>
       </section>
 
       <!-- Introduction Article -->

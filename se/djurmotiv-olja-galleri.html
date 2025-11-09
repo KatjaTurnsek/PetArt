@@ -175,36 +175,51 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-shop">
+        <!-- LCP image (desktop + mobile) -->
         <div class="main-img__bg" aria-hidden="true">
-          <img
-            id="hero-lcp"
-            src="/assets/images/wildlife-art-for-sale.webp"
-            srcset="
-              /assets/images/wildlife-art-for-sale-mobile.webp  768w,
-              /assets/images/wildlife-art-for-sale.webp        1200w
-            "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Originalmålning i olja med vilda djur - redo för försäljning"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-            width="1200"
-            height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
-          />
+          <picture>
+            <!-- Mobile -->
+            <source
+              media="(max-width: 768px)"
+              type="image/webp"
+              srcset="/assets/images/wildlife-art-for-sale-mobile.webp"
+            />
+            <!-- Desktop/default -->
+            <img
+              id="hero-lcp"
+              src="/assets/images/wildlife-art-for-sale.webp"
+              alt="Originalmålning i olja med vilda djur - redo för försäljning"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+              width="1200"
+              height="800"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+            />
+          </picture>
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
+        <!-- Mjuk gradient-overlay (tätare till vänster) -->
+        <div class="main-img__overlay" aria-hidden="true"></div>
 
-        <h1>Upptäck fängslande djurmotiv: Originalmålningar till salu</h1>
+        <figure class="vert-lines" aria-hidden="true"></figure>
 
-        <button
-          onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
-          class="head-button"
-          title="Köp konst"
-        >
-          Köp konst
-        </button>
+        <!-- Flexibel innehållskolumn (låter heron växa vertikalt vid mer text) -->
+        <div class="main-img__content">
+          <h1>Upptäck fängslande djurmotiv: Originalmålningar till salu</h1>
+          <p class="lead">
+            Ett fåtal original i olja direkt från ateljén - uttrycksfulla penseldrag, ljus och
+            rörelse. Priser i SEK, med valutaväljare längre ned.
+          </p>
+          <a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            class="head-button"
+            title="Köp konst eller fråga om tillgänglighet"
+            aria-label="Köp konst eller fråga om tillgänglighet"
+          >
+            Köp konst
+          </a>
+        </div>
       </section>
 
       <!-- Introduction Article -->

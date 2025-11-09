@@ -174,7 +174,7 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-testimonials">
-        <div class="main-img__bg" aria-hidden="true">
+        <div class="main-img__bg">
           <img
             id="hero-lcp"
             src="/assets/images/pet-oil-portrait-testimonials.webp"
@@ -193,17 +193,24 @@
           />
         </div>
 
-        <figure title="Lines Animation" class="vert-lines"></figure>
+        <div class="main-img__overlay" aria-hidden="true"></div>
+        <figure class="vert-lines" aria-hidden="true"></figure>
 
-        <h1>Kundberättelser: Hjärtliga kundomdömen som värmer själen</h1>
+        <div class="main-img__content">
+          <h1>Kundberättelser &amp; bilder från nöjda kunder</h1>
+          <p class="lead">
+            Äkta omdömen från djurälskare världen över - unboxningar, glädjetårar och tavlor som
+            stolt hänger hemma. Se varför familjer väljer <strong>Pet Art with Heart</strong>.
+          </p>
 
-        <button
-          onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
-          class="head-button"
-          title="Kundlista"
-        >
-          Gå med i min kundlista
-        </button>
+          <a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            class="head-button"
+            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+          >
+            Gå med i min kundlista
+          </a>
+        </div>
       </section>
 
       <!-- Testimonial Section -->
