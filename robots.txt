@@ -5,5 +5,7 @@ Disallow: /400.html
 Disallow: /404.html
 Disallow: /500.html
 Disallow: /html/petart-with-heart-sitemap.html
+Disallow: /html/thank-you.html
+Disallow: /se/tack.html
 
 Sitemap: https://pet-art.net/sitemap.xml

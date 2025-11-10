@@ -3,18 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
 
-    <!-- ===== LCP preload FIRST ===== -->
+    <!-- ===== LCP preloads FIRST (desktop + mobile) ===== -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/contact-pet-portrait-artist-mobile.webp"
+      media="(max-width: 768px)"
+      imagesrcset="/assets/images/contact-pet-portrait-artist-mobile.webp 768w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
     <link
       rel="preload"
       as="image"
       href="/assets/images/contact-pet-portrait-artist.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/contact-pet-portrait-artist.webp 1200w"
+      imagesizes="1200px"
       fetchpriority="high"
     />
 
-    <title>Contact Pet Portrait Artist - Join My Client List Today</title>
+    <title>Contact Pet Portrait Artist | Reserve Your Spot - Katja Turnsek</title>
 
-    <!-- Canonical (non-www) -->
+    <!-- Canonical -->
     <link rel="canonical" href="https://pet-art.net/html/contact-pet-portrait-artist.html" />
 
     <!-- Hreflang -->
@@ -28,16 +41,53 @@
       href="https://pet-art.net/se/kontakta-djurportratt-konstnar.html"
       hreflang="sv"
     />
-
-    <!-- Social URL matches canonical -->
-    <meta property="og:url" content="https://pet-art.net/html/contact-pet-portrait-artist.html" />
-
-    <meta
-      name="description"
-      content="Commission your pet portrait today. Secure your spot—Katja's list fills quickly. Email to begin."
+    <link
+      rel="alternate"
+      href="https://pet-art.net/html/contact-pet-portrait-artist.html"
+      hreflang="x-default"
     />
 
-    <!-- Assets (root-absolute) -->
+    <!-- SEO Description -->
+    <meta
+      name="description"
+      content="Ready to commission a custom oil portrait? Email Katja to join the client list. Quick reply, simple steps, worldwide shipping. Deposit 2000 SEK."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:url" content="https://pet-art.net/html/contact-pet-portrait-artist.html" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Contact Pet Portrait Artist | Reserve Your Spot - Katja Turnsek"
+    />
+    <meta
+      property="og:description"
+      content="Email Katja to join the client list. Simple 4-step process, museum-grade materials, worldwide shipping. Deposit 2000 SEK."
+    />
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
+
+    <!-- Twitter (optional but harmless) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Contact Pet Portrait Artist | Reserve Your Spot - Katja Turnsek"
+    />
+    <meta
+      name="twitter:description"
+      content="Join the client list for a hand-painted oil portrait. Quick reply, simple steps, worldwide shipping."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+
+    <!-- Assets -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
 
@@ -57,6 +107,7 @@
       />
     </noscript>
 
+    <!-- Org-level policy (kept) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -99,10 +150,88 @@
         }
       }
     </script>
+
+    <!-- Person (Katja) so we can link ContactPage provider -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://pet-art.net/#katja",
+        "name": "Katja Turnsek",
+        "url": "https://pet-art.net/",
+        "jobTitle": "Pet Portrait Artist",
+        "sameAs": [
+          "https://www.instagram.com/katjapetportraits",
+          "https://www.facebook.com/PetPortraitsArtist"
+        ],
+        "knowsAbout": ["Oil Painting", "Pet Portraits", "Animal Art"]
+      }
+    </script>
+
+    <!-- ContactPage schema with ContactPoint -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Pet Portrait Artist",
+        "url": "https://pet-art.net/html/contact-pet-portrait-artist.html",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://pet-art.net/assets/images/contact-pet-portrait-artist.webp"
+        },
+        "about": {
+          "@type": "Service",
+          "name": "Custom Pet Portraits in Oil",
+          "provider": { "@id": "https://pet-art.net/#katja" },
+          "areaServed": { "@type": "Place", "name": "Worldwide" }
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "katja@pet-art.net",
+          "availableLanguage": ["English", "Swedish"],
+          "areaServed": "Worldwide"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://pet-art.net/html/contact-pet-portrait-artist.html#quick-answers",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What will you need from me to get started?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "High-quality photos (or links), your size idea or budget, and whether you prefer classic realism or the painterly option."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you help me choose photos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Send a few favorites and I'll recommend the strongest reference. See Photo Tips at https://pet-art.net/html/photo-tips-portrait-commissions.html."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you accept tight deadlines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sometimes, depending on schedule. Email me with your date and I'll confirm availability."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
-    <!-- Header with Navigation (unified) -->
+    <!-- Header with Navigation -->
     <header>
       <a href="/"
         ><img
@@ -154,60 +283,226 @@
           <li>
             <a href="/html/about-pet-portrait-artist.html">About Artist</a>
           </li>
-          <li class="active">
-            <a href="/html/contact-pet-portrait-artist.html">Contact</a>
-          </li>
+          <li class="active"><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- Main Content -->
     <main>
-      <hr class="hr-contact" />
+      <!-- Hero Section -->
+      <section class="main-img main-img-about">
+        <div class="main-img__bg">
+          <img
+            id="hero-lcp"
+            src="/assets/images/contact-pet-portrait-artist.webp"
+            srcset="
+              /assets/images/contact-pet-portrait-artist-mobile.webp  768w,
+              /assets/images/contact-pet-portrait-artist.webp        1200w
+            "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="Artist hand with brush painting a dog"
+            fetchpriority="high"
+            loading="eager"
+            width="1200"
+            height="800"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
+          />
+        </div>
+
+        <div class="main-img__overlay" aria-hidden="true"></div>
+
+        <figure class="vert-lines" aria-hidden="true"></figure>
+
+        <div class="main-img__content">
+          <h1>Start Your Custom Pet Portrait</h1>
+          <p class="lead">
+            Join my client list to reserve a date. Send a quick message and I'll reply with secure
+            payment details and simple next steps.
+          </p>
+
+          <div class="cta-row">
+            <a
+              href="#contact-form"
+              class="head-button"
+              aria-label="Jump to the contact form to reserve your spot"
+            >
+              Reserve Your Spot
+            </a>
+          </div>
+        </div>
+      </section>
 
       <!-- Introduction Article -->
       <section class="contact-flex">
         <div class="contact-flex-item1">
-          <h1 class="contact">Join My Client List: Order Your Pet Portrait Now</h1>
-          <p>
-            Order your portrait by joining my client list.
-            <strong>Send me a message</strong> and I'll reply with secure payment details.
-          </p>
-          <h2 class="contact">Let's bring your vision to life together!</h2>
-          <p>To <strong>buy Original Wildlife Artwork</strong>, simply email me.</p>
+          <h2>How to Book</h2>
+          <ol class="numbered-steps">
+            <li><strong>Email or use the form</strong> with a few photos (links are fine).</li>
+            <li>
+              <strong>We confirm the concept</strong> (size, style: classic or painterly,
+              background).
+            </li>
+            <li>
+              <strong>Reserve your date</strong> with a 2,000 SEK deposit (deducted from the total).
+            </li>
+            <li>
+              <strong>Paint & updates</strong> - I'll share work-in-progress for your feedback.
+            </li>
+            <li>
+              <strong>Approve & ship</strong> - varnished, securely packed, shipped worldwide.
+            </li>
+          </ol>
 
-          <h3 class="contact">
-            Email:
-            <a
-              class="contact"
-              href="mailto:katja@pet-art.net?subject=Inquiry%20Artwork%20by%20Katja%20Turnsek"
-              >katja@pet-art.net</a
-            >
-          </h3>
+          <h3>What to Include</h3>
+          <ul class="wet-bullets">
+            <li>Best photos (or links) - eyes sharp, natural light if possible</li>
+            <li>Preferred size (or a budget range)</li>
+            <li>Style: <em>classic realism</em> or <em>painterly</em></li>
+            <li>Any deadline or gift date</li>
+          </ul>
+
+          <h3>Good to Know</h3>
+          <ul class="wet-bullets">
+            <li><strong>Deposit:</strong> 2,000 SEK to reserve (PayPal/cards accepted)</li>
+            <li>
+              <strong>Timing:</strong> first-come-first-served; gifts welcome - ask for availability
+            </li>
+            <li><strong>Shipping:</strong> worldwide, tracked; careful archival packaging</li>
+            <li><strong>Materials:</strong> museum-grade oils on fine linen canvas</li>
+          </ul>
         </div>
 
         <div class="contact-flex-item2">
+          <h2>Contact Options</h2>
           <p>
-            <img
-              class="image"
-              src="/assets/images/contact-pet-portrait-artist.webp"
-              alt="Painting a dog portrait"
-              width="1200"
-              height="800"
-              loading="eager"
-              fetchpriority="high"
-            />
+            <strong>Email:</strong>
+            <a
+              href="mailto:katja@pet-art.net?subject=Pet%20Portrait%20Inquiry&body=Hi%20Katja%2C%0A%0AI%27d%20like%20to%20commission%20a%20portrait.%20Here%20are%20a%20few%20details%3A%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A%0A%0AThanks!"
+            >
+              katja@pet-art.net</a
+            >
           </p>
-          <p class="contact">
-            Payments are handled via <strong>PayPal</strong> and major debit/credit cards. The
-            Client List Deposit is <strong>2000&nbsp;SEK</strong> (approx. 175&nbsp;EUR or
-            190&nbsp;USD).
+          <p><strong>Form:</strong> use the quick form below, attach links to photos if large.</p>
+
+          <div class="cta-row">
+            <a href="#contact-form" class="button">Reserve Your Spot</a>
+            <a href="/html/pet-portrait-commission-prices.html" class="button button-ghost"
+              >Prices & Sizes</a
+            >
+          </div>
+
+          <h3>Response Time</h3>
+          <p>
+            I usually reply within one business day. If it's urgent (gift/deadline), mention the
+            date in your subject line.
+          </p>
+
+          <h3>Client Note</h3>
+          <blockquote class="small-quote">
+            “The painting is wonderful!! Thank you! It captures Winston's face and expression
+            perfectly. And I think the red chair is such a nice contrast against the white fur.”
+            Andy Feldman.
+          </blockquote>
+
+          <p class="small">
+            Your details are used only to handle your commission - never sold or shared. See
+            <a href="/html/terms-privacy.html">Terms & Privacy</a>.
           </p>
         </div>
       </section>
+
+      <!-- Micro-FAQ (keeps people from bouncing back to Prices/FAQ) -->
+      <section id="quick-answers" class="main-flex faq">
+        <h2>Quick Answers</h2>
+        <details>
+          <summary>What will you need from me to get started?</summary>
+          <p>
+            High-quality photos (or links), your size idea or budget, and whether you prefer classic
+            realism or the painterly option.
+          </p>
+        </details>
+        <details>
+          <summary>Can you help me choose photos?</summary>
+          <p>
+            Absolutely. Send a few favorites and I'll recommend the strongest reference. See
+            <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>.
+          </p>
+        </details>
+        <details>
+          <summary>Do you accept tight deadlines?</summary>
+          <p>
+            Sometimes, depending on schedule. Email me with your date and I'll confirm availability.
+          </p>
+        </details>
+      </section>
+
+      <section id="contact-form" class="main-flex">
+        <h2>Prefer a quick form?</h2>
+
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="contact-form"
+          aria-label="Contact form"
+        >
+          <!-- Required: Web3Forms access key -->
+          <input type="hidden" name="access_key" value="4b70fb1f-a7f2-4100-8a21-d9e9d5dfd983" />
+
+          <!-- Subject, branding & redirect -->
+          <input type="hidden" name="subject" value="Pet Art — New message (EN)" />
+          <input type="hidden" name="from_name" value="Pet Art Contact (EN)" />
+          <input type="hidden" name="redirect" value="https://pet-art.net/html/thank-you.html" />
+          <input
+            type="hidden"
+            name="page_url"
+            value="https://pet-art.net/html/contact-pet-portrait-artist.html"
+          />
+
+          <!-- Honeypot (must remain empty) -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            tabindex="-1"
+            autocomplete="off"
+            style="position: absolute; left: -9999px; opacity: 0"
+            aria-hidden="true"
+          />
+
+          <!-- Name + Email -->
+          <div class="row row--2">
+            <div class="field">
+              <label for="name">Your Name *</label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
+
+            <div class="field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="field">
+            <label for="message">Your Message *</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Tell me about your pet, size idea or budget, and any deadline."
+            ></textarea>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button type="submit" class="button">Send Message</button>
+          </div>
+        </form>
+      </section>
     </main>
 
-    <!-- Footer (unified) -->
+    <!-- Footer -->
     <footer>
       <div class="footer-flex-item">
         <h3 class="footer-headline">Menu</h3>
@@ -218,6 +513,7 @@
           <li><a href="/se/" hreflang="sv" lang="sv">Swedish</a></li>
         </ul>
       </div>
+
       <div class="footer-flex-item">
         <h3 class="footer-headline">Get Social</h3>
         <div class="footer-social">
@@ -242,12 +538,14 @@
             </svg>
           </a>
         </div>
+
         <button onclick="topFunction()" id="myBtn" title="Go to top" aria-label="Go to top">
           <svg class="icon icon-lg" aria-hidden="true">
             <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
           </svg>
         </button>
       </div>
+
       <div class="footer-flex-item wide">
         <a href="/"
           ><img

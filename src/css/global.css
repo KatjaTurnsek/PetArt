@@ -301,6 +301,36 @@ main {
   text-decoration: none;
 }
 
+/* Numbered list styled like your custom bullets */
+.numbered-steps {
+  counter-reset: step;
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.numbered-steps li {
+  position: relative;
+  margin: 8px 0;
+  padding-left: 2rem;
+  line-height: 30px;
+  font-size: 18px;
+  font-family: "Frank-ruhl-libre", serif;
+}
+
+.numbered-steps li::before {
+  counter-increment: step;
+  content: counter(step) ".";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  min-width: 1.5rem;
+  text-align: right;
+  font-weight: 700;
+  color: var(--green);
+  font-family: "Oswald", serif;
+}
+
 /* ---- MAIN IMAGE in hero section ---- */
 .main-img {
   position: relative;
@@ -1148,25 +1178,26 @@ a .icon {
     width: auto;
   }
 
-  .wet-bullets {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0;
+  .numbered-steps {
+    margin: 14px 0;
   }
-  .wet-bullets li {
-    position: relative;
-    padding-left: 1.6rem;
-    margin: 8px 0;
+
+  .numbered-steps li {
+    padding: 10px 12px 10px 2rem;
+    line-height: 28px;
   }
-  .wet-bullets li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0.2em;
-    font-size: 1.05rem;
-    line-height: 1;
-    color: var(--green);
-    font-weight: 700;
+
+  .numbered-steps li::before {
+    left: 0.25rem;
+    top: 0.4em;
+    min-width: 1.4rem;
+    font-size: 1rem;
+  }
+
+  .main-flex ol,
+  .article-flex ol {
+    list-style-position: outside;
+    padding-left: 1.25rem;
   }
 
   /* Mobile bullet spacing in content lists */
