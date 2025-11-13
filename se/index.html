@@ -877,8 +877,41 @@
       </div>
     </footer>
 
+    <!-- Floating chat buttons (docked mid-right) -->
+    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
+      <!-- WhatsApp -->
+      <a
+        class="fab__btn fab__btn--whatsapp"
+        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        title="Chat on WhatsApp"
+      >
+        <svg class="fab__icon" aria-hidden="true">
+          <use href="/assets/icons.svg#icon-whatsapp"></use>
+        </svg>
+        <span class="sr-only">Chat on WhatsApp</span>
+      </a>
+
+      <!-- SMS / Messages -->
+      <a
+        id="smsLink"
+        class="fab__btn fab__btn--sms"
+        href="sms:+46730785744"
+        aria-label="Send an SMS"
+        title="Send an SMS"
+      >
+        <svg class="fab__icon" aria-hidden="true">
+          <use href="/assets/icons.svg#icon-message"></use>
+        </svg>
+        <span class="sr-only">Send an SMS</span>
+      </a>
+    </div>
+
     <!-- JS -->
     <script defer src="/src/js/analytics.js"></script>
     <script defer src="/src/js/up.js"></script>
+    <script defer src="/src/js/chat-buttons.js"></script>
   </body>
 </html>

@@ -1,3 +1,7 @@
+:root {
+  --dock-bg: var(--grey);
+}
+
 .contact-flex {
   width: 100%;
   max-width: 1200px;
@@ -12,7 +16,6 @@
 .contact-flex-item1 {
   flex: 1;
   box-sizing: border-box;
-  height: 100%;
   padding-right: 70px;
   margin: 0;
   border-right: 1px solid var(--dark);
@@ -21,7 +24,6 @@
 .contact-flex-item2 {
   flex: 1;
   box-sizing: border-box;
-  height: 100%;
   padding-left: 30px;
   margin: 0;
 }
@@ -61,6 +63,17 @@ h2.contact {
   background: var(--grey);
   border-radius: 4px;
   animation: fadeIn 300ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 #contact-form > h2 {
@@ -118,9 +131,15 @@ h2.contact {
   box-sizing: border-box;
 }
 
+/* placeholder fallback + modern override */
 .contact-form ::placeholder {
-  color: color-mix(in srgb, var(--dark) 40%, transparent);
+  color: rgba(0, 0, 0, 0.4);
   opacity: 1;
+}
+@supports (color: color-mix(in srgb, var(--dark) 40%, transparent)) {
+  .contact-form ::placeholder {
+    color: color-mix(in srgb, var(--dark) 40%, transparent);
+  }
 }
 
 .contact-form input:focus-visible,
@@ -170,6 +189,84 @@ h2.contact {
   margin-top: 6px;
 }
 
+/* Docked container (mid-right) */
+.fab-dock {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+  background-color: var(--dock-bg);
+  padding: 20px;
+  border-radius: 5px 0 0 5px;
+}
+
+@supports (backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px)) {
+  .fab-dock {
+    backdrop-filter: saturate(140%) blur(6px);
+    -webkit-backdrop-filter: saturate(140%) blur(6px);
+  }
+  @media (max-width: 768px) {
+    .fab-dock {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  }
+}
+
+/* Buttons */
+.fab__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.fab__btn:hover {
+  transform: translateY(-2px);
+}
+
+.fab__btn:active {
+  transform: translateY(0);
+}
+
+.fab__btn--whatsapp {
+  background: #25d366;
+}
+
+.fab__btn--sms {
+  background: #2d6cdf;
+}
+
+.fab__icon {
+  width: 42px;
+  height: 42px;
+  fill: currentColor;
+}
+
+/* Motion / print */
+@media (prefers-reduced-motion: reduce) {
+  .fab__btn {
+    transition: none;
+  }
+}
+@media print {
+  .fab-dock {
+    display: none !important;
+  }
+}
+
 @media only screen and (max-width: 1199px) {
   .contact-flex-item1 {
     border-right: 1px solid var(--dark);
@@ -177,6 +274,25 @@ h2.contact {
 
   .contact-flex-item2 {
     border-left: none;
+  }
+
+  .fab-dock {
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    background: var(--dock-bg);
+    padding: 16px;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .fab__btn {
+    width: 64px;
+    height: 64px;
+  }
+  .fab__icon {
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -189,7 +305,6 @@ h2.contact {
 
   .contact-flex-item1 {
     flex: 100%;
-    height: 100%;
     padding-right: 0;
     border-right: none;
     border-bottom: 1px solid var(--dark);
@@ -197,7 +312,6 @@ h2.contact {
 
   .contact-flex-item2 {
     flex: 100%;
-    height: 100%;
     padding: 20px 0;
     border: none;
   }
@@ -230,5 +344,23 @@ h2.contact {
 
   .contact-form .actions .button {
     width: 100%;
+  }
+
+  .fab-dock {
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 20px);
+    transform: none;
+    background: none !important;
+    background-color: transparent !important;
+  }
+
+  .fab__btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .fab__icon {
+    width: 24px;
+    height: 24px;
   }
 }
