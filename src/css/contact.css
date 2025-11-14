@@ -267,6 +267,17 @@ h2.contact {
   }
 }
 
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cta-row .button {
+  margin: 0;
+}
+
 @media only screen and (max-width: 1199px) {
   .contact-flex-item1 {
     border-right: 1px solid var(--dark);
@@ -344,6 +355,16 @@ h2.contact {
 
   .contact-form .actions .button {
     width: 100%;
+  }
+
+  .cta-row {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-row .button {
+    min-width: 220px;
+    text-align: center;
   }
 
   .fab-dock {

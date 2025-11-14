@@ -3,18 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Om Katja - Djurporträttkonstnär med 25 års erfarenhet i olja</title>
+    <title>Djurporträtt i olja av Katja - 25 års erfarenhet</title>
 
     <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portrait-artist-katja-turnsek.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
     <link
       rel="preload"
       as="image"
@@ -22,6 +13,15 @@
       media="(max-width: 768px)"
       imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp 768w"
       imagesizes="100vw"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek.webp 1200w"
+      imagesizes="1200px"
       fetchpriority="high"
     />
 
@@ -50,7 +50,7 @@
 
     <meta
       name="description"
-      content="Lär känna Katja Turnsek - en djurporträttkonstnär med över 25 års erfarenhet av realistiska målningar i olja."
+      content="Beställ personliga djurporträtt i olja av Katja Turnsek. 25 års erfarenhet, internationella kunder, naturtrogna målningar av husdjur med själ och hjärta."
     />
 
     <!-- Assets (root-absolute) -->
@@ -73,6 +73,7 @@
       />
     </noscript>
 
+    <!-- JSON-LD: Organization + MerchantReturnPolicy -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -115,6 +116,49 @@
         }
       }
     </script>
+
+    <!-- JSON-LD: FAQ (sv) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://pet-art.net/se/om-djurportratt-konstnaren.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Hur länge har du målat djurporträtt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Jag har målat professionellt i över 25 år och har hunnit skapa hundratals beställda djurporträtt för uppdragsgivare runt om i världen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vilka medium arbetar du i?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Jag arbetar främst i olja på fin linnéduk med material av museikvalitet, men har även erfarenhet av mjukpastell, akvarell och blyerts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Vad inspirerar dina djurporträtt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Min livslånga kärlek till djur, särskilt hundar ligger bakom varje målning. Jag vill fånga både likhet och den speciella själen i varje individ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Har du egna djur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja! Jag delar hem och ateljé med min älskade border collie Roi. Han inspirerar mig varje dag och smyger ofta med på "behind-the-scenes" bilder."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -129,6 +173,7 @@
           decoding="async"
         />
       </a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger" aria-label="Öppna meny">
         <span>
@@ -138,6 +183,7 @@
         </span>
         <span class="sr-only">Meny</span>
       </label>
+
       <nav aria-label="Primär navigation">
         <ul>
           <li><a href="/se/">Hem</a></li>
@@ -176,7 +222,7 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-about">
-        <div class="main-img__bg" aria-hidden="true">
+        <div class="main-img__bg">
           <img
             id="hero-lcp"
             src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
@@ -191,7 +237,7 @@
             decoding="async"
             width="1200"
             height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
           />
         </div>
 
@@ -199,38 +245,42 @@
         <figure class="vert-lines" aria-hidden="true"></figure>
 
         <div class="main-img__content">
-          <h1>Djurporträttkonstnär Katja Turnsek</h1>
+          <h1>Om djurporträttkonstnären Katja Turnsek</h1>
           <p class="lead">
-            25+ års erfarenhet av realistiska oljemålningar - med fokus på närvaro, ljus och
-            personlighet.
+            Som professionell <strong>djurporträttkonstnär</strong> med över
+            <strong>25 års</strong> erfarenhet skapar jag naturtrogna djurporträtt som förenar
+            tidlös realism med ett mer uttrycksfullt, <strong>måleriskt</strong> uttryck - och
+            fångar både personlighet och själ i varje målning.
           </p>
 
           <a
             href="/se/kontakta-djurportratt-konstnar.html"
             class="head-button"
-            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+            aria-label="Gå med i kundlistan - begränsat antal beställningar"
           >
-            Gå med i min kundlista
+            Boka ett personligt djurporträtt
           </a>
         </div>
       </section>
 
       <!-- Introduction Article -->
       <section class="main-flex">
-        <h2>En resa av passion och konst</h2>
-        <h3>Min mission</h3>
+        <!-- Headline updated to mirror English structure -->
+        <h2>En resa av passion och konst: min mission som djurporträttkonstnär</h2>
+        <h3>Mission</h3>
         <p>
-          Att berika världen genom att skapa betydelsefull konst – med glädje, passion och hjärta.
+          Att berika världen genom att skapa betydelsefull konst - med glädje, passion och hjärta.
         </p>
 
-        <h2>Från barndomsdröm till livslång passion</h2>
+        <!-- Headline updated to mirror English structure -->
+        <h2>Min resa: från djurälskande barn till djurporträttkonstnär</h2>
         <p>
           Som djurporträttkonstnär har min passion vuxit fram sedan jag var liten. Jag har alltid
           haft en djup kärlek till djur och drömde om en egen fyrbent vän. Medan klasskamraterna
           ville rida, längtade jag efter en trogen hund.
         </p>
         <p>
-          Jag har målat hela livet men tog omvägar. För 22 år sedan – när jag blev arbetslös –
+          Jag har målat hela livet men tog omvägar. För 22 år sedan - när jag blev arbetslös -
           vågade jag följa hjärtat fullt ut. Det blev startpunkten för mitt fokus på realistiskt
           porträttmåleri, främst av husdjur.
         </p>
@@ -240,17 +290,73 @@
           att bevara sina vänners personlighet.
         </p>
         <p>
-          Företagandet har inneburit allt från webbsida och texter till marknadsföring – men
+          Företagandet har inneburit allt från webbsida och texter till marknadsföring - men
           engagemanget består. Att måla djur är min kallelse, och jag vill fortsätta utvecklas både
           personligt och konstnärligt.
         </p>
         <p>
           Längs vägen har jag format en distinkt stil som förenar egna uttryck med naturtrogna
-          detaljer. Min ambition är att väcka liv i varje porträtt – med närvaro, ljus och karaktär.
+          detaljer. Min ambition är att väcka liv i varje porträtt - med närvaro, ljus och karaktär.
         </p>
       </section>
 
-      <!-- Article with Images and Information -->
+      <hr class="hr" />
+
+      <!-- Additional Article with Images and Information (CTA blocks) -->
+      <section class="article-flex">
+        <div class="article-flex-item1">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/pet-portraits-in-oils.webp"
+            alt="Djurporträtt i olja av newfoundländaren Mitzy"
+            decoding="async"
+          />
+          <h3>Bläddra bland realistiska djurporträtt i olja</h3>
+          <p>
+            Utforska ett urval av djurporträtt jag har målat åt kunder runt om i världen. Varje
+            målning fångar hjärta och personlighet - oavsett om du väljer klassisk stil eller ett
+            mer måleriskt uttryck.
+          </p>
+
+          <div class="centered-button">
+            <button
+              onclick="window.location.href='/se/djurportratt-olja-galleri.html'"
+              class="button"
+              title="Visa djurporträttgalleriet"
+            >
+              Visa djurporträttgalleri
+            </button>
+          </div>
+        </div>
+
+        <div class="article-flex-item2">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/commission-a-pet-portrait.webp"
+            alt="Beställ ett målat djurporträtt - målning under arbete"
+            decoding="async"
+          />
+          <h3>Så beställer du ett personligt porträtt</h3>
+          <p>
+            Läs mer om hur du beställer ett handmålat djurporträtt - från val av foto till rätt
+            storlek och stil. Jag hjälper dig genom hela processen.
+          </p>
+
+          <div class="centered-button">
+            <button
+              onclick="window.location.href='/se/priser-for-djurportratt.html'"
+              class="button"
+              title="Hur du beställer ett djurporträtt"
+            >
+              Så här beställer du ett djurporträtt
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Magazine Article (UNCHANGED as requested) -->
       <section class="magazine-flex">
         <div class="magazine-flex-item1">
           <h2 class="magazine">Uppmärksammad i svenska tidningar</h2>
@@ -278,14 +384,16 @@
         </div>
       </section>
 
-      <!-- Article with Images and Information -->
+      <!-- Studio Article with Gallery -->
       <section class="main-flex">
         <h2>Foton från min porträttstudio</h2>
         <p>
-          Många tänker sig ett stort galleri – men de flesta av mina verk är specialbeställningar
+          Många tänker sig ett stort galleri - men de flesta av mina verk är specialbeställningar
           som säljs innan de hinner ställas ut. Jag trivs i en minimalistisk miljö där fokus ligger
           på måleriet (och två av mina hundar vill gärna smyga in på varje foto).
         </p>
+
+        <h2>Här målar jag dina porträtt: en titt in i studion</h2>
         <p>
           För några år sedan möblerade jag om och förenklade. ”Less is more” passar mig: när det är
           ordning i studion kan jag måla i lugn och ro.
@@ -361,6 +469,95 @@
           </figure>
         </div>
       </section>
+
+      <!-- Testimonial Section -->
+      <aside data-nosnippet class="main-flex">
+        <h2 class="right">Djurporträtt älskade världen över</h2>
+        <blockquote class="testimonial-flex">
+          <div class="testimonial-flex-item1">
+            <p>
+              Hej Katja - porträttet är helt underbart, ändra ingenting! Det enda problemet är att
+              jag saknar honom så mycket när jag tittar på målningen, och det är en vecka kvar tills
+              jag är hemma. Du har verkligen fångat både hans hjärta och hans uttryck. Stort tack!
+            </p>
+            <p>Agi Kiss</p>
+          </div>
+          <div class="testimonial-flex-item2">
+            <img
+              class="testimonial-img"
+              loading="lazy"
+              src="/assets/images/client-picture-spencer.webp"
+              alt="Kund med specialbeställt hundporträtt - referensfoto"
+              decoding="async"
+            />
+          </div>
+        </blockquote>
+        <p>
+          Gå med i djurägare över hela Europa, Nordamerika och resten av världen som har låtit mig
+          berätta deras vänners historia i olja på duk.
+        </p>
+      </aside>
+
+      <hr class="hr" />
+
+      <!-- FAQ section: About the Artist -->
+      <section id="faq" class="main-flex faq">
+        <h2>Vanliga frågor om konstnären</h2>
+
+        <details>
+          <summary>
+            <span>Hur länge har du målat djurporträtt?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Jag har målat professionellt i över <strong>25 år</strong> och har skapat hundratals
+            beställda djurporträtt åt kunder i Europa, Nordamerika och bortom.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Vilka medium har du arbetat i?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Jag arbetar främst i <strong>olja på fin linnéduk</strong>, men har under åren även
+            jobbat i <strong>mjukpastell</strong>, <strong>akvarell</strong> och
+            <strong>blyerts</strong>. Idag föredrar jag olja för dess djup, lyster och hållbarhet.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Vad inspirerar dina djurporträtt?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Min livslånga kärlek till djur, särskilt hundar inspirerar varje målning jag skapar. Jag
+            vill fånga inte bara likheten utan även <strong>själ och närvaro</strong> bakom varje
+            blick.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            <span>Har du egna djur?</span>
+            <svg class="icon faq-chevron" aria-hidden="true">
+              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
+            </svg>
+          </summary>
+          <p>
+            Ja! Jag delar hem och ateljé med <strong>Roi</strong>, min älskade border collie. Han
+            inspirerar mig dagligen och dyker ofta upp i mina "behind-the-scenes" bilder.
+          </p>
+        </details>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -382,7 +579,7 @@
             href="https://www.facebook.com/PetPortraitsArtist"
             class="btn-social-fb"
             aria-label="Facebook"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             <svg class="icon icon-lg" role="img">
               <use href="/assets/icons.svg?v=3#icon-facebook"></use>
@@ -393,7 +590,7 @@
             href="https://www.instagram.com/katjapetportraits"
             class="btn-social-fb btn-social-in"
             aria-label="Instagram"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             <svg class="icon icon-lg" role="img">
               <use href="/assets/icons.svg?v=3#icon-instagram"></use>
