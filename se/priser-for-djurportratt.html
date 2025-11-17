@@ -3,18 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Priser för oljemålade djurporträtt - Beställ idag</title>
 
     <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/oil-painting-brushes.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/oil-painting-brushes.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
     <link
       rel="preload"
       as="image"
@@ -24,6 +14,17 @@
       imagesizes="100vw"
       fetchpriority="high"
     />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/oil-painting-brushes.webp"
+      media="(min-width: 769px)"
+      imagesrcset="/assets/images/oil-painting-brushes.webp 1200w"
+      imagesizes="1200px"
+      fetchpriority="high"
+    />
+
+    <title>Priser för djurporträtt i olja - Mått, stilar och beställning</title>
 
     <!-- Canonical (non-www) -->
     <link rel="canonical" href="https://pet-art.net/se/priser-for-djurportratt.html" />
@@ -50,7 +51,7 @@
 
     <meta
       name="description"
-      content="Se storlekar, priser och lanseringserbjudande. Gå med i listan och boka ditt handmålade porträtt."
+      content="Se priser för måleriska och detaljrika djurporträtt i olja av konstnären Katja Turnsek. Specialbeställda porträtt, fri frakt på alla oljemålningar med leverans världen över."
     />
 
     <!-- Assets (root-absolute) -->
@@ -129,6 +130,7 @@
           decoding="async"
         />
       </a>
+
       <input id="toggler" class="toggler" type="checkbox" />
       <label for="toggler" class="burger" aria-label="Öppna meny">
         <span>
@@ -138,6 +140,7 @@
         </span>
         <span class="sr-only">Meny</span>
       </label>
+
       <nav aria-label="Primär navigation">
         <ul>
           <li><a href="/se/">Hem</a></li>
@@ -153,7 +156,7 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="/se/priser-for-djurportratt.html">Priser och hur det fungerar</a>
+                <a href="/se/priser-for-djurportratt.html">Priser &amp; hur det fungerar</a>
               </li>
               <li>
                 <a href="/se/djurportratt-kundreferenser.html">Kundreferenser</a>
@@ -176,7 +179,7 @@
     <main>
       <!-- Hero Section -->
       <section class="main-img main-img-prices">
-        <div class="main-img__bg" aria-hidden="true">
+        <div class="main-img__bg">
           <img
             id="hero-lcp"
             src="/assets/images/oil-painting-brushes.webp"
@@ -191,7 +194,7 @@
             decoding="async"
             width="1200"
             height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
           />
         </div>
 
@@ -199,257 +202,559 @@
         <figure class="vert-lines" aria-hidden="true"></figure>
 
         <div class="main-img__content">
-          <h1>Priser &amp; hur beställning går till</h1>
-          <p class="lead">
-            Se storlekar, prisnivåer och mitt lanseringserbjudande. Jag hjälper dig välja rätt
-            storlek och komposition innan första penseldraget.
-          </p>
+          <h1>Priser för djurporträtt i olja - Måleriska och detaljrika porträtt</h1>
+          <p class="lead">Se stilar, storlekar och vad som ingår. Fri frakt.</p>
 
           <a
             href="/se/kontakta-djurportratt-konstnar.html"
             class="head-button"
-            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+            aria-label="Kontakta mig om att beställa ett djurporträtt"
           >
-            Gå med i min kundlista
+            Kontakta mig om ditt porträtt
           </a>
         </div>
       </section>
 
-      <!-- Introduction Article -->
-      <section class="main-flex">
-        <h2>Prissättning: oljeporträtt på specialbeställning för att passa din vision</h2>
+      <!-- Quick links -->
+      <nav class="quick-links" aria-label="Sidans innehåll">
+        <div class="quick-links__inner">
+          <span class="quick-links-label">På sidan:</span>
+          <a href="#painterly">Målerisk olja</a>
+          <a href="#detailed-oil">Detaljerad olja</a>
+          <a href="#process">Så går det till</a>
+          <a href="#photos-gift">Foton och presentkort</a>
+          <a href="#shipping">Frakt och tillgänglighet</a>
+          <a href="#client-review">Kundomdöme</a>
+        </div>
+      </nav>
+
+      <!-- Intro + style choice + currency -->
+      <section id="intro" class="main-flex">
+        <h2>Specialbeställda oljeporträtt som passar din vision</h2>
         <p>
-          Vid beställning av djurporträtt styrs priset främst av vald storlek. Har du särskilda mått
-          eller önskemål kan jag anpassa dukens storlek för att passa dina behov (vissa praktiska
-          begränsningar kan gälla).
+          Varje porträtt målas för hand i olja, från dina foton, med fokus på uttryck, karaktär och
+          känsla. Du kan välja mellan två huvudstilar:
         </p>
+        <ul class="bullet-list">
+          <li>
+            <strong>Målerisk olja</strong> - uttrycksfullt, vått-i-vått-måleri med synliga
+            penseldrag och en mjuk, stämningsfull känsla.
+          </li>
+          <li>
+            <strong>Detaljerade signatur-oljeporträtt</strong> - mycket noggrann realism med tunna
+            lager och stort fokus på varje liten detalj.
+          </li>
+        </ul>
         <p>
-          Jag prioriterar personlig kontakt och hjälper dig att visualisera målningen redan innan
-          första penseldraget. Läs vidare för storlekar, priser och hur beställningen går till.
+          Priset styrs av dukstorlek och vald stil. Har du särskilda mått eller en speciell idé kan
+          jag anpassa formatet. Jag guidar dig personligen från första kontakt till färdigställt
+          porträtt och hjälper dig att välja rätt stil, storlek och komposition innan jag börjar
+          måla.
         </p>
 
-        <h3>Konvertera priserna till din valuta</h3>
-        <div
-          id="currency_select"
-          role="region"
-          aria-label="Valutaomvandlare"
-          class="currency-select"
-        ></div>
+        <!-- Choosing your style -->
+        <section id="choose-style" class="main-flex style-section">
+          <h2>Vilken stil passar dig - målerisk eller detaljerad?</h2>
+          <p>Osäker på vad du ska välja? Här är en tydlig jämförelse som gör beslutet enklare.</p>
 
-        <!-- Vått-i-vått-erbjudande -->
-        <article class="wet-offer">
-          <div class="wet-offer-text">
-            <h3 class="wet-title">
-              <svg class="icon icon-lg icon-color" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-palette"></use>
-              </svg>
-              Nyhet: Konstnärliga djurporträtt i expressiv oljestil – Begränsat lanseringserbjudande
-            </h3>
-            <p>
-              Utöver mina detaljerade oljeporträtt erbjuder jag nu en ny stil – uttrycksfulla och
-              känslofyllda målningar, skapade med vått-i-vått-teknik.
-            </p>
-            <p>
-              Stilen fångar ditt husdjurs personlighet med synliga penseldrag, textur och ett mer
-              impressionistiskt uttryck.
-            </p>
-            <p>
-              Under lanseringen finns ett begränsat antal porträtt till introduktionspris – perfekt
-              om du uppskattar ett mer konstnärligt och spontant uttryck.
+          <div class="style-grid">
+            <article class="style-card style-card--painterly">
+              <figure class="style-figure">
+                <span class="style-badge">Nyhet</span>
+                <img
+                  src="/assets/images/pet-portraits/painterly-pet-portraits-oils.webp"
+                  alt="Måleriskt djurporträtt i olja med uttrycksfulla penseldrag"
+                  class="style-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+
+              <h3>Målerisk olja - uttrycksfullt och mer tillgängligt</h3>
+              <ul class="bullet-list style-list">
+                <li>Synliga penseldrag, rörelse och stämning</li>
+                <li>Unikt original till ett mer tillgängligt pris</li>
+                <li>Konstnärlig, lite friare tolkning med stark karaktär</li>
+                <li>Inkluderar fri frakt världen över</li>
+              </ul>
+            </article>
+
+            <article class="style-card style-card--detailed">
+              <figure class="style-figure">
+                <img
+                  src="/assets/images/pet-portraits/detailed-pet-portraits-oils.webp"
+                  alt="Mycket detaljrikt djurporträtt i olja"
+                  class="style-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+
+              <h3>Detaljerad olja - premium och begränsat antal</h3>
+              <ul class="bullet-list style-list">
+                <li>Målas i flera lager för maximal realism</li>
+                <li>Varje strå, blänk och struktur återges noggrant</li>
+                <li>Perfekt för minnesporträtt och ”för alltid-tavlor”</li>
+                <li>Inkluderar fri frakt världen över och mycket begränsade årsplatser</li>
+              </ul>
+            </article>
+          </div>
+
+          <p>
+            Är du osäker? Skicka dina favoritfoton och berätta lite om ditt djur och var tavlan ska
+            hänga. Jag kommer gärna med förslag på stil och storlek som passar både hem och budget.
+          </p>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- Currency Conversion -->
+        <section class="currency-section" aria-label="Valutaomvandlare">
+          <h3 class="currency-heading">
+            <svg class="icon icon-color" aria-hidden="true" style="margin-left: 0.25em">
+              <use href="/assets/icons.svg#icon-coins"></use>
+            </svg>
+            Konvertera priserna till din valuta
+          </h3>
+          <p>
+            Om du bor utanför Sverige kan du använda omvandlaren nedan för att se ungefärliga priser
+            i din lokala valuta. De omräknade priserna är uppskattningar baserade på aktuella
+            växelkurser. Fakturan är alltid i SEK.
+          </p>
+          <div
+            id="currency_select"
+            role="region"
+            aria-label="Valutaomvandlare"
+            class="currency-select"
+          ></div>
+        </section>
+      </section>
+
+      <!-- Painterly pricing -->
+      <section id="painterly" class="main-flex pricing-section">
+        <h2>Måleriska djurporträtt i olja - Uttrycksfullt och tillgängligt</h2>
+        <p>
+          De måleriska porträtten fokuserar på känsla och stämning: vått-i-vått-lager, synliga
+          penseldrag och ett mer impressionistiskt uttryck samtidigt som din väns karaktär och
+          likhet bevaras. Perfekt om du vill ha ett unikt original i olja utan att behöva den
+          extremt detaljrika finishen i mina detailjerade porträtt.
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-grid__column">
+            <h3>Priser för målerisk olja (olja på duk)</h3>
+            <p class="pricing-hint">
+              Priserna beror enbart på vald dukstorlek. Flera djur, bakgrunder och särskilda
+              önskemål
+              <strong>ingår i priset</strong>. Tänk bara på att de minsta storlekarna inte alltid
+              passar för flera djur i samma målning.
             </p>
 
-            <h4>Tillgängliga storlekar:</h4>
-            <ul class="wet-prices">
-              <li>
-                16”×12” (40×30 cm) –
-                <span class="dcconvert" data-amount="5000">5000 SEK</span>
+            <ul class="pricing-list">
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">12&quot; x 10&quot; (30 x 25 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="7900">7&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">Perfekt huvud- och skulderporträtt av ett djur.</p>
               </li>
-              <li>
-                16”×16” (40×40 cm) –
-                <span class="dcconvert" data-amount="5500">5500 SEK</span>
+
+              <li class="pricing-list__item pricing-list__item--popular">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">
+                    16&quot; x 12&quot; (40 x 30 cm)
+                    <span class="pricing-badge">Mest populär</span>
+                  </span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="10900">10&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Vanlig storlek för 1-2 djur eller ett något större porträtt av ett djur.
+                </p>
+              </li>
+
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">18&quot; x 14&quot; (45 x 35 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="12900">12&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Mer utrymme för uttrycksfulla kompositioner eller helfigur.
+                </p>
+              </li>
+
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">20&quot; x 16&quot; (50 x 40 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="14900">14&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Tydlig statement-storlek för ett eller två djur med stark närvaro på väggen.
+                </p>
+              </li>
+
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">24&quot; x 18&quot; (60 x 45 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="18900">18&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Stor, stämningsfull målning x idealisk för flera djur eller ett riktigt
+                  ”hjältporträtt”.
+                </p>
               </li>
             </ul>
 
-            <ul class="wet-bullets">
-              <li>Fraktkostnad tillkommer</li>
-              <li>Begränsad tillgång – under en kort period</li>
-              <li>Introduktionspris – cirka 50% under ordinarie</li>
-            </ul>
+            <p class="pricing-note">
+              Andra storlekar (inklusive kvadratiska format) finns på förfrågan, kontakta mig för
+              priser.
+            </p>
+          </div>
 
-            <p>Vill du boka en plats? Jag hör gärna från dig.</p>
+          <div class="pricing-grid__column">
+            <h3>Detta ingår i ett måleriskt porträtt:</h3>
+            <ul class="bullet-list">
+              <li>Personlig konsultation och rekommendation av storlek</li>
+              <li>Noga genomgång av dina referensbilder och olika pose-alternativ</li>
+              <li>Detaljerad digital mockup som du godkänner innan jag börjar måla</li>
+              <li>
+                Regelbundna e-postuppdateringar med foton, så att du kan följa porträttets framsteg.
+              </li>
+              <li>Måleriskt vått-i-vått-porträtt på professionell konstnärsduk i linne</li>
+              <li>Fri, försäkrad frakt världen över</li>
+            </ul>
 
             <div class="centered-button">
               <a
                 href="/se/kontakta-djurportratt-konstnar.html"
-                class="button-orange"
-                title="Beställ ditt porträtt"
+                class="button"
+                title="Kontakta mig om ett måleriskt porträtt"
               >
-                Kontakta mig för att reservera
+                Kontakta mig om ett måleriskt porträtt
               </a>
             </div>
           </div>
-
-          <div class="wet-offer-gallery">
-            <figure>
-              <img
-                class="wet-img"
-                loading="lazy"
-                decoding="async"
-                src="/assets/images/pet-portraits/french-bulldog-painterly-oil-portraits.webp"
-                alt="Färdigt oljeporträtt av fransk bulldogg i konstnärlig vått-i-vått-stil"
-                width="900"
-                height="600"
-              />
-              <figcaption>Färdigt porträtt</figcaption>
-            </figure>
-            <figure>
-              <img
-                class="wet-img"
-                loading="lazy"
-                decoding="async"
-                src="/assets/images/pet-portraits/detail-painterly-oil-portraits.webp"
-                alt="Penseldragsdetalj i oljemålning"
-                width="900"
-                height="600"
-              />
-              <figcaption>Penseldragsdetalj</figcaption>
-            </figure>
-            <figure>
-              <img
-                class="wet-img"
-                loading="lazy"
-                decoding="async"
-                src="/assets/images/pet-portraits/reference-photo-french-bulldog.webp"
-                alt="Referensfoto av en fransk bulldogg"
-                width="900"
-                height="600"
-              />
-              <figcaption>Referensfoto</figcaption>
-            </figure>
-          </div>
-        </article>
-
-        <section class="pricing-section" aria-labelledby="pricing-title">
-          <h2 id="pricing-title">Detaljerad olja – priser efter storlek</h2>
-
-          <article aria-labelledby="basic-title-1">
-            <h3 id="basic-title-1" class="plan-title">1 huvudporträtt</h3>
-            <ul class="plan-features">
-              <li class="plan-prices">
-                10”×10” (25×25 cm) –
-                <span class="dcconvert" data-amount="9177">9177 SEK</span>
-              </li>
-              <li class="plan-prices">
-                12”×10” (30×25 cm) –
-                <span class="dcconvert" data-amount="11300">11300 SEK</span>
-              </li>
-              <li class="plan-prices">
-                14”×10” (35×25 cm) –
-                <span class="dcconvert" data-amount="13423">13423 SEK</span>
-              </li>
-            </ul>
-          </article>
-
-          <article aria-labelledby="basic-title-2">
-            <h3 id="basic-title-2" class="plan-title">1–2 porträtt / 1 helfigur</h3>
-            <ul class="plan-features">
-              <li class="plan-prices">
-                14”×12” (35×30 cm) –
-                <span class="dcconvert" data-amount="15546">15546 SEK</span>
-              </li>
-              <li class="plan-prices">
-                16”×12” (40×30 cm) –
-                <span class="dcconvert" data-amount="17669">17669 SEK</span>
-              </li>
-              <li class="plan-prices">
-                16”×16” (40×40 cm) –
-                <span class="dcconvert" data-amount="21915">21915 SEK</span>
-              </li>
-            </ul>
-          </article>
-
-          <article aria-labelledby="basic-title-3">
-            <h3 id="basic-title-3" class="plan-title">1 eller flera porträtt / helfigurer</h3>
-            <ul class="plan-features">
-              <li class="plan-prices">
-                20”×16” (50×40 cm) –
-                <span class="dcconvert" data-amount="26161">26161 SEK</span>
-              </li>
-              <li class="plan-prices">
-                20”×20” (50×50 cm) –
-                <span class="dcconvert" data-amount="28284">28284 SEK</span>
-              </li>
-            </ul>
-          </article>
-        </section>
-
-        <p>
-          <a href="/se/kontakta-djurportratt-konstnar.html">Kontakta mig</a> för större storlekar.
-        </p>
-        <div class="centered-button">
-          <button
-            onclick="window.location.href='/se/kontakta-djurportratt-konstnar.html'"
-            class="button-orange"
-            title="Kundlista"
-          >
-            Gå med i min kundlista
-          </button>
         </div>
       </section>
 
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
+      <hr class="hr" />
+
+      <!-- Detailed pricing -->
+      <section id="detailed-oil" class="main-flex pricing-section pricing-section--detailed">
+        <h2>Detaljerade signatur-oljeporträtt - Noggrann realism</h2>
+        <p>
+          Mina detaljerade signatur-oljeporträtt målas långsamt i flera lager, med mycket fin
+          penselföring och omsorg om varje hårstrå, blänk och struktur. Dessa verk passar dig som
+          söker ett porträtt för livet - en huvudpunkt i hemmet eller ett djupt personligt
+          minnesporträtt. Jag tar emot ett begränsat antal detaljerade beställningar per år för att
+          kunna arbeta på den här nivån.
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-grid__column">
+            <h3>Detaljerad olja (olja på duk)</h3>
+            <p class="pricing-hint">
+              Priserna beror enbart på vald dukstorlek. Flera djur, bakgrunder och särskilda
+              önskemål
+              <strong>ingår i priset</strong>. Tänk bara på att de minsta storlekarna inte alltid
+              passar för flera djur i samma målning.
+            </p>
+
+            <ul class="pricing-list">
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">12&quot; x 10&quot; (30 x 25 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="11900">11&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Mycket detaljerad huvudstudie - perfekt för ett djur.
+                </p>
+              </li>
+
+              <li class="pricing-list__item pricing-list__item--popular">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">
+                    16&quot; x 12&quot; (40 x 30 cm)
+                    <span class="pricing-badge">Mest populär</span>
+                  </span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="15900">15&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Populär storlek för ett eller två djur, med gott om plats för fina detaljer.
+                </p>
+              </li>
+
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">18&quot; x 14&quot; (45 x 35 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="19900">19&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Generöst format för nyanserade uttryck och realistisk pälstextur.
+                </p>
+              </li>
+
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">20&quot; x 16&quot; (50 x 40 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="23900">23&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Stark statement-tavla för 1-2 djur, idealisk som huvudmotiv på en vägg.
+                </p>
+              </li>
+
+              <li class="pricing-list__item">
+                <div class="pricing-list__line">
+                  <span class="pricing-list__size">24&quot; x 18&quot; (60 x 45 cm)</span>
+                  <span class="pricing-list__price">
+                    <span class="dcconvert" data-amount="28900">28&nbsp;900 SEK</span>
+                  </span>
+                </div>
+                <p class="pricing-list__desc">
+                  Stor, påkostad porträttmålning för flera djur eller ett enda ”hjälteporträtt”.
+                </p>
+              </li>
+            </ul>
+
+            <p class="pricing-note">
+              För riktigt stora dukar, grupporträtt med många djur eller mer påkostade miljöer tar
+              jag gärna fram en personlig offert.
+            </p>
+          </div>
+
+          <div class="pricing-grid__column">
+            <h3>Detta ingår i detaljerade porträtt:</h3>
+            <ul class="bullet-list">
+              <li>Personlig konsultation och rekommendation av storlek</li>
+              <li>Noga genomgång av dina referensbilder och olika pose-alternativ</li>
+              <li>Detaljerad digital mockup som du godkänner innan jag börjar måla</li>
+              <li>
+                Regelbundna e-postuppdateringar med foton, så att du kan följa porträttets framsteg.
+              </li>
+              <li>Mycket detaljerad oljemålning på professionell konstnärsduk i linne</li>
+              <li>Fri, försäkrad frakt världen över</li>
+            </ul>
+
+            <div class="centered-button">
+              <a
+                href="/se/kontakta-djurportratt-konstnar.html"
+                class="button"
+                title="Kontakta mig om ett detaljerat porträtt"
+              >
+                Kontakta mig om ett detaljerat porträtt
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- Process section -->
+      <section id="process" class="main-flex process-section">
+        <h2>Så går beställningsprocessen till</h2>
+
+        <p>”Bästa” storlek beror på några saker:</p>
+        <ul class="bullet-list">
+          <li>Hur många djur du vill ha med</li>
+          <li>Om du föredrar huvud- och skulderporträtt eller helfigur</li>
+          <li>Var tavlan ska hänga och vad som känns rimligt budgetmässigt</li>
+        </ul>
+        <p>
+          De flesta börjar med att välja stil (målerisk eller detaljerad) och sedan en av
+          storlekarna ovan som utgångspunkt. Därefter finjusterar vi kompositionen tillsammans.
+        </p>
+
+        <div class="process-grid">
+          <article class="process-card" data-step="1">
+            <svg class="icon process-icon" aria-hidden="true">
+              <use href="/assets/icons.svg#icon-checklist"></use>
+            </svg>
+            <h3>Steg 1 - Gå med i kundlistan</h3>
+            <p>
+              För att reservera en plats i mitt schema går du med i min kundlista med en
+              <strong>insättning på 2&nbsp;000 SEK</strong>.
+            </p>
+          </article>
+
+          <article class="process-card" data-step="2">
+            <svg class="icon process-icon" aria-hidden="true">
+              <use href="/assets/icons.svg#icon-camera"></use>
+            </svg>
+            <h3>Steg 2 - Foton &amp; planering</h3>
+            <p>
+              Du skickar dina favoritfoton (eller så hjälper jag dig välja). Vi pratar om dina
+              tankar, önskad stil, storlek och eventuella detaljer du vill ha med. Jag tar sedan
+              fram en digital mockup så att du ser kompositionen innan jag börjar måla.
+            </p>
+          </article>
+
+          <article class="process-card" data-step="3">
+            <svg class="icon process-icon" aria-hidden="true">
+              <use href="/assets/icons.svg#icon-brush"></use>
+            </svg>
+            <h3>Steg 3 - Målning &amp; uppdateringar</h3>
+            <p>
+              När allt är bekräftat börjar jag måla ditt porträtt. De detaljerade beställningarna
+              byggs upp i flera lager, medan de måleriska porträtten skapas mer direkt, vått-i-vått.
+              Jag skickar regelbundna uppdateringar med foton, så att du kan följa porträttets
+              framsteg.
+            </p>
+          </article>
+
+          <article class="process-card" data-step="4">
+            <svg class="icon process-icon" aria-hidden="true">
+              <use href="/assets/icons.svg#icon-cube-send"></use>
+            </svg>
+            <h3>Steg 4 - Godkännande &amp; leverans</h3>
+            <p>
+              När tavlan är klar skickar jag foton för godkännande. Mindre justeringar kan göras i
+              det här skedet vid behov. När du är helt nöjd betalas slutbeloppet och porträttet
+              packas omsorgsfullt för leverans.
+            </p>
+          </article>
+        </div>
+
+        <h3>Delbetalningar</h3>
+        <ul class="bullet-list">
+          <li>2&nbsp;000 SEK insättning för kundlistan</li>
+          <li>Upp till 50% innan målningen startar (insättningen ingår här)</li>
+          <li>Resterande belopp efter att du har godkänt det färdiga porträttet</li>
+        </ul>
+        <p>
+          Du behöver inte bestämma alla detaljer dag ett - vi finjusterar storlek och komposition
+          tillsammans när jag har sett dina foton.
+        </p>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- Photos + Gift options -->
+      <section id="photos-gift" class="article-flex">
         <div class="article-flex-item1">
           <img
             class="img"
             src="/assets/images/brushes-infornt-of-oil-painting.webp"
-            alt="Penslar framför ett djurporträtt"
+            alt="Penslar framför ett djurporträtt i olja"
             loading="lazy"
             decoding="async"
-            width="900"
-            height="600"
           />
-          <h2>Så fungerar en beställning</h2>
+          <h2>Dina foton är viktiga</h2>
+          <h3>Så hjälper bra foton mig att fånga ditt djurs personlighet</h3>
+          <p>Dina foton är avgörande för slutresultatet.</p>
           <p>
-            Osäker på storlek? Det beror på hur många djur som ska vara med och förstås din budget.
-            Börja i rätt prisklass – vi finjusterar sedan mått och komposition tillsammans.
+            Eftersom jag sällan träffar djuret i verkligheten förlitar jag mig helt på dina bilder -
+            stora, skarpa och väl upplysta foton ger de bästa porträtten.
           </p>
-          <p>
-            För att starta, <strong>gå med i min kundlista</strong> och gör en insättning på
-            <strong>2000 SEK</strong>. När jag tagit fram en mockup diskuterar vi bästa storlek och
-            proportioner.
-          </p>
-          <h3>Delbetalningar</h3>
           <ul class="bullet-list">
-            <li>Insättning för kundlistan</li>
-            <li>Upp till 50% innan start (inkl. insättningen)</li>
-            <li>Slutbetalning efter godkänt porträtt</li>
+            <li>Välj foton där djurets ögon är tydliga och skarpa</li>
+            <li>Undvik hårda filter eller väldigt mörka/överexponerade bilder</li>
+            <li>Skicka gärna flera vinklar så att jag får en känsla för personligheten</li>
           </ul>
-          <p>Skönt, eller hur? <strong>Ingen stress</strong> över storlekar just nu.</p>
+          <p>
+            Du kan läsa mer under
+            <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>, eller
+            <a href="/se/kontakta-djurportratt-konstnar.html">kontakta mig</a> för en kort
+            <strong>fotokonsultation</strong> om du är osäker på vilka bilder som fungerar bäst.
+          </p>
         </div>
 
         <div class="article-flex-item2">
           <img
             class="img"
-            src="/assets/images/border-collie-chatt-holding-paint-brush.webp"
-            alt="Border collie håller i en pensel"
             loading="lazy"
+            src="/assets/images/portrait-gift-voucher-package.webp"
+            alt="Presentkortspaket för djurporträtt"
             decoding="async"
-            width="900"
-            height="600"
           />
-          <h2>Högkvalitativa foton ger bättre resultat</h2>
+          <h2>Beställer du ett porträtt som gåva?</h2>
           <p>
-            Fotot <strong>spelar en avgörande roll</strong> för slutresultatet. Jag träffar sällan
-            djuren innan jag målar, så jag förlitar mig på dina bilder.
+            Ja, du kan absolut beställa ett porträtt som present - även om du inte har foton ännu
+            eller om tiden är knapp inför en speciell dag.
           </p>
-          <p>Välj <strong>stora, skarpa och tydliga</strong> foton – det gör stor skillnad.</p>
+          <p>Jag erbjuder ett exklusivt presentkortspaket:</p>
+          <ul class="bullet-list">
+            <li>Du väljer själv vilket belopp du vill ge bort</li>
+            <li>Fysiskt eller digitalt paket ingår</li>
+            <li>Mottagaren kontaktar mig när den är redo så planerar vi porträttet tillsammans</li>
+          </ul>
           <p>
-            Se mina
-            <a href="/se/foto-tips-portrattbestallning.html">fototips</a>. Osäker på vilket foto som
-            är bäst?
-            <a href="/se/kontakta-djurportratt-konstnar.html">Kontakta mig</a>
-            för en <strong>konsultation</strong>.
+            Det här är en uppskattad gåva till födelsedagar, bröllop, jubileum eller jul. Vill du
+            beställa ett presentkort?
+            <a href="/se/kontakta-djurportratt-konstnar.html">Hör gärna av dig</a>.
+          </p>
+        </div>
+      </section>
+
+      <hr class="hr" />
+
+      <!-- Shipping & Availability -->
+      <section id="shipping" class="article-flex">
+        <div class="article-flex-item1">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/pet-portrait-packaging.webp"
+            alt="Paketering av djurporträtt inför frakt"
+            decoding="async"
+          />
+          <h2>Frakt och tillgänglighet</h2>
+          <p>
+            Har du ett specifikt datum (födelsedag, jubileum, jul)? Vänligen
+            <a href="/se/kontakta-djurportratt-konstnar.html">kontakta mig</a> i god tid för
+            aktuella leveranstider.
+          </p>
+          <p>
+            Porträtten packas säkert och skickas med dörr-till-dörr-leverans med FedEx. När tavlan
+            är skickad är leveranstiden vanligtvis:
+          </p>
+          <ul class="bullet-list">
+            <li>Några dagar inom Europa</li>
+            <li>Cirka 3-7 dagar till övriga världen</li>
+          </ul>
+          <p>
+            Tänk på att frakt kan ta längre tid runt jul och andra intensiva perioder. För
+            julporträtt eller tidskänsliga gåvor är det alltid bäst att
+            <strong>boka tidigt</strong> - särskilt för detaljerade oljeporträtt.
+          </p>
+        </div>
+
+        <div class="article-flex-item2">
+          <img
+            class="img"
+            loading="lazy"
+            src="/assets/images/border-collie-chatt-holding-paint-brush.webp"
+            alt="Border collie som håller en pensel"
+            decoding="async"
+          />
+          <h2>Behöver du hjälp att välja?</h2>
+          <p>
+            Om du är osäker på stil eller storlek - skicka några foton och berätta lite om ditt djur
+            och var porträttet ska hänga. Jag hjälper gärna till med förslag som passar både din
+            vision och din budget.
+          </p>
+          <p>
+            Du når mig via
+            <a href="/se/kontakta-djurportratt-konstnar.html">kontaktformuläret</a>, e-post eller
+            via snabbknapparna för chatt på sidan.
           </p>
         </div>
       </section>
@@ -457,93 +762,38 @@
       <hr class="hr" />
 
       <!-- Testimonial Section -->
-      <aside data-nosnippet class="main-flex">
-        <h2 class="right">Målning av Poochi</h2>
+      <aside id="client-review" data-nosnippet class="main-flex">
+        <h2 class="right">Från en nöjd kund</h2>
         <blockquote class="testimonial-flex">
           <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
             <p>
-              Thank you so much for having the portrait arrive on time. My wife (and I) were both
-              amazed at the painting. The detail is so incredible. Here are some pics of me, my wife
-              and Poochi.
+              Hi Katja, Thank you so much for having the portrait arrive on time. My wife (and I)
+              were both amazed at the painting. The detail is so incredible. Here are some pics of
+              me, my wife and Poochi. Najlepsa ti hvala - hope that's right.
             </p>
-            <p>Najlepsa ti hvala - hope that's right</p>
-            <p>Kevin Fernandez and Susan</p>
+            <p>- Kevin Fernandez &amp; Susan</p>
           </div>
           <div class="testimonial-flex-item2">
             <img
               class="testimonial-img"
               loading="lazy"
-              decoding="async"
               src="/assets/images/dog-portrait-client-picture.webp"
-              alt="Hund med porträtt – kundreferens"
-              width="650"
-              height="650"
+              alt="Hund med sitt porträtt - nöjd kund"
+              decoding="async"
             />
           </div>
         </blockquote>
         <div class="centered-button">
-          <button
-            onclick="window.location.href='/se/djurportratt-kundreferenser.html'"
+          <a
+            href="/se/djurportratt-kundreferenser.html"
             class="button"
             title="Kundreferenser"
             aria-label="Läs fler kundreferenser"
           >
             Läs fler kundreferenser
-          </button>
+          </a>
         </div>
       </aside>
-
-      <hr class="hr" />
-
-      <!-- Additional Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/portrait-gift-voucher-package.webp"
-            alt="Djurporträtt presentkortspaket"
-            width="900"
-            height="600"
-          />
-          <h2>Beställer du ett porträtt som gåva?</h2>
-          <p>
-            Ja, du kan beställa ett porträtt precis som vanligt. Saknas bra foton eller är tiden
-            knapp inför ett särskilt tillfälle?
-          </p>
-          <p>Ingen fara – jag erbjuder ett exklusivt presentkortspaket.</p>
-          <p>Du betalar bara valfritt belopp. Paketet och frakten är gratis.</p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/pet-portrait-packaging.webp"
-            alt="Paketering för djurporträtt"
-            width="900"
-            height="600"
-          />
-          <h2>Frakt och tillgänglighet</h2>
-          <p>
-            <a href="/se/kontakta-djurportratt-konstnar.html">Kontakta mig</a>
-            för aktuella leveransdatum om du har en deadline. Alla porträtt packas säkert och
-            skickas med FedEx förstklassig
-            <strong>dörr-till-dörr-leverans</strong>.
-          </p>
-          <p>
-            Efter utskick tar leveransen vanligen några dagar inom Europa och 3–7 dagar till övriga
-            världen.
-          </p>
-          <p>
-            <strong>Observera:</strong> Frakten tar längre tid runt jul. Behöver du ett julporträtt?
-            <strong>Beställ i god tid.</strong>
-          </p>
-        </div>
-      </section>
     </main>
 
     <!-- Footer -->
@@ -608,20 +858,20 @@
     </footer>
 
     <!-- Floating chat buttons (docked mid-right) -->
-    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
+    <div class="fab-dock" role="complementary" aria-label="Snabba kontaktalternativ">
       <!-- WhatsApp -->
       <a
         class="fab__btn fab__btn--whatsapp"
         href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
+        aria-label="Chatta på WhatsApp"
+        title="Chatta på WhatsApp"
       >
         <svg class="fab__icon" aria-hidden="true">
           <use href="/assets/icons.svg#icon-whatsapp"></use>
         </svg>
-        <span class="sr-only">Chat on WhatsApp</span>
+        <span class="sr-only">Chatta på WhatsApp</span>
       </a>
 
       <!-- SMS / Messages -->
@@ -629,13 +879,13 @@
         id="smsLink"
         class="fab__btn fab__btn--sms"
         href="sms:+46730785744"
-        aria-label="Send an SMS"
-        title="Send an SMS"
+        aria-label="Skicka SMS"
+        title="Skicka SMS"
       >
         <svg class="fab__icon" aria-hidden="true">
           <use href="/assets/icons.svg#icon-message"></use>
         </svg>
-        <span class="sr-only">Send an SMS</span>
+        <span class="sr-only">Skicka SMS</span>
       </a>
     </div>
 

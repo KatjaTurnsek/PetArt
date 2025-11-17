@@ -1,50 +1,163 @@
 /* =======================
-   Pricing Section
+   Pricing & Style Layout
    ======================= */
-.pricing-section {
-  margin: 60px 0 30px;
+
+/* Quick links nav under hero */
+.quick-links {
+  position: static;
+  top: auto;
+  right: auto;
+  z-index: 1;
   width: 100%;
+  border-radius: 0;
+  background-color: var(--grey);
+  margin: 0 0 60px;
 }
 
-.plan-features {
+.quick-links__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 60px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.quick-links-label {
+  font-family: "Oswald", serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dark);
+  margin-right: 8px;
+  align-self: center;
+}
+
+.quick-links a {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: none;
+  font-family: "Oswald", serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--dark);
+  background-color: var(--white);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.quick-links a:hover,
+.quick-links a:focus-visible {
+  background-color: var(--green);
+  color: var(--dark);
+  transform: translateY(-1px);
+}
+
+/* Main pricing sections */
+.pricing-section {
+  margin: 40px auto;
+}
+
+.pricing-section--detailed {
+  padding-top: 40px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+  gap: 100px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.pricing-grid__column {
+  min-width: 0;
+}
+
+.pricing-hint {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.pricing-list {
   list-style: none;
   padding: 0;
-  margin: 0;
-  text-align: left;
-  background-color: var(--grey);
+  margin: 10px 0 0;
 }
 
-.plan-prices {
-  padding: 10px 80px;
-  margin: 0;
-  text-align: left;
-  border-bottom: 1px solid var(--dark);
+.pricing-list__item {
+  padding: 10px 0 14px;
+  border-bottom: 2px solid var(--grey);
+}
+
+/* zebra striping */
+.pricing-list__item:nth-child(odd) {
+  background-color: var(--grey-light);
+}
+
+/* highlighted “most popular” row */
+.pricing-list__item--popular {
+  border-left: 6px solid var(--green);
+  padding-left: 14px;
+}
+
+/* badge */
+.pricing-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-family: "Oswald", serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: var(--green);
+  color: var(--dark);
+  border-radius: 999px;
+}
+
+.pricing-list__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
   font-family: "Frank-ruhl-libre", serif;
   font-size: 20px;
 }
 
-.plan-prices:last-child {
-  border-bottom: none;
+.pricing-list__size {
+  font-weight: 400;
 }
 
-h3.plan-title {
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 35px;
-  text-align: left;
-  color: var(--white);
-  background-color: var(--dark);
-  border-radius: 4px 4px 0 0;
-  padding: 20px 80px;
-  margin: 20px 0;
+.pricing-list__price .dcconvert {
+  font-weight: 700;
+}
+
+.pricing-list__desc {
+  margin: 4px 0 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.pricing-note {
+  margin-top: 12px;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 24px;
 }
 
 /* =======================
-   Bullet List
+   Bullet List (shared)
    ======================= */
 .bullet-list {
   list-style: none;
-  padding: 0 0 40px;
+  padding: 0 0 20px;
   margin: 0;
 }
 
@@ -52,7 +165,7 @@ h3.plan-title {
   position: relative;
   padding: 10px 0 10px 40px;
   margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Frank-ruhl-libre", serif;
   border-radius: 5px;
 }
@@ -63,131 +176,248 @@ h3.plan-title {
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 18px;
   color: var(--green);
 }
 
 /* =======================
-   Wet-on-Wet Offer Section
+   Style comparison section
    ======================= */
-.wet-offer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 20px 60px;
-  margin: 60px 0;
-  background-color: var(--grey);
-  border-top: 2px solid var(--dark);
-  border-bottom: 2px solid var(--dark);
+.style-section {
+  margin-top: 30px;
+  padding: 0;
 }
 
-.wet-offer-text {
-  flex: 1 1 60%;
-  max-width: 60%;
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin: 24px 0;
 }
 
-.wet-offer-gallery {
-  flex: 1 1 40%;
-  max-width: 40%;
-  padding-top: 20px;
+.style-card {
+  background-color: var(--grey-light);
+  border-bottom: 5px solid var(--grey);
+  padding: 20px 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  align-items: center;
+  height: 100%;
 }
 
-.wet-img {
-  max-width: 100%;
+.style-card--painterly {
+  border-top: 6px solid var(--green);
+}
+
+.style-card--detailed {
+  border-top: 6px solid var(--orange);
+}
+
+.style-figure {
+  position: relative;
+  margin: 0 0 16px;
+}
+
+.style-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 8px 18px;
+  border-radius: 4px;
+  background-color: var(--green);
+  color: var(--dark);
+  font-family: "Oswald", serif;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  box-shadow:
+    0 0 14px rgba(255, 255, 255, 0.85),
+    0 8px 18px rgba(255, 255, 255, 0.6);
+}
+
+.style-img {
+  width: 100%;
   height: auto;
   display: block;
-  border: 8px solid var(--white);
-  transition: transform 0.3s ease;
+  border-bottom: 10px solid var(--grey);
 }
 
-.wet-img:hover {
-  transform: scale(1.02);
-}
-
-.wet-offer-gallery figcaption {
-  margin-top: 8px;
-  font-size: 16px;
-  color: var(--dark);
-  font-style: italic;
-  padding: 8px 12px;
+.style-card h3 {
+  font-family: "Oswald", serif;
+  font-size: 22px;
+  margin: 0 0 10px;
   text-align: center;
-  background-color: var(--caption-bg);
 }
 
-h3.wet-title {
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 35px;
-  text-align: left;
-  color: var(--white);
-  background-color: var(--dark);
-  border-radius: 4px;
-  padding: 40px;
-  margin: 20px 0;
+.style-card .style-list {
+  padding-bottom: 0;
 }
 
-.wet-prices {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 20px;
-  font-size: 20px;
-  font-family: "Frank-ruhl-libre", serif;
+.style-card .style-list li {
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 4px;
+  border-radius: 0;
 }
 
-.wet-prices li {
-  padding: 5px 0;
+/* Currency block */
+.currency-section {
+  margin-top: 30px;
 }
 
-.wet-bullets {
-  list-style: none;
-  padding: 0 0 20px;
-  margin: 0;
+.currency-select {
+  margin-top: 10px;
 }
 
-.wet-bullets li {
+/* =======================
+   Process section
+   ======================= */
+.process-section {
+  margin-top: 20px;
+}
+
+.process-section .process-icon {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0 auto 10px;
+  color: var(--dark);
+}
+
+.process-grid {
+  margin: 24px 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.process-card {
   position: relative;
-  padding: 10px 0 10px 40px;
-  margin-bottom: 5px;
-  font-size: 20px;
-  font-family: "Frank-ruhl-libre", serif;
+  background-color: var(--grey-light);
+  border-bottom: 5px solid var(--grey);
+  padding: 32px 26px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  overflow: hidden;
 }
 
-.wet-bullets li::before {
-  content: "✔";
+.process-card::before {
+  content: "";
   position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: var(--green);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    var(--green) 0 35%,
+    var(--grey-light) 35% 45%,
+    var(--orange) 45% 100%
+  );
 }
 
-/* Hide element on Tablet/Phone */
-@media only screen and (max-width: 768px) {
-  .pricing-section {
-    margin: 30px 0 20px;
+.process-card::after {
+  content: attr(data-step);
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  font-family: "Oswald", serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: rgba(88, 54, 44, 0.08);
+  pointer-events: none;
+}
+
+.process-card h3 {
+  font-family: "Oswald", serif;
+  font-size: 20px;
+  margin: 0 0 4px;
+  text-align: center;
+}
+
+.process-section .process-card h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.process-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+}
+
+/* =======================
+   Responsive (<= 1199px)
+   ======================= */
+@media (max-width: 1199px) {
+  .quick-links a {
+    display: inline-block;
+    width: auto;
+    padding: 8px 14px;
+    box-sizing: content-box;
   }
 
-  .plan-features,
-  .plan-prices,
-  h3.plan-title {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =======================
+   Responsive (<= 768px)
+   ======================= */
+@media only screen and (max-width: 768px) {
+  .quick-links__inner {
+    padding: 16px 30px 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .quick-links-label {
+    margin: 0 0 6px;
+    align-self: flex-start;
+  }
+
+  .quick-links a {
+    display: block;
+    width: 100%;
     text-align: center;
   }
 
-  h3.plan-title {
-    padding: 15px;
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .plan-prices {
+  .pricing-list__line {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pricing-section .pricing-list {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .style-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .style-card {
+    padding: 20px;
+  }
+
+  .style-badge {
+    top: 10px;
+    left: 10px;
     font-size: 18px;
-    line-height: 35px;
-    padding: 10px;
+    padding: 6px 12px;
   }
 
   .currency-select {
@@ -196,70 +426,14 @@ h3.wet-title {
     align-items: center;
   }
 
-  .wet-offer {
-    flex-direction: column;
-    padding: 20px 30px;
-  }
-
-  .wet-title {
-    font-size: 22px;
-    text-align: center;
-    padding: 15px;
-  }
-
-  .wet-prices {
-    font-size: 18px;
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  .wet-prices li {
-    padding: 5px 0;
-  }
-
-  .wet-bullets {
-    padding: 0;
-    margin-bottom: 20px;
-  }
-
-  .wet-bullets li {
-    padding: 10px 12px 10px 2rem;
-    text-align: left;
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .wet-bullets li::before {
-    left: 0.25rem;
-    top: 0.4em;
-    transform: translateY(0);
-    font-size: 1.05rem;
-  }
-
-  .wet-offer-text,
-  .wet-offer-gallery {
-    max-width: 100%;
-    flex: 1 1 100%;
-  }
-
-  .wet-offer-gallery {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .wet-offer-gallery figure {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .wet-offer-gallery figcaption {
-    font-size: 14px;
+  .process-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 /* =======================
    Fade In Animation
+   (kept for any existing uses)
    ======================= */
 @keyframes fadeIn {
   from {
