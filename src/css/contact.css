@@ -272,6 +272,7 @@ h2.contact {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .cta-row .button {
