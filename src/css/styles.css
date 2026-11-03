@@ -1,10 +1,6 @@
-@import url("./reset.css"); /* normalize/reset first */
-@import url("./variables.css"); /* CSS custom properties, tokens */
-@import url("./global.css"); /* base/global styles: typography, layout, utilities */
-
-/* page-specific (order among these usually doesn't matter unless they override each other) */
-@import url("./home.css");
-@import url("./about.css");
-@import url("./contact.css");
-@import url("./gallery.css");
-@import url("./prices.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap");
+@import "./base.css";
+@import "./components.css";
+@import "./navigation.css";
+@import "./responsive.css";
+@import "./links.css";

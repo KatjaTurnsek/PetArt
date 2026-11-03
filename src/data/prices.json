@@ -1,0 +1,47 @@
+{
+  "currency": "EUR",
+  "provisional": false,
+  "depositPercent": 50,
+  "sizes": [
+    {
+      "cm": "30 × 25",
+      "price": 1100,
+      "en": "A close-up portrait of one pet",
+      "sv": "Ett nära porträtt av ett djur",
+      "inches": "12 × 10"
+    },
+    {
+      "cm": "40 × 30",
+      "price": 1450,
+      "en": "More room for a single pet",
+      "sv": "Mer utrymme för ett djur",
+      "inches": "16 × 12"
+    },
+    {
+      "cm": "45 × 35",
+      "price": 1800,
+      "en": "A larger composition with one pet",
+      "sv": "En större komposition med ett djur",
+      "inches": "18 × 14"
+    },
+    {
+      "cm": "50 × 40",
+      "price": 2150,
+      "en": "Space for one or more pets, depending on composition",
+      "sv": "Plats för ett eller flera djur, beroende på komposition",
+      "inches": "20 × 16"
+    },
+    {
+      "cm": "60 × 45",
+      "price": 2600,
+      "en": "More room for a full-body or multi-pet composition",
+      "sv": "Mer utrymme för helfigur eller flera djur",
+      "inches": "24 × 18"
+    }
+  ],
+  "wildlife": {
+    "wonderment": 4200,
+    "curious-encounter": 3200
+  },
+  "wildlifeProvisional": false
+}

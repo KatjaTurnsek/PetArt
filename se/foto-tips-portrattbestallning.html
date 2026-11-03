@@ -4,32 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos-mobile.webp"
-      media="(max-width: 768px)"
-      imagesrcset="/assets/images/pet-portraits-ideal-photos-mobile.webp 768w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/pet-portraits-ideal-photos.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
-
-    <title>Fototips för Djurporträtt - Ta bästa bilden till vavlan</title>
-
-    <!-- Canonical (non-www) -->
     <link rel="canonical" href="https://pet-art.net/se/foto-tips-portrattbestallning.html" />
-
-    <!-- Hreflang -->
     <link
       rel="alternate"
       href="https://pet-art.net/se/foto-tips-portrattbestallning.html"
@@ -41,444 +16,502 @@
       hreflang="en"
     />
 
-    <!-- Social URL matches canonical -->
-    <meta property="og:url" content="https://pet-art.net/se/foto-tips-portrattbestallning.html" />
-
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Fototips för djurporträtt | Katja Turnsek</title>
     <meta
       name="description"
-      content="Lär dig ta rätt foto för ditt handmålade djurporträtt. Få tips som förbättrar porträttets kvalitet."
+      content="Välj bra referensfoton till ditt oljeporträtt. Enkla tips om ljus, ögonhöjd, detaljer och möjligheterna med äldre fotografier."
     />
-
-    <!-- Assets (root-absolute) -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
-
-    <!-- Google Fonts -->
+    <meta name="theme-color" content="#FAF7F2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+    <link rel="stylesheet" href="/dist/styles.min.css?v=redesign-1" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
+    <meta property="og:url" content="https://pet-art.net/se/foto-tips-portrattbestallning.html" />
+    <meta property="og:title" content="Fototips för djurporträtt | Katja Turnsek" />
+    <meta
+      property="og:description"
+      content="Välj bra referensfoton till ditt oljeporträtt. Enkla tips om ljus, ögonhöjd, detaljer och möjligheterna med äldre fotografier."
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      />
-    </noscript>
-
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta property="og:locale" content="sv_SE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fototips för djurporträtt | Katja Turnsek" />
+    <meta
+      name="twitter:description"
+      content="Välj bra referensfoton till ditt oljeporträtt. Enkla tips om ljus, ögonhöjd, detaljer och möjligheterna med äldre fotografier."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Pet Art With Heart",
-        "url": "https://pet-art.net/",
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "name": "Retur- och återbetalningspolicy — Beställda husdjursporträtt",
-          "merchantReturnLink": "https://pet-art.net/se/returpolicy.html",
-          "applicableCountry": [
-            "SE",
-            "NO",
-            "DK",
-            "FI",
-            "IS",
-            "DE",
-            "NL",
-            "BE",
-            "AT",
-            "CH",
-            "FR",
-            "ES",
-            "IT",
-            "PT",
-            "IE",
-            "GB",
-            "LU",
-            "PL",
-            "CZ",
-            "US",
-            "CA",
-            "AU",
-            "NZ"
-          ],
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-          "itemCondition": ["https://schema.org/DamagedCondition"],
-          "inStoreReturnsOffered": false,
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-        }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://pet-art.net/#org",
+            "name": "Pet Art with Heart",
+            "url": "https://pet-art.net/",
+            "logo": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg",
+            "sameAs": [
+              "https://www.instagram.com/katjapetportraits",
+              "https://www.facebook.com/PetPortraitsArtist"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://pet-art.net/se/foto-tips-portrattbestallning.html#page",
+            "url": "https://pet-art.net/se/foto-tips-portrattbestallning.html",
+            "name": "Fototips för djurporträtt | Katja Turnsek",
+            "description": "Välj bra referensfoton till ditt oljeporträtt. Enkla tips om ljus, ögonhöjd, detaljer och möjligheterna med äldre fotografier.",
+            "inLanguage": "sv",
+            "publisher": { "@id": "https://pet-art.net/#org" }
+          }
+        ]
       }
     </script>
+    <noscript>
+      <style>
+        .menu-toggle {
+          display: none !important;
+        }
+      </style>
+    </noscript>
   </head>
-
-  <body>
-    <!-- Header with Navigation (unified) -->
-    <header>
-      <a href="/se/">
-        <img
-          class="logo-header"
-          src="/assets/images/petart-with-heart-logotype.svg"
-          alt="Pet Art with Heart logotyp"
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
-
-      <input id="toggler" class="toggler" type="checkbox" />
-      <label for="toggler" class="burger" aria-label="Öppna meny">
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-bars"></use>
-          </svg>
-        </span>
-        <span class="sr-only">Meny</span>
-      </label>
-
-      <nav aria-label="Primär navigation">
-        <ul>
-          <li><a href="/se/">Hem</a></li>
-          <li>
-            <!-- Rättad URL: bindestreck, inte punkt -->
-            <a href="/se/djurportratt-olja-galleri.html">Djurporträtt galleri</a>
-          </li>
-          <li class="dropdown active">
-            <a href="#">
-              Beställningsinformation
-              <svg class="icon" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="/se/priser-for-djurportratt.html">Priser och hur det fungerar</a>
-              </li>
-              <li>
-                <a href="/se/djurportratt-kundreferenser.html">Kundreferenser</a>
-              </li>
-              <li>
-                <a class="is-active" href="/se/foto-tips-portrattbestallning.html">Foto tips</a>
-              </li>
-            </ul>
-          </li>
-          <!-- Också rättad: bindestreck -->
-          <li><a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
-          <li>
-            <a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a>
-          </li>
-          <li><a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section class="main-img main-img-photo-tips">
-        <div class="main-img__bg" aria-hidden="true">
+  <body data-language="sv" data-page="photos">
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="/se/" aria-label="Pet Art with Heart — Hem">
           <img
-            id="hero-lcp"
-            src="/assets/images/pet-portraits-ideal-photos.webp"
-            srcset="
-              /assets/images/pet-portraits-ideal-photos-mobile.webp  768w,
-              /assets/images/pet-portraits-ideal-photos.webp        1200w
-            "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Exempel på idealiska husdjursfoton för beställning av målat porträtt"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-            width="1200"
-            height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
           />
-        </div>
-
-        <div class="main-img__overlay" aria-hidden="true"></div>
-        <figure class="vert-lines" aria-hidden="true"></figure>
-
-        <div class="main-img__content">
-          <h1>Fototips för djurporträtt</h1>
-          <p class="lead">
-            Få ut det bästa av ditt handmålade porträtt: lär dig vinklar, ljus och bildkvalitet som
-            gör störst skillnad för resultatet.
-          </p>
-
+        </a>
+        <nav class="desktop-nav" aria-label="Huvudmeny">
+          <a href="/se/djurportratt-olja-galleri.html">Galleri</a>
+          <a href="/se/priser-for-djurportratt.html">Priser &amp; beställning</a>
+          <a href="/se/om-djurportratt-konstnaren.html">Om Katja</a>
+          <a href="/se/djurmotiv-olja-galleri.html">Djurmotiv</a>
+        </nav>
+        <a class="button header-enquire" href="/se/kontakta-djurportratt-konstnar.html">
+          Förfrågan
+        </a>
+        <div class="language" role="group" aria-label="Språk">
           <a
-            href="/se/kontakta-djurportratt-konstnar.html"
-            class="head-button"
-            aria-label="Gå med i kundlistan — begränsat antal beställningar"
+            href="/html/photo-tips-portrait-commissions.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            >EN</a
+          ><span aria-hidden="true">/</span
+          ><a
+            href="/se/foto-tips-portrattbestallning.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            aria-current="true"
+            >SV</a
           >
-            Gå med i min kundlista
+        </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Öppna menyn"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+      <noscript>
+        <nav class="nojs-nav wrap" aria-label="Navigation">
+          <a href="/se/">Hem</a>
+          <a href="/se/djurportratt-olja-galleri.html">Galleri</a>
+          <a href="/se/priser-for-djurportratt.html">Priser &amp; beställning</a>
+          <a href="/se/om-djurportratt-konstnaren.html">Om Katja</a>
+          <a href="/se/djurmotiv-olja-galleri.html">Djurmotiv</a>
+          <a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a>
+          <a href="/se/djurportratt-kundreferenser.html">Kundberättelser</a>
+          <a href="/se/foto-tips-portrattbestallning.html" aria-current="page">Fototips</a>
+        </nav>
+      </noscript>
+    </header>
+    <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigationsmeny">
+      <div class="header-inner">
+        <a class="brand" href="/se/" aria-label="Pet Art with Heart — Hem">
+          <img
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
+          />
+        </a>
+        <div class="language" role="group" aria-label="Språk">
+          <a
+            href="/html/photo-tips-portrait-commissions.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            >EN</a
+          ><span aria-hidden="true">/</span
+          ><a
+            href="/se/foto-tips-portrattbestallning.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            aria-current="true"
+            >SV</a
+          >
+        </div>
+        <button class="close-menu" type="button" aria-label="Stäng menyn">×</button>
+      </div>
+      <div class="mobile-menu-body">
+        <nav aria-label="Mobilmeny">
+          <a href="/se/">Hem</a>
+          <a href="/se/djurportratt-olja-galleri.html">Galleri</a>
+          <a href="/se/priser-for-djurportratt.html">Priser &amp; beställning</a>
+          <a href="/se/om-djurportratt-konstnaren.html">Om Katja</a>
+          <a href="/se/djurmotiv-olja-galleri.html">Djurmotiv</a>
+        </nav>
+        <a class="button" href="/se/kontakta-djurportratt-konstnar.html">
+          Fråga om ett porträtt <span class="arrow" aria-hidden="true">⟶</span>
+        </a>
+        <div class="mobile-secondary">
+          <a class="text-link" href="/se/djurportratt-kundreferenser.html">
+            <span class="link-label">Kundberättelser</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+          <a class="text-link" href="/se/foto-tips-portrattbestallning.html">
+            <span class="link-label">Fototips</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
           </a>
         </div>
-      </section>
-
-      <!-- Introduction Article -->
-      <section class="main-flex">
-        <h2>Fotot är nyckeln</h2>
-        <p>
-          Fotografierna jag får och använder som referens för mina konstverk är den absolut
-          viktigaste delen i måleriprocessen. Eftersom jag utgår ifrån foton beror kvaliteten på det
-          färdiga porträttet på de bilder du skickar.
-        </p>
-        <p>
-          Fotot är nyckeln - försök därför att förse mig med de bästa fotografierna du har. Om du
-          vill fotografera ditt djur specifikt för ett porträtt kommer tipsen nedan att hjälpa dig.
-        </p>
-      </section>
-
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-tips-painted-pet-portraits.webp"
-            alt="Foto av två border collies"
-          />
-          <h2>Mobil, systemkamera eller gamla pappersfoton?</h2>
-          <h3>Mobiler och surfplattor</h3>
-          <p>
-            Idag är det enklare än någonsin att fånga och dela värdefulla ögonblick tack vare
-            enheter vi bär med oss överallt. Även om de är smidiga räcker kvaliteten ofta inte till
-            som referens för ett porträtt.
-          </p>
-          <p>
-            Bra ljus och närhet hjälper, men skillnaden i skärpa mellan mobilbilder och foton från
-            en kvalitativ digitalkamera syns tydligt för en konstnär.
-          </p>
-
-          <h3>Gamla pappersfotografier</h3>
-          <p>
-            Många kära minnen finns i analoga foton, men de håller ofta inte dagens krav för ett
-            detaljrikt porträtt.
-          </p>
-          <p>
-            Skicka dem gärna till min ateljé för granskning; användbara bilder skannas i hög
-            upplösning och originalen returneras tillsammans med konstverket.
-          </p>
-          <p>Om ditt husdjur lever, ta gärna nya digitala foton eller be familj/vänner om hjälp.</p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
-            alt="Border collie i snön"
-          />
-          <h2>Positionering - fota från djurets nivå</h2>
-          <h3>Fånga den bästa vinkeln</h3>
-          <p>
-            Undvik att titta ner på djuret. Fota från ögonhöjd - samma perspektiv som när porträttet
-            ses på väggen.
-          </p>
-          <p>
-            För små djur: gå ner på huk till deras nivå eller placera dem på ett bord. För större
-            djur räcker ögonhöjd.
-          </p>
-
-          <h3>Perfekta bilden</h3>
-          <p>Visualisera slutresultatet genom linsen - känns det rätt, ta bilden!</p>
-          <p>
-            Låt djuret titta lite åt vänster eller höger om kameran för mer djup och undvik ett
-            platt uttryck. Se till att båda ögonen syns.
-          </p>
+        <p class="menu-signoff">Målat för hand. Skapat med hjärta.</p>
+      </div>
+    </dialog>
+    <main id="main" tabindex="-1">
+      <section class="page-intro">
+        <div class="wrap">
+          <div class="page-intro-inner">
+            <div class="intro-copy">
+              <span class="eyebrow">Handmålade djurporträtt i olja</span>
+              <h1>Bra foton.<br /><em>Ett personligt porträtt.</em></h1>
+              <p>Enkla råd för att välja referensfoton som visar din vän tydligt och naturligt.</p>
+            </div>
+            <p class="intro-aside">De små detaljerna<br />gör dem till dem de är.</p>
+          </div>
         </div>
       </section>
-
-      <hr class="hr" />
-
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-tip-oil-pet-portraits.webp"
-            alt="Foto av border collie"
-          />
-          <h2>Naturligt ljus</h2>
-          <p>Fota utomhus i naturligt ljus om möjligt, hellre än inomhus med blixt.</p>
-          <p>
-            Undvik hårt solljus och djupa skuggor som bleker färger. Inomhus: placera djuret nära
-            ett fönster och undvik blixt.
-          </p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-requirements-custom-pet-portraits.webp"
-            alt="Foto av en hund som fyller hela bildramen"
-          />
-          <h2>Fyll hela ramen</h2>
-          <p>
-            För helkropp: fyll ramen med djuret och lite bakgrund så att det förblir huvudfokus. Är
-            djuret för långt bort blir detaljerna oskarpa.
-          </p>
-          <p>
-            För huvud/bröst: fyll ramen med hela huvudet och halsen utan oönskad beskärning. Att
-            zooma in från en helkroppsbild ger oftast suddighet.
-          </p>
-          <p>Jag målar det jag ser - börja med tydliga närbilder.</p>
+      <section class="section wrap photo-guide">
+        <h2 class="sr-only">Guide till referensfoton</h2>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/pet-portraits-ideal-photos.webp"
+              alt="Exempel på referensfoton till handmålade djurporträtt"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 1</span>
+            <h2>Bra referensfoton gör skillnad.</h2>
+            <p>
+              Fotografierna du skickar är grunden för ditt porträtt. Eftersom jag målar från foton
+              hjälper tydliga bilder mig att se din väns uttryck, färger och de små detaljer som gör
+              dem unika.
+            </p>
+            <p>
+              Skicka dina bästa fotografier och flera favoriter, i stället för att försöka välja ett
+              enda foto. Om du tar nya bilder särskilt för porträttet kan tipsen nedan hjälpa dig.
+            </p>
+          </div>
+        </article>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-tips-painted-pet-portraits.webp"
+              alt="Två border collies fotograferade tillsammans"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 2</span>
+            <h2>Mobil eller kamera?</h2>
+            <p>
+              En mobil eller surfplatta kan ge utmärkta referensfoton. Det viktigaste är mjukt ljus,
+              skarpa ögon, naturliga färger och tillräckligt med detaljer. En digitalkamera kan ge
+              mer kontroll, men du behöver ingen särskild kamera. Ta gärna flera bilder på nära håll
+              och skicka originalfilerna.
+            </p>
+          </div>
+        </article>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
+              alt="En border collie fotograferad i ögonhöjd i snön"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 3</span>
+            <h2>Fotografera i ögonhöjd.</h2>
+            <p>
+              Undvik att fotografera ditt djur uppifrån. Håll kameran i djurets ögonhöjd för ett
+              naturligt perspektiv. Gå ner på huk för mindre djur. En trygg, upphöjd yta kan också
+              hjälpa om djuret känner sig bekvämt där.
+            </p>
+            <p>
+              Ett lätt vridet huvud kan ge ett fint djup. Försök om möjligt att få med båda ögonen.
+              Titta på kompositionen innan du tar bilden och se till att hela huvudet, öronen och
+              andra delar du vill ha målade finns med.
+            </p>
+          </div>
+        </article>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-tip-oil-pet-portraits.webp"
+              alt="En border collie fotograferad i naturligt ljus"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 4</span>
+            <h2>Välj mjukt, naturligt ljus.</h2>
+            <p>
+              Fotografera gärna utomhus i mjukt dagsljus. En plats i öppen skugga kan fungera bra.
+              Undvik starkt direkt solljus och djupa skuggor som döljer detaljer eller förändrar
+              djurets färger.
+            </p>
+            <p>
+              Inomhus kan du välja en ljus plats nära ett fönster och undvika blixt. Kontrollera att
+              ögon och päls är skarpa och att färgerna ser naturliga ut.
+            </p>
+          </div>
+        </article>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-requirements-custom-pet-portraits.webp"
+              alt="En närbild som visar hundens ansikte och päls tydligt"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 5</span>
+            <h2>Låt din vän fylla bilden.</h2>
+            <p>
+              För ett helkroppsporträtt ska hela djuret finnas med, med lite utrymme runtom. Gå
+              tillräckligt nära för att få tydliga detaljer, men se till att öron, tassar och svans
+              finns med om du vill ha dem målade.
+            </p>
+            <p>
+              För ett huvud- och bröstporträtt fotograferar du hela huvudet och halsen på nära håll.
+              Att beskära en avlägsen helkroppsbild eller använda digital zoom kan inte återskapa
+              detaljer som saknas i originalet.
+            </p>
+            <p>
+              Jag målar utifrån det jag kan se, så tydliga närbilder ger oss den bästa
+              utgångspunkten.
+            </p>
+          </div>
+        </article>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/border-collie-agility-photo-tips.webp"
+              alt="En border collie på agilityträning"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 6</span>
+            <h2>Skicka originalfiler i full storlek.</h2>
+            <p>
+              Mejla originalfilerna direkt från mobilen eller kameran, eller dela en länk till en
+              fotomapp. Välj originalstorlek eller full storlek när du skickar. Undvik om möjligt
+              skärmbilder, bilder hämtade från sociala medier och förminskade kopior.
+            </p>
+            <p>
+              Som exempel ger min kamera bilder på 5472 × 3648 pixlar. Det är en jämförelse, inget
+              minimikrav. Vilken upplösning som fungerar beror på skärpan, kompositionen och
+              porträttet du önskar.
+            </p>
+            <p>
+              Om filerna är för stora för mejl kan du använda en molntjänst, till exempel Dropbox.
+              Har du inte kvar originalet kan du ändå skicka den version du har för granskning innan
+              bokning.
+            </p>
+          </div>
+        </article>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/border-collie-paying-ball.webp"
+              alt="En border collie som leker med en boll"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Fototips 7</span>
+            <h2>Ha tålamod och ha roligt.</h2>
+            <p>
+              Låt din vän komma till ro på en välbekant plats. En leksak eller godbit kan hjälpa dig
+              att fånga uppmärksamheten. Korta, lugna stunder gör det lättare att få naturliga
+              uttryck.
+            </p>
+            <p>
+              Ha kameran nära till hands för spontana ögonblick. Personligheten är viktigare än en
+              perfekt posering, så ta flera bilder och låt oss välja tillsammans.
+            </p>
+          </div>
+        </article>
+      </section>
+      <section class="section-tight wrap rule">
+        <div class="split">
+          <div>
+            <h2>Har du bara äldre foton?</h2>
+            <p>
+              Skicka de bästa versionerna du har, även om fotografierna är blekta eller lite
+              skadade. Jag granskar bilderna och förklarar vad som är möjligt innan du bokar. Äldre
+              fotografier kan ofta förbättras inför arbetet med ett porträtt, men möjligheterna
+              beror på bilden.
+            </p>
+            <p>
+              Har du pappersfotografier kan du börja med att skicka en skanning eller ett tydligt
+              foto av dem. Kontakta mig innan du postar originalen, så kommer vi överens om hur de
+              ska hanteras och returneras.
+            </p>
+          </div>
+          <div>
+            <h2>Osäker på vilka du ska välja?</h2>
+            <p>
+              Mejla originalfilerna eller lägg till en länk till din fotomapp i förfrågan. Jag
+              hjälper dig gärna att välja.
+            </p>
+            <a class="text-link" href="/se/kontakta-djurportratt-konstnar.html">
+              <span class="link-label">Fråga om dina foton</span>
+              <span class="arrow" aria-hidden="true">⟶</span>
+            </a>
+          </div>
         </div>
       </section>
-
-      <hr class="hr" />
-
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/border-collie-agility-photo-tips.webp"
-            alt="Border collie på agilityträning"
-          />
-          <h2>Fotostorlek</h2>
-          <p>
-            Skicka foton i originalstorlek, direkt från kameran. Nerkrympta bilder blir mindre klara
-            och tappar viktig information.
-          </p>
-          <p>Exempel: 5472 x 3648 px (kan variera beroende på kamera).</p>
-          <p>
-            Jag kan ta emot alla storlekar via e-post eller t.ex. Dropbox - skicka gärna i
-            originalstorlek.
-          </p>
-          <p>
-            Osäker om ett foto duger?
-            <a href="/se/kontakta-djurportratt-konstnar.html">Skicka mig ett mejl</a>
-            för granskning.
-          </p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/border-collie-paying-ball.webp"
-            alt="Border collie som leker med boll"
-          />
-          <h2>Ha tålamod och ha kul</h2>
-          <p>Att fånga personligheten tar tid, tålamod och en lugn miljö.</p>
-          <p>
-            Stressa inte - använd godis/leksaker, håll kameran redo och fånga naturliga ögonblick.
-            Ett glatt uttryck blir vackrast.
-          </p>
-          <p>
-            Har ditt husdjur gått bort och du bara har äldre foton? Skicka dem ändå - även om stor
-            olja inte alltid är möjlig finns andra fina alternativ.
-          </p>
+      <section class="section-tight wrap">
+        <div class="enquiry-banner">
+          <div>
+            <h2>Ett porträtt av din egen vän?</h2>
+            <p>Skicka dina foton och idéer. Du behöver inte ha bestämt alla detaljer.</p>
+          </div>
+          <a class="button" href="/se/kontakta-djurportratt-konstnar.html">
+            Fråga om ett porträtt <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
         </div>
       </section>
     </main>
-
-    <!-- Footer (unified) -->
-    <footer>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Meny</h3>
-        <ul>
-          <li><a href="/se/villkor.html">Villkor</a></li>
-          <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
-          <li><a href="/se/returpolicy.html">Returpolicy</a></li>
-          <li><a href="/" hreflang="en" lang="en">Engelska</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Bli social</h3>
-        <div class="footer-social">
-          <a
-            title="Facebook"
-            href="https://www.facebook.com/PetPortraitsArtist"
-            class="btn-social-fb"
-            aria-label="Facebook"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-facebook"></use>
-            </svg>
-          </a>
-          <a
-            title="Instagram"
-            href="https://www.instagram.com/katjapetportraits"
-            class="btn-social-fb btn-social-in"
-            aria-label="Instagram"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-instagram"></use>
-            </svg>
-          </a>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="/se/" aria-label="Pet Art with Heart — Hem">
+              <img
+                src="/assets/images/petart-with-heart-logotype.svg"
+                width="224"
+                height="73"
+                alt="Pet Art with Heart"
+              />
+            </a>
+          </div>
+          <nav class="footer-links" aria-label="Användbara länkar">
+            <a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a>
+            <a href="/se/djurportratt-kundreferenser.html">Kundberättelser</a>
+            <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>
+            <a href="/se/villkor.html">Villkor &amp; integritet</a>
+            <a href="/se/returpolicy.html">Returer</a>
+            <a href="/se/sajtmap.html">Sajtkarta</a>
+          </nav>
+          <div class="social">
+            <a
+              href="https://www.facebook.com/PetPortraitsArtist"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/katjapetportraits"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
         </div>
-
-        <button onclick="topFunction()" id="myBtn" title="Till toppen" aria-label="Till toppen">
-          <svg class="icon icon-lg" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
-          </svg>
-        </button>
-      </div>
-
-      <div class="footer-flex-item wide">
-        <a href="/se/">
-          <img
-            class="footer-logo"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/petart-logotype-bw.svg"
-            alt="Pet Art with Heart logotyp"
-          />
+        <p class="copyright">© 2026 Pet Art with Heart. Alla rättigheter förbehållna.</p>
+        <a class="back-to-top" href="#top">
+          <span class="back-to-top-label">Till toppen</span>
+          <span aria-hidden="true">↑</span>
         </a>
       </div>
-
-      <div class="footer-flex-item wide wide2">
-        &copy; 2025 - Alla rättigheter förbehållna | Pet Art with Heart | Webbsida av Katja Turnsek
-      </div>
     </footer>
-
-    <!-- Floating chat buttons (docked mid-right) -->
-    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
-      <!-- WhatsApp -->
+    <aside class="fab-dock" aria-label="Snabbkontakt">
       <a
-        class="fab__btn fab__btn--whatsapp"
-        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
+        class="fab"
+        href="https://wa.me/46730785744?text=Hej%20Katja%2C%20jag%20vill%20g%C3%A4rna%20diskutera%20ett%20djurportr%C3%A4tt."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
+        aria-label="WhatsApp"
       >
-        <svg class="fab__icon" aria-hidden="true">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-whatsapp"></use>
         </svg>
-        <span class="sr-only">Chat on WhatsApp</span>
+        <span class="fab-label">WhatsApp</span>
       </a>
-
-      <!-- SMS / Messages -->
-      <a
-        id="smsLink"
-        class="fab__btn fab__btn--sms"
-        href="sms:+46730785744"
-        aria-label="Send an SMS"
-        title="Send an SMS"
-      >
-        <svg class="fab__icon" aria-hidden="true">
+      <a class="fab" id="smsLink" href="sms:+46730785744" aria-label="Skicka ett sms">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-message"></use>
         </svg>
-        <span class="sr-only">Send an SMS</span>
+        <span class="fab-label">Meddelande</span>
       </a>
-    </div>
-
-    <!-- Scripts (root-absolute) -->
+    </aside>
+    <script defer src="/src/js/site.js?v=split-1"></script>
+    <script defer src="/src/js/animations.js?v=split-1"></script>
     <script defer src="/src/js/analytics.js"></script>
-    <script defer src="/src/js/up.js"></script>
-    <script defer src="/src/js/chat-buttons.js"></script>
   </body>
 </html>

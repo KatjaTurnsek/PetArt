@@ -4,32 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ===== LCP preloads FIRST (desktop + mobile) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp"
-      media="(max-width: 768px)"
-      imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek-mobile.webp 768w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portrait-artist-katja-turnsek.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/pet-portrait-artist-katja-turnsek.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
-
-    <title>Pet Portrait Artist - Realistic Art by Katja</title>
-
-    <!-- Canonical (non-www) -->
     <link rel="canonical" href="https://pet-art.net/html/about-pet-portrait-artist.html" />
 
-    <!-- Hreflang -->
     <link
       rel="alternate"
       href="https://pet-art.net/html/about-pet-portrait-artist.html"
@@ -41,604 +17,504 @@
       hreflang="sv"
     />
 
-    <!-- Social URL matches canonical -->
-    <meta property="og:url" content="https://pet-art.net/html/about-pet-portrait-artist.html" />
-
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>About Katja Turnsek | Pet Portrait Artist in Oils</title>
     <meta
       name="description"
-      content="Commission realistic pet portraits by Katja. Capture the soul of your pet in timeless oil on linen."
+      content="Meet Katja Turnsek, the artist behind Pet Art with Heart. Original oil portraits, a lifelong love of animals and a glimpse inside the studio."
     />
+    <meta name="theme-color" content="#FAF7F2" />
 
-    <!-- Assets (root-absolute) -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+    <link rel="stylesheet" href="/dist/styles.min.css?v=redesign-1" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
+    <meta property="og:url" content="https://pet-art.net/html/about-pet-portrait-artist.html" />
+    <meta property="og:title" content="About Katja Turnsek | Pet Portrait Artist in Oils" />
+    <meta
+      property="og:description"
+      content="Meet Katja Turnsek, the artist behind Pet Art with Heart. Original oil portraits, a lifelong love of animals and a glimpse inside the studio."
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      />
-    </noscript>
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Katja Turnsek | Pet Portrait Artist in Oils" />
+    <meta
+      name="twitter:description"
+      content="Meet Katja Turnsek, the artist behind Pet Art with Heart. Original oil portraits, a lifelong love of animals and a glimpse inside the studio."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Pet Art With Heart",
-        "url": "https://pet-art.net/",
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "name": "Return & Refund Policy — Custom Pet Portraits",
-          "merchantReturnLink": "https://pet-art.net/html/return-policy.html",
-          "applicableCountry": [
-            "SE",
-            "NO",
-            "DK",
-            "FI",
-            "IS",
-            "DE",
-            "NL",
-            "BE",
-            "AT",
-            "CH",
-            "FR",
-            "ES",
-            "IT",
-            "PT",
-            "IE",
-            "GB",
-            "LU",
-            "PL",
-            "CZ",
-            "US",
-            "CA",
-            "AU",
-            "NZ"
-          ],
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-          "itemCondition": ["https://schema.org/DamagedCondition"],
-          "inStoreReturnsOffered": false,
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-        }
-      }
-    </script>
-    <!-- JSON-LD: FAQ -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "@id": "https://pet-art.net/html/about-pet-portrait-artist.html#faq",
-        "mainEntity": [
+        "@graph": [
           {
-            "@type": "Question",
-            "name": "How long have you been painting pet portraits?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "I have been painting professionally for over 25 years, with hundreds of pet portrait commissions completed across the world. "
-            }
+            "@type": "Organization",
+            "@id": "https://pet-art.net/#org",
+            "name": "Pet Art with Heart",
+            "url": "https://pet-art.net/",
+            "logo": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg",
+            "sameAs": [
+              "https://www.instagram.com/katjapetportraits",
+              "https://www.facebook.com/PetPortraitsArtist"
+            ]
           },
           {
-            "@type": "Question",
-            "name": "What mediums do you work in?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "I specialize in oil on linen canvas, using museum-grade materials. I've also worked in soft pastel, watercolor, and graphite over the years."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What inspires your pet portraits?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "My lifelong love for animals, especially dogs, is at the heart of my work. I aim to capture each pet's personality and soul on canvas."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you have pets of your own?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! I currently share my home and studio with Roi, my beloved Border Collie. He inspires me daily and often sneaks into my behind-the-scenes reference
-            photos."
+            "@type": "AboutPage",
+            "@id": "https://pet-art.net/html/about-pet-portrait-artist.html#page",
+            "url": "https://pet-art.net/html/about-pet-portrait-artist.html",
+            "name": "About Katja Turnsek | Pet Portrait Artist in Oils",
+            "description": "Meet Katja Turnsek, the artist behind Pet Art with Heart. Original oil portraits, a lifelong love of animals and a glimpse inside the studio.",
+            "inLanguage": "en",
+            "mainEntity": {
+              "@id": "https://pet-art.net/#katja-turnsek"
+            },
+            "publisher": {
+              "@id": "https://pet-art.net/#org"
             }
           }
         ]
       }
     </script>
+
+    <noscript>
+      <style>
+        .menu-toggle {
+          display: none !important;
+        }
+      </style>
+    </noscript>
   </head>
 
-  <body>
-    <!-- Header with Navigation -->
-    <header>
-      <a href="/"
-        ><img
-          class="logo-header"
-          src="/assets/images/petart-with-heart-logotype.svg"
-          alt="Pet Art with Heart logotype"
-          loading="lazy"
-          decoding="async"
-      /></a>
+  <body data-language="en" data-page="about">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <input id="toggler" class="toggler" type="checkbox" />
-      <label for="toggler" class="burger" aria-label="Open menu">
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-bars"></use>
-          </svg>
-        </span>
-        <span class="sr-only">Menu</span>
-      </label>
-
-      <nav aria-label="Primary Navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li>
-            <a href="/html/pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
-          </li>
-          <li class="dropdown">
-            <a href="#">
-              Order Information
-              <svg class="icon" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="/html/pet-portrait-commission-prices.html">Prices &amp; How It Works</a>
-              </li>
-              <li>
-                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
-              </li>
-              <li>
-                <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
-          </li>
-          <li class="active">
-            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
-          </li>
-          <li><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section class="main-img main-img-about">
-        <div class="main-img__bg">
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
           <img
-            id="hero-lcp"
-            src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
-            srcset="
-              /assets/images/pet-portrait-artist-katja-turnsek-mobile.webp  768w,
-              /assets/images/pet-portrait-artist-katja-turnsek.webp        1200w
-            "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Pet portrait artist Katja Turnsek in her studio"
-            fetchpriority="high"
-            loading="eager"
-            width="1200"
-            height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
           />
-        </div>
+        </a>
 
-        <div class="main-img__overlay" aria-hidden="true"></div>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html" aria-current="page">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+        </nav>
 
-        <figure class="vert-lines" aria-hidden="true"></figure>
+        <a class="button header-enquire" href="/html/contact-pet-portrait-artist.html"> Enquire </a>
 
-        <div class="main-img__content">
-          <h1>About Pet Portrait Artist Katja Turnsek</h1>
-          <p class="lead">
-            As a professional <strong>pet portrait artist</strong> with over
-            <strong>25 years</strong> of experience, I create lifelike pet portraits that blend
-            timeless realism with a more expressive, <strong>painterly</strong> touch - capturing
-            true character and soul in every painting.
-          </p>
-
+        <div class="language" role="group" aria-label="Language">
           <a
-            href="/html/contact-pet-portrait-artist.html"
-            class="head-button"
-            aria-label="Contact the artist — ask a question or join the client list"
+            href="/html/about-pet-portrait-artist.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            aria-current="true"
+            >EN</a
           >
-            Commission Your Realistic Pet Portrait Today
-          </a>
-        </div>
-      </section>
-
-      <!-- Introduction Article -->
-      <section class="main-flex">
-        <h2>A Journey of Passion and Art: My Mission as a Pet Portrait Artist</h2>
-        <h3>Mission</h3>
-        <p>Enriching the world by creating meaningful art with joy, passion, and heart.</p>
-
-        <h2>My Journey: From Animal-Loving Child to Pet Portrait Artist</h2>
-        <p>
-          As a pet portrait artist, my passion for creating artwork of animals started when I was
-          just a little girl. I've always had a deep love for animals and dreamt about having my own
-          pet one day, just like many other children. While my schoolmates dreamed about riding
-          horses, I yearned for a loyal dog to call my own.
-        </p>
-        <p>
-          Despite painting throughout my entire life, I found myself veering onto unnecessary paths.
-          It wasn't until I faced unemployment 22 years ago that I finally opened my eyes and had
-          the courage to follow my heart. This led me to pursue my true passion of realistic
-          portrait painting, specializing in capturing the essence of beloved pets.
-        </p>
-        <p>
-          As a passionate artist and animal lover, I am driven by my love for creating portraits of
-          pets. This spiritual connection to painting is mirrored in the deep affection we have for
-          our beloved animals. My ultimate dream was to spend my days painting the subjects I adore
-          while helping pet owners capture their pets' unique essence.
-        </p>
-        <p>
-          However, the reality proved different as I had to navigate many aspects of running a
-          business—managing my website, crafting copy, and implementing marketing. Despite these
-          hurdles, my dedication as a pet artist remains unwavering.
-        </p>
-        <p>
-          Painting animals has become my true calling, and I am unwilling to return to anything less
-          fulfilling. Continuing on this path, I have grown personally and artistically, cultivating
-          a distinctive style that combines painterly energy with lifelike detail.
-        </p>
-      </section>
-
-      <hr class="hr" />
-
-      <!-- Additional Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            src="/assets/images/pet-portraits-in-oils.webp"
-            alt="Pet Portrait in Oils of Newfoundland dog Mitzy"
-            decoding="async"
-          />
-          <h3>Browse Realistic Pet Portraits in Oils</h3>
-          <p>
-            Explore a curated selection of lifelike pet portraits I've painted for clients around
-            the world. Each artwork captures the heart and personality of the pet - whether you
-            choose a classic or painterly style.
-          </p>
-
-          <div class="centered-button">
-            <button
-              onclick="window.location.href='/html/pet-portraits-oils-gallery.html'"
-              class="button"
-              title="View the Pet portrait Gallery"
-            >
-              View the Pet portrait Gallery
-            </button>
-          </div>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            src="/assets/images/commission-a-pet-portrait.webp"
-            alt="Commission a custom pet portrait - painting in progress"
-            decoding="async"
-          />
-          <h3>How to Commission a Custom Portrait</h3>
-          <p>
-            Learn how to commission your own hand-painted pet portrait - from choosing your photo to
-            selecting the perfect style and size. I'll guide you every step of the way.
-          </p>
-
-          <div class="centered-button">
-            <button
-              onclick="window.location.href='/html/pet-portrait-commission-prices.html'"
-              class="button"
-              title="How to Commission a Pet Portrait"
-            >
-              How to Order a Custom Pet Portrait
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Article with Images and Information -->
-      <section class="magazine-flex">
-        <div class="magazine-flex-item1">
-          <h2 class="magazine">As Seen in Magazines</h2>
-          <p class="magazine">
-            I usually never search for magazines to feature my services; however, in the past, three
-            different Swedish magazines contacted me about writing an article.
-          </p>
-          <p>
-            The magazines are <strong>Hundsport</strong> (twice), <strong>Hippson</strong>, and
-            <strong>Vi i Villa</strong>.
-          </p>
-        </div>
-        <div class="magazine-flex-item2">
-          <p class="magazine">
-            <img
-              class="image"
-              src="/assets/images/magazines.webp"
-              alt="Pet portrait artist Katja featured in Hundsport and Hippson magazines"
-              loading="lazy"
-              decoding="async"
-            />
-          </p>
-        </div>
-      </section>
-
-      <!-- Article with Images and Information -->
-      <section class="main-flex">
-        <h2>Photos of My Portrait Studio: Pet Art with Heart</h2>
-        <p>
-          Many people assume I paint in a grand gallery. The truth is, most of my artworks are
-          commissioned and sold long before I even begin working on them. As a result, I don't
-          require vast storage space - I thrive with minimalistic requirements. (Two of my beloved
-          dogs also insist on being present in all the photos!)
-        </p>
-        <h2>Where I Paint Your Portraits: A Look Inside My Studio</h2>
-        <p>
-          A few years ago, I revamped my workspace by replacing furniture and reorganizing
-          everything, and I'm thrilled with the results. As a firm believer in “less is more,” this
-          environment perfectly complements my personality.
-        </p>
-
-        <!-- Gallery Grid -->
-        <div class="gallery-grid">
-          <figure class="gallery-item div1">
-            <img
-              class="image"
-              loading="lazy"
-              src="/assets/images/pet-art-studio1.webp"
-              alt="Art supplies on wall"
-              decoding="async"
-            />
-          </figure>
-          <figure class="gallery-item div2">
-            <img
-              class="image"
-              loading="lazy"
-              src="/assets/images/pet-art-studio2.webp"
-              alt="Chair in portrait studio"
-              decoding="async"
-            />
-          </figure>
-          <figure class="gallery-item div3">
-            <img
-              class="image"
-              loading="lazy"
-              src="/assets/images/pet-art-studio3.webp"
-              alt="Oil brushes in a jar"
-              decoding="async"
-            />
-          </figure>
-          <figure class="gallery-item div4">
-            <img
-              class="image"
-              loading="lazy"
-              src="/assets/images/pet-art-studio4.webp"
-              alt="Pet portrait studio workspace"
-              decoding="async"
-            />
-          </figure>
-          <figure class="gallery-item div5">
-            <img
-              class="image"
-              loading="lazy"
-              src="/assets/images/pet-art-studio5.webp"
-              alt="Art studio interior"
-              decoding="async"
-            />
-          </figure>
-          <figure class="gallery-item div6">
-            <img
-              class="image"
-              loading="lazy"
-              src="/assets/images/pet-art-studio6.webp"
-              alt="Dog sitting on sofa in studio"
-              decoding="async"
-            />
-          </figure>
-        </div>
-      </section>
-
-      <!-- Testimonial Section -->
-      <aside data-nosnippet class="main-flex">
-        <h2 class="right">Pet Portraits Loved Worldwide</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Hi, Katja - the portrait is lovely -- don't change a thing! The only problem is that
-              looking at it I miss him so much, and it'll be another week before I'm home! You've
-              really captured his heart as well as his face. many thanks
-            </p>
-            <p>Agi Kiss</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
-              loading="lazy"
-              src="/assets/images/client-picture-spencer.webp"
-              alt="Client with custom dog portrait - testimonial photo"
-              decoding="async"
-            />
-          </div>
-        </blockquote>
-        <p>
-          Join pet lovers across Europe, North America, and beyond who've trusted me to tell their
-          companions' stories in oil and canvas.
-        </p>
-      </aside>
-
-      <hr class="hr" />
-
-      <!-- FAQ section: About the Artist -->
-      <section id="faq" class="main-flex faq">
-        <h2>Frequently Asked Questions About the Artist</h2>
-
-        <details>
-          <summary>
-            <span>How long have you been painting pet portraits?</span>
-            <svg class="icon faq-chevron" aria-hidden="true">
-              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-            </svg>
-          </summary>
-          <p>
-            I have been painting professionally for over <strong>25 years</strong>, with hundreds of
-            custom pet portraits created for clients across Europe, North America, and beyond.
-          </p>
-        </details>
-
-        <details>
-          <summary>
-            <span>What mediums have you worked in?</span>
-            <svg class="icon faq-chevron" aria-hidden="true">
-              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-            </svg>
-          </summary>
-          <p>
-            I specialize in <strong>oil on fine linen canvas</strong>, but over the years I've also
-            worked in <strong>soft pastel</strong>, <strong>watercolor</strong>, and
-            <strong>graphite</strong>. Today, oils remain my preferred medium for their depth,
-            richness, and archival quality.
-          </p>
-        </details>
-
-        <details>
-          <summary>
-            <span>What inspires your pet portraits?</span>
-            <svg class="icon faq-chevron" aria-hidden="true">
-              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-            </svg>
-          </summary>
-          <p>
-            My lifelong love for animals — especially dogs — inspires every painting I create. I aim
-            to capture not only likeness, but the <strong>spirit and soul</strong> behind each pet's
-            eyes.
-          </p>
-        </details>
-
-        <details>
-          <summary>
-            <span>Do you have pets of your own?</span>
-            <svg class="icon faq-chevron" aria-hidden="true">
-              <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-            </svg>
-          </summary>
-          <p>
-            Yes! I currently share my home and studio with <strong>Roi</strong>, my beloved Border
-            Collie. He inspires me daily and often sneaks into my behind-the-scenes reference
-            photos.
-          </p>
-        </details>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Menu</h3>
-        <ul>
-          <li><a href="/html/terms-privacy.html">Terms &amp; Privacy</a></li>
-          <li><a href="/html/return-policy.html">Returns &amp; Refunds</a></li>
-          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
-          <li><a href="/se/" hreflang="sv" lang="sv">Swedish</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Get Social</h3>
-        <div class="footer-social">
-          <a
-            title="Facebook"
-            href="https://www.facebook.com/PetPortraitsArtist"
-            class="btn-social-fb"
-            aria-label="Facebook"
+          <span aria-hidden="true">/</span>
+          <a href="/se/om-djurportratt-konstnaren.html" lang="sv" hreflang="sv" aria-label="Svenska"
+            >SV</a
           >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-facebook"></use>
-            </svg>
-          </a>
-          <a
-            title="Instagram"
-            href="https://www.instagram.com/katjapetportraits"
-            class="btn-social-fb btn-social-in"
-            aria-label="Instagram"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-instagram"></use>
-            </svg>
-          </a>
         </div>
 
-        <button onclick="topFunction()" id="myBtn" title="Go to top" aria-label="Go to top">
-          <svg class="icon icon-lg" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
-          </svg>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-lines" aria-hidden="true"></span>
         </button>
       </div>
 
-      <div class="footer-flex-item wide">
-        <a href="/"
-          ><img
-            class="footer-logo"
-            loading="lazy"
-            src="/assets/images/petart-logotype-bw.svg"
-            alt="Pet Art with Heart logotype"
-            decoding="async"
-        /></a>
+      <noscript>
+        <nav class="nojs-nav wrap" aria-label="Navigation">
+          <a href="/">Home</a>
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html" aria-current="page">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+          <a href="/html/contact-pet-portrait-artist.html">Contact</a>
+          <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+          <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
+        </nav>
+      </noscript>
+    </header>
+
+    <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation menu">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
+          <img
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
+          />
+        </a>
+
+        <div class="language" role="group" aria-label="Language">
+          <a
+            href="/html/about-pet-portrait-artist.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            aria-current="true"
+            >EN</a
+          >
+          <span aria-hidden="true">/</span>
+          <a href="/se/om-djurportratt-konstnaren.html" lang="sv" hreflang="sv" aria-label="Svenska"
+            >SV</a
+          >
+        </div>
+
+        <button class="close-menu" type="button" aria-label="Close menu">×</button>
       </div>
-      <div class="footer-flex-item wide wide2">
-        &copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja Turnsek
+
+      <div class="mobile-menu-body">
+        <nav aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html" aria-current="page">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+        </nav>
+
+        <a class="button" href="/html/contact-pet-portrait-artist.html">
+          Enquire About a Portrait
+          <span class="arrow" aria-hidden="true">⟶</span>
+        </a>
+
+        <div class="mobile-secondary">
+          <a class="text-link" href="/html/pet-portrait-testimonials.html">
+            <span class="link-label">Client stories</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+          <a class="text-link" href="/html/photo-tips-portrait-commissions.html">
+            <span class="link-label">Photo Tips</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+        </div>
+
+        <p class="menu-signoff">Painted by hand. Made personal.</p>
+      </div>
+    </dialog>
+
+    <main id="main" tabindex="-1">
+      <section class="page-intro">
+        <div class="wrap">
+          <div class="page-intro-inner">
+            <div class="intro-copy">
+              <span class="eyebrow">Hand-painted oil pet portraits</span>
+              <h1>An artist.<br /><em>An animal lover.</em></h1>
+              <p>
+                I’m Katja Turnsek. I create original oil portraits for people who share their lives
+                with animals.
+              </p>
+            </div>
+            <p class="intro-aside">A connection to animals.<br />A lifelong love of painting.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="split">
+          <figure>
+            <img
+              src="/assets/images/pet-portrait-artist-katja-turnsek.webp"
+              alt="Pet portrait artist Katja Turnsek"
+              width="1200"
+              height="579"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              class=""
+            />
+          </figure>
+
+          <div class="copy">
+            <span class="eyebrow">Meet Katja</span>
+            <h2>The personality behind the portrait.</h2>
+            <p>
+              Animals have been part of my imagination for as long as I can remember. As a child,
+              while friends dreamed of horses, I longed for a dog of my own. Painting became a way
+              to explore that fascination.
+            </p>
+            <p>
+              Today, I work with clients around the world from my studio in Slovenia. My Border
+              Collie, Roi, is a familiar presence beside the easel.
+            </p>
+            <p>
+              Over the years, I have also worked in pastel, watercolour and pencil. Today, my
+              portrait commissions focus on oils on linen, building up layers and details to bring
+              an animal’s expression to life.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap rule">
+        <div class="split reverse">
+          <figure>
+            <img
+              src="/assets/images/pet-portraits-in-oils.webp"
+              alt="Original oil portraits in the studio"
+              width="600"
+              height="473"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+
+          <div class="copy">
+            <span class="eyebrow">My approach</span>
+            <h2>A likeness, with <em>life in it.</em></h2>
+            <p>
+              A tilt of the head. Light caught in the eyes. The softness of a familiar expression. I
+              look for the details that make an animal recognisable to the people who know them
+              best.
+            </p>
+            <p>
+              I work from your photographs and help you choose the images that best show your
+              animal’s appearance and character. Together, we plan the size, background and
+              composition. You approve a digital mock-up before I begin painting.
+            </p>
+            <p>
+              The portrait develops in layers, with close attention to the eyes, fur and the
+              relationship between light and shadow. I share photographs by email as I work, so you
+              can follow the painting from the planned composition to the finished portrait.
+            </p>
+
+            <a class="text-link" href="/html/pet-portraits-oils-gallery.html">
+              <span class="link-label">Explore the gallery</span>
+              <span class="arrow" aria-hidden="true">⟶</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap rule">
+        <span class="eyebrow">Behind the scenes</span>
+        <h2>A look inside my studio.</h2>
+        <p>
+          A simple workspace, well-used brushes and a little company from my dogs. These photographs
+          offer a glimpse of the spaces where my portraits have taken shape.
+        </p>
+
+        <div class="studio-grid">
+          <figure>
+            <img
+              src="/assets/images/pet-art-studio1.webp"
+              alt="A look inside the portrait studio"
+              width="900"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+          <figure>
+            <img
+              src="/assets/images/pet-art-studio2.webp"
+              alt="A look inside the portrait studio"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+          <figure>
+            <img
+              src="/assets/images/pet-art-studio3.webp"
+              alt="A look inside the portrait studio"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+          <figure>
+            <img
+              src="/assets/images/pet-art-studio4.webp"
+              alt="A look inside the portrait studio"
+              width="600"
+              height="401"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+          <figure>
+            <img
+              src="/assets/images/pet-art-studio5.webp"
+              alt="A look inside the portrait studio"
+              width="600"
+              height="400"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+          <figure>
+            <img
+              src="/assets/images/pet-art-studio6.webp"
+              alt="A look inside the portrait studio"
+              width="600"
+              height="400"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section wrap rule">
+        <div class="split">
+          <figure>
+            <img
+              src="/assets/images/magazines.webp"
+              alt="Pet Art with Heart featured in Swedish magazines"
+              width="424"
+              height="278"
+              loading="lazy"
+              decoding="async"
+              class=""
+            />
+          </figure>
+
+          <div class="copy">
+            <span class="eyebrow">In print</span>
+            <h2>Stories beyond the canvas.</h2>
+            <p>
+              My work has been featured in the Swedish publications Hundsport (twice), Hippson and
+              Vi i Villa. Each feature has offered another way to share the connection between
+              people, animals and art.
+            </p>
+
+            <a class="text-link" href="/html/pet-portrait-testimonials.html">
+              <span class="link-label">Read client stories</span>
+              <span class="arrow" aria-hidden="true">⟶</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight wrap">
+        <div class="enquiry-banner">
+          <div>
+            <h2>A portrait of your own companion?</h2>
+            <p>Send your photos and ideas. You do not need to have every detail decided.</p>
+          </div>
+
+          <a class="button" href="/html/contact-pet-portrait-artist.html">
+            Enquire About a Portrait
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
+              <img
+                src="/assets/images/petart-with-heart-logotype.svg"
+                width="224"
+                height="73"
+                alt="Pet Art with Heart"
+              />
+            </a>
+          </div>
+
+          <nav class="footer-links" aria-label="Useful links">
+            <a href="/html/contact-pet-portrait-artist.html">Contact</a>
+            <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+            <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
+            <a href="/html/terms-privacy.html">Terms &amp; Privacy</a>
+            <a href="/html/return-policy.html">Returns</a>
+            <a href="/html/petart-with-heart-sitemap.html">Site Map</a>
+          </nav>
+
+          <div class="social">
+            <a
+              href="https://www.facebook.com/PetPortraitsArtist"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/katjapetportraits"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <p class="copyright">© 2026 Pet Art with Heart. All rights reserved.</p>
+
+        <a class="back-to-top" href="#top">
+          <span class="back-to-top-label">Back to top</span>
+          <span aria-hidden="true">↑</span>
+        </a>
       </div>
     </footer>
 
-    <!-- Floating chat buttons (docked mid-right) -->
-    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
-      <!-- WhatsApp -->
+    <aside class="fab-dock" aria-label="Quick contact">
       <a
-        class="fab__btn fab__btn--whatsapp"
-        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
+        class="fab"
+        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%20would%20like%20to%20discuss%20a%20pet%20portrait."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
+        aria-label="WhatsApp"
       >
-        <svg class="fab__icon" aria-hidden="true">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-whatsapp"></use>
         </svg>
-        <span class="sr-only">Chat on WhatsApp</span>
+        <span class="fab-label">WhatsApp</span>
       </a>
 
-      <!-- SMS / Messages -->
-      <a
-        id="smsLink"
-        class="fab__btn fab__btn--sms"
-        href="sms:+46730785744"
-        aria-label="Send an SMS"
-        title="Send an SMS"
-      >
-        <svg class="fab__icon" aria-hidden="true">
+      <a class="fab" id="smsLink" href="sms:+46730785744" aria-label="Send a text message">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-message"></use>
         </svg>
-        <span class="sr-only">Send an SMS</span>
+        <span class="fab-label">Message</span>
       </a>
-    </div>
+    </aside>
 
-    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/site.js?v=split-1"></script>
+    <script defer src="/src/js/animations.js?v=split-1"></script>
     <script defer src="/src/js/analytics.js"></script>
-    <script defer src="/src/js/up.js"></script>
-    <script defer src="/src/js/chat-buttons.js"></script>
   </body>
 </html>

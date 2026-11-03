@@ -4,32 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-oil-portrait-testimonials-mobile.webp"
-      media="(max-width: 768px)"
-      imagesrcset="/assets/images/pet-oil-portrait-testimonials-mobile.webp 768w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-oil-portrait-testimonials.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/pet-oil-portrait-testimonials.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
-
-    <title>Pet Portrait Testimonials - Real Reviews & Photos</title>
-
-    <!-- Canonical (non-www) -->
     <link rel="canonical" href="https://pet-art.net/html/pet-portrait-testimonials.html" />
-
-    <!-- Hreflang (EN self + Swedish equivalent) -->
     <link
       rel="alternate"
       href="https://pet-art.net/html/pet-portrait-testimonials.html"
@@ -41,1615 +16,1687 @@
       hreflang="sv"
     />
 
-    <!-- Social URL matches canonical -->
-    <meta property="og:url" content="https://pet-art.net/html/pet-portrait-testimonials.html" />
-
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Pet Portrait Testimonials &amp; Client Stories | Katja Turnsek</title>
     <meta
       name="description"
-      content="Read heartfelt pet portrait reviews with client photos. See why people worldwide love Katja's artwork."
+      content="Read client stories and see photographs of Katja’s paintings and drawings through the years. Current portrait commissions are painted in oils on linen."
     />
+    <meta name="theme-color" content="#FAF7F2" />
 
-    <!-- Assets (root-absolute) -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+    <link rel="stylesheet" href="/dist/styles.min.css?v=redesign-1" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
+    <meta property="og:url" content="https://pet-art.net/html/pet-portrait-testimonials.html" />
+    <meta
+      property="og:title"
+      content="Pet Portrait Testimonials &amp; Client Stories | Katja Turnsek"
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      />
-    </noscript>
+    <meta
+      property="og:description"
+      content="Read client stories and see photographs of Katja’s paintings and drawings through the years. Current portrait commissions are painted in oils on linen."
+    />
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Pet Portrait Testimonials &amp; Client Stories | Katja Turnsek"
+    />
+    <meta
+      name="twitter:description"
+      content="Read client stories and see photographs of Katja’s paintings and drawings through the years. Current portrait commissions are painted in oils on linen."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Pet Art With Heart",
-        "url": "https://pet-art.net/",
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "name": "Return & Refund Policy — Custom Pet Portraits",
-          "merchantReturnLink": "https://pet-art.net/html/return-policy.html",
-          "applicableCountry": [
-            "SE",
-            "NO",
-            "DK",
-            "FI",
-            "IS",
-            "DE",
-            "NL",
-            "BE",
-            "AT",
-            "CH",
-            "FR",
-            "ES",
-            "IT",
-            "PT",
-            "IE",
-            "GB",
-            "LU",
-            "PL",
-            "CZ",
-            "US",
-            "CA",
-            "AU",
-            "NZ"
-          ],
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-          "itemCondition": ["https://schema.org/DamagedCondition"],
-          "inStoreReturnsOffered": false,
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-        }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://pet-art.net/#org",
+            "name": "Pet Art with Heart",
+            "url": "https://pet-art.net/",
+            "logo": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg",
+            "sameAs": [
+              "https://www.instagram.com/katjapetportraits",
+              "https://www.facebook.com/PetPortraitsArtist"
+            ]
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://pet-art.net/html/pet-portrait-testimonials.html#page",
+            "url": "https://pet-art.net/html/pet-portrait-testimonials.html",
+            "name": "Pet Portrait Testimonials & Client Stories | Katja Turnsek",
+            "description": "Read client stories and see photographs of Katja’s paintings and drawings through the years. Current portrait commissions are painted in oils on linen.",
+            "inLanguage": "en",
+            "publisher": {
+              "@id": "https://pet-art.net/#org"
+            }
+          }
+        ]
       }
     </script>
+
+    <noscript>
+      <style>
+        .menu-toggle {
+          display: none !important;
+        }
+      </style>
+    </noscript>
   </head>
 
-  <body>
-    <!-- Header with Navigation (unified) -->
-    <header>
-      <a href="/"
-        ><img
-          class="logo-header"
-          src="/assets/images/petart-with-heart-logotype.svg"
-          alt="Pet Art with Heart logotype"
-          loading="lazy"
-          decoding="async"
-      /></a>
+  <body data-language="en" data-page="testimonials">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <input id="toggler" class="toggler" type="checkbox" />
-      <label for="toggler" class="burger" aria-label="Open menu">
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-bars"></use>
-          </svg>
-        </span>
-        <span class="sr-only">Menu</span>
-      </label>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
+          <img
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
+          />
+        </a>
 
-      <nav aria-label="Primary Navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li>
-            <a href="/html/pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
-          </li>
-          <li class="dropdown active">
-            <a href="#">
-              Order Information
-              <svg class="icon" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="/html/pet-portrait-commission-prices.html">Prices &amp; How It Works</a>
-              </li>
-              <li>
-                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
-              </li>
-              <li>
-                <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
-          </li>
-          <li>
-            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
-          </li>
-          <li><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
-        </ul>
-      </nav>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+        </nav>
+
+        <a class="button header-enquire" href="/html/contact-pet-portrait-artist.html"> Enquire </a>
+
+        <div class="language" role="group" aria-label="Language">
+          <a
+            href="/html/pet-portrait-testimonials.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            aria-current="true"
+            >EN</a
+          >
+          <span aria-hidden="true">/</span>
+          <a
+            href="/se/djurportratt-kundreferenser.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            >SV</a
+          >
+        </div>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <noscript>
+        <nav class="nojs-nav wrap" aria-label="Navigation">
+          <a href="/">Home</a>
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+          <a href="/html/contact-pet-portrait-artist.html">Contact</a>
+          <a href="/html/pet-portrait-testimonials.html" aria-current="page">Testimonials</a>
+          <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
+        </nav>
+      </noscript>
     </header>
 
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section class="main-img main-img-testimonials">
-        <div class="main-img__bg">
+    <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation menu">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
           <img
-            id="hero-lcp"
-            src="/assets/images/pet-oil-portrait-testimonials.webp"
-            srcset="
-              /assets/images/pet-oil-portrait-testimonials-mobile.webp  768w,
-              /assets/images/pet-oil-portrait-testimonials.webp        1200w
-            "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Happy clients with their custom oil pet portraits"
-            fetchpriority="high"
-            loading="eager"
-            width="1200"
-            height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
           />
+        </a>
+
+        <div class="language" role="group" aria-label="Language">
+          <a
+            href="/html/pet-portrait-testimonials.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            aria-current="true"
+            >EN</a
+          >
+          <span aria-hidden="true">/</span>
+          <a
+            href="/se/djurportratt-kundreferenser.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            >SV</a
+          >
         </div>
 
-        <div class="main-img__overlay" aria-hidden="true"></div>
+        <button class="close-menu" type="button" aria-label="Close menu">×</button>
+      </div>
 
-        <figure class="vert-lines" aria-hidden="true"></figure>
+      <div class="mobile-menu-body">
+        <nav aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+        </nav>
 
-        <div class="main-img__content">
-          <h1>Pet Portrait Testimonials &amp; Client Photos</h1>
-          <p class="lead">
-            Real reviews from pet lovers worldwide - unboxings, happy tears, and portraits proudly
-            displayed at home. See why families trust <strong>Pet Art with Heart</strong>.
-          </p>
+        <a class="button" href="/html/contact-pet-portrait-artist.html">
+          Enquire About a Portrait
+          <span class="arrow" aria-hidden="true">⟶</span>
+        </a>
 
-          <a
-            href="/html/contact-pet-portrait-artist.html"
-            class="head-button"
-            aria-label="Join the client list — limited commissions available"
-          >
-            Join My Client List
+        <div class="mobile-secondary">
+          <a class="text-link" href="/html/pet-portrait-testimonials.html">
+            <span class="link-label">Client stories</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+          <a class="text-link" href="/html/photo-tips-portrait-commissions.html">
+            <span class="link-label">Photo Tips</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
           </a>
         </div>
+
+        <p class="menu-signoff">Painted by hand. Made personal.</p>
+      </div>
+    </dialog>
+
+    <main id="main" tabindex="-1">
+      <section class="page-intro">
+        <div class="wrap">
+          <div class="page-intro-inner">
+            <div class="intro-copy">
+              <span class="eyebrow">Hand-painted oil pet portraits</span>
+              <h1>Portraits with a <em>personal story.</em></h1>
+              <p>
+                Kind words and photographs from clients who have welcomed my paintings and drawings
+                into their homes.
+              </p>
+              <p>
+                This archive brings together stories from different stages of my work, including
+                portraits in oils, pastel, watercolour and pencil. Today, I take commissions for oil
+                portraits on linen. The earlier works and clients’ words remain here as part of that
+                artistic history.
+              </p>
+            </div>
+            <p class="intro-aside">From my easel<br />to their home.</p>
+          </div>
+        </div>
       </section>
 
-      <!-- Testimonial Sections -->
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Maggie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              I wanted to capture a moment in time before it was lost. Now, it is with me forever.
-              Thank you, Katja, no one except you could have visualized Maggie so well.
-            </p>
-            <p>The shimmering light in the soft fur, the kindness in her eyes - truly beautiful!</p>
-            <p>Annika Lekman</p>
-          </div>
-          <div class="testimonial-flex-item2">
+      <section class="wrap story-list">
+        <h2 class="sr-only">Client testimonials through the years</h2>
+
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/pet-portrait-client-photo.webp"
               alt="Maggie client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Maggie</h2>
+            <blockquote>
+              <p>
+                I wanted to capture a moment in time before it was lost. Now, it is with me forever.
+                Thank you, Katja, no one except you could have visualized Maggie so well.
+              </p>
+              <p>
+                The shimmering light in the soft fur, the kindness in her eyes - truly beautiful!
+              </p>
+              <cite>Annika Lekman</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Poochi</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              Thank you so much for having the portrait arrive on time. My wife (and I) were both
-              amazed at the painting. The detail is so incredible. Here are some pics of me, my wife
-              and Poochi.
-            </p>
-            <p>Najlepsa ti hvala - hope that's right</p>
-            <p>Kevin Fernandez and Susan</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/dog-portrait-client-picture.webp"
               alt="Poochi client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Poochi</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                Thank you so much for having the portrait arrive on time. My wife (and I) were both
+                amazed at the painting. The detail is so incredible. Here are some pics of me, my
+                wife and Poochi.
+              </p>
+              <p>Najlepsa ti hvala - hope that&#x27;s right</p>
+              <cite>Kevin Fernandez and Susan</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Dixie &amp; Charlie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hello Katja,</p>
-            <p>
-              The painting just arrived and it's really great, I'm so glad that you painted the
-              background a little darker than the photo, it's much warmer now.
-            </p>
-            <p>
-              I'm so glad I let you paint for me and not someone else, you're so good and have such
-              talent.
-            </p>
-            <p>Sincerely,</p>
-            <p>Gunilla Rud-Olson</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-dixie-charlie.webp"
               alt="Dixie &amp; Charlie client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Dixie &amp; Charlie</h2>
+            <blockquote>
+              <p>Hello Katja,</p>
+              <p>
+                The painting just arrived and it&#x27;s really great, I&#x27;m so glad that you
+                painted the background a little darker than the photo, it&#x27;s much warmer now.
+              </p>
+              <p>
+                I&#x27;m so glad I let you paint for me and not someone else, you&#x27;re so good
+                and have such talent.
+              </p>
+              <p>Sincerely,</p>
+              <cite>Gunilla Rud-Olson</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Alice</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja!</p>
-            <p>
-              The painting is absolutely fantastic, you've really captured my beautiful angel. Alice
-              was my beloved soul mate, a very special little girl.
-            </p>
-            <p>
-              The loss of her is huge, but every time I walk past the painting and see that
-              beautiful look and personality, my heart swim with warmth.
-            </p>
-            <p>
-              I am so thankful for this painting which brightens our home and will remind us every
-              day of this beautiful little dog.
-            </p>
-            <p>Line Nordgren</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-alice.webp"
               alt="Alice client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Alice</h2>
+            <blockquote>
+              <p>Hi Katja!</p>
+              <p>
+                The painting is absolutely fantastic, you&#x27;ve really captured my beautiful
+                angel. Alice was my beloved soul mate, a very special little girl.
+              </p>
+              <p>
+                The loss of her is huge, but every time I walk past the painting and see that
+                beautiful look and personality, my heart swim with warmth.
+              </p>
+              <p>
+                I am so thankful for this painting which brightens our home and will remind us every
+                day of this beautiful little dog.
+              </p>
+              <cite>Line Nordgren</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Scout</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              She loved it. Thought you might like to share in the moment. We open presents as soon
-              as the family arrives :-&#41;.
-            </p>
-            <p>Mark Gamache</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-scout.webp"
               alt="Scout client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Scout</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                She loved it. Thought you might like to share in the moment. We open presents as
+                soon as the family arrives :-).
+              </p>
+              <cite>Mark Gamache</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Polar Bears</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja</p>
-            <p>
-              Both Alison love the Siberian Stretching Tiger and it is marvelous how you have
-              captured the relief on his face whilst stretching.
-            </p>
-            <p>
-              But we shamefully admit that our favourite is the Polar Bears. This is perhaps because
-              we always wanted the bears and because the beauty makes them “come alive” but then so
-              does your Tiger …….
-            </p>
-            <p>
-              I guess we love them both but as you can see from the pictures, your Polar Bears allow
-              our home to be a home. Exquisite indeed. Lots of love from the USA.
-            </p>
-            <p>I will regroup and establish contact again. Don't forget us in the meantime.</p>
-            <p>Take care.</p>
-            <p>David & Alison</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-bears.webp"
               alt="Bears client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Polar Bears</h2>
+            <blockquote>
+              <p>Hi Katja</p>
+              <p>
+                Both Alison love the Siberian Stretching Tiger and it is marvelous how you have
+                captured the relief on his face whilst stretching.
+              </p>
+              <p>
+                But we shamefully admit that our favourite is the Polar Bears. This is perhaps
+                because we always wanted the bears and because the beauty makes them “come alive”
+                but then so does your Tiger …….
+              </p>
+              <p>
+                I guess we love them both but as you can see from the pictures, your Polar Bears
+                allow our home to be a home. Exquisite indeed. Lots of love from the USA.
+              </p>
+              <p>
+                I will regroup and establish contact again. Don&#x27;t forget us in the meantime.
+              </p>
+              <p>Take care.</p>
+              <cite>David &amp; Alison</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Horses</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja!</p>
-            <p>
-              When I saw the pictures in the email I got warm all over, What a beautiful painting
-              you've done for me, Katja! THANKS!
-            </p>
-            <p>It would be perfect if I could come down and collect the painting this weekend.</p>
-            <p>
-              I am so incredibly happy, and it will be so much fun to come down and bring it home!
-              :&#41; I can't wait: D. THANKS again!
-            </p>
-            <p>Sincerely,</p>
-            <p>Mikael</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-horses.webp"
               alt="Horses client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Horses</h2>
+            <blockquote>
+              <p>Hi Katja!</p>
+              <p>
+                When I saw the pictures in the email I got warm all over, What a beautiful painting
+                you&#x27;ve done for me, Katja! THANKS!
+              </p>
+              <p>It would be perfect if I could come down and collect the painting this weekend.</p>
+              <p>
+                I am so incredibly happy, and it will be so much fun to come down and bring it home!
+                :) I can&#x27;t wait: D. THANKS again!
+              </p>
+              <p>Sincerely,</p>
+              <cite>Mikael</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Fluffan</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              I'm almost speechless... Thank you Katja Turnsek for drawing a Conte Pastel of my
-              Queen Fluffan.
-            </p>
-            <p>
-              As always, it's amazing and I can honestly say I don't know of any artist that can
-              paint/draw as amazingly as you do. Fantastic
-            </p>
-            <p>Carro Silvfer</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-fluffan.webp"
               alt="Fluffan client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Pastel Drawing of Fluffan</h2>
+            <blockquote>
+              <p>
+                I&#x27;m almost speechless... Thank you Katja Turnsek for drawing a Conte Pastel of
+                my Queen Fluffan.
+              </p>
+              <p>
+                As always, it&#x27;s amazing and I can honestly say I don&#x27;t know of any artist
+                that can paint/draw as amazingly as you do. Fantastic
+              </p>
+              <cite>Carro Silvfer</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Samantha</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Even though it's been almost a year since we lost Samantha, you have kept her alive
-              with the stunning picture of our little girl.
-            </p>
-            <p>
-              We now have so many memories because of all of your hard work. Memories that cannot be
-              taken away.
-            </p>
-            <p>
-              Everytime we look at the very realistic picture of her. Keep up the good work for
-              those who follow.
-            </p>
-            <p>Julie Shaw</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
+              data-reveal
               src="/assets/images/client-picture-samantha.webp"
               alt="Samantha client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Samantha</h2>
+            <blockquote>
+              <p>
+                Even though it&#x27;s been almost a year since we lost Samantha, you have kept her
+                alive with the stunning picture of our little girl.
+              </p>
+              <p>
+                We now have so many memories because of all of your hard work. Memories that cannot
+                be taken away.
+              </p>
+              <p>
+                Everytime we look at the very realistic picture of her. Keep up the good work for
+                those who follow.
+              </p>
+              <cite>Julie Shaw</cite>
+            </blockquote>
           </div>
-        </blockquote>
-      </section>
+        </article>
 
-      <hr class="hr" />
-
-      <!-- The remainder of testimonial sections: ensure every <img> has loading="lazy" and decoding="async" -->
-      <!-- For brevity, below we add these attributes consistently to all remaining images -->
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Amber &amp; Tess</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              The painting you have created of our dogs, Amber & Tess, is stunning. The close-up
-              pictures of them are amazing, their eyes and expressions are exactly right.
-            </p>
-            <p>
-              We can't wait to recieve the painting and we will try and take a photograph with the
-              girls for you to see the true likeness that you have created.
-            </p>
-            <p>Anita & Jerry</p>
-          </div>
-          <div class="testimonial-flex-item2">
+        <article class="client-story">
+          <figure>
             <img
-              class="testimonial-img"
-              loading="lazy"
-              decoding="async"
+              data-reveal
               src="/assets/images/client-picture-amber-tess.webp"
               alt="Amber &amp; Tess client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Husky</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              The beautiful painting is here and well. The UPS man brought it into our house and
-              opened it to make sure it was perfect. He loved it too.
-            </p>
-            <p>
-              We take it next week to get framed by the same people that will frame George's
-              portrait. We will send you pictures from the dedication. We love the calling cards and
-              postcards.
-            </p>
-            <p>
-              Thanks again so much. We are really excited to donate such a beautiful painting to the
-              school.
-            </p>
-            <p>George & Pam Hopper</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Amber &amp; Tess</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                The painting you have created of our dogs, Amber &amp; Tess, is stunning. The
+                close-up pictures of them are amazing, their eyes and expressions are exactly right.
+              </p>
+              <p>
+                We can&#x27;t wait to recieve the painting and we will try and take a photograph
+                with the girls for you to see the true likeness that you have created.
+              </p>
+              <cite>Anita &amp; Jerry</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-husky.webp"
               alt="Husky client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pencil Drawing of Flo</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Katja</p>
-            <p>
-              We are so pleased with our drawing. Once framed, we'll send a picture of both Flo and
-              the portrait.
-            </p>
-            <p>Thanks again.</p>
-            <p>Scott Ehlen</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Husky</h2>
+            <blockquote>
+              <p>
+                The beautiful painting is here and well. The UPS man brought it into our house and
+                opened it to make sure it was perfect. He loved it too.
+              </p>
+              <p>
+                We take it next week to get framed by the same people that will frame George&#x27;s
+                portrait. We will send you pictures from the dedication. We love the calling cards
+                and postcards.
+              </p>
+              <p>
+                Thanks again so much. We are really excited to donate such a beautiful painting to
+                the school.
+              </p>
+              <cite>George &amp; Pam Hopper</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-flo.webp"
               alt="Flo client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Spencer</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Hi, Katja - the portrait is lovely -- don't change a thing! The only problem is that
-              looking at it I miss him so much, and it'll be another week before I'm home!
-            </p>
-            <p>You've really captured his heart as well as his face.</p>
-            <p>many thanks</p>
-            <p>Agi Kiss</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pencil Drawing of Flo</h2>
+            <blockquote>
+              <p>Katja</p>
+              <p>
+                We are so pleased with our drawing. Once framed, we&#x27;ll send a picture of both
+                Flo and the portrait.
+              </p>
+              <p>Thanks again.</p>
+              <cite>Scott Ehlen</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-spencer.webp"
               alt="Spencer client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Jesse</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              The portrait is just beautiful!! It captures her perfectly! Jesse was a special dog to
-              me, one of a kind.
-            </p>
-            <p>Thank you so much</p>
-            <p>Viviane Rittich</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Spencer</h2>
+            <blockquote>
+              <p>
+                Hi, Katja - the portrait is lovely -- don&#x27;t change a thing! The only problem is
+                that looking at it I miss him so much, and it&#x27;ll be another week before
+                I&#x27;m home!
+              </p>
+              <p>You&#x27;ve really captured his heart as well as his face.</p>
+              <p>many thanks</p>
+              <cite>Agi Kiss</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-jesse.webp"
               alt="Jesse client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Gully &amp; Jixxy</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              I just had to drive home on my lunch break to see if the painting finally arrived.
-              Went to get it out, it is absolutely fantastic. I got tears in my eyes, so realistic
-              that is almost scary.
-            </p>
-            <p>
-              I now left it at the framer, a beautiful, slightly colorful frame and antique styled.
-              It will look fantastic. I will get it next Friday at earliest because they had to
-              order the frame and it delivered in Thursdays.
-            </p>
-            <p>
-              So now I will have to wait again… promise that you will get a photo of it when I get
-              the framed painting back. Many thanks Katja; you should know that I spread your
-              website to all people I know and I'm hoping you will get many commissions.
-            </p>
-            <p>Cina Hjorth</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pastel Drawing of Jesse</h2>
+            <blockquote>
+              <p>
+                The portrait is just beautiful!! It captures her perfectly! Jesse was a special dog
+                to me, one of a kind.
+              </p>
+              <p>Thank you so much</p>
+              <cite>Viviane Rittich</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-gully-jixxy.webp"
-              alt="Jesse client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Wolfgang</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Dear Katja,</p>
-            <p>
-              Thanks for painting such a wonderful portrait. Here are two photos of Wolfgang with
-              the painting. The portrait will be going to our framer shortly, but we thought you
-              would enjoy the before and after. We are just thrilled. Wolfgang does show it, but he
-              is thrilled also. Have a great week.
-            </p>
-            <p>Sincerely,</p>
-            <p>Jody Justus</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              alt="Gully &amp; Jixxy client testimonial"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Gully &amp; Jixxy</h2>
+            <blockquote>
+              <p>
+                I just had to drive home on my lunch break to see if the painting finally arrived.
+                Went to get it out, it is absolutely fantastic. I got tears in my eyes, so realistic
+                that is almost scary.
+              </p>
+              <p>
+                I now left it at the framer, a beautiful, slightly colorful frame and antique
+                styled. It will look fantastic. I will get it next Friday at earliest because they
+                had to order the frame and it delivered in Thursdays.
+              </p>
+              <p>
+                So now I will have to wait again… promise that you will get a photo of it when I get
+                the framed painting back. Many thanks Katja; you should know that I spread your
+                website to all people I know and I&#x27;m hoping you will get many commissions.
+              </p>
+              <cite>Cina Hjorth</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-wolfgang.webp"
               alt="Wolfgang client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Vilda</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hello Katja</p>
-            <p>
-              Many thanks for the wonderful painting you did of my Vilda (SEUCH Enigma Standing
-              Ovations)! It is so natural and alive, every hair is at the right place, and her
-              expression is so well interpreted.
-            </p>
-            <p>
-              The painting has been given a prominent place in our home and all who see it are
-              completely overwhelmed, you really succeeded and I will always be extremely happy with
-              it!
-            </p>
-            <p>
-              Enclosed please find a photo of us, not so good, but at least as proof of my
-              appreciation!
-            </p>
-            <p>Ingrid Paulsson</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Wolfgang</h2>
+            <blockquote>
+              <p>Dear Katja,</p>
+              <p>
+                Thanks for painting such a wonderful portrait. Here are two photos of Wolfgang with
+                the painting. The portrait will be going to our framer shortly, but we thought you
+                would enjoy the before and after. We are just thrilled. Wolfgang does show it, but
+                he is thrilled also. Have a great week.
+              </p>
+              <p>Sincerely,</p>
+              <cite>Jody Justus</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-vilda.webp"
               alt="Vilda client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Chiquita</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Oh, she CRIED and CRIED and CRIED and CRIED. Mom was totally unprepared and really
-              didn`t have a clue. I first gave her a greeting card I made myself and my brother
-              printed it on a beautiful and expensive paper. In it was a print of the painting from
-              your web site.
-            </p>
-            <p>
-              She was really happy and besides that there was couple hundred crowns. This money was
-              for a frame, but of course she didn`t understand that...
-            </p>
-            <p>
-              Then I told her to wait a moment and ran to get the package as I went towards her, she
-              starred at me and understood right away as she saw the size of the package. She
-              bursted into tears, didn`t even take the package at first.
-            </p>
-            <p>
-              She was REALLY HAPPY and than she wanted to phone and thank all people who helped buy
-              the painting (grandmother, grandfather, my brother, my dad, her sister & brother)and
-              she didn`t even have time to say "hi, it`s Carin" before she bursted into tears again.
-            </p>
-            <p>
-              So I had to take over the phone all the time =&#41; She tried to call you yesterday
-              but you weren`t at home, only your son. But on the other hand she probably wouldn`t be
-              able to talk anyway =&#41; =&#41; =&#41;
-            </p>
-            <p>
-              Chiquita meant so VERY MUCH TO HER, on a way that no other dog could ever do. She was
-              saying all evening: "she is alive, she is alive! Do you see her eyes? She is really
-              alive!" when she looked at the painting. This couldn`t be better, I promise you.
-            </p>
-            <p>
-              I have almost never seen my mother this emotional and I think it even came as a shock
-              to her. Thank you DEAR KATJA for a really wonderful painting. There are many of us who
-              are lyrical over this you have to belive =&#41;
-            </p>
-            <p>Kind regards,</p>
-            <p>Caroline Appelfeldt</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="463"
+              height="463"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Vilda</h2>
+            <blockquote>
+              <p>Hello Katja</p>
+              <p>
+                Many thanks for the wonderful painting you did of my Vilda (SEUCH Enigma Standing
+                Ovations)! It is so natural and alive, every hair is at the right place, and her
+                expression is so well interpreted.
+              </p>
+              <p>
+                The painting has been given a prominent place in our home and all who see it are
+                completely overwhelmed, you really succeeded and I will always be extremely happy
+                with it!
+              </p>
+              <p>
+                Enclosed please find a photo of us, not so good, but at least as proof of my
+                appreciation!
+              </p>
+              <cite>Ingrid Paulsson</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-chiquita.webp"
               alt="Chiquita client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pencil Drawing of Preziosa</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hello Katja!!</p>
-            <p>
-              I just received my picture of Preziosa!! It came out soooooo beautiful!! My mom simply
-              loves it!!! Wow is all I can say!! You have captured her perfectly!!
-            </p>
-            <p>We are going to the store on Saturday to have it framed..I can't wait!!!</p>
-            <p>
-              Thanks again for Preziosa's beautiful picture. I have sung your praises on
-              neapolitan.org and I do hope more business will come your way soon!!
-            </p>
-            <p>Enjoy your day!!</p>
-            <p>Cathy White</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Oil Painting of Chiquita</h2>
+            <blockquote>
+              <p>
+                Oh, she CRIED and CRIED and CRIED and CRIED. Mom was totally unprepared and really
+                didn`t have a clue. I first gave her a greeting card I made myself and my brother
+                printed it on a beautiful and expensive paper. In it was a print of the painting
+                from your web site.
+              </p>
+              <p>
+                She was really happy and besides that there was couple hundred crowns. This money
+                was for a frame, but of course she didn`t understand that...
+              </p>
+              <p>
+                Then I told her to wait a moment and ran to get the package as I went towards her,
+                she starred at me and understood right away as she saw the size of the package. She
+                bursted into tears, didn`t even take the package at first.
+              </p>
+              <p>
+                She was REALLY HAPPY and than she wanted to phone and thank all people who helped
+                buy the painting (grandmother, grandfather, my brother, my dad, her sister &amp;
+                brother)and she didn`t even have time to say &quot;hi, it`s Carin&quot; before she
+                bursted into tears again.
+              </p>
+              <p>
+                So I had to take over the phone all the time =) She tried to call you yesterday but
+                you weren`t at home, only your son. But on the other hand she probably wouldn`t be
+                able to talk anyway =) =) =)
+              </p>
+              <p>
+                Chiquita meant so VERY MUCH TO HER, on a way that no other dog could ever do. She
+                was saying all evening: &quot;she is alive, she is alive! Do you see her eyes? She
+                is really alive!&quot; when she looked at the painting. This couldn`t be better, I
+                promise you.
+              </p>
+              <p>
+                I have almost never seen my mother this emotional and I think it even came as a
+                shock to her. Thank you DEAR KATJA for a really wonderful painting. There are many
+                of us who are lyrical over this you have to belive =)
+              </p>
+              <p>Kind regards,</p>
+              <cite>Caroline Appelfeldt</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-preziosa.webp"
               alt="Preziosa client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pencil Drawing of Taisho</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              I finally got the portrait of Taisho back from the framers' and it looks great! I put
-              it on a wall in our master bedroom and had my wife close her eyes while I stood her
-              right in front of it.
-            </p>
-            <p>
-              I told her this was her belated and now long-awaited birthday gift that she was surely
-              going to love -- and so of course she couldn't imagine what it was -- and she was
-              brought to tears.
-            </p>
-            <p>
-              It's such a lovely portrait. You really captured his character and this is a piece of
-              art we'll cherish the rest of our lives.
-            </p>
-            <p>
-              I'm really happy with how it turned out and feel so lucky to have kept digging on the
-              Internet until I found you -- all the way in Sweden.
-            </p>
-            <p>
-              The framers, who have seen it all, were really impressed with your work too. The eyes,
-              the depth to the work -- they were pretty astonished.
-            </p>
-            <p>Gary Rainville</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pencil Drawing of Preziosa</h2>
+            <blockquote>
+              <p>Hello Katja!!</p>
+              <p>
+                I just received my picture of Preziosa!! It came out soooooo beautiful!! My mom
+                simply loves it!!! Wow is all I can say!! You have captured her perfectly!!
+              </p>
+              <p>We are going to the store on Saturday to have it framed..I can&#x27;t wait!!!</p>
+              <p>
+                Thanks again for Preziosa&#x27;s beautiful picture. I have sung your praises on
+                neapolitan.org and I do hope more business will come your way soon!!
+              </p>
+              <p>Enjoy your day!!</p>
+              <cite>Cathy White</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-taisho.webp"
               alt="Taisho client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Painting of Harley</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Katja,</p>
-            <p>
-              The portrait of Harley is just beautiful. I am so happy how it has turned out. It
-              reminds me of how she looked last weekend at the beach!! So excited just waiting for
-              us to throw her ball in the waves.
-            </p>
-            <p>Thank you,</p>
-            <p>Jenn</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pencil Drawing of Taisho</h2>
+            <blockquote>
+              <p>
+                I finally got the portrait of Taisho back from the framers&#x27; and it looks great!
+                I put it on a wall in our master bedroom and had my wife close her eyes while I
+                stood her right in front of it.
+              </p>
+              <p>
+                I told her this was her belated and now long-awaited birthday gift that she was
+                surely going to love -- and so of course she couldn&#x27;t imagine what it was --
+                and she was brought to tears.
+              </p>
+              <p>
+                It&#x27;s such a lovely portrait. You really captured his character and this is a
+                piece of art we&#x27;ll cherish the rest of our lives.
+              </p>
+              <p>
+                I&#x27;m really happy with how it turned out and feel so lucky to have kept digging
+                on the Internet until I found you -- all the way in Sweden.
+              </p>
+              <p>
+                The framers, who have seen it all, were really impressed with your work too. The
+                eyes, the depth to the work -- they were pretty astonished.
+              </p>
+              <cite>Gary Rainville</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-harley.webp"
               alt="Harley client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Painting of Fie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              I was on the site to peek and the portrait it's just magnificent, you managed to paint
-              so many details on this tiny size!
-            </p>
-            <p>I'm excited about the picture and it's just so soft :&#41;</p>
-            <p>Many regards,</p>
-            <p>Melissa Tribler</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pastel Painting of Harley</h2>
+            <blockquote>
+              <p>Katja,</p>
+              <p>
+                The portrait of Harley is just beautiful. I am so happy how it has turned out. It
+                reminds me of how she looked last weekend at the beach!! So excited just waiting for
+                us to throw her ball in the waves.
+              </p>
+              <p>Thank you,</p>
+              <cite>Jenn</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-fie.webp"
               alt="Fie client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Watercolor Painting of Farley</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              I hope you are enjoying the summer. I just remembered I never sent you the photos of
-              my Uncle George opening up the picture of Farley.
-            </p>
-            <p>
-              He absolutely loved it! My aunt and uncle hung said everyone who comes into the room
-              compliments them on the beautiful portrait.
-            </p>
-            <p>Thanks again! Take Care,</p>
-            <p>Sarah Guidotti</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pastel Painting of Fie</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                I was on the site to peek and the portrait it&#x27;s just magnificent, you managed
+                to paint so many details on this tiny size!
+              </p>
+              <p>I&#x27;m excited about the picture and it&#x27;s just so soft :)</p>
+              <p>Many regards,</p>
+              <cite>Melissa Tribler</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-farley.webp"
               alt="Farley client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Colored Pencil Drawing of Jack</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              I love it!! It's fabulous. You captured him beautifully, his expression even the sheen
-              on his nose!
-            </p>
-            <p>I can't wait to get it. Thank you so much.</p>
-            <p>Carol A Hardaway</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Watercolor Painting of Farley</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                I hope you are enjoying the summer. I just remembered I never sent you the photos of
+                my Uncle George opening up the picture of Farley.
+              </p>
+              <p>
+                He absolutely loved it! My aunt and uncle hung said everyone who comes into the room
+                compliments them on the beautiful portrait.
+              </p>
+              <p>Thanks again! Take Care,</p>
+              <cite>Sarah Guidotti</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-jack.webp"
               alt="Jack client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Painting of George</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              Sorry It's taken me a while to get back to you. The picture of George arrived last
-              Thursday and we love it, you have done a fantastic job.
-            </p>
-            <p>
-              It's quite difficult to get George to pose next to the picture but after several
-              attempts we finally have a photo!
-            </p>
-            <p>
-              Thanks again for your hard work, the picture looks amazing and has pride of place in
-              our home.
-            </p>
-            <p>Jenny</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Colored Pencil Drawing of Jack</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                I love it!! It&#x27;s fabulous. You captured him beautifully, his expression even
+                the sheen on his nose!
+              </p>
+              <p>I can&#x27;t wait to get it. Thank you so much.</p>
+              <cite>Carol A Hardaway</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-george.webp"
               alt="George client testimonial"
-            />
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Winston</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              The painting is wonderful!! Thank you! It captures Winston's face and expression
-              perfectly. And I think the red chair is such a nice contrast against the white fur.
-            </p>
-            <p>I know my parents will LOVE it and I will too!</p>
-            <p>
-              Thank you again for your outstanding work and I'm so glad that we connected on this
-              project.
-            </p>
-            <p>Andy Feldman</p>
-          </div>
-          <div class="testimonial-flex-item2">
-            <img
-              class="testimonial-img"
+              width="598"
+              height="598"
               loading="lazy"
               decoding="async"
+              class=""
+            />
+          </figure>
+          <div>
+            <h2>Pastel Painting of George</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                Sorry It&#x27;s taken me a while to get back to you. The picture of George arrived
+                last Thursday and we love it, you have done a fantastic job.
+              </p>
+              <p>
+                It&#x27;s quite difficult to get George to pose next to the picture but after
+                several attempts we finally have a photo!
+              </p>
+              <p>
+                Thanks again for your hard work, the picture looks amazing and has pride of place in
+                our home.
+              </p>
+              <cite>Jenny</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure>
+            <img
+              data-reveal
               src="/assets/images/client-picture-winston.webp"
               alt="Winston client testimonial"
+              width="598"
+              height="598"
+              loading="lazy"
+              decoding="async"
+              class=""
             />
+          </figure>
+          <div>
+            <h2>Oil Painting of Winston</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                The painting is wonderful!! Thank you! It captures Winston&#x27;s face and
+                expression perfectly. And I think the red chair is such a nice contrast against the
+                white fur.
+              </p>
+              <p>I know my parents will LOVE it and I will too!</p>
+              <p>
+                Thank you again for your outstanding work and I&#x27;m so glad that we connected on
+                this project.
+              </p>
+              <cite>Andy Feldman</cite>
+            </blockquote>
           </div>
-        </blockquote>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Darla</h2>
+            <blockquote>
+              <p>Katja,</p>
+              <p>Here is Tiffany&#x27;s response:</p>
+              <p>Hi Karen,</p>
+              <p>
+                The portrait of Darla is so lovely, words can&#x27;t express how beautiful it is,
+                except to say &quot;it is so beautiful.&quot; It captures her perfectly. Thank you
+                so much! And the artist Katja, you chose well, is truly talented! The use of color
+                and the earnestness in Darla&#x27;s eyes is remarkably captured by Katja. I truly
+                don&#x27;t know how artists do it...
+              </p>
+              <p>
+                I look forward to having this painting in our house and will send you a picture when
+                it is hung. I showed the portrait to Chad and he was very, very impressed. Thank you
+                again for such a wonderful Christmas present. Our girl Darla immortalized!
+              </p>
+              <p>Much love to you, Tiffany</p>
+              <p>Thank you,</p>
+              <cite>Karen Findley</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Daisy</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                The painting is just beautiful! Simply amazing... Lastly, I do hope you signed the
+                painting as all great artists do. :) it is a masterpiece!
+              </p>
+              <p>Warmest regards,</p>
+              <cite>Holly</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Billy &amp; Annie</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                the final portrait looks amazing. You have really captured their personality and
+                expressions, Karen will love it.
+              </p>
+              <p>Many thanks</p>
+              <cite>David Barnett</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Dunkin</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                The frame looks great. The way you set it up really compliments the photo nicely.
+                Overall, the work has definitely exceeded my expectations!
+              </p>
+              <p>Thanks,</p>
+              <cite>Richard Gundersdorf</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Jenson</h2>
+            <blockquote>
+              <p>
+                He looks amazing, the likeness is incredible, especially his eyes and I am very
+                happy with it.
+              </p>
+              <p>You are so talented!</p>
+              <cite>Megan Cates</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Morris</h2>
+            <blockquote>
+              <p>Hey!</p>
+              <p>
+                But gosh, you&#x27;re incredibly good! You&#x27;ve captured Morris exactly as I
+                wanted and a little more, even his glimpse in his eyes!
+              </p>
+              <p>His owner will be overjoyed because this is his ewe lamb :)</p>
+              <p>I&#x27;m really happy, you&#x27;ll have a thousand thanks!</p>
+              <p>You will definitely hear from me again :)</p>
+              <p>Sincerely,</p>
+              <cite>Lina Olsson</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Sasha</h2>
+            <blockquote>
+              <p>Greetings Katja,</p>
+              <p>
+                FABULOUS!!!!!! The portrait is absolutely stunning. You have captured her warmth and
+                feeling as if I had just taken the photo Thank you!
+              </p>
+              <p>Best wishes,</p>
+              <cite>Joe Buxton</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Poppy &amp; Daisy</h2>
+            <blockquote>
+              <p>
+                Hi Katja, That&#x27;s perfect, I couldn&#x27;t have hoped for more! I know
+                you&#x27;re a professional artist and you do this for a living, but I&#x27;m still
+                amazed at how well you&#x27;ve captured them.
+              </p>
+              <p>I&#x27;m really happy, you&#x27;ll have a thousand thanks!</p>
+              <p>Kind regards,</p>
+              <cite>Richard Crowe</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Agnes &amp; Spice boy</h2>
+            <blockquote>
+              <p>Hi!</p>
+              <p>
+                What lovely horse and rider! Its really visible how Spice boy loves jumping, he is
+                smiling and the eyes are very beautiful.
+              </p>
+              <p>
+                Agnes really show full focus and concentration on the next obstacle. With mane and
+                tail that flies (and the blurry background) it&#x27;s clear that you get an
+                understanding about just how fast they are riding!
+              </p>
+              <p>
+                I can understand how difficult it can be to paint that small detail, as you can find
+                in faces; it&#x27;s probably very finically. We love the painting!
+              </p>
+              <p>
+                Waiting with excitement to see it for real. I hope I can collect the painting in
+                Wednesday so she can receive it on her 15th birthday! A truly beautiful gift I
+                believe.
+              </p>
+              <p>Regards,</p>
+              <cite>Ulrika Blomgren</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pencil Drawing of Horse &amp; Rider</h2>
+            <blockquote>
+              <p>Hi</p>
+              <p>
+                It is absolutely wonderful. Thank you very much. I&#x27;m so happy. I will save a
+                little and order of my own dogs and horses :).
+              </p>
+              <p>Best regards,</p>
+              <cite>Betty</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Kal O Briljant</h2>
+            <blockquote>
+              <p>Hi,</p>
+              <p>It does not need any changes! It is absolutely perfect. God you are good.</p>
+              <p>Kind regards,</p>
+              <cite>Malin Wik</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Valorie</h2>
+            <blockquote>
+              <p>Katja,</p>
+              <p>
+                The painting of Valorie has arrived and it is absolutly stunning! What talent you
+                have...Thank you so much for the incredible, lifelike painting that you have created
+                for me. I will enjoy it forever.
+              </p>
+              <p>Sincerely,</p>
+              <cite>Carrie Peterson</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Bronte</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                Just took my first look at the final Bronte picture and am most happy. It&#x27;s
+                wonderful. You certainly have a gift! When Bronte died about a year ago, it
+                devastated everyone in the family.
+              </p>
+              <p>
+                I believe that your picture will bring back memories of a much happier time. Thank
+                you again. I am already trying to get a few good photos of our two yorkies to send
+                you for a dual portrait.
+              </p>
+              <p>
+                One is a 15 lb. bully and the other a little feisty mooch. I will get in contact
+                with you shortly.
+              </p>
+              <p>Your friend,</p>
+              <cite>Stanley Vasek</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Coco</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                I just wanted to email and thank you again for the beautiful portrait of Coco. Mandy
+                absolutely loved it! As you can imagine, it was a very emotional experience for her
+                when she opened the package at Christmas as she only lost Coco 4 months ago.
+              </p>
+              <p>
+                Everybody that has seen the portrait remark how talented you are and how much the
+                portrait looks just like Coco.
+              </p>
+              <p>Again, thank you.</p>
+              <p>Sincerely,</p>
+              <cite>Shawn Guthrie</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Maddie</h2>
+            <blockquote>
+              <p>
+                I LOVE IT!!! Youve exceeded my highest expectations!!! Maddy looks so pretty and
+                natural and happy. My girlfriend is going to be beyond thrilled :)))
+              </p>
+              <cite>Jacob Reuther</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Aiko &amp; Zuki</h2>
+            <blockquote>
+              <p>Hi Katja.</p>
+              <p>
+                I&#x27;m very excited about the painting, it&#x27;s absolutely amazing! You&#x27;ve
+                really captured both dogs&#x27; personalities, nicely done.
+              </p>
+              <p>It will accompany me all my life.</p>
+              <cite>Helle Söderberg</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Katie &amp; Quinn</h2>
+            <blockquote>
+              <p>Dear Katja,</p>
+              <p>
+                I am speechless. It is the most beautiful portrait I have ever seen. Maybe I&#x27;m
+                biased, but I think this is your best one. No all of them of great, but I think this
+                is the best. Black dogs are not only a difficult challenge to photograph, but also
+                to paint. You made it look pretty easy.
+              </p>
+              <p>
+                I am amazed and positive that the real portrait is even better than what I&#x27;m
+                seeing here on the computer. I just don&#x27;t know how to thank someone who helped
+                so much to restore my wonderful and happy memories of these beautiful dogs I had in
+                my life for 13 years.
+              </p>
+              <p>
+                This portrays Katie and Quinn in their prime. You have captured their personality
+                through their eyes. Katie was the more serious one, most of the time.
+              </p>
+              <p>
+                Quinn was the forever puppy; he was always ready to play until his very last day.
+                This painting and the process you and I went through together, has done so much to
+                subdue the sadness of the last chapter in Katie and Quinn&#x27;s lives.
+              </p>
+              <p>
+                his is most inadequate Katja, but thank you from the bottom of my broken, but now
+                healing heart.
+              </p>
+              <cite>Judy Pittman</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Poppy</h2>
+            <blockquote>
+              <p>Hi,</p>
+              <p>
+                Oh wow, it&#x27;s gorgeous! Really love the colours, absolutely beautiful. She looks
+                wonderful here, so nice to see her so bright and content. It makes me so happy to
+                see her portrayed so lovingly.
+              </p>
+              <p>Thank you.</p>
+              <cite>Clare Newman</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Leah</h2>
+            <blockquote>
+              <p>
+                Hahahahah! It looks beautiful! Thank you. My girlfriend will love it! A great
+                rendering of our goofy dog.
+              </p>
+              <cite>Chad Howitt</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Zara &amp; Spock</h2>
+            <blockquote>
+              <p>Katja,</p>
+              <p>
+                The cat portrait arrived today safe and sound via Fedex. I am absolutely amazed at
+                how this turned out. Beautiful!
+              </p>
+              <p>
+                Way above anything that I thought was possible. Thank you so much for all of your
+                hard work. My wife is going to love this!
+              </p>
+              <p>Thank you,</p>
+              <cite>Chad Kettering</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pastel Drawing of Tjorven</h2>
+            <blockquote>
+              <p>Hi Katja!</p>
+              <p>
+                It is really great :) I am really pleased!! It will feel good to have it on the wall
+                and be reminded of what a wonderful and beautiful cat Tjorven was.
+              </p>
+              <p>Thank you for your great commitment.</p>
+              <cite>Pia Borg</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Watercolor Painting of Lilo</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                I am thrilled with Lilo&#x27;s watercolor portrait that I received today! Not only
+                is it artistic, but it really does capture his personality. I can&#x27;t wait to
+                have it framed and displayed. This will be a beautiful keepsake that I will treasure
+                for the rest of my life.
+              </p>
+              <p>
+                hank you for making this such an easy process. I really found it comforting and
+                enjoyable to view each stage of the your work. I am hoping to get another puppy at
+                the end of the year and I will definitely seek you out again.
+              </p>
+              <p>Thanks again for everything, it has been a pleasure!</p>
+              <p>Take Care,</p>
+              <cite>Sarah Guidotti</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Watercolor Painting of Rock Star</h2>
+            <blockquote>
+              <p>Hello Katja,</p>
+              <p>
+                Hope you had a good Easter! The portrait is just wonderful. You have captured Star
+                in such a lovely ethereal way. I wouldn&#x27;t change a thing! Thank you so much.
+              </p>
+              <p>Best Wishes,</p>
+              <cite>Karen Simpson</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Kenzie</h2>
+            <blockquote>
+              <p>Dear Katja,</p>
+              <p>
+                I&#x27;m so excited about the final product! You really did such an amazing job!
+                Words cannot even explain what this present means to us...
+              </p>
+              <cite>Jess Obrubsky</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Oil Painting of Hunter</h2>
+            <blockquote>
+              <p>
+                Kat: I JUST GOT IT YESTERDAY!!!!!!!!!! Incredible!!!!!!!! I LOVE IT !!!!!!!!!!!
+                BECAUSE OF &quot;YOUR GIFT&quot; YOU are going to help me TOUCH Victoria&#x27;s
+                Heart tomorrow, CHRISTMAS DAY!!! i WILL EMPLOY YOUR GIFT AGAIN IN THE FUTURE!!!!!
+                GOD BLESS YOU KAT!!!!!!!!!
+              </p>
+              <cite>Robert Gibbons</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Watercolor Painting of Scout</h2>
+            <blockquote>
+              <p>
+                Oh My how cute is Scout!!!! I am so excited about giviing this as a gift. Thanks so
+                much... Hi and Happy Holidays to You Todd was soooo touch with his painting. I had
+                it framed with a suade matting!
+              </p>
+              <p>
+                Not a great pic but the only one i have. thanks sooooo much for making such a
+                beautiful gift.
+              </p>
+              <cite>Ellen Browning</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="client-story">
+          <figure></figure>
+          <div>
+            <h2>Pencil Drawing of Thor</h2>
+            <blockquote>
+              <p>Hi Katja,</p>
+              <p>
+                How are you? I want to thank you for the nice drawing, that you&#x27;ve made of
+                Thor. It was a nice surprise to get the drawing for my birthday! The drawing is
+                amazing, you made Thor really come alive on paper.
+              </p>
+              <p>
+                We will give the drawing a nice place in our livingroom, next to the one of Zoran.
+                We are very happy with the 2 beautiful drawings of our dogs and very proud to have
+                them hanging in our house!
+              </p>
+              <cite>Mario Meysman</cite>
+            </blockquote>
+          </div>
+        </article>
       </section>
 
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Darla</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Katja,</p>
-            <p>Here is Tiffany's response:</p>
-            <p>Hi Karen,</p>
-            <p>
-              The portrait of Darla is so lovely, words can't express how beautiful it is, except to
-              say "it is so beautiful." It captures her perfectly. Thank you so much! And the artist
-              Katja, you chose well, is truly talented! The use of color and the earnestness in
-              Darla's eyes is remarkably captured by Katja. I truly don't know how artists do it...
-            </p>
-            <p>
-              I look forward to having this painting in our house and will send you a picture when
-              it is hung. I showed the portrait to Chad and he was very, very impressed. Thank you
-              again for such a wonderful Christmas present. Our girl Darla immortalized!
-            </p>
-            <p>Much love to you, Tiffany</p>
-            <p>Thank you,</p>
-            <p>Karen Findley</p>
+      <section class="section-tight wrap">
+        <div class="enquiry-banner">
+          <div>
+            <h2>A portrait of your own companion?</h2>
+            <p>Send your photos and ideas. You do not need to have every detail decided.</p>
           </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Daisy</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              The painting is just beautiful! Simply amazing... Lastly, I do hope you signed the
-              painting as all great artists do. :&#41; it is a masterpiece!
-            </p>
-            <p>Warmest regards,</p>
-            <p>Holly</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Drawing of Billy &amp; Annie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              the final portrait looks amazing. You have really captured their personality and
-              expressions, Karen will love it.
-            </p>
-            <p>Many thanks</p>
-            <p>David Barnett</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Dunkin</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              The frame looks great. The way you set it up really compliments the photo nicely.
-              Overall, the work has definitely exceeded my expectations!
-            </p>
-            <p>Thanks,</p>
-            <p>Richard Gundersdorf</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Drawing of Jenson</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              He looks amazing, the likeness is incredible, especially his eyes and I am very happy
-              with it.
-            </p>
-            <p>You are so talented!</p>
-            <p>Megan Cates</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Morris</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hey!</p>
-            <p>
-              But gosh, you're incredibly good! You've captured Morris exactly as I wanted and a
-              little more, even his glimpse in his eyes!
-            </p>
-            <p>His owner will be overjoyed because this is his ewe lamb :&#41;</p>
-            <p>I'm really happy, you'll have a thousand thanks!</p>
-            <p>You will definitely hear from me again :&#41;</p>
-            <p>Sincerely,</p>
-            <p>Lina Olsson</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Drawing of Sasha</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Greetings Katja,</p>
-            <p>
-              FABULOUS!!!!!! The portrait is absolutely stunning. You have captured her warmth and
-              feeling as if I had just taken the photo Thank you!
-            </p>
-            <p>Best wishes,</p>
-            <p>Joe Buxton</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Poppy &amp; Daisy</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Hi Katja, That's perfect, I couldn't have hoped for more! I know you're a professional
-              artist and you do this for a living, but I'm still amazed at how well you've captured
-              them.
-            </p>
-            <p>Kind regards,</p>
-            <p>Richard Crowe</p>
-            <p>I'm really happy, you'll have a thousand thanks!</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Agnes &amp; Spice boy</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi!</p>
-            <p>
-              What lovely horse and rider! Its really visible how Spice boy loves jumping, he is
-              smiling and the eyes are very beautiful.
-            </p>
-            <p>
-              Agnes really show full focus and concentration on the next obstacle. With mane and
-              tail that flies (and the blurry background) it's clear that you get an understanding
-              about just how fast they are riding!
-            </p>
-            <p>
-              I can understand how difficult it can be to paint that small detail, as you can find
-              in faces; it's probably very finically. We love the painting!
-            </p>
-            <p>
-              Waiting with excitement to see it for real. I hope I can collect the painting in
-              Wednesday so she can receive it on her 15th birthday! A truly beautiful gift I
-              believe.
-            </p>
-            <p>Regards,</p>
-            <p>Ulrika Blomgren</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pencil Drawing of Horse &amp; Rider</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi</p>
-            <p>
-              It is absolutely wonderful. Thank you very much. I'm so happy. I will save a little
-              and order of my own dogs and horses :&#41;.
-            </p>
-            <p>Best regards,</p>
-            <p>Betty</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Drawing of Kal O Briljant</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi,</p>
-            <p>It does not need any changes! It is absolutely perfect. God you are good.</p>
-            <p>Kind regards,</p>
-            <p>Malin Wik</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Valorie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Katja,</p>
-            <p>
-              The painting of Valorie has arrived and it is absolutly stunning! What talent you
-              have...Thank you so much for the incredible, lifelike painting that you have created
-              for me. I will enjoy it forever.
-            </p>
-            <p>Sincerely,</p>
-            <p>Carrie Peterson</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Bronte</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              Just took my first look at the final Bronte picture and am most happy. It's wonderful.
-              You certainly have a gift! When Bronte died about a year ago, it devastated everyone
-              in the family.
-            </p>
-            <p>
-              I believe that your picture will bring back memories of a much happier time. Thank you
-              again. I am already trying to get a few good photos of our two yorkies to send you for
-              a dual portrait.
-            </p>
-            <p>
-              One is a 15 lb. bully and the other a little feisty mooch. I will get in contact with
-              you shortly.
-            </p>
-            <p>Your friend,</p>
-            <p>Stanley Vasek</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Coco</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              I just wanted to email and thank you again for the beautiful portrait of Coco. Mandy
-              absolutely loved it! As you can imagine, it was a very emotional experience for her
-              when she opened the package at Christmas as she only lost Coco 4 months ago.
-            </p>
-            <p>
-              Everybody that has seen the portrait remark how talented you are and how much the
-              portrait looks just like Coco.
-            </p>
-            <p>Again, thank you.</p>
-            <p>Sincerely,</p>
-            <p>Shawn Guthrie</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Maddie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              I LOVE IT!!! Youve exceeded my highest expectations!!! Maddy looks so pretty and
-              natural and happy. My girlfriend is going to be beyond thrilled :&#41;&#41;&#41;
-            </p>
-            <p>Jacob Reuther</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Aiko &amp; Zuki</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja.</p>
-            <p>
-              I'm very excited about the painting, it's absolutely amazing! You've really captured
-              both dogs' personalities, nicely done.
-            </p>
-            <p>It will accompany me all my life.</p>
-            <p>Helle Söderberg</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Katie &amp; Quinn</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Dear Katja,</p>
-            <p>
-              I am speechless. It is the most beautiful portrait I have ever seen. Maybe I'm biased,
-              but I think this is your best one. No all of them of great, but I think this is the
-              best. Black dogs are not only a difficult challenge to photograph, but also to paint.
-              You made it look pretty easy.
-            </p>
-            <p>
-              I am amazed and positive that the real portrait is even better than what I'm seeing
-              here on the computer. I just don't know how to thank someone who helped so much to
-              restore my wonderful and happy memories of these beautiful dogs I had in my life for
-              13 years.
-            </p>
-            <p>
-              This portrays Katie and Quinn in their prime. You have captured their personality
-              through their eyes. Katie was the more serious one, most of the time.
-            </p>
-            <p>
-              Quinn was the forever puppy; he was always ready to play until his very last day. This
-              painting and the process you and I went through together, has done so much to subdue
-              the sadness of the last chapter in Katie and Quinn's lives.
-            </p>
-            <p>
-              his is most inadequate Katja, but thank you from the bottom of my broken, but now
-              healing heart.
-            </p>
-            <p>Judy Pittman</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Poppy</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi,</p>
-            <p>
-              Oh wow, it's gorgeous! Really love the colours, absolutely beautiful. She looks
-              wonderful here, so nice to see her so bright and content. It makes me so happy to see
-              her portrayed so lovingly.
-            </p>
-            <p>Thank you.</p>
-            <p>Clare Newman</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pastel Drawing of Leah</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Hahahahah! It looks beautiful! Thank you. My girlfriend will love it! A great
-              rendering of our goofy dog.
-            </p>
-            <p>Chad Howitt</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Pastel Drawing of Zara &amp; Spock</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Katja,</p>
-            <p>
-              The cat portrait arrived today safe and sound via Fedex. I am absolutely amazed at how
-              this turned out. Beautiful!
-            </p>
-            <p>
-              Way above anything that I thought was possible. Thank you so much for all of your hard
-              work. My wife is going to love this!
-            </p>
-            <p>Thank you,</p>
-            <p>Chad Kettering</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="let">Pastel Drawing of Tjorven</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja!</p>
-            <p>
-              It is really great :&#41; I am really pleased!! It will feel good to have it on the
-              wall and be reminded of what a wonderful and beautiful cat Tjorven was.
-            </p>
-            <p>Thank you for your great commitment.</p>
-            <p>Pia Borg</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Watercolor Painting of Lilo</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              I am thrilled with Lilo's watercolor portrait that I received today! Not only is it
-              artistic, but it really does capture his personality. I can't wait to have it framed
-              and displayed. This will be a beautiful keepsake that I will treasure for the rest of
-              my life.
-            </p>
-            <p>
-              hank you for making this such an easy process. I really found it comforting and
-              enjoyable to view each stage of the your work. I am hoping to get another puppy at the
-              end of the year and I will definitely seek you out again.
-            </p>
-            <p>Thanks again for everything, it has been a pleasure!</p>
-            <p>Take Care,</p>
-            <p>Sarah Guidotti</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Watercolor Painting of Rock Star</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hello Katja,</p>
-            <p>
-              Hope you had a good Easter! The portrait is just wonderful. You have captured Star in
-              such a lovely ethereal way. I wouldn't change a thing! Thank you so much.
-            </p>
-            <p>Best Wishes,</p>
-            <p>Karen Simpson</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Oil Painting of Kenzie</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Dear Katja,</p>
-            <p>
-              I'm so excited about the final product! You really did such an amazing job! Words
-              cannot even explain what this present means to us...
-            </p>
-            <p>Jess Obrubsky</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Oil Painting of Hunter</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Kat: I JUST GOT IT YESTERDAY!!!!!!!!!! Incredible!!!!!!!! I LOVE IT !!!!!!!!!!!
-              BECAUSE OF "YOUR GIFT" YOU are going to help me TOUCH Victoria's Heart tomorrow,
-              CHRISTMAS DAY!!! i WILL EMPLOY YOUR GIFT AGAIN IN THE FUTURE!!!!! GOD BLESS YOU
-              KAT!!!!!!!!!
-            </p>
-            <p>Robert Gibbons</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="right">Watercolor Painting of Scout</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>
-              Oh My how cute is Scout!!!! I am so excited about giviing this as a gift. Thanks so
-              much... Hi and Happy Holidays to You Todd was soooo touch with his painting. I had it
-              framed with a suade matting!
-            </p>
-            <p>
-              Not a great pic but the only one i have. thanks sooooo much for making such a
-              beautiful gift.
-            </p>
-            <p>Ellen Browning</p>
-          </div>
-        </blockquote>
-      </section>
-
-      <hr class="hr" />
-
-      <section class="main-flex">
-        <h2 class="left">Pencil Drawing of Thor</h2>
-        <blockquote class="testimonial-flex">
-          <div class="testimonial-flex-item1">
-            <p>Hi Katja,</p>
-            <p>
-              How are you? I want to thank you for the nice drawing, that you've made of Thor. It
-              was a nice surprise to get the drawing for my birthday! The drawing is amazing, you
-              made Thor really come alive on paper.
-            </p>
-            <p>
-              We will give the drawing a nice place in our livingroom, next to the one of Zoran. We
-              are very happy with the 2 beautiful drawings of our dogs and very proud to have them
-              hanging in our house!
-            </p>
-            <p>Mario Meysman</p>
-          </div>
-        </blockquote>
+          <a class="button" href="/html/contact-pet-portrait-artist.html">
+            Enquire About a Portrait
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+        </div>
       </section>
     </main>
 
-    <!-- Footer (unified) -->
-    <footer>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Menu</h3>
-        <ul>
-          <li><a href="/html/terms-privacy.html">Terms &amp; Privacy</a></li>
-          <li><a href="/html/return-policy.html">Returns &amp; Refunds</a></li>
-          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
-          <li><a href="/se/" hreflang="sv" lang="sv">Swedish</a></li>
-        </ul>
-      </div>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Get Social</h3>
-        <div class="footer-social">
-          <a
-            title="Facebook"
-            href="https://www.facebook.com/PetPortraitsArtist"
-            class="btn-social-fb"
-            aria-label="Facebook"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-facebook"></use>
-            </svg>
-          </a>
-          <a
-            title="Instagram"
-            href="https://www.instagram.com/katjapetportraits"
-            class="btn-social-fb btn-social-in"
-            aria-label="Instagram"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-instagram"></use>
-            </svg>
-          </a>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
+              <img
+                src="/assets/images/petart-with-heart-logotype.svg"
+                width="224"
+                height="73"
+                alt="Pet Art with Heart"
+              />
+            </a>
+          </div>
+
+          <nav class="footer-links" aria-label="Useful links">
+            <a href="/html/contact-pet-portrait-artist.html">Contact</a>
+            <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+            <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
+            <a href="/html/terms-privacy.html">Terms &amp; Privacy</a>
+            <a href="/html/return-policy.html">Returns</a>
+            <a href="/html/petart-with-heart-sitemap.html">Site Map</a>
+          </nav>
+
+          <div class="social">
+            <a
+              href="https://www.facebook.com/PetPortraitsArtist"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/katjapetportraits"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
         </div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top" aria-label="Go to top">
-          <svg class="icon icon-lg" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
-          </svg>
-        </button>
-      </div>
-      <div class="footer-flex-item wide">
-        <a href="/"
-          ><img
-            class="footer-logo"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/petart-logotype-bw.svg"
-            alt="Pet Art with Heart logotype"
-        /></a>
-      </div>
-      <div class="footer-flex-item wide wide2">
-        &copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja Turnsek
+
+        <p class="copyright">© 2026 Pet Art with Heart. All rights reserved.</p>
+
+        <a class="back-to-top" href="#top">
+          <span class="back-to-top-label">Back to top</span>
+          <span aria-hidden="true">↑</span>
+        </a>
       </div>
     </footer>
 
-    <!-- Floating chat buttons (docked mid-right) -->
-    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
-      <!-- WhatsApp -->
+    <aside class="fab-dock" aria-label="Quick contact">
       <a
-        class="fab__btn fab__btn--whatsapp"
-        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
+        class="fab"
+        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%20would%20like%20to%20discuss%20a%20pet%20portrait."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
+        aria-label="WhatsApp"
       >
-        <svg class="fab__icon" aria-hidden="true">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-whatsapp"></use>
         </svg>
-        <span class="sr-only">Chat on WhatsApp</span>
+        <span class="fab-label">WhatsApp</span>
       </a>
-
-      <!-- SMS / Messages -->
-      <a
-        id="smsLink"
-        class="fab__btn fab__btn--sms"
-        href="sms:+46730785744"
-        aria-label="Send an SMS"
-        title="Send an SMS"
-      >
-        <svg class="fab__icon" aria-hidden="true">
+      <a class="fab" id="smsLink" href="sms:+46730785744" aria-label="Send a text message">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-message"></use>
         </svg>
-        <span class="sr-only">Send an SMS</span>
+        <span class="fab-label">Message</span>
       </a>
-    </div>
+    </aside>
 
-    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/site.js?v=split-1"></script>
+    <script defer src="/src/js/animations.js?v=split-1"></script>
     <script defer src="/src/js/analytics.js"></script>
-    <script defer src="/src/js/up.js"></script>
-    <script defer src="/src/js/chat-buttons.js"></script>
   </body>
 </html>

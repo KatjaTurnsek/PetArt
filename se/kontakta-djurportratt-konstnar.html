@@ -5,32 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light" />
 
-    <!-- ===== LCP preloads FIRST (mobil + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/contact-pet-portrait-artist-mobile.webp"
-      media="(max-width: 768px)"
-      imagesrcset="/assets/images/contact-pet-portrait-artist-mobile.webp 768w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/contact-pet-portrait-artist.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/contact-pet-portrait-artist.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
-
-    <title>Kontakta djurporträtt-konstnär | Boka din plats - Katja Turnsek</title>
-
-    <!-- Canonical -->
     <link rel="canonical" href="https://pet-art.net/se/kontakta-djurportratt-konstnar.html" />
-
-    <!-- Hreflang -->
     <link
       rel="alternate"
       href="https://pet-art.net/se/kontakta-djurportratt-konstnar.html"
@@ -47,550 +22,421 @@
       hreflang="x-default"
     />
 
-    <!-- SEO Description -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Fråga om ett djurporträtt | Kontakta Katja Turnsek</title>
     <meta
       name="description"
-      content="Redo att beställa ett handmålat porträtt i olja? Mejla Katja och gå med i kundlistan. Snabbt svar, enkel process, världsomspännande frakt. Deposition 2000 SEK."
+      content="Berätta om dina porträttidéer för Katja. Skicka foton, diskutera storlekar och fråga om tillgänglighet för ett personligt oljeporträtt."
     />
-
-    <!-- Open Graph -->
+    <meta name="theme-color" content="#FAF7F2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/dist/styles.min.css?v=redesign-1" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://pet-art.net/se/kontakta-djurportratt-konstnar.html" />
     <meta property="og:site_name" content="Pet Art with Heart" />
-    <meta
-      property="og:title"
-      content="Kontakta djurporträtt-konstnär | Boka din plats - Katja Turnsek"
-    />
+    <meta property="og:url" content="https://pet-art.net/se/kontakta-djurportratt-konstnar.html" />
+    <meta property="og:title" content="Fråga om ett djurporträtt | Kontakta Katja Turnsek" />
     <meta
       property="og:description"
-      content="Mejla Katja för att gå med i kundlistan. Enkel 4-stegsprocess, material av museikvalitet, frakt världen över. Deposition 2000 SEK."
+      content="Berätta om dina porträttidéer för Katja. Skicka foton, diskutera storlekar och fråga om tillgänglighet för ett personligt oljeporträtt."
     />
     <meta
       property="og:image"
       content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
     />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="sv_SE" />
-    <meta property="og:locale:alternate" content="en_GB" />
-
-    <!-- Twitter (valfritt) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Kontakta djurporträtt-konstnär | Boka din plats - Katja Turnsek"
-    />
+    <meta name="twitter:title" content="Fråga om ett djurporträtt | Kontakta Katja Turnsek" />
     <meta
       name="twitter:description"
-      content="Gå med i kundlistan för ett handmålat djurporträtt. Snabbt svar, enkel process, frakt världen över."
+      content="Berätta om dina porträttidéer för Katja. Skicka foton, diskutera storlekar och fråga om tillgänglighet för ett personligt oljeporträtt."
     />
     <meta
       name="twitter:image"
       content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
     />
-    <meta name="twitter:domain" content="pet-art.net" />
-
-    <!-- Assets -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      />
-    </noscript>
-
-    <!-- Organization (SV policy-länk) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Pet Art With Heart",
-        "url": "https://pet-art.net/",
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "name": "Retur- och återbetalningspolicy — Beställda djurporträtt",
-          "merchantReturnLink": "https://pet-art.net/se/returpolicy.html",
-          "applicableCountry": [
-            "SE",
-            "NO",
-            "DK",
-            "FI",
-            "IS",
-            "DE",
-            "NL",
-            "BE",
-            "AT",
-            "CH",
-            "FR",
-            "ES",
-            "IT",
-            "PT",
-            "IE",
-            "GB",
-            "LU",
-            "PL",
-            "CZ",
-            "US",
-            "CA",
-            "AU",
-            "NZ"
-          ],
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-          "itemCondition": ["https://schema.org/DamagedCondition"],
-          "inStoreReturnsOffered": false,
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-        }
-      }
-    </script>
-
-    <!-- Person (Katja) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://pet-art.net/#katja",
-        "name": "Katja Turnsek",
-        "url": "https://pet-art.net/",
-        "jobTitle": "Djurporträtt-konstnär",
-        "sameAs": [
-          "https://www.instagram.com/katjapetportraits",
-          "https://www.facebook.com/PetPortraitsArtist"
-        ],
-        "knowsAbout": ["Oljemåleri", "Djurporträtt", "Djurkonst"]
-      }
-    </script>
-
-    <!-- ContactPage (SV) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Kontakta djurporträtt-konstnär",
-        "url": "https://pet-art.net/se/kontakta-djurportratt-konstnar.html",
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://pet-art.net/assets/images/contact-pet-portrait-artist.webp"
-        },
-        "about": {
-          "@type": "Service",
-          "name": "Beställda djurporträtt i olja",
-          "provider": { "@id": "https://pet-art.net/#katja" },
-          "areaServed": { "@type": "Place", "name": "Världen över" }
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "kundtjänst",
-          "email": "katja@pet-art.net",
-          "availableLanguage": ["Swedish", "English"],
-          "areaServed": "Worldwide"
-        }
-      }
-    </script>
-
-    <!-- FAQ (SV) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "@id": "https://pet-art.net/se/kontakta-djurportratt-konstnar.html#snabba-svar",
-        "mainEntity": [
+        "@graph": [
           {
-            "@type": "Question",
-            "name": "Vad behöver du av mig för att komma igång?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Högupplösta foton (eller länkar), din storleksidé eller budget, samt om du vill ha klassisk realism eller det mer måleriska alternativet."
-            }
+            "@type": "Organization",
+            "@id": "https://pet-art.net/#org",
+            "name": "Pet Art with Heart",
+            "url": "https://pet-art.net/",
+            "logo": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg",
+            "sameAs": [
+              "https://www.instagram.com/katjapetportraits",
+              "https://www.facebook.com/PetPortraitsArtist"
+            ]
           },
           {
-            "@type": "Question",
-            "name": "Kan du hjälpa mig att välja foton?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolut. Skicka några favoriter så rekommenderar jag det bästa referensfotot. Se även Fototips på https://pet-art.net/se/foto-tips-portrattbestallning.html."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Tar du emot brådskande beställningar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ibland, beroende på schemat. Mejla ditt datum så bekräftar jag om det är möjligt."
-            }
+            "@type": "ContactPage",
+            "@id": "https://pet-art.net/se/kontakta-djurportratt-konstnar.html#page",
+            "url": "https://pet-art.net/se/kontakta-djurportratt-konstnar.html",
+            "name": "Fråga om ett djurporträtt | Kontakta Katja Turnsek",
+            "description": "Berätta om dina porträttidéer för Katja. Skicka foton, diskutera storlekar och fråga om tillgänglighet för ett personligt oljeporträtt.",
+            "inLanguage": "sv",
+            "publisher": { "@id": "https://pet-art.net/#org" }
           }
         ]
       }
     </script>
+    <noscript>
+      <style>
+        .menu-toggle {
+          display: none !important;
+        }
+      </style>
+    </noscript>
   </head>
-
-  <body>
-    <!-- Header with Navigation -->
-    <header>
-      <a href="/se/">
-        <img
-          class="logo-header"
-          src="/assets/images/petart-with-heart-logotype.svg"
-          alt="Pet Art with Heart logotyp"
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
-
-      <input id="toggler" class="toggler" type="checkbox" />
-      <label for="toggler" class="burger" aria-label="Öppna meny">
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-bars"></use>
-          </svg>
-        </span>
-        <span class="sr-only">Meny</span>
-      </label>
-
-      <nav aria-label="Primär navigation">
-        <ul>
-          <li><a href="/se/">Hem</a></li>
-          <li><a href="/se/djurportratt-olja-galleri.html">Djurporträtt galleri</a></li>
-          <li class="dropdown">
-            <a href="#">
-              Beställningsinformation
-              <svg class="icon" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="/se/priser-for-djurportratt.html">Priser &amp; så går det till</a></li>
-              <li><a href="/se/djurportratt-kundreferenser.html">Kundreferenser</a></li>
-              <li><a href="/se/foto-tips-portrattbestallning.html">Fototips</a></li>
-            </ul>
-          </li>
-          <li><a href="/se/djurmotiv-olja-galleri.html">Köp djurmotiv</a></li>
-          <li><a href="/se/om-djurportratt-konstnaren.html">Om konstnären</a></li>
-          <li class="active"><a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section class="main-img main-img-about">
-        <div class="main-img__bg">
+  <body data-language="sv" data-page="contact">
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="/se/" aria-label="Pet Art with Heart — Hem">
           <img
-            id="hero-lcp"
-            src="/assets/images/contact-pet-portrait-artist.webp"
-            srcset="
-              /assets/images/contact-pet-portrait-artist-mobile.webp  768w,
-              /assets/images/contact-pet-portrait-artist.webp        1200w
-            "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Konstnärshand med pensel som målar ett kattporträtt"
-            fetchpriority="high"
-            loading="eager"
-            width="1200"
-            height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center right"
-          />
-        </div>
-
-        <div class="main-img__overlay" aria-hidden="true"></div>
-        <figure class="vert-lines" aria-hidden="true"></figure>
-
-        <div class="main-img__content">
-          <h1>Börja ditt handmålade djurporträtt</h1>
-          <p class="lead">
-            Gå med i min kundlista för att reservera ett datum. Skicka ett kort meddelande så
-            återkommer jag med säkra betalningsuppgifter och enkla nästa steg.
-          </p>
-
-          <div class="cta-row">
-            <a href="#contact-form" class="head-button" aria-label="Hoppa till kontaktformuläret">
-              Boka din plats
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Intro -->
-      <section class="contact-flex">
-        <div class="contact-flex-item1">
-          <h2>Så bokar du</h2>
-          <ol class="numbered-steps">
-            <li>
-              <strong>Mejla eller använd formuläret</strong> och bifoga gärna några foton (länkar
-              går bra).
-            </li>
-            <li>
-              <strong>Jag bekräftar idén</strong> (storlek, stil: klassisk eller målerisk,
-              bakgrund).
-            </li>
-            <li>
-              <strong>Reservera ditt datum</strong> med 2 000 SEK deposition (dras av från
-              totalsumman).
-            </li>
-            <li>
-              <strong>Målning & uppdateringar</strong> - jag delar WIP-bilder för din feedback.
-            </li>
-            <li><strong>Godkänn & leverans</strong> - säkert packad, skickas världen över.</li>
-          </ol>
-
-          <h3>Skicka gärna med</h3>
-          <ul class="bullet-list">
-            <li>Bästa fotografierna (eller länkar) - skarpa ögon, gärna naturligt ljus</li>
-            <li>Önskad storlek (eller en budgetnivå)</li>
-            <li>Stil: <em>klassisk realism</em> eller <em>målerisk</em></li>
-            <li>Eventuell deadline eller presentdatum</li>
-          </ul>
-
-          <h3>Bra att veta</h3>
-          <ul class="bullet-list">
-            <li>
-              <strong>Deposition:</strong> 2 000 SEK för att reservera (PayPal/kort eller
-              banköverföring accepteras)
-            </li>
-            <li>
-              <strong>Tidplan:</strong> först till kvarn; presentbeställningar välkomna - fråga om
-              tillgänglighet
-            </li>
-            <li><strong>Frakt:</strong> världen över, spårbart; arkivsäker packning</li>
-            <li><strong>Material:</strong> oljefärg av museikvalitet på fin linnelduk</li>
-          </ul>
-        </div>
-
-        <div class="contact-flex-item2">
-          <h2>Kontaktalternativ</h2>
-          <p>
-            <strong>E-post:</strong>
-            <a
-              href="mailto:katja@pet-art.net?subject=Förfrågan%20om%20djurporträtt&body=Hej%20Katja%2C%0A%0AJag%20vill%20beställa%20ett%20porträtt.%20Här%20är%20några%20detaljer%3A%0A%E2%80%A2%20Husdjur%20(ras)%3A%0A%E2%80%A2%20Önskad%20storlek%3A%0A%E2%80%A2%20Stil%20(klassisk%20eller%20målerisk)%3A%0A%E2%80%A2%20Deadline%20(om%20någon)%3A%0A%E2%80%A2%20Länkar%20till%20foton%3A%0A%0ATack!"
-              >katja@pet-art.net</a
-            >
-          </p>
-          <p>
-            <strong>Formulär:</strong> använd formuläret nedan, bifoga gärna länkar om bilderna är
-            stora.
-          </p>
-
-          <div class="cta-row">
-            <a href="#contact-form" class="button">Boka din plats</a>
-            <a href="/se/priser-for-djurportratt.html" class="button button-ghost"
-              >Priser & storlekar</a
-            >
-          </div>
-
-          <h3>Svarstid</h3>
-          <p>
-            Jag svarar oftast inom en arbetsdag. Är det bråttom (present/deadline)? Skriv datumet i
-            ämnesraden.
-          </p>
-
-          <h3>Kundcitat</h3>
-          <blockquote class="small-quote">
-            ”Målningen är underbar! Tack! Den fångar Winstons uttryck perfekt, och den röda stolen
-            blir en så fin kontrast mot den vita pälsen.” - Andy Feldman.
-          </blockquote>
-
-          <p class="small">
-            Dina uppgifter används endast för att hantera din beställning - aldrig sålda eller
-            delade. Se
-            <a href="/se/villkor.html">Villkor & integritet</a>.
-          </p>
-        </div>
-      </section>
-
-      <!-- Micro-FAQ -->
-      <section id="snabba-svar" class="main-flex faq">
-        <h2>Snabba svar</h2>
-        <details>
-          <summary>Vad behöver du av mig för att komma igång?</summary>
-          <p>
-            Högupplösta foton (eller länkar), din storleksidé eller budget, samt om du föredrar
-            klassisk realism eller det mer måleriska alternativet.
-          </p>
-        </details>
-        <details>
-          <summary>Kan du hjälpa mig att välja foton?</summary>
-          <p>
-            Absolut. Skicka några favoriter så rekommenderar jag det bästa referensfotot. Se
-            <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>.
-          </p>
-        </details>
-        <details>
-          <summary>Tar du emot brådskande beställningar?</summary>
-          <p>Ibland, beroende på schemat. Mejla ditt datum så bekräftar jag tillgänglighet.</p>
-        </details>
-      </section>
-
-      <section id="contact-form" class="main-flex">
-        <h2>Föredrar du ett snabbt formulär?</h2>
-
-        <form
-          action="https://api.web3forms.com/submit"
-          method="POST"
-          class="contact-form"
-          aria-label="Kontaktformulär"
-        >
-          <!-- Web3Forms: krävs -->
-          <input type="hidden" name="access_key" value="4b70fb1f-a7f2-4100-8a21-d9e9d5dfd983" />
-
-          <!-- Ämne, avsändarnamn & redirect -->
-          <input type="hidden" name="subject" value="Pet Art — Nytt meddelande (SV)" />
-          <input type="hidden" name="from_name" value="Pet Art Kontakt (SV)" />
-          <input type="hidden" name="redirect" value="https://pet-art.net/se/tack.html" />
-          <input
-            type="hidden"
-            name="page_url"
-            value="https://pet-art.net/se/kontakta-djurportratt-konstnar.html"
-          />
-
-          <!-- Honeypot (lämna tom) -->
-          <input
-            type="checkbox"
-            name="botcheck"
-            tabindex="-1"
-            autocomplete="off"
-            style="position: absolute; left: -9999px; opacity: 0"
-            aria-hidden="true"
-          />
-
-          <!-- Namn + E-post -->
-          <div class="row row--2">
-            <div class="field">
-              <label for="name">Ditt namn *</label>
-              <input id="name" name="name" type="text" required autocomplete="name" />
-            </div>
-
-            <div class="field">
-              <label for="email">E-post *</label>
-              <input id="email" name="email" type="email" required autocomplete="email" />
-            </div>
-          </div>
-
-          <!-- Meddelande -->
-          <div class="field">
-            <label for="message">Ditt meddelande *</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              required
-              placeholder="Berätta om ditt husdjur, storleksidé eller budget, och ev. deadline."
-            ></textarea>
-          </div>
-
-          <!-- Skicka -->
-          <div class="actions">
-            <button type="submit" class="button">Skicka meddelande</button>
-          </div>
-        </form>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Meny</h3>
-        <ul>
-          <li><a href="/se/villkor.html">Villkor &amp; integritet</a></li>
-          <li><a href="/se/returpolicy.html">Returer &amp; återbetalning</a></li>
-          <li><a href="/se/sajtmap.html">Sajtkarta</a></li>
-          <li><a href="/" hreflang="en" lang="en">English</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Följ mig</h3>
-        <div class="footer-social">
-          <a
-            title="Facebook"
-            href="https://www.facebook.com/PetPortraitsArtist"
-            class="btn-social-fb"
-            aria-label="Facebook"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-facebook"></use>
-            </svg>
-          </a>
-          <a
-            title="Instagram"
-            href="https://www.instagram.com/katjapetportraits"
-            class="btn-social-fb btn-social-in"
-            aria-label="Instagram"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-instagram"></use>
-            </svg>
-          </a>
-        </div>
-
-        <button onclick="topFunction()" id="myBtn" title="Till toppen" aria-label="Till toppen">
-          <svg class="icon icon-lg" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
-          </svg>
-        </button>
-      </div>
-
-      <div class="footer-flex-item wide">
-        <a href="/se/">
-          <img
-            class="footer-logo"
-            loading="lazy"
-            src="/assets/images/petart-logotype-bw.svg"
-            alt="Pet Art with Heart logotyp"
-            decoding="async"
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
           />
         </a>
+        <nav class="desktop-nav" aria-label="Huvudmeny">
+          <a href="/se/djurportratt-olja-galleri.html">Galleri</a>
+          <a href="/se/priser-for-djurportratt.html">Priser &amp; beställning</a>
+          <a href="/se/om-djurportratt-konstnaren.html">Om Katja</a>
+          <a href="/se/djurmotiv-olja-galleri.html">Djurmotiv</a>
+        </nav>
+        <a
+          class="button header-enquire"
+          href="/se/kontakta-djurportratt-konstnar.html"
+          aria-current="page"
+          >Förfrågan</a
+        >
+        <div class="language" role="group" aria-label="Språk">
+          <a
+            href="/html/contact-pet-portrait-artist.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            >EN</a
+          ><span aria-hidden="true">/</span
+          ><a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            aria-current="true"
+            >SV</a
+          >
+        </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Öppna menyn"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
       </div>
-      <div class="footer-flex-item wide wide2">
-        &copy; 2025 - Alla rättigheter förbehållna | Pet Art with Heart | Webbplats av Katja Turnsek
+      <noscript>
+        <nav class="nojs-nav wrap" aria-label="Navigation">
+          <a href="/se/">Hem</a>
+          <a href="/se/djurportratt-olja-galleri.html">Galleri</a>
+          <a href="/se/priser-for-djurportratt.html">Priser &amp; beställning</a>
+          <a href="/se/om-djurportratt-konstnaren.html">Om Katja</a>
+          <a href="/se/djurmotiv-olja-galleri.html">Djurmotiv</a>
+          <a href="/se/kontakta-djurportratt-konstnar.html" aria-current="page">Kontakt</a>
+          <a href="/se/djurportratt-kundreferenser.html">Kundberättelser</a>
+          <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>
+        </nav>
+      </noscript>
+    </header>
+    <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigationsmeny">
+      <div class="header-inner">
+        <a class="brand" href="/se/" aria-label="Pet Art with Heart — Hem">
+          <img
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
+          />
+        </a>
+        <div class="language" role="group" aria-label="Språk">
+          <a
+            href="/html/contact-pet-portrait-artist.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            >EN</a
+          ><span aria-hidden="true">/</span
+          ><a
+            href="/se/kontakta-djurportratt-konstnar.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            aria-current="true"
+            >SV</a
+          >
+        </div>
+        <button class="close-menu" type="button" aria-label="Stäng menyn">×</button>
+      </div>
+      <div class="mobile-menu-body">
+        <nav aria-label="Mobilmeny">
+          <a href="/se/">Hem</a>
+          <a href="/se/djurportratt-olja-galleri.html">Galleri</a>
+          <a href="/se/priser-for-djurportratt.html">Priser &amp; beställning</a>
+          <a href="/se/om-djurportratt-konstnaren.html">Om Katja</a>
+          <a href="/se/djurmotiv-olja-galleri.html">Djurmotiv</a>
+        </nav>
+        <a class="button" href="/se/kontakta-djurportratt-konstnar.html">
+          Fråga om ett porträtt <span class="arrow" aria-hidden="true">⟶</span>
+        </a>
+        <div class="mobile-secondary">
+          <a class="text-link" href="/se/djurportratt-kundreferenser.html">
+            <span class="link-label">Kundberättelser</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+          <a class="text-link" href="/se/foto-tips-portrattbestallning.html">
+            <span class="link-label">Fototips</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+        </div>
+        <p class="menu-signoff">Målat för hand. Skapat med hjärta.</p>
+      </div>
+    </dialog>
+    <main id="main" tabindex="-1">
+      <section class="page-intro">
+        <div class="wrap">
+          <div class="page-intro-inner">
+            <div class="intro-copy">
+              <span class="eyebrow">Handmålade djurporträtt i olja</span>
+              <h1>Låt oss prata om<br /><em>ditt porträtt.</em></h1>
+              <p>
+                Berätta om din vän och vad du har i åtanke. Du behöver inte ha bestämt alla
+                detaljer.
+              </p>
+            </div>
+            <p class="intro-aside">Ett samtal<br />är en fin början.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap contact-grid">
+        <div>
+          <h2>Din porträttförfrågan</h2>
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="contact-form"
+            data-enquiry-form
+          >
+            <input type="hidden" name="access_key" value="4b70fb1f-a7f2-4100-8a21-d9e9d5dfd983" />
+            <input type="hidden" name="subject" value="Pet Art — Nytt meddelande (SV)" />
+            <input type="hidden" name="from_name" value="Pet Art Kontakt (SV)" />
+            <input type="hidden" name="redirect" value="https://pet-art.net/se/tack.html" />
+            <input
+              type="hidden"
+              name="page_url"
+              value="https://pet-art.net/se/kontakta-djurportratt-konstnar.html"
+            />
+
+            <div class="hp" aria-hidden="true">
+              <label>Leave empty<input type="checkbox" name="botcheck" tabindex="-1" /></label>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Ditt namn *</label>
+                <input id="name" name="name" autocomplete="name" required maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="email">E-postadress *</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  maxlength="254"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="pet">Djurets namn / djurslag</label>
+                <input id="pet" name="pet" maxlength="150" />
+              </div>
+              <div class="field">
+                <label for="portrait-size">Önskad dukstorlek</label>
+                <select name="size" id="portrait-size">
+                  <option value="">Inte bestämt än</option>
+                  <option>30 × 25 cm</option>
+                  <option>40 × 30 cm</option>
+                  <option>45 × 35 cm</option>
+                  <option>50 × 40 cm</option>
+                  <option>60 × 45 cm</option>
+                  <option>Annan storlek</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Dina idéer *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                minlength="10"
+                maxlength="10000"
+                aria-describedby="message-hint"
+                placeholder="Berätta om ditt djur, dina idéer och eventuella önskemål om datum."
+              ></textarea>
+              <small id="message-hint">
+                Berätta gärna om ett önskat leveransdatum eller om porträttet är en present, så kan
+                jag kontrollera tillgängligheten. Du kan lägga till länkar till foton här. Mejla mig
+                direkt för att skicka originalfiler.
+              </small>
+            </div>
+            <div class="field">
+              <label for="photos">Länk till dina foton (valfritt)</label>
+              <input
+                type="url"
+                name="photo_link"
+                id="photos"
+                placeholder="https://"
+                maxlength="2000"
+              />
+            </div>
+            <p class="small">
+              Dina uppgifter används för att besvara din förfrågan och hantera din beställning.
+              <a href="/se/villkor.html">Villkor &amp; integritet</a>.
+            </p>
+            <button class="button" type="submit">
+              Skicka förfrågan <span aria-hidden="true">⟶</span>
+            </button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <aside class="contact-aside">
+          <section>
+            <h2>Föredrar du e-post?</h2>
+            <p><a href="mailto:katja@pet-art.net">katja@pet-art.net</a></p>
+            <p>
+              Skicka dina favoritfoton eller ställ en fråga. Jag hjälper dig att välja storlek och
+              referensfoto.
+            </p>
+            <a class="text-link" href="/se/foto-tips-portrattbestallning.html">
+              <span class="link-label">Fototips</span>
+              <span class="arrow" aria-hidden="true">⟶</span>
+            </a>
+          </section>
+          <section>
+            <h2>Vad händer sedan?</h2>
+            <p>
+              Vi diskuterar foton, komposition, dukstorlek och tidsplan. En deposition på 50 % bokar
+              ditt porträtt när vi har kommit överens om detaljerna.
+            </p>
+            <p>Resten betalas när du har godkänt den färdiga målningen, innan den skickas.</p>
+            <a class="text-link" href="/se/priser-for-djurportratt.html">
+              <span class="link-label">Priser &amp; beställning</span>
+              <span class="arrow" aria-hidden="true">⟶</span>
+            </a>
+          </section>
+          <section>
+            <h2>En personlig present</h2>
+            <p>
+              Fråga om ett digitalt presentkort om du vill att mottagaren ska vara med och planera
+              sitt porträtt.
+            </p>
+          </section>
+          <img
+            data-reveal
+            src="/assets/images/contact-pet-portrait-artist.webp"
+            alt="Detalj från porträttateljén"
+            width="1200"
+            height="800"
+            loading="lazy"
+            decoding="async"
+            class=""
+          />
+        </aside>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="/se/" aria-label="Pet Art with Heart — Hem">
+              <img
+                src="/assets/images/petart-with-heart-logotype.svg"
+                width="224"
+                height="73"
+                alt="Pet Art with Heart"
+              />
+            </a>
+          </div>
+          <nav class="footer-links" aria-label="Användbara länkar">
+            <a href="/se/kontakta-djurportratt-konstnar.html">Kontakt</a>
+            <a href="/se/djurportratt-kundreferenser.html">Kundberättelser</a>
+            <a href="/se/foto-tips-portrattbestallning.html">Fototips</a>
+            <a href="/se/villkor.html">Villkor &amp; integritet</a>
+            <a href="/se/returpolicy.html">Returer</a>
+            <a href="/se/sajtmap.html">Sajtkarta</a>
+          </nav>
+          <div class="social">
+            <a
+              href="https://www.facebook.com/PetPortraitsArtist"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/katjapetportraits"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <p class="copyright">© 2026 Pet Art with Heart. Alla rättigheter förbehållna.</p>
+        <a class="back-to-top" href="#top">
+          <span class="back-to-top-label">Till toppen</span>
+          <span aria-hidden="true">↑</span>
+        </a>
       </div>
     </footer>
-
-    <!-- Floating chat buttons (docked mid-right) -->
-    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
-      <!-- WhatsApp -->
+    <aside class="fab-dock" aria-label="Snabbkontakt">
       <a
-        class="fab__btn fab__btn--whatsapp"
-        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
+        class="fab"
+        href="https://wa.me/46730785744?text=Hej%20Katja%2C%20jag%20vill%20g%C3%A4rna%20diskutera%20ett%20djurportr%C3%A4tt."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
+        aria-label="WhatsApp"
       >
-        <svg class="fab__icon" aria-hidden="true">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-whatsapp"></use>
         </svg>
-        <span class="sr-only">Chat on WhatsApp</span>
+        <span class="fab-label">WhatsApp</span>
       </a>
-
-      <!-- SMS / Messages -->
-      <a
-        id="smsLink"
-        class="fab__btn fab__btn--sms"
-        href="sms:+46730785744"
-        aria-label="Send an SMS"
-        title="Send an SMS"
-      >
-        <svg class="fab__icon" aria-hidden="true">
+      <a class="fab" id="smsLink" href="sms:+46730785744" aria-label="Skicka ett sms">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-message"></use>
         </svg>
-        <span class="sr-only">Send an SMS</span>
+        <span class="fab-label">Meddelande</span>
       </a>
-    </div>
-
-    <!-- Scripts -->
+    </aside>
+    <script defer src="/src/js/site.js?v=split-1"></script>
+    <script defer src="/src/js/animations.js?v=split-1"></script>
+    <script defer src="/src/js/enquiry.js?v=split-1"></script>
     <script defer src="/src/js/analytics.js"></script>
-    <script defer src="/src/js/up.js"></script>
-    <script defer src="/src/js/chat-buttons.js"></script>
   </body>
 </html>

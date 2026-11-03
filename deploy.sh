@@ -42,14 +42,14 @@ if command -v rsync >/dev/null 2>&1; then
   rsync -rltD --delete \
     --exclude=".git/" --exclude=".github/" --exclude=".gitignore" \
     --exclude="node_modules/" --exclude=".vscode/" --exclude=".DS_Store" \
-    --exclude="tools/" --exclude="README.md" --exclude="LICENSE" \
+    --exclude="backups/" --exclude="tools/" --exclude="README.md" --exclude="LICENSE" \
     "$REPO_ROOT"/ "$DOCROOT"/
 else
   log "rsync not found; using tar fallback (no deletions)"
   ( cd "$REPO_ROOT" && tar -cf - \
       --exclude='./.git' --exclude='./.github' --exclude='./.gitignore' \
       --exclude='./node_modules' --exclude='./.vscode' --exclude='./.DS_Store' \
-      --exclude='./tools' --exclude='./README.md' --exclude='./LICENSE' . \
+      --exclude='./backups' --exclude='./tools' --exclude='./README.md' --exclude='./LICENSE' . \
     ) | ( cd "$DOCROOT" && tar -xpf - )
 fi
 

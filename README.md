@@ -1,117 +1,96 @@
-# Pet Art with Heart
+# Pet Art with Heart — redesign
 
-![Portfolio Screenshot](https://pet-art.net/assets/images/petart-preview.webp)
+Complete static redesign of the existing English and Swedish website. All original page paths, canonical/hreflang tags, `robots.txt`, `.htaccess`, sitemap and original image bytes are retained. Nothing has been deployed.
 
-Static website for custom, hand-painted pet portraits in oils.
+## Open locally
 
-## 📍 Live Site
+Use Node 20 or later (Node 22 is suitable):
 
-[https://pet-art.net/](https://pet-art.net/)
-
-## 💻 GitHub Repository
-
-[https://github.com/KatjaTurnsek/PetArt](https://github.com/KatjaTurnsek/PetArt)
-
-## 📝 What this is
-
-- Plain HTML + CSS + a little vanilla JS
-- One production CSS file built from multiple source files
-- Hosted on Midphase/StackCP (Apache) with `.htaccess` for redirects/caching
-
-## 🔧 Built With
-
-- HTML5
-- CSS3 (custom properties)
-- JavaScript (no framework)
-- PostCSS + `postcss-import` + `cssnano` (build step)
-
-## 📁 Project Structure (excerpt)
-
-```text
-assets/
-  images/
-  icons.svg
-
-src/
-  css/
-    reset.css
-    variables.css
-    global.css
-    home.css
-    about.css
-    contact.css
-    gallery.css
-    prices.css
-  js/
-    analytics.js
-    up.js
-
-dist/
-  styles.min.css
-
-index.html
-sitemap.xml
-robots.txt
-.htaccess
-```
-
-## 🧱 Local Development
-
-Open `index.html` in a browser (or use VS Code “Live Server”).
-
-### Build CSS
-
-Install once:
-
-```bash
+```sh
 npm install
+npm run build
+npm run dev
 ```
 
-### Build
+Open `http://localhost:3000`. VS Code Live Server is also suitable. Use a server rather than opening individual HTML files directly, because the site retains its original root-relative links.
 
-```bash
-npm run build:css
+`npm run build` updates the static gallery/lightbox data and prices, then builds `dist/styles.min.css` using the existing PostCSS setup. No framework or CMS was introduced. HTML remains indexable without JavaScript; a no-script mobile navigation fallback is included.
+
+## Add a painting
+
+1. Add the image under `assets/images/pet-portraits/`.
+2. Add one object to `src/data/portraits.json`, following an existing entry. Use a unique `id`, the image's root-relative URL, name, EN/SV descriptions/captions and dimensions. Do not add the year.
+3. Run `npm run build`.
+
+This creates both English and Swedish gallery cards and the lightbox data. Artwork proportions are preserved. Optional future fields are hidden when empty:
+
+```json
+{
+  "story": {
+    "en": "The story behind this portrait.",
+    "sv": "Berättelsen bakom porträttet."
+  },
+  "progressImages": [
+    {"src": "/assets/images/example-progress.webp", "alt": {"en": "Painting in progress", "sv": "Målningen under arbete"}}
+  ],
+  "framedImages": [
+    {"src": "/assets/images/example-framed.webp", "alt": {"en": "The framed portrait", "sv": "Det inramade porträttet"}}
+  ],
+  "testimonial": {
+    "en": {"quote": "An exact client quote", "author": "Client name"},
+    "sv": {"quote": "Ett exakt kundcitat", "author": "Kundens namn"}
+  }
+}
 ```
 
-### Watch
+Only add images that actually exist. The lightbox supports Escape, previous/next arrow keys, native modal focus handling and an artwork-specific enquiry link. Without JS, artwork links open the original image.
 
-```bash
-npm run watch:css
-```
+## Prices — provisional
 
-Pages load the built CSS:
+The EUR values are **design placeholders, not researched prices or exchange-rate conversions**:
 
-<link rel="stylesheet" href="/dist/styles.min.css?v=1" />
+| Canvas | Placeholder |
+| --- | ---: |
+| 30 × 25 cm | €1,100 |
+| 40 × 30 cm | €1,450 |
+| 45 × 35 cm | €1,800 |
+| 50 × 40 cm | €2,150 |
+| 60 × 45 cm | €2,600 |
 
-## 🚀 Deploy (StackCP)
+Wildlife placeholders: Wonderment €4,200; Curious Encounter €3,200.
 
-1. Run `npm run build:css`.
-2. Upload `dist/styles.min.css` and any changed HTML/assets.
-3. `.htaccess` handles:
+Edit `src/data/prices.json`, then run `npm run build`. Set `"provisional": false` only once all pet and wildlife amounts are confirmed; this removes the preview price notes from both languages. Payment wording throughout uses a 50% deposit, with the remaining 50% after completion and client approval, before dispatch. No online checkout was added.
 
-- `www` → `https://pet-art.net/`
-- HTTP → HTTPS (CDN-safe)
-- `/index.html` → `/`
-- Legacy `.htm` routes
-- Asset caching
+## Design and content
 
-## 🔍 SEO & Robots
+- Warm white, espresso, olive, burnt orange and warm beige; Libre Caslon Text with Inter.
+- Desktop layouts follow the supplied frames; mobile layouts are responsive.
+- Existing photographs are used in place of the temporary generated studio picture.
+- All original image files remain unchanged. The previously traced signature SVG is added beneath the artist introduction.
+- All 36 portraits and all 53 testimonial entries in each language are retained.
+- No Painterly/Detailed product split, painted years or gallery filters.
+- About, Photo Tips, Testimonials, Wildlife Art, Contact, policies, sitemap, thank-you and error pages use the same design system.
+- Titles, descriptions and sharing metadata are rewritten in EN/SV. Routing metadata, verification tokens and noindex directives are retained.
+- Structured data describes the actual page and service, without stale SEK offers, fabricated ratings or mismatched FAQ content.
+- Terms are retained with the agreed payment/currency changes and a more accurate service-provider privacy sentence. The remaining cancellation and returns wording is the supplied policy, not newly drafted legal advice.
 
-- Canonical: `https://pet-art.net/`
-- `hreflang` for `/` and `/se/`
-- `robots.txt` → `https://pet-art.net/sitemap.xml`
+## Contact form and analytics
 
-## 📄 Notes
+The existing Web3Forms action, public access key and original thank-you redirect URLs are retained. Fields include name, email, pet, size, ideas and a photo link; original files can be sent by email. Do not expect an image-upload widget.
 
-- This repo **commits** a single built file: `dist/styles.min.css` (so the site previews correctly on GitHub and anywhere the repo is browsed).
-- All other build artifacts in `dist/` are ignored.
-- On deploy, you can either:
-  - rebuild locally (`npm run build:css`) and upload the new `dist/styles.min.css`, **or**
-  - keep the committed `dist/styles.min.css` in sync with your changes and publish it via StackCP.
+With JavaScript the form shows sending/error feedback, preserves input on failure and redirects only after the service confirms success. Without JS the original POST submission still works. No live enquiry was submitted during development.
 
-## 🙋‍♀️ Author
+The existing `src/js/analytics.js` implementation is retained. Added events are `portrait_view`, `enquiry_click`, `contact_click`, and `generate_lead`. A lead is recorded only after Web3Forms confirms success. Click events are not counted as confirmed enquiries. Consent configuration has not been redesigned.
 
-**Katja Turnšek**  
-Front-End Developer & Designer  
-[Portfolio Website](https://katjaturnsek.github.io/portfolio/)  
-[GitHub](https://github.com/KatjaTurnsek)
+## Move into your Git branch
+
+1. Keep your current repository and `.git` directory.
+2. Extract the ZIP elsewhere, then copy the **contents** of `PetArt-redesign/` into your repository on `redesign/pet-art`.
+3. Review `git diff`, run the local preview and confirm the provisional prices.
+4. Commit when ready. Deployment to your existing hosting is a separate step.
+
+The existing deployment script is included unchanged. Do not run it just to preview; it writes to the configured hosting document root.
+
+## Verification
+
+See `REDESIGN-NOTES.md` for checks and the remaining launch checks.

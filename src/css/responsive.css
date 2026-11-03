@@ -1,0 +1,694 @@
+@media (min-width: 801px) {
+  .featured-grid .art-image {
+    height: min(480px, calc((100cqi - 56px) * 0.38));
+  }
+
+  .featured-grid .art-image img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    max-height: none;
+  }
+}
+
+@media (min-width: 1600px) {
+  .fab-dock {
+    right: max(20px, calc((100vw - 1450px) / 2 - 62px));
+  }
+}
+
+@media (max-width: 1100px) {
+  .wrap {
+    width: calc(100% - 80px);
+  }
+
+  .header-inner {
+    gap: 18px;
+    padding-inline: 28px;
+  }
+
+  .brand img {
+    width: 160px;
+  }
+
+  .desktop-nav {
+    gap: 18px;
+  }
+
+  .desktop-nav a {
+    font-size: 14px;
+  }
+
+  .header-enquire {
+    padding-inline: 16px;
+  }
+
+  .hero-grid,
+  .split {
+    gap: 45px;
+  }
+
+  .page-intro-inner {
+    gap: 55px;
+  }
+
+  .enquiry-banner {
+    padding: 30px;
+  }
+
+  .enquiry-banner h2 {
+    font-size: 26px;
+  }
+
+  .enquiry-banner .button {
+    font-size: 14px;
+  }
+
+  .footer-top {
+    flex-wrap: wrap;
+  }
+
+  .footer-links {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+
+  .contact-grid {
+    gap: 45px;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 16px;
+  }
+
+  .wrap {
+    width: calc(100% - 48px);
+  }
+
+  .section {
+    padding-top: var(--section-top, 40px);
+    padding-bottom: var(--section-bottom, 40px);
+  }
+
+  .section-tight {
+    padding-top: var(--section-top, 24px);
+    padding-bottom: var(--section-bottom, 24px);
+  }
+
+  .desktop-nav,
+  .header-enquire {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .header-inner {
+    padding: 12px 20px;
+    min-height: 78px;
+    gap: 10px;
+  }
+
+  .brand img {
+    width: 155px;
+  }
+
+  .language {
+    font-size: 12px;
+    gap: 2px;
+  }
+
+  .site-header .brand {
+    margin-right: auto;
+  }
+
+  .page-intro {
+    padding-block: 42px;
+  }
+
+  .page-intro-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .intro-aside {
+    font-size: 21px;
+    margin-left: 0;
+  }
+
+  .hero-grid {
+    gap: 36px;
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero {
+    padding-block: 34px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(36px, 7.5vw, 50px);
+  }
+
+  .hero-copy p {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    margin-top: 24px;
+  }
+
+  .hero-art {
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .hero-art figcaption {
+    font-size: 12px;
+  }
+
+  .hero-art figcaption strong {
+    font-size: 17px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+
+  .featured-grid {
+    gap: 16px;
+  }
+
+  .featured-grid .art-image {
+    height: 240px;
+  }
+
+  .art-caption {
+    font-size: 12px;
+  }
+
+  .art-caption span {
+    font-size: 12px;
+  }
+
+  .split,
+  .split.reverse {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .split.reverse figure,
+  .split.reverse .copy {
+    order: initial;
+  }
+
+  .split.reverse figure {
+    order: 2;
+  }
+
+  .split .copy {
+    max-width: none;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .steps.four {
+    grid-template-columns: 1fr;
+  }
+
+  .steps p {
+    font-size: 15px;
+  }
+
+  .enquiry-banner {
+    display: grid;
+    gap: 24px;
+    padding: 28px;
+  }
+
+  .enquiry-banner .button {
+    justify-self: start;
+    font-size: 15px;
+  }
+
+  .quote p {
+    font-size: 23px;
+  }
+
+  .masonry {
+    columns: 2;
+    column-gap: 20px;
+  }
+
+  .art-card {
+    margin-bottom: 26px;
+  }
+
+  .link-pair {
+    gap: 30px;
+    padding-block: 32px;
+  }
+
+  .link-pair > div + div {
+    padding-left: 30px;
+  }
+
+  .link-pair h2,
+  .link-pair h3 {
+    font-size: 23px;
+  }
+
+  .lightbox-layout {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .lightbox-art > img {
+    max-height: 50dvh;
+  }
+
+  .lightbox-copy {
+    padding-top: 10px;
+  }
+
+  .lightbox {
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  .lightbox-copy h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .included-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .check-list {
+    font-size: 14px;
+    gap: 14px;
+  }
+
+  .pricing-table td,
+  .pricing-table th {
+    padding: 16px 14px;
+  }
+
+  .pricing-table {
+    font-size: 14px;
+  }
+
+  .client-story {
+    gap: 30px;
+    grid-template-columns: 1fr;
+    padding-block: 40px;
+  }
+
+  .client-story:nth-child(even) figure {
+    order: 0;
+  }
+
+  .client-story figure {
+    max-width: 550px;
+  }
+
+  .photo-tip {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 36px;
+  }
+
+  .photo-tip img {
+    max-height: 420px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .wildlife-grid {
+    gap: 35px;
+  }
+
+  .studio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fab-dock {
+    right: 12px;
+    bottom: 20px;
+    gap: 10px;
+  }
+
+  .fab {
+    width: 46px;
+    height: 46px;
+  }
+
+  .fab svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .fab-label {
+    right: 54px;
+  }
+
+  .site-footer {
+    padding-bottom: 105px;
+  }
+
+  .footer-top {
+    gap: 24px;
+  }
+
+  .copyright {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    width: calc(100% - 40px);
+  }
+
+  .header-inner {
+    padding-inline: 16px;
+    gap: 6px;
+  }
+
+  .brand img {
+    width: 142px;
+  }
+
+  .language a {
+    padding-inline: 2px;
+  }
+
+  .home-hero .hero-grid {
+    gap: 30px;
+  }
+
+  .hero-copy h1 {
+    font-size: 36px;
+    line-height: 1.22;
+  }
+
+  .hero-copy .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.07em;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-actions {
+    justify-items: stretch;
+  }
+
+  .hero-actions .text-link {
+    justify-self: start;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .featured-grid .art-image {
+    height: auto;
+  }
+
+  .featured-grid .art-image img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .featured-grid figcaption {
+    text-align: left;
+  }
+
+  .art-caption {
+    font-size: 14px;
+  }
+
+  .masonry {
+    columns: 1;
+  }
+
+  .art-card {
+    margin-bottom: 32px;
+  }
+
+  .link-pair {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .link-pair > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 30px;
+  }
+
+  .check-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-table th:nth-child(2),
+  .pricing-table td:nth-child(2) {
+    display: none;
+  }
+
+  .pricing-table td,
+  .pricing-table th {
+    padding: 16px;
+  }
+
+  .pricing-table td:first-child::after {
+    content: attr(data-description);
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 5px;
+    max-width: 190px;
+  }
+
+  .wildlife-grid,
+  .sitemap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 22px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .studio-grid {
+    gap: 12px;
+  }
+
+  .enquiry-banner {
+    padding: 26px 22px;
+  }
+
+  .enquiry-banner .button {
+    width: 100%;
+  }
+
+  .wide-detail {
+    height: 180px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 25px;
+    width: 100%;
+  }
+
+  .footer-brand img {
+    width: 145px;
+  }
+
+  .social {
+    margin-left: auto;
+  }
+
+  .faq-list summary {
+    font-size: 16px;
+    padding: 16px;
+  }
+
+  .page-intro h1 {
+    font-size: 36px;
+  }
+
+  .mobile-menu .brand img {
+    width: 142px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .site-header,
+  .fab-dock,
+  .site-footer,
+  .mobile-menu,
+  .to-top {
+    display: none;
+  }
+
+  .wrap {
+    width: 100%;
+  }
+
+  .section {
+    padding-block: 25px;
+  }
+
+  body {
+    background: var(--white);
+    font-size: 12pt;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .art-card {
+    break-inside: avoid;
+  }
+
+  details > div {
+    display: block !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-portraits .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .section-portraits .featured-grid .art-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+  }
+
+  .section-portraits .featured-grid .art-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    border: 0;
+  }
+
+  [data-page="gallery"] .masonry {
+    columns: 1;
+  }
+  .lightbox {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    border: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .lightbox .lightbox-top {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 6px 12px;
+    padding-top: max(6px, env(safe-area-inset-top));
+    background: var(--paper);
+    gap: 12px;
+  }
+
+  .lightbox .lightbox-layout {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0;
+    gap: 0;
+  }
+
+  .lightbox .lightbox-art > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    margin: 0;
+    object-fit: contain;
+    border: 0;
+  }
+
+  .lightbox .lightbox-copy {
+    padding: 24px 20px max(28px, env(safe-area-inset-bottom));
+  }
+
+  [data-page="about"] .studio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wildlife-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phone lightbox: show the complete painting at full available width. */
+
+/* Contact fields stack throughout the mobile layout. */
+@media (max-width: 800px) {
+  [data-page="contact"] .contact-form .form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  [data-page="contact"] .contact-form .field {
+    min-width: 0;
+  }
+}
