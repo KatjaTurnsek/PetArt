@@ -4,11 +4,13 @@
   "private": true,
   "description": "Static site build for Pet Art with Heart (PostCSS + cssnano).",
   "scripts": {
-    "build": "npm run build:css",
+    "build": "npm run update:content && npm run build:css",
     "build:css": "postcss src/css/styles.css -o dist/styles.min.css",
     "watch:css": "postcss src/css/styles.css -o dist/styles.min.css -w",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "update:content": "node scripts/update-content.mjs",
+    "dev": "node scripts/serve.mjs"
   },
   "devDependencies": {
     "cssnano": "^7.1.2",

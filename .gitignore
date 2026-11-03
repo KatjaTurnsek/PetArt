@@ -18,3 +18,7 @@ dist/*
 # (optional) keep the source map or date-stamped bundle too:
 # !dist/styles.min.css.map
 # !dist/styles.*.min.css
+
+/backups/
+
+/node_modules/

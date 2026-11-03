@@ -4,32 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ===== LCP preloads FIRST (mobile + desktop) ===== -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos-mobile.webp"
-      media="(max-width: 768px)"
-      imagesrcset="/assets/images/pet-portraits-ideal-photos-mobile.webp 768w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/pet-portraits-ideal-photos.webp"
-      media="(min-width: 769px)"
-      imagesrcset="/assets/images/pet-portraits-ideal-photos.webp 1200w"
-      imagesizes="1200px"
-      fetchpriority="high"
-    />
-
-    <title>Portraits From Photos - Pet Photo Tips for Painting</title>
-
-    <!-- Canonical (non-www) -->
     <link rel="canonical" href="https://pet-art.net/html/photo-tips-portrait-commissions.html" />
-
-    <!-- Hreflang (EN self + Swedish equivalent) -->
     <link
       rel="alternate"
       href="https://pet-art.net/html/photo-tips-portrait-commissions.html"
@@ -41,450 +16,550 @@
       hreflang="sv"
     />
 
-    <!-- Social URL matches canonical -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Photo Tips for Pet Portrait Commissions | Katja Turnsek</title>
+    <meta
+      name="description"
+      content="Choose the best reference photos for your oil pet portrait. Simple tips on light, eye-level angles, detail and using older photographs."
+    />
+    <meta name="theme-color" content="#FAF7F2" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/dist/styles.min.css?v=redesign-1" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pet Art with Heart" />
     <meta
       property="og:url"
       content="https://pet-art.net/html/photo-tips-portrait-commissions.html"
     />
-
+    <meta property="og:title" content="Photo Tips for Pet Portrait Commissions | Katja Turnsek" />
     <meta
-      name="description"
-      content="Learn how to photograph pets for portraits. Don't risk bad results—get tips that artists rely on!"
+      property="og:description"
+      content="Choose the best reference photos for your oil pet portrait. Simple tips on light, eye-level angles, detail and using older photographs."
     />
-
-    <!-- Assets (root-absolute) -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/dist/styles.min.css?v=1" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+    <meta
+      property="og:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Oswald:wght@200..700&display=swap"
-      />
-    </noscript>
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Photo Tips for Pet Portrait Commissions | Katja Turnsek" />
+    <meta
+      name="twitter:description"
+      content="Choose the best reference photos for your oil pet portrait. Simple tips on light, eye-level angles, detail and using older photographs."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pet-art.net/assets/images/social/pet-art-og-1200x630.jpg"
+    />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Pet Art With Heart",
-        "url": "https://pet-art.net/",
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "name": "Return & Refund Policy — Custom Pet Portraits",
-          "merchantReturnLink": "https://pet-art.net/html/return-policy.html",
-          "applicableCountry": [
-            "SE",
-            "NO",
-            "DK",
-            "FI",
-            "IS",
-            "DE",
-            "NL",
-            "BE",
-            "AT",
-            "CH",
-            "FR",
-            "ES",
-            "IT",
-            "PT",
-            "IE",
-            "GB",
-            "LU",
-            "PL",
-            "CZ",
-            "US",
-            "CA",
-            "AU",
-            "NZ"
-          ],
-          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-          "itemCondition": ["https://schema.org/DamagedCondition"],
-          "inStoreReturnsOffered": false,
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-        }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://pet-art.net/#org",
+            "name": "Pet Art with Heart",
+            "url": "https://pet-art.net/",
+            "logo": "https://pet-art.net/assets/images/petart-with-heart-logotype.svg",
+            "sameAs": [
+              "https://www.instagram.com/katjapetportraits",
+              "https://www.facebook.com/PetPortraitsArtist"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://pet-art.net/html/photo-tips-portrait-commissions.html#page",
+            "url": "https://pet-art.net/html/photo-tips-portrait-commissions.html",
+            "name": "Photo Tips for Pet Portrait Commissions | Katja Turnsek",
+            "description": "Choose the best reference photos for your oil pet portrait. Simple tips on light, eye-level angles, detail and using older photographs.",
+            "inLanguage": "en",
+            "publisher": {
+              "@id": "https://pet-art.net/#org"
+            }
+          }
+        ]
       }
     </script>
+
+    <noscript>
+      <style>
+        .menu-toggle {
+          display: none !important;
+        }
+      </style>
+    </noscript>
   </head>
 
-  <body>
-    <!-- Header with Navigation (unified) -->
-    <header>
-      <a href="/"
-        ><img
-          class="logo-header"
-          src="/assets/images/petart-with-heart-logotype.svg"
-          alt="Pet Art with Heart logotype"
-          loading="lazy"
-          decoding="async"
-      /></a>
+  <body data-language="en" data-page="photos">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <input id="toggler" class="toggler" type="checkbox" />
-      <label for="toggler" class="burger" aria-label="Open menu">
-        <span>
-          <svg class="icon" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-bars"></use>
-          </svg>
-        </span>
-        <span class="sr-only">Menu</span>
-      </label>
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
+          <img
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
+          />
+        </a>
 
-      <nav aria-label="Primary Navigation">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li>
-            <a href="/html/pet-portraits-oils-gallery.html">Pet Portrait Gallery</a>
-          </li>
-          <li class="dropdown active">
-            <a href="#">
-              Order Information
-              <svg class="icon" aria-hidden="true">
-                <use href="/assets/icons.svg?v=3#icon-chevron-down"></use>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="/html/pet-portrait-commission-prices.html">Prices &amp; How It Works</a>
-              </li>
-              <li>
-                <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
-              </li>
-              <li>
-                <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="/html/wildlife-art-oils-gallery.html">Shop Wildlife Art</a>
-          </li>
-          <li>
-            <a href="/html/about-pet-portrait-artist.html">About Artist</a>
-          </li>
-          <li><a href="/html/contact-pet-portrait-artist.html">Contact</a></li>
-        </ul>
-      </nav>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+        </nav>
+
+        <a class="button header-enquire" href="/html/contact-pet-portrait-artist.html"> Enquire </a>
+
+        <div class="language" role="group" aria-label="Language">
+          <a
+            href="/html/photo-tips-portrait-commissions.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            aria-current="true"
+            >EN</a
+          >
+          <span aria-hidden="true">/</span>
+          <a
+            href="/se/foto-tips-portrattbestallning.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            >SV</a
+          >
+        </div>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <noscript>
+        <nav class="nojs-nav wrap" aria-label="Navigation">
+          <a href="/">Home</a>
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+          <a href="/html/contact-pet-portrait-artist.html">Contact</a>
+          <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+          <a href="/html/photo-tips-portrait-commissions.html" aria-current="page">Photo Tips</a>
+        </nav>
+      </noscript>
     </header>
 
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section class="main-img main-img-photo-tips">
-        <div class="main-img__bg">
+    <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation menu">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
           <img
-            id="hero-lcp"
-            src="/assets/images/pet-portraits-ideal-photos.webp"
-            srcset="
-              /assets/images/pet-portraits-ideal-photos-mobile.webp  768w,
-              /assets/images/pet-portraits-ideal-photos.webp        1200w
-            "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="Ideal pet photo examples for commissioning a painted portrait"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-            width="1200"
-            height="800"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center"
+            src="/assets/images/petart-with-heart-logotype.svg"
+            width="224"
+            height="73"
+            alt="Pet Art with Heart"
           />
+        </a>
+
+        <div class="language" role="group" aria-label="Language">
+          <a
+            href="/html/photo-tips-portrait-commissions.html"
+            lang="en"
+            hreflang="en"
+            aria-label="English"
+            aria-current="true"
+            >EN</a
+          >
+          <span aria-hidden="true">/</span>
+          <a
+            href="/se/foto-tips-portrattbestallning.html"
+            lang="sv"
+            hreflang="sv"
+            aria-label="Svenska"
+            >SV</a
+          >
         </div>
 
-        <div class="main-img__overlay" aria-hidden="true"></div>
+        <button class="close-menu" type="button" aria-label="Close menu">×</button>
+      </div>
 
-        <figure class="vert-lines" aria-hidden="true"></figure>
+      <div class="mobile-menu-body">
+        <nav aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          <a href="/html/pet-portraits-oils-gallery.html">Gallery</a>
+          <a href="/html/pet-portrait-commission-prices.html">Prices &amp; Process</a>
+          <a href="/html/about-pet-portrait-artist.html">About</a>
+          <a href="/html/wildlife-art-oils-gallery.html">Wildlife Art</a>
+        </nav>
 
-        <div class="main-img__content">
-          <h1>Photo Tips for the Perfect Pet Portrait</h1>
-          <p class="lead">
-            Get gallery-worthy results by sending <strong>sharp, well-lit originals</strong>:
-            natural light, eye-level angles, and close framing. Below you’ll find simple steps I
-            rely on as an artist.
-          </p>
+        <a class="button" href="/html/contact-pet-portrait-artist.html">
+          Enquire About a Portrait
+          <span class="arrow" aria-hidden="true">⟶</span>
+        </a>
 
-          <a
-            href="/html/contact-pet-portrait-artist.html"
-            class="head-button"
-            aria-label="Send your photos for a quick artist review"
-          >
-            Send Photos for a Quick Review
+        <div class="mobile-secondary">
+          <a class="text-link" href="/html/pet-portrait-testimonials.html">
+            <span class="link-label">Client stories</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
+          <a class="text-link" href="/html/photo-tips-portrait-commissions.html">
+            <span class="link-label">Photo Tips</span>
+            <span class="arrow" aria-hidden="true">⟶</span>
           </a>
         </div>
-      </section>
 
-      <!-- Introduction Article -->
-      <section class="main-flex">
-        <h2>Photo Is Key</h2>
-        <p>
-          The photographs I receive and use as references for my artwork are the most significant
-          part of the painting process. Since I work from photos, the final portrait depends on the
-          quality of the images you send. Please provide the best photos you have—and as many as you
-          can.
-        </p>
-        <p>
-          If you'd like to photograph your pet specifically for a portrait, the tips below will help
-          you capture ideal references.
-        </p>
-      </section>
+        <p class="menu-signoff">Painted by hand. Made personal.</p>
+      </div>
+    </dialog>
 
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-tips-painted-pet-portraits.webp"
-            alt="Photo of two border collies"
-          />
-          <h2>Mobile Phone, System Camera, or Old Paper Photos?</h2>
-          <h3>Mobile Phones and Tablets</h3>
-          <p>
-            Today it's easier than ever to capture and share moments with the devices we carry
-            everywhere. While convenient, mobile photos often fall short as portrait references.
-          </p>
-          <p>
-            Good lighting and proximity help, but artists can spot the clarity difference between
-            mobile photos and those from a quality digital camera.
-          </p>
-
-          <h3>Old Paper Photos</h3>
-          <p>
-            Many treasured memories live in older prints, though they often lack modern portrait
-            clarity. You can mail these to my studio for review. Usable photos will be scanned in
-            high resolution and the originals returned with your artwork.
-          </p>
-          <p>
-            If your pet is alive, consider taking new digital photos—or ask a friend to help—to
-            achieve the best result.
-          </p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
-            alt="Border collie in the snow"
-          />
-          <h2>Positioning and Getting on Your Pet's Level</h2>
-          <h3>Capturing the Best Angle</h3>
-          <p>
-            Avoid photographing your pet from above. Instead, shoot at their eye level so the
-            perspective matches how the portrait will be viewed on your wall.
-          </p>
-          <p>
-            For small animals, crouch down or place them on a raised surface. For larger pets, stand
-            at their eye level.
-          </p>
-
-          <h3>Perfecting the Shot</h3>
-          <p>Visualize the final photo through the viewfinder—if it looks good, take the shot.</p>
-          <p>
-            Aim for your pet to gaze slightly to the left or right of the camera to add depth (and
-            avoid a flat look). Ensure both eyes are visible for a balanced, engaging portrait.
-          </p>
+    <main id="main" tabindex="-1">
+      <section class="page-intro">
+        <div class="wrap">
+          <div class="page-intro-inner">
+            <div class="intro-copy">
+              <span class="eyebrow">Hand-painted oil pet portraits</span>
+              <h1>Good photos.<br /><em>A personal portrait.</em></h1>
+              <p>
+                Simple advice for choosing reference photographs that show your companion clearly
+                and naturally.
+              </p>
+            </div>
+            <p class="intro-aside">The little details<br />make them who they are.</p>
+          </div>
         </div>
       </section>
 
-      <hr class="hr" />
+      <section class="section wrap photo-guide">
+        <h2 class="sr-only">Reference photography guide</h2>
 
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-tip-oil-pet-portraits.webp"
-            alt="Photo of border collie"
-          />
-          <h2>Natural Lighting</h2>
-          <p>
-            Whenever possible, take photos outside in natural light rather than indoors with flash.
-          </p>
-          <p>
-            Sunny days are great, but avoid harsh, direct sunlight or deep shadows that can wash out
-            your pet's colors.
-          </p>
-          <p>
-            If you must shoot indoors, place your pet near a window and avoid flash. Soft daylight
-            will keep colors true and details visible.
-          </p>
-        </div>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/pet-portraits-ideal-photos.webp"
+              alt="Examples of reference photos for painted pet portraits"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 1</span>
+            <h2>Good references make the difference.</h2>
+            <p>
+              The photographs you send are the foundation of your portrait. Since I work from
+              photos, clear references help me understand your companion’s expression, colouring and
+              the small details that make them recognisable.
+            </p>
+            <p>
+              Send your best photographs and several favourites, rather than trying to choose just
+              one. If you are taking new photos especially for a portrait, the tips below will help.
+            </p>
+          </div>
+        </article>
 
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/photo-requirements-custom-pet-portraits.webp"
-            alt="Photo of a dog filling the entire frame"
-          />
-          <h2>Fill the Entire Frame</h2>
-          <p>
-            For a full-body portrait, keep your pet close in the frame with a bit of background so
-            they remain the focus. If they're too far away, details won't be sharp.
-          </p>
-          <p>
-            For a head-and-chest portrait, fill the frame with your pet's full head and neck without
-            cropping desired parts. Don't rely on zooming into a distant full-body shot—zooming
-            blurs detail.
-          </p>
-          <p>I paint what I see, so it's best to start with clear, close images.</p>
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-tips-painted-pet-portraits.webp"
+              alt="Two border collies photographed together"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 2</span>
+            <h2>Phone or camera?</h2>
+            <p>
+              A phone or tablet can provide excellent reference photographs. Soft light, sharp eyes,
+              natural colours and enough visible detail matter most. A digital camera can offer more
+              control, but you do not need a particular camera. Take several photographs at close
+              range and send the original files.
+            </p>
+          </div>
+        </article>
+
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-tips-pet-portraits-from-photos.webp"
+              alt="A border collie photographed at eye level in the snow"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 3</span>
+            <h2>Meet them at eye level.</h2>
+            <p>
+              Avoid looking down at your pet from above. Bring the camera to their eye level for a
+              natural perspective. For smaller animals, crouch down; a secure raised surface may
+              also help if your pet is comfortable there.
+            </p>
+            <p>
+              A slight turn of the head can give a lovely sense of depth. Where possible, keep both
+              eyes visible. Check the composition before taking the photo and include the whole
+              head, ears and any other parts you want painted.
+            </p>
+          </div>
+        </article>
+
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-tip-oil-pet-portraits.webp"
+              alt="A border collie photographed in natural light"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 4</span>
+            <h2>Look for soft, natural light.</h2>
+            <p>
+              Photograph outdoors in soft daylight where possible. Open shade can work well: avoid
+              harsh direct sunlight and deep shadows that hide detail or distort your pet’s
+              colouring.
+            </p>
+            <p>
+              Indoors, choose a bright place near a window and avoid flash. Check that the eyes and
+              fur are sharp and the colours look natural.
+            </p>
+          </div>
+        </article>
+
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/photo-requirements-custom-pet-portraits.webp"
+              alt="A close photograph showing a dog’s face and fur clearly"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 5</span>
+            <h2>Fill the frame with your companion.</h2>
+            <p>
+              For a full-body portrait, include the entire animal with a little space around them.
+              Move close enough for useful detail, while keeping the ears, paws and tail inside the
+              frame if you want them painted.
+            </p>
+            <p>
+              For a head-and-chest portrait, photograph the whole head and neck at close range.
+              Cropping a distant full-body photograph or using digital zoom cannot recover detail
+              that was never captured.
+            </p>
+            <p>
+              I paint from the information I can see, so clear, close photographs give us the
+              strongest starting point.
+            </p>
+          </div>
+        </article>
+
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/border-collie-agility-photo-tips.webp"
+              alt="A border collie during agility training"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 6</span>
+            <h2>Send the original, full-size files.</h2>
+            <p>
+              Email the original files directly from your phone or camera, or share a link to a
+              folder. Choose original or full size when sending; avoid screenshots, social-media
+              downloads and reduced copies where possible.
+            </p>
+            <p>
+              As an example, my camera produces images measuring 5472 × 3648 pixels. This is a
+              reference, not a minimum requirement: suitable resolution depends on sharpness,
+              framing and the portrait you have in mind.
+            </p>
+            <p>
+              If your files are too large for email, use cloud sharing, such as Dropbox. If you no
+              longer have the original, send the available version for a review before booking.
+            </p>
+          </div>
+        </article>
+
+        <article class="photo-tip">
+          <figure>
+            <img
+              data-reveal
+              src="/assets/images/border-collie-paying-ball.webp"
+              alt="A border collie playing with a ball"
+              width="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div>
+            <span class="eyebrow">Photo tip 7</span>
+            <h2>Be patient and keep it enjoyable.</h2>
+            <p>
+              Give your companion time to settle in a familiar place. A toy or treat can help
+              attract their attention, and short, relaxed sessions make natural expressions easier
+              to catch.
+            </p>
+            <p>
+              Keep your camera handy for spontaneous moments. Their personality matters more than a
+              perfectly posed photograph, so take several images and let us choose together.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-tight wrap rule">
+        <div class="split">
+          <div>
+            <h2>Only older photographs?</h2>
+            <p>
+              Send the best versions you have, even if the photographs are faded or a little
+              damaged. I’ll assess the images and explain what is possible before you book. Older
+              photographs can often be improved for use as portrait references, but what is possible
+              depends on the image.
+            </p>
+            <p>
+              For paper photographs, start by sending a scan or a clear photograph of the print.
+              Contact me before posting any originals so we can agree how they will be handled and
+              returned.
+            </p>
+          </div>
+
+          <div>
+            <h2>Not sure which to choose?</h2>
+            <p>
+              Email the original files or include a link to your photo folder in your enquiry. I am
+              happy to help you choose.
+            </p>
+            <a class="text-link" href="/html/contact-pet-portrait-artist.html">
+              <span class="link-label">Ask about your photos</span>
+              <span class="arrow" aria-hidden="true">⟶</span>
+            </a>
+          </div>
         </div>
       </section>
 
-      <hr class="hr" />
-
-      <!-- Article with Images and Information -->
-      <section class="article-flex">
-        <div class="article-flex-item1">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/border-collie-agility-photo-tips.webp"
-            alt="Border collie agility training"
-          />
-          <h2>Photo Size</h2>
-          <p>
-            Please email photos in their original size, downloaded directly from your camera.
-            Reduced images lose clarity and important detail.
-          </p>
-          <p>
-            Pixel counts vary by camera (for reference, my camera produces 5472x3648 px images), but
-            any large, original image works perfectly via email or cloud sharing.
-          </p>
-          <p>
-            If you don't have the original file and you're unsure whether it's usable,
-            <a href="/html/contact-pet-portrait-artist.html">send me an email</a>
-            for a quick review.
-          </p>
-        </div>
-
-        <div class="article-flex-item2">
-          <img
-            class="img"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/border-collie-paying-ball.webp"
-            alt="Border collie playing with a ball"
-          />
-          <h2>Be Patient and Have Fun</h2>
-          <p>Capturing your pet's personality takes time, patience, and a relaxed environment.</p>
-          <p>
-            Don't rush—use treats or toys to keep them comfortable and keep your camera handy to
-            catch natural, joyful moments. A happy face is always the most beautiful.
-          </p>
-          <p>
-            Be creative and look for spontaneous “wow” moments in everyday life. If your pet has
-            passed and you only have older photos, feel free to email them for review; while a large
-            oil painting may not be possible, other portrait options can work beautifully.
-          </p>
+      <section class="section-tight wrap">
+        <div class="enquiry-banner">
+          <div>
+            <h2>A portrait of your own companion?</h2>
+            <p>Send your photos and ideas. You do not need to have every detail decided.</p>
+          </div>
+          <a class="button" href="/html/contact-pet-portrait-artist.html">
+            Enquire About a Portrait
+            <span class="arrow" aria-hidden="true">⟶</span>
+          </a>
         </div>
       </section>
     </main>
 
-    <!-- Footer (unified) -->
-    <footer>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Menu</h3>
-        <ul>
-          <li><a href="/html/terms-privacy.html">Terms &amp; Privacy</a></li>
-          <li><a href="/html/return-policy.html">Returns &amp; Refunds</a></li>
-          <li><a href="/html/petart-with-heart-sitemap.html">Site Map</a></li>
-          <li><a href="/se/" hreflang="sv" lang="sv">Swedish</a></li>
-        </ul>
-      </div>
-      <div class="footer-flex-item">
-        <h3 class="footer-headline">Get Social</h3>
-        <div class="footer-social">
-          <a
-            title="Facebook"
-            href="https://www.facebook.com/PetPortraitsArtist"
-            class="btn-social-fb"
-            aria-label="Facebook"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-facebook"></use>
-            </svg>
-          </a>
-          <a
-            title="Instagram"
-            href="https://www.instagram.com/katjapetportraits"
-            class="btn-social-fb btn-social-in"
-            aria-label="Instagram"
-          >
-            <svg class="icon icon-lg" role="img">
-              <use href="/assets/icons.svg?v=3#icon-instagram"></use>
-            </svg>
-          </a>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="brand" href="/" aria-label="Pet Art with Heart — Home">
+              <img
+                src="/assets/images/petart-with-heart-logotype.svg"
+                width="224"
+                height="73"
+                alt="Pet Art with Heart"
+              />
+            </a>
+          </div>
+
+          <nav class="footer-links" aria-label="Useful links">
+            <a href="/html/contact-pet-portrait-artist.html">Contact</a>
+            <a href="/html/pet-portrait-testimonials.html">Testimonials</a>
+            <a href="/html/photo-tips-portrait-commissions.html">Photo Tips</a>
+            <a href="/html/terms-privacy.html">Terms &amp; Privacy</a>
+            <a href="/html/return-policy.html">Returns</a>
+            <a href="/html/petart-with-heart-sitemap.html">Site Map</a>
+          </nav>
+
+          <div class="social">
+            <a
+              href="https://www.facebook.com/PetPortraitsArtist"
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/katjapetportraits"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true" focusable="false">
+                <use href="/assets/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
         </div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top" aria-label="Go to top">
-          <svg class="icon icon-lg" aria-hidden="true">
-            <use href="/assets/icons.svg?v=3#icon-arrow-up"></use>
-          </svg>
-        </button>
-      </div>
-      <div class="footer-flex-item wide">
-        <a href="/"
-          ><img
-            class="footer-logo"
-            loading="lazy"
-            decoding="async"
-            src="/assets/images/petart-logotype-bw.svg"
-            alt="Pet Art with Heart logotype"
-        /></a>
-      </div>
-      <div class="footer-flex-item wide wide2">
-        &copy; 2025 - All Rights Reserved | Pet Art with Heart | Website by Katja Turnsek
+
+        <p class="copyright">© 2026 Pet Art with Heart. All rights reserved.</p>
+
+        <a class="back-to-top" href="#top">
+          <span class="back-to-top-label">Back to top</span>
+          <span aria-hidden="true">↑</span>
+        </a>
       </div>
     </footer>
 
-    <!-- Floating chat buttons (docked mid-right) -->
-    <div class="fab-dock" role="complementary" aria-label="Quick contact options">
-      <!-- WhatsApp -->
+    <aside class="fab-dock" aria-label="Quick contact">
       <a
-        class="fab__btn fab__btn--whatsapp"
-        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%E2%80%99d%20like%20to%20commission%20a%20pet%20portrait.%0A%E2%80%A2%20Pet%20type%20(breed)%3A%0A%E2%80%A2%20Preferred%20size%3A%0A%E2%80%A2%20Style%20(classic%20or%20painterly)%3A%0A%E2%80%A2%20Deadline%20(if%20any)%3A%0A%E2%80%A2%20Links%20to%20photos%3A"
+        class="fab"
+        href="https://wa.me/46730785744?text=Hi%20Katja%2C%20I%20would%20like%20to%20discuss%20a%20pet%20portrait."
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        title="Chat on WhatsApp"
+        aria-label="WhatsApp"
       >
-        <svg class="fab__icon" aria-hidden="true">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-whatsapp"></use>
         </svg>
-        <span class="sr-only">Chat on WhatsApp</span>
+        <span class="fab-label">WhatsApp</span>
       </a>
 
-      <!-- SMS / Messages -->
-      <a
-        id="smsLink"
-        class="fab__btn fab__btn--sms"
-        href="sms:+46730785744"
-        aria-label="Send an SMS"
-        title="Send an SMS"
-      >
-        <svg class="fab__icon" aria-hidden="true">
+      <a class="fab" id="smsLink" href="sms:+46730785744" aria-label="Send a text message">
+        <svg aria-hidden="true" focusable="false">
           <use href="/assets/icons.svg#icon-message"></use>
         </svg>
-        <span class="sr-only">Send an SMS</span>
+        <span class="fab-label">Message</span>
       </a>
-    </div>
+    </aside>
 
-    <!-- Scripts (root-absolute) -->
+    <script defer src="/src/js/site.js?v=split-1"></script>
+    <script defer src="/src/js/animations.js?v=split-1"></script>
     <script defer src="/src/js/analytics.js"></script>
-    <script defer src="/src/js/up.js"></script>
-    <script defer src="/src/js/chat-buttons.js"></script>
   </body>
 </html>
