@@ -262,7 +262,7 @@
           settled = true;
           clearTimeout(timeout);
           image.onload = image.onerror = null;
-          resolve(ok);
+          resolve(ok ? image : false);
         };
 
         const timeout = setTimeout(() => finish(false), 15000);
@@ -302,6 +302,8 @@
         return false;
       }
 
+      byId("art-image").width = ready.naturalWidth;
+      byId("art-image").height = ready.naturalHeight;
       byId("art-image").src = art.image;
       byId("art-image").alt = art.description?.[language] || art.name;
       byId("art-title").textContent = art.name;

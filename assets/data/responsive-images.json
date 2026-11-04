@@ -1,0 +1,1674 @@
+{
+  "/assets/images/border-collie-agility-photo-tips.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/border-collie-agility-photo-tips-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/border-collie-agility-photo-tips-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/border-collie-agility-photo-tips.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/border-collie-paying-ball.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/border-collie-paying-ball-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/border-collie-paying-ball-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/border-collie-paying-ball.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/client-picture-alice.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-alice-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-alice-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-alice.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-amber-tess.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-amber-tess-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-amber-tess-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-amber-tess.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-bears.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-bears-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-bears-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-bears.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-chiquita.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-chiquita-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-chiquita-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-chiquita.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-dixie-charlie.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-dixie-charlie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-dixie-charlie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-dixie-charlie.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-farley.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-farley-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-farley-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-farley.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-fie.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-fie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-fie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-fie.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-flo.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-flo-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-flo-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-flo.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-fluffan.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-fluffan-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-fluffan-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-fluffan.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-george.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-george-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-george-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-george.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-gully-jixxy.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-gully-jixxy-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-gully-jixxy-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-gully-jixxy.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-harley.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-harley-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-harley-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-harley.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-horses.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-horses-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-horses-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-horses.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-husky.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-husky-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-husky-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-husky.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-jack.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-jack-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-jack-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-jack.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-jesse.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-jesse-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-jesse-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-jesse.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-preziosa.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-preziosa-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-preziosa-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-preziosa.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-samantha.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-samantha-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-samantha-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-samantha.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-scout.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-scout-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-scout-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-scout.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-spencer.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-spencer-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-spencer-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-spencer.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-taisho.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-taisho-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-taisho-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-taisho.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-vilda.webp": {
+    "width": 463,
+    "height": 463,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-vilda-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/client-picture-vilda.webp",
+        "width": 463
+      }
+    ]
+  },
+  "/assets/images/client-picture-winston.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-winston-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-winston-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-winston.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/client-picture-wolfgang.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/client-picture-wolfgang-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/client-picture-wolfgang-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/client-picture-wolfgang.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/contact-pet-portrait-artist.webp": {
+    "width": 1200,
+    "height": 800,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/contact-pet-portrait-artist-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/contact-pet-portrait-artist-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/contact-pet-portrait-artist-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/contact-pet-portrait-artist.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/dog-portrait-client-picture.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/dog-portrait-client-picture-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/dog-portrait-client-picture-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/dog-portrait-client-picture.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/magazines.webp": {
+    "width": 424,
+    "height": 278,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/magazines-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/magazines.webp",
+        "width": 424
+      }
+    ]
+  },
+  "/assets/images/oil-painting-brushes.webp": {
+    "width": 1200,
+    "height": 654,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/oil-painting-brushes-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/oil-painting-brushes-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/oil-painting-brushes-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/oil-painting-brushes.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-art-studio1.webp": {
+    "width": 900,
+    "height": 600,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-art-studio1-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-art-studio1-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-art-studio1-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-art-studio1.webp",
+        "width": 900
+      }
+    ]
+  },
+  "/assets/images/pet-art-studio2.webp": {
+    "width": 400,
+    "height": 600,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-art-studio2-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/pet-art-studio2.webp",
+        "width": 400
+      }
+    ]
+  },
+  "/assets/images/pet-art-studio3.webp": {
+    "width": 400,
+    "height": 600,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-art-studio3-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/pet-art-studio3.webp",
+        "width": 400
+      }
+    ]
+  },
+  "/assets/images/pet-art-studio4.webp": {
+    "width": 600,
+    "height": 401,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-art-studio4-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-art-studio4-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/pet-art-studio4.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/pet-art-studio5.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-art-studio5-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-art-studio5-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/pet-art-studio5.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/pet-art-studio6.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-art-studio6-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-art-studio6-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/pet-art-studio6.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/pet-portrait-artist-katja-turnsek.webp": {
+    "width": 1200,
+    "height": 579,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portrait-artist-katja-turnsek-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portrait-artist-katja-turnsek-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portrait-artist-katja-turnsek-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portrait-artist-katja-turnsek.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portrait-artist-katja.webp": {
+    "width": 600,
+    "height": 473,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portrait-artist-katja-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portrait-artist-katja-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/pet-portrait-artist-katja.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/pet-portrait-client-photo.webp": {
+    "width": 598,
+    "height": 598,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portrait-client-photo-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portrait-client-photo-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/pet-portrait-client-photo.webp",
+        "width": 598
+      }
+    ]
+  },
+  "/assets/images/pet-portraits-ideal-photos.webp": {
+    "width": 1200,
+    "height": 577,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits-ideal-photos-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits-ideal-photos-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits-ideal-photos-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits-ideal-photos.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits-in-oils.webp": {
+    "width": 600,
+    "height": 473,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits-in-oils-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits-in-oils-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/pet-portraits-in-oils.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/pet-portraits-in-progress.webp": {
+    "width": 1200,
+    "height": 698,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits-in-progress-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits-in-progress-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits-in-progress-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits-in-progress.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp": {
+    "width": 1200,
+    "height": 808,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/agility-oil-painting-tervueren-jedi-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/agility-oil-painting-tervueren-jedi-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/agility-oil-painting-tervueren-jedi-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/agility-oil-painting-tervueren-jedi.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp": {
+    "width": 918,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/arab-horse-painting-oil-wangelisa-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/arab-horse-painting-oil-wangelisa-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/arab-horse-painting-oil-wangelisa-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/arab-horse-painting-oil-wangelisa.webp",
+        "width": 918
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp": {
+    "width": 1046,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/beagle-dog-oil-portrait-elvis-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/beagle-dog-oil-portrait-elvis-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/beagle-dog-oil-portrait-elvis-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/beagle-dog-oil-portrait-elvis.webp",
+        "width": 1046
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/cat-oil-portrait-gala.webp": {
+    "width": 1200,
+    "height": 1030,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-gala-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-gala-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-gala-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/cat-oil-portrait-gala.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/cat-oil-portrait-hoover.webp": {
+    "width": 1200,
+    "height": 1193,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-hoover-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-hoover-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-hoover-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/cat-oil-portrait-hoover.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/cat-oil-portrait-saga.webp": {
+    "width": 989,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-saga-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-saga-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-oil-portrait-saga-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/cat-oil-portrait-saga.webp",
+        "width": 989
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/cat-painting-oil-maggie.webp": {
+    "width": 1006,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-painting-oil-maggie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-painting-oil-maggie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-painting-oil-maggie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/cat-painting-oil-maggie.webp",
+        "width": 1006
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/cat-painting-oil-odessa.webp": {
+    "width": 1200,
+    "height": 1001,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-painting-oil-odessa-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-painting-oil-odessa-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-painting-oil-odessa-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/cat-painting-oil-odessa.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/cat-portrait-masquerade.webp": {
+    "width": 1200,
+    "height": 1007,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-portrait-masquerade-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-portrait-masquerade-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/cat-portrait-masquerade-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/cat-portrait-masquerade.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/dog-oil-painting-sadie.webp": {
+    "width": 892,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-oil-painting-sadie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-oil-painting-sadie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-oil-painting-sadie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/dog-oil-painting-sadie.webp",
+        "width": 892
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp": {
+    "width": 1200,
+    "height": 1203,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-oil-portrait-springer-spaniel-rapp-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-oil-portrait-springer-spaniel-rapp-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-oil-portrait-springer-spaniel-rapp-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/dog-oil-portrait-springer-spaniel-rapp.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp": {
+    "width": 925,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-flat-coated-retriever-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-flat-coated-retriever-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-flat-coated-retriever-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/dog-portrait-flat-coated-retriever.webp",
+        "width": 925
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/dog-portrait-nicki.webp": {
+    "width": 1200,
+    "height": 1077,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-nicki-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-nicki-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-nicki-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/dog-portrait-nicki.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp": {
+    "width": 1200,
+    "height": 1216,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-oil-border-collie-chatt-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-oil-border-collie-chatt-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-oil-border-collie-chatt-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/dog-portrait-oil-border-collie-chatt.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp": {
+    "width": 1200,
+    "height": 1198,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-oil-boston-terrier-bella-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-oil-boston-terrier-bella-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/dog-portrait-oil-boston-terrier-bella-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/dog-portrait-oil-boston-terrier-bella.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp": {
+    "width": 947,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/german-shepherd-oil-portrait-georgie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/german-shepherd-oil-portrait-georgie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/german-shepherd-oil-portrait-georgie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/german-shepherd-oil-portrait-georgie.webp",
+        "width": 947
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp": {
+    "width": 963,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/norwegian-forest-cat-portrait-juanita-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/norwegian-forest-cat-portrait-juanita-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/norwegian-forest-cat-portrait-juanita-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/norwegian-forest-cat-portrait-juanita.webp",
+        "width": 963
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp": {
+    "width": 1200,
+    "height": 827,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-painting-horses-on-meadow-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-painting-horses-on-meadow-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-painting-horses-on-meadow-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/oil-painting-horses-on-meadow.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp": {
+    "width": 1200,
+    "height": 874,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-painting-three-dogs-dogs-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-painting-three-dogs-dogs-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-painting-three-dogs-dogs-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/oil-painting-three-dogs-dogs.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp": {
+    "width": 1200,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/oil-portrait-american-cocker-spaniel-kenzie.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp": {
+    "width": 1200,
+    "height": 1196,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-clumber-spaniel-duncan-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-clumber-spaniel-duncan-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-clumber-spaniel-duncan-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/oil-portrait-clumber-spaniel-duncan.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp": {
+    "width": 1200,
+    "height": 906,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-newfoundland-dog-mitzy-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-newfoundland-dog-mitzy-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-newfoundland-dog-mitzy-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/oil-portrait-newfoundland-dog-mitzy.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp": {
+    "width": 1200,
+    "height": 945,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/oil-portrait-newfoundland-dogs-nalle-azlan.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp": {
+    "width": 1200,
+    "height": 809,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-american-bulldog-tigerbull-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-american-bulldog-tigerbull-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-american-bulldog-tigerbull-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/painting-american-bulldog-tigerbull.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp": {
+    "width": 1200,
+    "height": 904,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-dog-in-snow-viruta-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-dog-in-snow-viruta-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-dog-in-snow-viruta-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/painting-dog-in-snow-viruta.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp": {
+    "width": 1200,
+    "height": 856,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-flat-coated-retriever-in-snow-laddie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-flat-coated-retriever-in-snow-laddie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/painting-flat-coated-retriever-in-snow-laddie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/painting-flat-coated-retriever-in-snow-laddie.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp": {
+    "width": 1032,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/pet-portrait-yellow-labrador-retriever-mazie.webp",
+        "width": 1032
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp": {
+    "width": 1200,
+    "height": 1032,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/pet-portraits-schnauzer-dogs-dixie-charlie.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp": {
+    "width": 908,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/pharaoh-dog-portrait-vilda-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pharaoh-dog-portrait-vilda-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pharaoh-dog-portrait-vilda-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/pharaoh-dog-portrait-vilda.webp",
+        "width": 908
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp": {
+    "width": 870,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/pharaoh-oil-portrait-dog-griffyn-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pharaoh-oil-portrait-dog-griffyn-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/pharaoh-oil-portrait-dog-griffyn-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/pharaoh-oil-portrait-dog-griffyn.webp",
+        "width": 870
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/rabbit-oil-painting-grace.webp": {
+    "width": 1200,
+    "height": 984,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/rabbit-oil-painting-grace-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/rabbit-oil-painting-grace-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/rabbit-oil-painting-grace-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/rabbit-oil-painting-grace.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp": {
+    "width": 901,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/rough-collie-oil-painting-maggie-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/rough-collie-oil-painting-maggie-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/rough-collie-oil-painting-maggie-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/rough-collie-oil-painting-maggie.webp",
+        "width": 901
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp": {
+    "width": 1200,
+    "height": 962,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/shiba-inu-pet-portrait-aiko-zuki-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/shiba-inu-pet-portrait-aiko-zuki-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/shiba-inu-pet-portrait-aiko-zuki-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/shiba-inu-pet-portrait-aiko-zuki.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp": {
+    "width": 1049,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/terrier-oil-portrait-ferguson-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/terrier-oil-portrait-ferguson-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/terrier-oil-portrait-ferguson-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/terrier-oil-portrait-ferguson.webp",
+        "width": 1049
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp": {
+    "width": 1027,
+    "height": 1200,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/welsh-terrier-pet-portrait-daisy-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/welsh-terrier-pet-portrait-daisy-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/welsh-terrier-pet-portrait-daisy-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/welsh-terrier-pet-portrait-daisy.webp",
+        "width": 1027
+      }
+    ]
+  },
+  "/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp": {
+    "width": 1200,
+    "height": 1199,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/pet-portraits/white-terrier-dog-portrait-oil-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/white-terrier-dog-portrait-oil-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/pet-portraits/white-terrier-dog-portrait-oil-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/pet-portraits/white-terrier-dog-portrait-oil.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/photo-requirements-custom-pet-portraits.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/photo-requirements-custom-pet-portraits-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/photo-requirements-custom-pet-portraits-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/photo-requirements-custom-pet-portraits.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/photo-tip-oil-pet-portraits.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/photo-tip-oil-pet-portraits-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/photo-tip-oil-pet-portraits-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/photo-tip-oil-pet-portraits.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/photo-tips-painted-pet-portraits.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/photo-tips-painted-pet-portraits-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/photo-tips-painted-pet-portraits-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/photo-tips-painted-pet-portraits.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/photo-tips-pet-portraits-from-photos.webp": {
+    "width": 600,
+    "height": 400,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/photo-tips-pet-portraits-from-photos-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/photo-tips-pet-portraits-from-photos-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/photo-tips-pet-portraits-from-photos.webp",
+        "width": 600
+      }
+    ]
+  },
+  "/assets/images/wildlife-art/red-fox-oil-painting-curious-encounter.webp": {
+    "width": 1200,
+    "height": 1473,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/wildlife-art/red-fox-oil-painting-curious-encounter-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/wildlife-art/red-fox-oil-painting-curious-encounter-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/wildlife-art/red-fox-oil-painting-curious-encounter-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/wildlife-art/red-fox-oil-painting-curious-encounter.webp",
+        "width": 1200
+      }
+    ]
+  },
+  "/assets/images/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment.webp": {
+    "width": 1200,
+    "height": 1473,
+    "sources": [
+      {
+        "src": "/assets/images/responsive/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/assets/images/responsive/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/assets/images/responsive/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment-800.webp",
+        "width": 800
+      },
+      {
+        "src": "/assets/images/wildlife-art/scottish-wildcat-cub-oil-painting-wonderment.webp",
+        "width": 1200
+      }
+    ]
+  }
+}
