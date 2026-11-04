@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 /** Update static gallery cards, optional lightbox content and prices from the JSON files. */
 import fs from "node:fs";
 import path from "node:path";
@@ -12,7 +13,7 @@ const prices = JSON.parse(read("src/data/prices.json"));
 const escape = (s) =>
   String(s ?? "").replace(
     /[&<>"']/g,
-    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
   );
 const ids = new Set();
 for (const art of portraits) {
@@ -88,12 +89,12 @@ for (const config of configurations) {
     if (!regex.test(page)) throw new Error(`Cannot locate ${className} in ${filename}`);
     page = page.replace(
       regex,
-      `<div class="${className}">${cards.map((a) => card(a, language, key === "home")).join("")}</div>`,
+      `<div class="${className}">${cards.map((a) => card(a, language, key === "home")).join("")}</div>`
     );
     const data = JSON.stringify(portraits).replace(/<\//g, "<\\/");
     page = page.replace(
       /(<script type="application\/json" id="portrait-data">)[\s\S]*?(<\/script>)/,
-      () => `<script type="application/json" id="portrait-data">${data}</script>`,
+      () => `<script type="application/json" id="portrait-data">${data}</script>`
     );
     pages.set(filename, page);
   }
@@ -101,17 +102,18 @@ for (const config of configurations) {
   const rows = prices.sizes
     .map(
       (row) =>
-        `<tr><td data-description="${escape(row[language])}">${escape(row.cm)} cm${row.inches ? `<br><small>${escape(row.inches)} ${language === "sv" ? "tum (ca)" : "in (approx.)"}</small>` : ""}</td><td>${escape(row[language])}</td><td><span class="dcconvert" data-amount="${row.price}">€${row.price.toLocaleString("en-GB")}</span></td></tr>`,
+        `<tr><td data-description="${escape(row[language])}">${escape(row.cm)} cm${row.inches ? `<br><small>${escape(row.inches)} ${language === "sv" ? "tum (ca)" : "in (approx.)"}</small>` : ""}</td><td>${escape(row[language])}</td><td><span class="dcconvert" data-amount="${row.price}">€${row.price.toLocaleString("en-GB")}</span></td></tr>`
     )
     .join("");
   pricePage = pricePage.replace(/<tbody>[\s\S]*?<\/tbody>/, `<tbody>${rows}</tbody>`);
   // Keep the existing final-quote note. Only replace our legacy preview wording.
-  const finalNote = language === "sv"
-    ? "Alla grundpriser är i EUR. Ditt slutliga pris bekräftas innan bokning."
-    : "All base prices are in EUR. Your final quote is confirmed before booking.";
+  const finalNote =
+    language === "sv"
+      ? "Alla grundpriser är i EUR. Ditt slutliga pris bekräftas innan bokning."
+      : "All base prices are in EUR. Your final quote is confirmed before booking.";
   pricePage = pricePage.replace(
     /<p class="price-note">\s*(?:Provisional EUR prices|Preliminära EUR-priser)[\s\S]*?<\/p>/g,
-    `<p class="price-note">${finalNote}</p>`,
+    `<p class="price-note">${finalNote}</p>`
   );
   pages.set(config.prices, pricePage);
   let wildlife = read(config.wildlife);
@@ -119,7 +121,7 @@ for (const config of configurations) {
   const values = [prices.wildlife.wonderment, prices.wildlife["curious-encounter"]];
   wildlife = wildlife.replace(
     /<p class="wildlife-price">[^<]*<\/p>/g,
-    () => `<p class="wildlife-price">€${values[index++].toLocaleString("en-GB")}</p>`,
+    () => `<p class="wildlife-price">€${values[index++].toLocaleString("en-GB")}</p>`
   );
   if (prices.wildlifeProvisional === false)
     wildlife = wildlife.replace(/<p class="price-note"[^>]*>[\s\S]*?<\/p>/g, "");
@@ -127,13 +129,23 @@ for (const config of configurations) {
 }
 // Format every page before writing any of them.
 for (const [filename, page] of pages) {
-  pages.set(filename, await prettier.format(page, {
-    parser: "html",
-    printWidth: 100,
-    tabWidth: 2,
-  }));
+  pages.set(
+    filename,
+    await prettier.format(page, {
+      parser: "html",
+      printWidth: 100,
+      tabWidth: 2,
+    })
+  );
 }
 for (const [filename, page] of pages) {
   fs.writeFileSync(path.join(root, filename), page);
 }
-console.log(`Updated ${portraits.length} portraits, EN/SV gallery cards and EUR prices (converter markup preserved).`);
+console.log(
+  `Updated ${portraits.length} portraits, EN/SV gallery cards and EUR prices (converter markup preserved).`
+);
+
+// Reapply responsive markup after cards are rebuilt.
+execFileSync(process.execPath, [path.join(root, "scripts/responsive-images.mjs")], {
+  stdio: "inherit",
+});
