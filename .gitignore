@@ -22,3 +22,8 @@ dist/*
 /backups/
 
 /node_modules/
+
+# Portrait Atelier
+/portrait-atelier/dist/
+/portrait-atelier/node_modules/
+/portrait-atelier/.vite/
