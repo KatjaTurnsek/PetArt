@@ -1972,7 +1972,7 @@ a:hover {
 
 .atelier-progress-steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin: 16px 0 0;
   padding: 0;
@@ -2195,4 +2195,559 @@ a:hover {
   -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* ==========================================
+   STEP 4 — BACKGROUND VISUALISER
+   ========================================== */
+
+.background-screen {
+  padding-bottom: 64px;
+}
+
+.background-studio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.background-studio-preview {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ==========================================
+     MAIN PREVIEW
+     ========================================== */
+
+.background-preview-frame {
+  width: 100%;
+  padding: 8px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+}
+
+.background-preview-canvas {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 480px);
+  margin-inline: auto;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 3px;
+  background: #e9ddcf;
+}
+
+/* All backgrounds begin with a visible surface. */
+
+.background-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #e9ddcf;
+}
+
+/* Pet and photographic background layers */
+
+.background-scene img,
+.background-subject-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.background-subject-image {
+  z-index: 2;
+}
+
+/* Blur the original photograph behind the sharp pet. */
+
+.background-preview-canvas[data-mode="softened"] [data-display="composite"] .background-scene img {
+  filter: blur(12px);
+}
+
+/* Blur uploaded scenery behind the pet. */
+
+.background-preview-canvas[data-mode="personal"] [data-display="composite"] .background-scene img {
+  filter: blur(10px);
+}
+
+/* ==========================================
+     MOT TLED BACKGROUND
+     ========================================== */
+
+/* Colour combinations */
+
+.background-preview-canvas[data-tone="ivory"] {
+  --tone-top: #f4e7d4;
+  --tone-middle: #d6b99b;
+  --tone-bottom: #98806c;
+}
+
+.background-preview-canvas[data-tone="stone"] {
+  --tone-top: #e4e1da;
+  --tone-middle: #b9b2a7;
+  --tone-bottom: #837b73;
+}
+
+.background-preview-canvas[data-tone="sage"] {
+  --tone-top: #d5d8c2;
+  --tone-middle: #9ba58a;
+  --tone-bottom: #606d52;
+}
+
+.background-preview-canvas[data-tone="umber"] {
+  --tone-top: #eed0aa;
+  --tone-middle: #bc906b;
+  --tone-bottom: #75503b;
+}
+
+.background-preview-canvas[data-tone="blue"] {
+  --tone-top: #d7dedc;
+  --tone-middle: #9caeb3;
+  --tone-bottom: #617781;
+}
+
+/* Layered radial gradients create soft mottling.
+     Lighter at the top, darker toward the bottom. */
+
+.background-preview-canvas[data-mode="neutral"] [data-display="composite"] .background-scene {
+  background-color: var(--tone-middle);
+  background-image:
+    radial-gradient(ellipse at 16% 15%, rgb(255 255 255 / 43%) 0%, transparent 48%),
+    radial-gradient(ellipse at 88% 32%, rgb(255 249 235 / 24%) 0%, transparent 46%),
+    radial-gradient(ellipse at 25% 68%, rgb(75 53 38 / 12%) 0%, transparent 48%),
+    radial-gradient(ellipse at 76% 91%, rgb(64 47 35 / 20%) 0%, transparent 52%),
+    linear-gradient(to bottom, var(--tone-top) 0%, var(--tone-middle) 52%, var(--tone-bottom) 100%);
+}
+
+/* Preserve the visible gradient behind the pet
+     even though the original scenery image is hidden. */
+
+.background-preview-canvas[data-mode="neutral"] [data-display="composite"] {
+  background: var(--tone-middle);
+}
+
+/* ==========================================
+     BACKGROUND SELECTION CARDS
+     ========================================== */
+
+.background-options {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 12px;
+  margin: 0;
+}
+
+.background-option {
+  position: relative;
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  text-align: left;
+  cursor: pointer;
+}
+
+.background-option:hover {
+  border-color: var(--olive);
+}
+
+.background-option.is-selected {
+  border-color: var(--olive);
+  background: var(--field-paper);
+}
+
+.background-option-thumbnail {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.thumbnail-original {
+  background: linear-gradient(135deg, #83946d, #d4c6a8);
+}
+
+.thumbnail-softened {
+  background: radial-gradient(circle at 40% 35%, #c5c7a1, #71876c);
+}
+
+.thumbnail-neutral {
+  background: linear-gradient(#f3e3d1, #a78b75);
+}
+
+.thumbnail-personal {
+  background: linear-gradient(#bbd2d6 0%, #c6c7a1 55%, #87926a 100%);
+}
+
+.thumbnail-symbol {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 28px;
+}
+
+.background-option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.background-option-copy strong {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.8vw, 21px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.background-option-copy > span {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.background-option-check {
+  display: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--olive);
+  color: var(--white);
+  font-size: 13px;
+}
+
+.background-option.is-selected .background-option-check {
+  display: grid;
+}
+
+/* ==========================================
+     MOT TLED BACKGROUND COLOUR SWATCHES
+     ========================================== */
+
+.background-swatches {
+  margin-top: 20px;
+}
+
+.background-swatches > p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.background-swatch-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.background-swatch {
+  display: block;
+  width: 62px;
+  height: 62px;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background: transparent;
+  cursor: pointer;
+}
+
+.background-swatch.is-selected {
+  border-color: var(--olive);
+}
+
+.swatch-colour {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.swatch-ivory {
+  background: linear-gradient(#f4e7d4, #98806c);
+}
+
+.swatch-stone {
+  background: linear-gradient(#e4e1da, #837b73);
+}
+
+.swatch-sage {
+  background: linear-gradient(#d5d8c2, #606d52);
+}
+
+.swatch-umber {
+  background: linear-gradient(#eed0aa, #75503b);
+}
+
+.swatch-blue {
+  background: linear-gradient(#d7dedc, #617781);
+}
+
+/* ==========================================
+     PREVIEW MESSAGES
+     ========================================== */
+
+.background-empty-message {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  color: var(--muted);
+  text-align: center;
+}
+
+.background-preview-feedback {
+  margin: 14px 0 0;
+  min-height: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.background-preview-disclaimer {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ==========================================
+     PERSONAL BACKGROUND UPLOAD
+     ========================================== */
+
+.background-reference {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.background-reference h2 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 24px;
+}
+
+.background-reference > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.background-upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.background-upload-label:hover {
+  border-color: var(--olive);
+}
+
+.background-photo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.background-photo-preview img {
+  max-width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+}
+
+#background-upload-feedback {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.background-reference label[for="background-notes"] {
+  display: block;
+  margin: 20px 0 10px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.optional-label {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+#background-notes {
+  width: 100%;
+  min-height: 100px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  resize: vertical;
+}
+
+#background-notes:focus-visible,
+.background-option:focus-visible,
+.background-swatch:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+.background-screen > .step-navigation {
+  margin-top: 40px;
+}
+
+/* ==========================================
+     RESPONSIVE LAYOUT
+     ========================================== */
+
+@media (max-width: 900px) {
+  .background-studio {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .background-preview-canvas {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 480px) {
+  .background-studio {
+    margin-top: 22px;
+  }
+
+  .background-option {
+    grid-template-columns: 64px minmax(0, 1fr) 24px;
+    gap: 12px;
+    min-height: 92px;
+    padding: 12px;
+  }
+
+  .background-option-thumbnail {
+    width: 64px;
+    height: 64px;
+  }
+
+  .background-option-copy strong {
+    font-size: 18px;
+  }
+
+  .background-swatch {
+    width: 49px;
+    height: 49px;
+  }
+
+  .background-reference {
+    padding: 18px;
+  }
+}
+
+/* ==========================================
+   STEP 4 — BACKGROUND PREVIEW SIZE FIX
+   ========================================== */
+
+.background-studio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.background-studio-preview {
+  min-width: 0;
+  width: 100%;
+}
+
+.background-preview-frame {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+}
+
+.background-preview-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 3px;
+}
+
+.background-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.background-scene img,
+.background-subject-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 850px) {
+  .background-studio {
+    grid-template-columns: 1fr;
+  }
+
+  .background-preview-canvas {
+    max-width: 420px;
+  }
 }

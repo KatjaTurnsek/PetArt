@@ -34,7 +34,7 @@
       <nav class="atelier-progress atelier-container" aria-label="Atelier progress">
         <div class="atelier-progress-heading">
           <span>Your portrait journey</span>
-          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 3 </span>
+          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 4 </span>
         </div>
 
         <div class="atelier-progress-track" aria-hidden="true">
@@ -65,6 +65,13 @@
             <button type="button" class="atelier-progress-step" data-step="3">
               <span class="progress-number">3</span>
               <span class="progress-label">Canvas</span>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="4">
+              <span class="progress-number">4</span>
+              <span class="progress-label">Background</span>
             </button>
           </li>
         </ol>
@@ -533,6 +540,230 @@
             <button class="btn btn-primary" type="button" id="canvas-continue">
               Continue
               <span aria-hidden="true">→</span>
+            </button>
+          </nav>
+        </section>
+
+        <!-- ==========================================
+             SCREEN 04 — BACKGROUND VISUALISER
+             ========================================== -->
+        <section
+          id="background-screen"
+          class="atelier-container background-screen"
+          aria-labelledby="background-heading"
+          hidden
+        >
+          <div class="step-header">
+            <span class="step-number">Step 4</span>
+            <h1 id="background-heading">Choose a background</h1>
+            <p>
+              Set the atmosphere for your portrait. Keep the original, soften it, or try something
+              new.
+            </p>
+          </div>
+
+          <div class="background-studio">
+            <!-- LEFT: Live portrait preview -->
+            <div class="background-studio-preview">
+              <div class="background-preview-frame">
+                <div class="background-preview-canvas" id="background-live-preview">
+                  <div class="background-scene" id="background-scene">
+                    <img id="background-scene-image" alt="" hidden />
+                  </div>
+                  <img
+                    id="background-subject-image"
+                    class="background-subject-image"
+                    alt=""
+                    hidden
+                  />
+                  <p id="background-empty-message" class="background-empty-message">
+                    Choose a photograph to see your portrait.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Neutral background colours -->
+              <div class="background-swatches" id="background-swatches" hidden>
+                <p>Explore background colours</p>
+                <div
+                  class="background-swatch-list"
+                  role="group"
+                  aria-label="Neutral background colours"
+                >
+                  <button
+                    type="button"
+                    class="background-swatch is-selected"
+                    data-tone="ivory"
+                    aria-label="Warm ivory"
+                    aria-pressed="true"
+                    title="Warm ivory"
+                  >
+                    <span class="swatch-colour swatch-ivory"></span>
+                  </button>
+                  <button
+                    type="button"
+                    class="background-swatch"
+                    data-tone="stone"
+                    aria-label="Soft stone"
+                    aria-pressed="false"
+                    title="Soft stone"
+                  >
+                    <span class="swatch-colour swatch-stone"></span>
+                  </button>
+                  <button
+                    type="button"
+                    class="background-swatch"
+                    data-tone="sage"
+                    aria-label="Sage green"
+                    aria-pressed="false"
+                    title="Sage green"
+                  >
+                    <span class="swatch-colour swatch-sage"></span>
+                  </button>
+                  <button
+                    type="button"
+                    class="background-swatch"
+                    data-tone="umber"
+                    aria-label="Warm umber"
+                    aria-pressed="false"
+                    title="Warm umber"
+                  >
+                    <span class="swatch-colour swatch-umber"></span>
+                  </button>
+                  <button
+                    type="button"
+                    class="background-swatch"
+                    data-tone="blue"
+                    aria-label="Blue grey"
+                    aria-pressed="false"
+                    title="Blue grey"
+                  >
+                    <span class="swatch-colour swatch-blue"></span>
+                  </button>
+                </div>
+              </div>
+
+              <p
+                class="background-preview-feedback"
+                id="background-preview-feedback"
+                role="status"
+                aria-live="polite"
+              ></p>
+              <p class="background-preview-disclaimer">
+                A visual idea to explore. Your finished portrait will be individually composed and
+                hand-painted.
+              </p>
+            </div>
+
+            <!-- RIGHT: Background choices -->
+            <div class="background-options" role="group" aria-label="Choose a background">
+              <button
+                type="button"
+                class="selection-card background-option is-selected"
+                data-background="original"
+                aria-pressed="true"
+              >
+                <span class="background-option-thumbnail thumbnail-original" aria-hidden="true"
+                  ><span class="thumbnail-symbol">▧</span></span
+                >
+                <span class="background-option-copy"
+                  ><strong>Keep my background</strong
+                  ><span>Use the photograph as it is.</span></span
+                >
+                <span class="background-option-check" aria-hidden="true">✓</span>
+              </button>
+
+              <button
+                type="button"
+                class="selection-card background-option"
+                data-background="softened"
+                aria-pressed="false"
+              >
+                <span class="background-option-thumbnail thumbnail-softened" aria-hidden="true"
+                  ><span class="thumbnail-symbol">◌</span></span
+                >
+                <span class="background-option-copy"
+                  ><strong>Soften the background</strong
+                  ><span>A gentle blur that keeps the focus on your pet.</span></span
+                >
+                <span class="background-option-check" aria-hidden="true">✓</span>
+              </button>
+
+              <button
+                type="button"
+                class="selection-card background-option"
+                data-background="neutral"
+                aria-pressed="false"
+              >
+                <span class="background-option-thumbnail thumbnail-neutral" aria-hidden="true"
+                  ><span class="thumbnail-symbol">✦</span></span
+                >
+                <span class="background-option-copy"
+                  ><strong>Try a mottled background</strong
+                  ><span>
+                    A soft, painterly background that brings out your pet's character.</span
+                  ></span
+                >
+                <span class="background-option-check" aria-hidden="true">✓</span>
+              </button>
+
+              <button
+                type="button"
+                class="selection-card background-option"
+                data-background="personal"
+                aria-pressed="false"
+              >
+                <span class="background-option-thumbnail thumbnail-personal" aria-hidden="true"
+                  ><span class="thumbnail-symbol">+</span></span
+                >
+                <span class="background-option-copy"
+                  ><strong>Use my own background</strong
+                  ><span>Try a garden, favourite place or special scenery.</span></span
+                >
+                <span class="background-option-check" aria-hidden="true">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Optional personal background reference -->
+          <div class="background-reference" id="background-reference" hidden>
+            <h2>Add your background reference</h2>
+            <p>
+              Upload a photograph of your chosen scenery. We'll show a softly blurred version behind
+              your pet.
+            </p>
+            <label for="background-photo" class="background-upload-label">
+              <span aria-hidden="true">+</span> Choose a background photograph
+            </label>
+            <input
+              type="file"
+              id="background-photo"
+              class="visually-hidden"
+              accept="image/jpeg,image/png,image/webp"
+              aria-describedby="background-upload-feedback"
+            />
+            <div class="background-photo-preview" id="background-photo-preview" hidden>
+              <img id="background-preview-image" alt="Your uploaded scenery reference" />
+              <button type="button" class="btn btn-secondary" id="remove-background-photo">
+                Remove photograph
+              </button>
+            </div>
+            <p id="background-upload-feedback" class="background-upload-feedback" role="status"></p>
+            <label for="background-notes"
+              >Tell me about your idea <span class="optional-label">(optional)</span></label
+            >
+            <textarea
+              id="background-notes"
+              rows="3"
+              maxlength="1000"
+              placeholder="For example, our favourite garden in spring..."
+            ></textarea>
+          </div>
+
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="background-back">Back</button>
+            <button type="button" class="btn btn-primary" id="background-continue">
+              Continue <span aria-hidden="true">→</span>
             </button>
           </nav>
         </section>

@@ -1,13 +1,24 @@
-import { loadPhoto } from "./app/photoStorage";
-import { initCanvasSizePreview } from "./screens/canvasSizePreview";
-import { initCanvasSizeSelection } from "./screens/canvasSize";
-import { updateCanvasPreviews } from "./screens/canvasShape";
-import { initCanvasComposition } from "./screens/canvasComposition";
-
 import "./style.css";
 
 import { atelierState } from "./app/atelierState";
+import { loadPhoto } from "./app/photoStorage";
+
 import { initPhotoUpload } from "./screens/photoUpload";
+import { initCanvasSizeSelection } from "./screens/canvasSize";
+import { updateCanvasPreviews } from "./screens/canvasShape";
+import { initCanvasSizePreview } from "./screens/canvasSizePreview";
+import { initCanvasComposition } from "./screens/canvasComposition";
+import { initBackgroundSelection } from "./screens/backgroundSelection";
+
+const TOTAL_STEPS = 4;
+const STORAGE_KEY = "atelier-current-step";
+
+/**
+ * Checks whether a step exists in the current Atelier.
+ */
+function isValidStep(step: number): boolean {
+  return Number.isInteger(step) && step >= 1 && step <= TOTAL_STEPS;
+}
 
 /**
  * Updates the Atelier progress indicator.
@@ -19,18 +30,17 @@ function updateProgress(step: number): void {
 
   const fill = document.querySelector<HTMLElement>("#atelier-progress-fill");
 
-  const totalSteps = buttons.length;
-
-  if (!status || !fill || totalSteps === 0) {
+  if (!status || !fill || buttons.length !== TOTAL_STEPS) {
     throw new Error("Atelier progress elements not found");
   }
 
   buttons.forEach((button) => {
     const buttonStep = Number(button.dataset.step);
     const isCurrent = buttonStep === step;
+    const isCompleted = buttonStep < step;
 
     button.classList.toggle("is-current", isCurrent);
-    button.classList.toggle("is-completed", buttonStep < step);
+    button.classList.toggle("is-completed", isCompleted);
 
     if (isCurrent) {
       button.setAttribute("aria-current", "step");
@@ -39,14 +49,73 @@ function updateProgress(step: number): void {
     }
   });
 
-  status.textContent = `Step ${step} of ${totalSteps}`;
+  status.textContent = `Step ${step} of ${TOTAL_STEPS}`;
 
-  fill.style.width = `${(step / totalSteps) * 100}%`;
+  fill.style.width = `${(step / TOTAL_STEPS) * 100}%`;
+}
+
+/**
+ * Displays the requested Atelier screen.
+ * All other screens remain in the DOM but are hidden.
+ */
+function goToStep(step: number): void {
+  if (!isValidStep(step)) {
+    return;
+  }
+
+  const welcomeScreen = document.querySelector<HTMLElement>(".atelier-welcome");
+
+  const photoScreen = document.querySelector<HTMLElement>("#photo-screen");
+
+  const canvasScreen = document.querySelector<HTMLElement>("#canvas-screen");
+
+  const backgroundScreen = document.querySelector<HTMLElement>("#background-screen");
+
+  if (!welcomeScreen || !photoScreen || !canvasScreen || !backgroundScreen) {
+    throw new Error("Atelier screens not found");
+  }
+
+  // Show only the requested screen.
+  welcomeScreen.hidden = step !== 1;
+  photoScreen.hidden = step !== 2;
+  canvasScreen.hidden = step !== 3;
+  backgroundScreen.hidden = step !== 4;
+
+  // Update the active step.
+  atelierState.currentStep = step;
+
+  // Update progress indicator.
+  updateProgress(step);
+
+  // Remember the current step during this browser session.
+  sessionStorage.setItem(STORAGE_KEY, String(step));
+
+  // Refresh the photograph upload screen.
+  if (step === 2) {
+    document.dispatchEvent(new Event("atelier:photo-screen-opened"));
+  }
+
+  // Refresh canvas previews when returning to Step 3.
+  if (step === 3) {
+    updateCanvasPreviews();
+
+    document.dispatchEvent(new Event("atelier:canvas-screen-opened"));
+  }
+
+  if (step === 4) {
+    document.dispatchEvent(new Event("atelier:background-screen-opened"));
+  }
+
+  // Make the current screen visible from the top.
+  window.scrollTo({
+    top: 0,
+    behavior: "auto",
+  });
 }
 
 /**
  * Allows customers to navigate directly to
- * an existing Atelier stage.
+ * any available Atelier stage.
  */
 function initProgressNavigation(): void {
   const buttons = document.querySelectorAll<HTMLButtonElement>(".atelier-progress-step");
@@ -55,7 +124,7 @@ function initProgressNavigation(): void {
     button.addEventListener("click", () => {
       const step = Number(button.dataset.step);
 
-      if (![1, 2, 3].includes(step)) {
+      if (!isValidStep(step)) {
         return;
       }
 
@@ -65,41 +134,9 @@ function initProgressNavigation(): void {
 }
 
 /**
- * Displays the requested Atelier screen.
- * All other screens remain in the DOM but are hidden.
- */
-function goToStep(step: number): void {
-  const welcomeScreen = document.querySelector<HTMLElement>(".atelier-welcome");
-  const photoScreen = document.querySelector<HTMLElement>("#photo-screen");
-  const canvasScreen = document.querySelector<HTMLElement>("#canvas-screen");
-
-  if (!welcomeScreen || !photoScreen || !canvasScreen) {
-    throw new Error("Atelier screens not found");
-  }
-
-  welcomeScreen.hidden = step !== 1;
-  photoScreen.hidden = step !== 2;
-  canvasScreen.hidden = step !== 3;
-
-  atelierState.currentStep = step;
-  updateProgress(step);
-  sessionStorage.setItem("atelier-current-step", String(step));
-
-  if (step === 3) {
-    updateCanvasPreviews();
-    document.dispatchEvent(new Event("atelier:canvas-screen-opened"));
-  }
-
-  if (step === 2) {
-    document.dispatchEvent(new Event("atelier:photo-screen-opened"));
-  }
-
-  window.scrollTo({ top: 0, behavior: "auto" });
-}
-
-/**
  * Handles canvas shape selection.
- * Preserves the selected size unless the shape changes.
+ * Preserves the selected canvas size unless
+ * the customer chooses a different shape.
  */
 function initCanvasShapeSelection(): void {
   const shapeButtons = document.querySelectorAll<HTMLButtonElement>(".shape-option");
@@ -113,18 +150,20 @@ function initCanvasShapeSelection(): void {
       const selected = button.dataset.shape === shape;
 
       button.classList.toggle("is-selected", selected);
+
       button.setAttribute("aria-pressed", String(selected));
     });
 
     atelierState.canvas.shape = shape;
 
-    // Reset the size only when switching to another shape.
+    // Reset dimensions only when changing shape.
     if (shapeChanged) {
       atelierState.canvas.width = null;
       atelierState.canvas.height = null;
       atelierState.canvas.sizeId = null;
     }
 
+    // Inform size and preview modules.
     document.dispatchEvent(new Event("atelier:shape-changed"));
   }
 
@@ -140,46 +179,76 @@ function initCanvasShapeSelection(): void {
     });
   });
 
+  // Synchronise the initial shape selection.
   selectShape(atelierState.canvas.shape);
 }
 
 /**
- * Connects the navigation buttons between Atelier screens.
+ * Connects the navigation buttons between
+ * the four Atelier screens.
  */
 function initNavigation(): void {
+  // Step 1 → Step 2
   const choiceButtons = document.querySelectorAll<HTMLButtonElement>("[data-choice]");
 
   choiceButtons.forEach((button) => {
-    button.addEventListener("click", () => goToStep(2));
+    button.addEventListener("click", () => {
+      goToStep(2);
+    });
   });
 
-  document
-    .querySelector<HTMLButtonElement>("#photo-back")
-    ?.addEventListener("click", () => goToStep(1));
+  // Step 2 → Step 1
+  document.querySelector<HTMLButtonElement>("#photo-back")?.addEventListener("click", () => {
+    goToStep(1);
+  });
 
-  document
-    .querySelector<HTMLButtonElement>("#photo-continue")
-    ?.addEventListener("click", () => goToStep(3));
+  // Step 2 → Step 3
+  document.querySelector<HTMLButtonElement>("#photo-continue")?.addEventListener("click", () => {
+    goToStep(3);
+  });
 
-  document
-    .querySelector<HTMLButtonElement>("#canvas-back")
-    ?.addEventListener("click", () => goToStep(2));
+  // Step 3 → Step 2
+  document.querySelector<HTMLButtonElement>("#canvas-back")?.addEventListener("click", () => {
+    goToStep(2);
+  });
+
+  // Step 3 → Step 4
+  document.querySelector<HTMLButtonElement>("#canvas-continue")?.addEventListener("click", () => {
+    goToStep(4);
+  });
+
+  // Step 4 → Step 3
+  document.querySelector<HTMLButtonElement>("#background-back")?.addEventListener("click", () => {
+    goToStep(3);
+  });
+
+  // #background-continue will be connected
+  // when we create Step 5.
 }
 
 /**
- * Initialises the Atelier and restores the customer's photograph
- * before displaying their previously visited screen.
+ * Initialises the Atelier and restores the
+ * previously uploaded photograph before
+ * showing the customer's saved screen.
  */
 async function startAtelier(): Promise<void> {
+  // Navigation
   initProgressNavigation();
   initNavigation();
+
+  // Step 2 — Photograph
   initPhotoUpload();
+
+  // Step 3 — Canvas and composition
   initCanvasSizeSelection();
   initCanvasShapeSelection();
   initCanvasSizePreview();
-  initCanvasSizePreview();
   initCanvasComposition();
 
+  // Step 4 — Background preferences
+  initBackgroundSelection();
+
+  // Restore the uploaded photograph from IndexedDB.
   try {
     atelierState.portrait.photo = await loadPhoto();
   } catch {
@@ -191,9 +260,10 @@ async function startAtelier(): Promise<void> {
     }
   }
 
-  const savedStep = Number(sessionStorage.getItem("atelier-current-step"));
+  // Restore the last visited step.
+  const savedStep = Number(sessionStorage.getItem(STORAGE_KEY));
 
-  const initialStep = [1, 2, 3].includes(savedStep) ? savedStep : 1;
+  const initialStep = isValidStep(savedStep) ? savedStep : 1;
 
   goToStep(initialStep);
 }
