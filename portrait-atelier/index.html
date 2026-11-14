@@ -2,12 +2,543 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portrait-atelier</title>
+
+    <meta
+      name="description"
+      content="Explore your ideas for a beautiful, hand-painted pet portrait with Pet Art with Heart."
+    />
+
+    <title>Portrait Atelier | Pet Art with Heart</title>
   </head>
+
   <body>
-    <div id="app"></div>
+    <div class="atelier-screen">
+      <!-- ==========================================
+           ATELIER HEADER
+           ========================================== -->
+
+      <header class="atelier-header atelier-container">
+        <a class="atelier-brand" href="/" aria-label="Pet Art with Heart homepage">
+          <span class="atelier-brand-name">Pet Art with Heart</span>
+          <span class="atelier-brand-subtitle">PORTRAIT ATELIER</span>
+        </a>
+
+        <a class="atelier-exit" href="/"> Exit Atelier <span aria-hidden="true">×</span> </a>
+      </header>
+
+      <!-- ==========================================
+     ATELIER PROGRESS NAVIGATION
+     ========================================== -->
+
+      <nav class="atelier-progress atelier-container" aria-label="Atelier progress">
+        <div class="atelier-progress-heading">
+          <span>Your portrait journey</span>
+          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 3 </span>
+        </div>
+
+        <div class="atelier-progress-track" aria-hidden="true">
+          <div class="atelier-progress-fill" id="atelier-progress-fill"></div>
+        </div>
+
+        <ol class="atelier-progress-steps">
+          <li>
+            <button
+              type="button"
+              class="atelier-progress-step is-current"
+              data-step="1"
+              aria-current="step"
+            >
+              <span class="progress-number">1</span>
+              <span class="progress-label">Welcome</span>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="2">
+              <span class="progress-number">2</span>
+              <span class="progress-label">Photograph</span>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="3">
+              <span class="progress-number">3</span>
+              <span class="progress-label">Canvas</span>
+            </button>
+          </li>
+        </ol>
+      </nav>
+
+      <main id="atelier-main">
+        <!-- ==========================================
+             SCREEN 01 — WELCOME
+             ========================================== -->
+
+        <section class="atelier-welcome atelier-container">
+          <div class="welcome-content">
+            <p class="welcome-eyebrow">A PERSONAL PORTRAIT EXPERIENCE</p>
+
+            <h1>Every portrait begins with a story.</h1>
+
+            <p class="welcome-description">
+              Let's imagine a beautiful portrait of your companion. Explore your ideas, try
+              different possibilities, and share your vision with me.
+            </p>
+
+            <div class="welcome-choices">
+              <button class="selection-card welcome-choice" type="button" data-choice="guided">
+                <span class="choice-icon" aria-hidden="true">♡</span>
+
+                <span class="choice-content">
+                  <strong>Guide me</strong>
+                  <span>I'd love a little inspiration.</span>
+                </span>
+
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button class="selection-card welcome-choice" type="button" data-choice="photo">
+                <span class="choice-icon" aria-hidden="true">▧</span>
+
+                <span class="choice-content">
+                  <strong>I have a photograph</strong>
+                  <span>Let's explore what it could become.</span>
+                </span>
+
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <p class="welcome-note">
+              No commitment, no payment — just a little creative exploration.
+            </p>
+
+            <a class="welcome-contact" href="/html/contact.html">
+              Prefer to contact me directly?
+            </a>
+          </div>
+
+          <div class="welcome-artwork" aria-hidden="true">
+            <div class="artwork-placeholder">
+              <span>Your artwork image</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SCREEN 02 — CHOOSE A PHOTOGRAPH
+             ========================================== -->
+
+        <section
+          id="photo-screen"
+          class="atelier-container photo-screen"
+          aria-labelledby="photo-heading"
+          hidden
+        >
+          <div class="step-header">
+            <span class="step-number">Step 2</span>
+
+            <h1 id="photo-heading">Choose a favourite photograph</h1>
+
+            <p>Start with a photograph you love. You can always change it later.</p>
+          </div>
+
+          <div class="photo-upload">
+            <label for="pet-photo" class="photo-upload-label">
+              <span class="upload-icon" aria-hidden="true">+</span>
+
+              <strong>Choose a photograph</strong>
+
+              <span> Tap here to select a photo from your device </span>
+
+              <span>JPG, PNG or WebP · Maximum 15 MB</span>
+            </label>
+
+            <input
+              type="file"
+              id="pet-photo"
+              name="pet-photo"
+              accept="image/jpeg,image/png,image/webp"
+              class="visually-hidden"
+              aria-describedby="upload-feedback"
+            />
+
+            <!-- Photograph preview -->
+
+            <div class="photo-preview" id="photo-preview" hidden>
+              <img id="photo-preview-image" alt="Your selected pet photograph" />
+
+              <button type="button" class="btn btn-secondary" id="change-photo">
+                Change photograph
+              </button>
+            </div>
+
+            <p class="upload-feedback" id="upload-feedback" role="status"></p>
+          </div>
+
+          <div class="photo-alternative">
+            <p>Don't have a photograph ready?</p>
+
+            <button class="btn btn-secondary" type="button" id="use-example">Try an example</button>
+
+            <button class="btn btn-text" type="button" id="skip-photo">
+              I'll send my photographs later
+            </button>
+          </div>
+
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button class="btn btn-secondary" type="button" id="photo-back">Back</button>
+
+            <button class="btn btn-primary" type="button" id="photo-continue">Continue</button>
+          </nav>
+        </section>
+
+        <!-- ==========================================
+             SCREEN 03 — CANVAS SHAPE AND SIZE
+             ========================================== -->
+
+        <section
+          id="canvas-screen"
+          class="atelier-container canvas-screen"
+          aria-labelledby="canvas-heading"
+          hidden
+        >
+          <div class="step-header">
+            <span class="step-number">Step 3</span>
+
+            <h1 id="canvas-heading">Choose your canvas</h1>
+
+            <p>
+              Explore different shapes and sizes to find the right composition for your portrait.
+            </p>
+          </div>
+
+          <!-- ==========================================
+               CANVAS SHAPE SELECTION
+               ========================================== -->
+
+          <div class="shape-options" role="group" aria-label="Choose a canvas shape">
+            <!-- Portrait -->
+
+            <button
+              type="button"
+              class="selection-card shape-option is-selected"
+              data-shape="portrait"
+              aria-pressed="true"
+            >
+              <span class="shape-check" aria-hidden="true"> ✓ </span>
+
+              <span class="shape-illustration">
+                <span class="canvas-outline canvas-outline--portrait"></span>
+              </span>
+
+              <strong class="shape-name">Portrait</strong>
+
+              <span class="shape-description"> A taller format for classic portraits. </span>
+            </button>
+
+            <!-- Landscape -->
+
+            <button
+              type="button"
+              class="selection-card shape-option"
+              data-shape="landscape"
+              aria-pressed="false"
+            >
+              <span class="shape-check" aria-hidden="true"> ✓ </span>
+
+              <span class="shape-illustration">
+                <span class="canvas-outline canvas-outline--landscape"></span>
+              </span>
+
+              <strong class="shape-name">Landscape</strong>
+
+              <span class="shape-description"> A wider format for relaxed compositions. </span>
+            </button>
+
+            <!-- Square -->
+
+            <button
+              type="button"
+              class="selection-card shape-option"
+              data-shape="square"
+              aria-pressed="false"
+            >
+              <span class="shape-check" aria-hidden="true"> ✓ </span>
+
+              <span class="shape-illustration">
+                <span class="canvas-outline canvas-outline--square"></span>
+              </span>
+
+              <strong class="shape-name">Square</strong>
+
+              <span class="shape-description"> A balanced format with a timeless feel. </span>
+            </button>
+          </div>
+
+          <!-- ==========================================
+               CANVAS SIZE SELECTION AND PREVIEW
+               ========================================== -->
+
+          <section class="canvas-size-selection" aria-labelledby="canvas-size-heading">
+            <div class="canvas-size-header">
+              <h2 id="canvas-size-heading">Find the perfect canvas size</h2>
+
+              <p>
+                Explore different dimensions, see how your portrait looks, and compare sizes side by
+                side.
+              </p>
+            </div>
+
+            <div class="canvas-size-layout">
+              <!-- ==========================================
+                   LEFT — SIZE SELECTION
+                   ========================================== -->
+
+              <div class="canvas-size-sidebar">
+                <h3>Choose a size</h3>
+
+                <div
+                  id="canvas-size-options"
+                  class="canvas-size-options"
+                  role="group"
+                  aria-label="Choose a canvas size"
+                >
+                  <!-- Standard sizes generated by TypeScript -->
+                </div>
+
+                <!-- Bespoke size option -->
+
+                <div class="custom-size-option">
+                  <button
+                    type="button"
+                    class="selection-card canvas-size-option custom-size-button"
+                    id="custom-size"
+                    aria-pressed="false"
+                    aria-controls="custom-size-fields"
+                  >
+                    <strong class="canvas-size-dimensions"> Custom size </strong>
+
+                    <span class="canvas-size-price"> On request </span>
+                  </button>
+                </div>
+
+                <!-- ==========================================
+                     CUSTOM DIMENSION CONTROLS
+                     ========================================== -->
+
+                <div id="custom-size-fields" class="custom-size-fields" hidden>
+                  <p class="custom-size-intro">Have a particular size in mind?</p>
+
+                  <div class="custom-size-inputs">
+                    <!-- Width -->
+
+                    <div class="custom-size-field">
+                      <label for="custom-width"> Width (cm) </label>
+
+                      <div class="dimension-control">
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="width"
+                          data-action="decrease"
+                          aria-label="Decrease width by 5 centimetres"
+                        >
+                          −
+                        </button>
+
+                        <input
+                          type="number"
+                          id="custom-width"
+                          name="custom-width"
+                          min="10"
+                          max="200"
+                          step="5"
+                          value="50"
+                          readonly
+                        />
+
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="width"
+                          data-action="increase"
+                          aria-label="Increase width by 5 centimetres"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Height -->
+
+                    <div class="custom-size-field">
+                      <label for="custom-height"> Height (cm) </label>
+
+                      <div class="dimension-control">
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="height"
+                          data-action="decrease"
+                          aria-label="Decrease height by 5 centimetres"
+                        >
+                          −
+                        </button>
+
+                        <input
+                          type="number"
+                          id="custom-height"
+                          name="custom-height"
+                          min="10"
+                          max="200"
+                          step="5"
+                          value="40"
+                          readonly
+                        />
+
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="height"
+                          data-action="increase"
+                          aria-label="Increase height by 5 centimetres"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="custom-size-note">
+                    Use + and − to adjust your canvas in 5 cm increments. I'll confirm the final
+                    dimensions and price personally.
+                  </p>
+                </div>
+
+                <p id="canvas-size-feedback" class="canvas-size-feedback" role="status"></p>
+              </div>
+
+              <!-- ==========================================
+     RIGHT — VISUAL CANVAS COMPARISON
+     ========================================== -->
+
+              <div class="canvas-size-preview">
+                <div class="size-preview-canvases">
+                  <!-- LEFT: Customer's selected canvas -->
+                  <figure class="size-preview-item">
+                    <div class="size-preview-artwork" id="size-preview-second">
+                      <span>Canvas preview</span>
+                    </div>
+
+                    <figcaption id="size-preview-second-label">Selected size</figcaption>
+                  </figure>
+
+                  <!-- RIGHT: Comparison canvas -->
+                  <figure class="size-preview-item">
+                    <div class="size-preview-artwork" id="size-preview-first">
+                      <span>Canvas preview</span>
+                    </div>
+
+                    <figcaption id="size-preview-first-label">Comparison size</figcaption>
+                  </figure>
+                </div>
+
+                <!-- Photograph composition controls -->
+                <div class="canvas-composition-controls" id="canvas-composition-controls" hidden>
+                  <p class="composition-instruction">
+                    Drag your photograph to adjust its position.
+                  </p>
+
+                  <div class="composition-zoom">
+                    <label for="composition-zoom"> Zoom </label>
+
+                    <input
+                      type="range"
+                      id="composition-zoom"
+                      min="1"
+                      max="3"
+                      step="0.1"
+                      value="1"
+                    />
+
+                    <output id="composition-zoom-value" for="composition-zoom"> 100% </output>
+
+                    <button type="button" class="btn btn-text" id="composition-reset">Reset</button>
+                  </div>
+                </div>
+
+                <!-- Preview controls -->
+                <div class="size-preview-toolbar">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="view-single-size"
+                    aria-pressed="false"
+                  >
+                    View single size
+                  </button>
+
+                  <div class="comparison-controls">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      id="compare-sizes"
+                      aria-pressed="true"
+                    >
+                      Compare sizes
+                    </button>
+
+                    <div class="comparison-size-selector" id="comparison-size-selector">
+                      <label for="comparison-size" class="visually-hidden">
+                        Compare with canvas size
+                      </label>
+
+                      <select
+                        id="comparison-size"
+                        name="comparison-size"
+                        aria-label="Compare with canvas size"
+                      >
+                        <!-- Options generated by TypeScript -->
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 SIZE GUIDANCE
+                 ========================================== -->
+
+            <aside class="size-help" aria-labelledby="size-help-heading">
+              <div>
+                <h3 id="size-help-heading">A small difference can make a big impact</h3>
+
+                <p>Compare different canvas sizes to see which composition feels right.</p>
+              </div>
+
+              <p>Not sure? I'll be happy to help you choose the ideal size.</p>
+            </aside>
+          </section>
+
+          <!-- ==========================================
+               STEP NAVIGATION
+               ========================================== -->
+
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button class="btn btn-secondary" type="button" id="canvas-back">Back</button>
+
+            <button class="btn btn-primary" type="button" id="canvas-continue">
+              Continue
+              <span aria-hidden="true">→</span>
+            </button>
+          </nav>
+        </section>
+      </main>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
