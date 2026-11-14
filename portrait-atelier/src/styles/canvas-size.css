@@ -1,0 +1,723 @@
+/* ==========================================
+   CANVAS SIZE SELECTION
+   ========================================== */
+
+.canvas-size-selection {
+  margin-top: 48px;
+}
+
+.canvas-size-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.canvas-size-header h2 {
+  margin-bottom: 10px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.2;
+}
+
+.canvas-size-header p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Two-column layout */
+
+.canvas-size-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.8fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ==========================================
+     LEFT — SIZE OPTIONS
+     ========================================== */
+
+.canvas-size-sidebar {
+  min-width: 0;
+  padding: 26px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.canvas-size-sidebar h3 {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: 26px;
+}
+
+.canvas-size-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Standard size buttons */
+
+.canvas-size-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.canvas-size-option:hover {
+  background: var(--wash);
+}
+
+.canvas-size-option.is-selected {
+  border-color: var(--olive);
+  background: var(--wash);
+}
+
+.canvas-size-dimensions {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.canvas-size-price {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.canvas-size-description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Bespoke canvas option */
+
+.custom-size-option {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.custom-size-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.custom-size-button:hover {
+  background: var(--wash);
+}
+
+.custom-size-button.is-selected {
+  border-color: var(--olive);
+  background: var(--wash);
+}
+
+.custom-size-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  color: var(--olive);
+  font-size: 22px;
+}
+
+.custom-size-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.custom-size-content strong {
+  font-size: 15px;
+}
+
+.custom-size-content span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.canvas-size-feedback {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+     RIGHT — CANVAS PREVIEW
+     ========================================== */
+
+.canvas-size-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.size-preview-canvases {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 310px;
+}
+
+.size-preview-item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  gap: 14px;
+  margin: 0;
+}
+
+.size-preview-artwork {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--wash);
+  color: var(--muted);
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(53, 27, 23, 0.08);
+}
+
+.size-preview-artwork span {
+  padding: 12px;
+  font-size: 13px;
+}
+
+.size-preview-item figcaption {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Compare / Single view controls */
+
+.size-preview-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.size-preview-controls .btn {
+  min-width: 160px;
+}
+
+.custom-size-option {
+  margin-top: 6px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.custom-size-button {
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 10px 14px;
+}
+
+.custom-size-button .canvas-size-dimensions {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.size-preview-controls .btn[aria-pressed="true"] {
+  border-color: var(--olive);
+  background: var(--olive);
+  color: var(--white);
+}
+
+/* ==========================================
+     SIZE GUIDANCE
+     ========================================== */
+
+.size-help {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.size-help > div {
+  flex: 1;
+}
+
+.size-help h3 {
+  margin-bottom: 8px;
+  font-family: var(--serif);
+  font-size: 23px;
+}
+
+.size-help p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.size-help > p {
+  max-width: 230px;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+/* ==========================================
+     RESPONSIVE LAYOUT
+     ========================================== */
+
+@media (max-width: 900px) {
+  .canvas-size-layout {
+    grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.2fr);
+    gap: 16px;
+  }
+
+  .canvas-size-sidebar,
+  .canvas-size-preview {
+    padding: 20px;
+  }
+
+  .size-preview-canvases {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .canvas-size-selection {
+    margin-top: 36px;
+  }
+
+  .canvas-size-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-size-sidebar {
+    padding: 20px;
+  }
+
+  .canvas-size-preview {
+    padding: 20px 16px;
+  }
+
+  .size-preview-canvases {
+    min-height: 220px;
+  }
+
+  .size-help {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .size-help > p {
+    max-width: none;
+    padding: 0;
+    border: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .size-preview-canvases {
+    gap: 8px;
+  }
+
+  .size-preview-artwork span {
+    font-size: 11px;
+  }
+
+  .size-preview-controls {
+    flex-direction: column;
+  }
+
+  .size-preview-controls .btn {
+    width: 100%;
+  }
+}
+
+/* ==========================================
+   PROPORTIONAL CANVAS SIZE PREVIEWS
+   ========================================== */
+
+/* Same physical scale for both canvas previews */
+
+.canvas-size-preview {
+  --canvas-cm-unit: 4px;
+}
+
+.size-preview-canvases {
+  align-items: center;
+  min-height: 320px;
+}
+
+.size-preview-item {
+  min-width: 0;
+}
+
+.size-preview-artwork {
+  flex: none;
+  width: calc(var(--canvas-width, 40) * var(--canvas-cm-unit));
+  height: calc(var(--canvas-height, 30) * var(--canvas-cm-unit));
+  max-width: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.size-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1100px) {
+  .canvas-size-preview {
+    --canvas-cm-unit: 3px;
+  }
+}
+
+@media (max-width: 700px) {
+  .canvas-size-preview {
+    --canvas-cm-unit: 2.5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .canvas-size-preview {
+    --canvas-cm-unit: 2px;
+  }
+}
+
+/* ==========================================
+   CANVAS SIZE — LAYOUT REFINEMENT
+   ========================================== */
+
+/* Main two-column layout */
+
+.canvas-size-layout {
+  grid-template-columns:
+    minmax(260px, 0.75fr)
+    minmax(0, 1.7fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* ==========================================
+   SIZE SELECTION — LEFT PANEL
+   ========================================== */
+
+.canvas-size-sidebar {
+  padding: 24px 20px;
+}
+
+.canvas-size-sidebar h3 {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+}
+
+.canvas-size-options {
+  gap: 4px;
+}
+
+.canvas-size-option {
+  gap: 3px;
+  padding: 12px 14px;
+}
+
+.canvas-size-dimensions {
+  font-size: 20px;
+}
+
+.canvas-size-price {
+  font-size: 14px;
+}
+
+.canvas-size-description {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* Consistent selection indicators */
+
+.canvas-size-option.is-selected,
+.custom-size-button.is-selected {
+  border: 1px solid var(--olive);
+  background: var(--wash);
+}
+
+.canvas-size-option:focus-visible,
+.custom-size-button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   CANVAS PREVIEWS — RIGHT PANEL
+   ========================================== */
+
+.canvas-size-preview {
+  --canvas-cm-unit: 5px;
+
+  justify-content: flex-start;
+  padding: 32px 24px 28px;
+  min-height: 0;
+}
+
+/* Keep canvases aligned and close together */
+
+.size-preview-canvases {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 0;
+  padding: 20px 0;
+}
+
+/* Each canvas occupies its own column */
+
+.size-preview-item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Physical size calculations are supplied by TypeScript */
+
+.size-preview-artwork {
+  flex: none;
+
+  width: calc(var(--canvas-width, 40) * var(--canvas-cm-unit));
+
+  height: calc(var(--canvas-height, 30) * var(--canvas-cm-unit));
+
+  max-width: 100%;
+  aspect-ratio: auto;
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--wash);
+
+  box-shadow:
+    0 4px 8px rgba(53, 27, 23, 0.06),
+    0 12px 26px rgba(53, 27, 23, 0.09);
+}
+
+.size-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Canvas dimensions underneath each image */
+
+.size-preview-item figcaption {
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   COMPARISON CONTROLS
+   ========================================== */
+
+.size-preview-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.size-preview-controls .btn {
+  min-width: 155px;
+}
+
+.size-preview-controls .btn[aria-pressed="true"] {
+  background: var(--olive);
+  border-color: var(--olive);
+  color: var(--white);
+}
+
+/* ==========================================
+   SIZE GUIDANCE
+   ========================================== */
+
+.size-help {
+  margin-top: 20px;
+  padding: 22px 26px;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1200px) {
+  .canvas-size-preview {
+    --canvas-cm-unit: 3.5px;
+  }
+
+  .canvas-size-layout {
+    grid-template-columns:
+      minmax(240px, 0.8fr)
+      minmax(0, 1.5fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .canvas-size-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-size-preview {
+    --canvas-cm-unit: 5px;
+  }
+}
+
+@media (max-width: 650px) {
+  .canvas-size-preview {
+    --canvas-cm-unit: 2.5px;
+    padding: 24px 14px;
+  }
+
+  .size-preview-canvases {
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .size-preview-item {
+    gap: 12px;
+  }
+
+  .size-preview-item figcaption {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+
+  .size-preview-controls {
+    flex-wrap: wrap;
+  }
+
+  .size-preview-controls .btn {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .canvas-size-preview {
+    --canvas-cm-unit: 2px;
+  }
+}
+
+/* Compact canvas size selection */
+
+.canvas-size-options {
+  gap: 6px;
+}
+
+.canvas-size-option {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 14px;
+}
+
+.canvas-size-dimensions {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.canvas-size-price {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.canvas-size-option.is-selected .canvas-size-price {
+  color: var(--ink);
+}
+
+/* Make the left panel narrower */
+
+.canvas-size-layout {
+  grid-template-columns: minmax(250px, 0.65fr) minmax(0, 1.8fr);
+}
+
+@media (max-width: 900px) {
+  .canvas-size-layout {
+    grid-template-columns: 1fr;
+  }
+}

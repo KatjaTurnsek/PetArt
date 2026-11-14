@@ -1,0 +1,250 @@
+/* ==========================================
+   SCREEN 03 — CANVAS SHAPE
+   ========================================== */
+
+.canvas-screen {
+  padding-top: 48px;
+  padding-bottom: 72px;
+}
+
+.canvas-screen .step-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Three cards side by side */
+
+.shape-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.shape-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 330px;
+  padding: 32px 24px;
+  border: 2px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.shape-option:hover {
+  border-color: var(--olive);
+  transform: translateY(-3px);
+}
+
+.shape-option.is-selected {
+  border-color: var(--olive);
+  background: var(--white);
+}
+
+/* Checkmark */
+
+.shape-check {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--olive);
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0;
+}
+
+.shape-option.is-selected .shape-check {
+  opacity: 1;
+}
+
+/* Canvas proportion illustrations */
+
+.shape-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 155px;
+  margin-bottom: 20px;
+}
+
+.canvas-outline {
+  display: block;
+  border: 2px solid #947957;
+  background: var(--wash);
+  box-shadow: 2px 3px 6px rgba(53, 27, 23, 0.08);
+}
+
+.canvas-outline--portrait {
+  width: 100px;
+  height: 145px;
+}
+
+.canvas-outline--landscape {
+  width: 155px;
+  height: 105px;
+}
+
+.canvas-outline--square {
+  width: 125px;
+  height: 125px;
+}
+
+/* Card text */
+
+.shape-name {
+  margin-bottom: 12px;
+  font-family: var(--serif);
+  font-size: clamp(23px, 2.4vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.shape-description {
+  max-width: 260px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Information panel */
+
+.shape-help {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 28px 36px;
+  margin-bottom: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.shape-help-icon {
+  flex-shrink: 0;
+  color: var(--olive);
+  font-size: 44px;
+}
+
+.shape-help h2 {
+  margin-bottom: 8px;
+  font-family: var(--serif);
+  font-size: 26px;
+}
+
+.shape-help p {
+  max-width: 460px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Navigation */
+
+.canvas-screen .step-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .shape-options {
+    gap: 14px;
+  }
+
+  .shape-option {
+    min-height: 300px;
+    padding: 24px 14px;
+  }
+
+  .shape-description {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .canvas-screen {
+    padding-top: 24px;
+  }
+
+  .shape-options {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .shape-option {
+    min-height: 190px;
+    padding: 22px 20px;
+  }
+
+  .shape-illustration {
+    height: 110px;
+    margin-bottom: 10px;
+  }
+
+  .canvas-outline--portrait {
+    width: 65px;
+    height: 95px;
+  }
+
+  .canvas-outline--landscape {
+    width: 110px;
+    height: 75px;
+  }
+
+  .canvas-outline--square {
+    width: 85px;
+    height: 85px;
+  }
+
+  .shape-name {
+    margin-bottom: 6px;
+    font-size: 24px;
+  }
+
+  .shape-help {
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .shape-help h2 {
+    font-size: 22px;
+  }
+}
+/* Photograph inside the canvas-shape previews */
+
+.canvas-outline {
+  overflow: hidden;
+}
+
+.canvas-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

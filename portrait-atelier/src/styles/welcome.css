@@ -1,0 +1,146 @@
+/* ==========================================
+     WELCOME SCREEN — MOBILE FIRST
+     ========================================== */
+
+.atelier-welcome {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 40px;
+  padding-block: 56px;
+}
+
+.welcome-content {
+  width: 100%;
+  max-width: 580px;
+}
+
+.welcome-eyebrow {
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.welcome-content h1 {
+  margin-bottom: 24px;
+}
+
+.welcome-description {
+  max-width: 480px;
+  margin-bottom: 36px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.welcome-choices {
+  display: grid;
+  gap: 14px;
+}
+
+.welcome-choice {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 100px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.choice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--olive);
+  font-size: 24px;
+}
+
+.choice-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.choice-content strong {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.choice-content > span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.choice-arrow {
+  color: var(--accent);
+  font-size: 24px;
+}
+
+.welcome-note {
+  margin-top: 24px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.welcome-contact {
+  display: block;
+  width: fit-content;
+  margin: 24px auto 0;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Temporary artwork placeholder */
+
+.artwork-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 340px;
+  background: var(--wash);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 20px;
+}
+
+/* ==========================================
+     DESKTOP
+     ========================================== */
+
+@media (min-width: 900px) {
+  .atelier-header {
+    padding-block: 30px;
+  }
+
+  .atelier-welcome {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 72px;
+    min-height: calc(100dvh - 115px);
+    padding-block: 64px;
+  }
+
+  .welcome-content h1 {
+    font-size: clamp(42px, 4vw, 60px);
+  }
+
+  .artwork-placeholder {
+    min-height: 560px;
+  }
+}
+
+/* Hide inactive Atelier screens */
+[hidden] {
+  display: none !important;
+}

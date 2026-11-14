@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Caslon+Text:wght@400;700&display=swap");
+
+/* ==========================================
+   PORTRAIT ATELIER — DESIGN SYSTEM
+   Based on Pet Art with Heart
+   ========================================== */
+
+:root {
+  /* Colours */
+  --paper: #faf7f2;
+  --white: #ffffff;
+  --ink: #351b17;
+  --muted: #75665e;
+  --olive: #707330;
+  --accent: #a94721;
+  --line: #cfc5b8;
+  --wash: #ede7de;
+  --faq-paper: #fefaf7;
+  --field-paper: #fffdf9;
+
+  /* Typography */
+  --serif: "Libre Caslon Text", Georgia, serif;
+  --sans: "Inter", Arial, sans-serif;
+
+  /* Layout */
+  --content-width: 1280px;
+  --mobile-padding: 20px;
+
+  /* Components */
+  --button-height: 52px;
+  --border-radius: 6px;
+}
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Links */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Accessibility */
+
+:focus-visible {
+  outline: 3px solid var(--olive);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Layout */
+
+.atelier-container {
+  width: min(calc(100% - (var(--mobile-padding) * 2)), var(--content-width));
+  margin-inline: auto;
+}
+
+.atelier-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Buttons */
+
+.btn {
+  min-height: var(--button-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--olive);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: #595c26;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn-secondary:hover {
+  background: var(--wash);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--ink);
+  padding-inline: 12px;
+}
+
+.btn-text:hover {
+  color: var(--accent);
+}
+
+/* Selection cards */
+
+.selection-card {
+  display: block;
+  width: 100%;
+  padding: 24px;
+  background: var(--field-paper);
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  text-align: left;
+  color: var(--ink);
+}
+
+.selection-card:hover {
+  border-color: var(--olive);
+}
+
+.selection-card[aria-pressed="true"] {
+  border: 2px solid var(--olive);
+  background: var(--faq-paper);
+}
+
+/* Desktop */
+
+@media (min-width: 768px) {
+  :root {
+    --mobile-padding: 32px;
+  }
+}

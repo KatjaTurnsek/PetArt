@@ -1,0 +1,120 @@
+/* ==========================================
+   INTERACTIVE CANVAS COMPOSITION
+   ========================================== */
+
+.size-preview-artwork.is-composition-active {
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+.size-preview-artwork.is-composition-active.is-dragging {
+  cursor: grabbing;
+}
+
+.size-preview-artwork.is-composition-active .size-preview-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  max-width: none;
+  max-height: none;
+  object-fit: fill;
+  object-position: center;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.canvas-composition-controls {
+  margin: 22px auto 0;
+  max-width: 420px;
+  text-align: center;
+}
+
+.composition-instruction {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.composition-zoom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.composition-zoom label {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.composition-zoom input[type="range"] {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--olive);
+  cursor: pointer;
+}
+
+.composition-zoom output {
+  min-width: 42px;
+  color: var(--muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.composition-zoom .btn {
+  flex-shrink: 0;
+  min-width: 0;
+  padding: 8px;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .composition-zoom {
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .size-preview-artwork.is-composition-active .size-preview-image {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   FIX — INTERACTIVE PHOTO POSITIONING
+   ========================================== */
+
+.size-preview-artwork.is-composition-active {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+.size-preview-artwork.is-composition-active.is-dragging {
+  cursor: grabbing;
+}
+
+.size-preview-artwork.is-composition-active .size-preview-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  object-fit: fill;
+  transform-origin: center;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}

@@ -1,0 +1,140 @@
+/* ==========================================
+   ATELIER PROGRESS NAVIGATION
+   ========================================== */
+
+.atelier-progress {
+  padding-top: 22px;
+  padding-bottom: 30px;
+}
+
+.atelier-progress-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.atelier-progress-track {
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: var(--wash);
+}
+
+.atelier-progress-fill {
+  width: 33.333%;
+  height: 100%;
+  background: var(--olive);
+  transition: width 0.25s ease;
+}
+
+.atelier-progress-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.atelier-progress-steps li {
+  min-width: 0;
+}
+
+.atelier-progress-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.progress-number {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.atelier-progress-step:hover {
+  background: var(--wash);
+}
+
+.atelier-progress-step.is-current {
+  border-color: var(--olive);
+  background: var(--field-paper);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.atelier-progress-step.is-current .progress-number {
+  border-color: var(--olive);
+  background: var(--olive);
+  color: var(--white);
+}
+
+.atelier-progress-step.is-completed .progress-number {
+  border-color: var(--olive);
+  color: var(--olive);
+}
+
+.atelier-progress-step:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .atelier-progress {
+    padding-top: 16px;
+    padding-bottom: 22px;
+  }
+
+  .atelier-progress-steps {
+    gap: 4px;
+  }
+
+  .atelier-progress-step {
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px 2px;
+    font-size: 11px;
+  }
+
+  .progress-number {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atelier-progress-fill,
+  .atelier-progress-step {
+    transition: none;
+  }
+}

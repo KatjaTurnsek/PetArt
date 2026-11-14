@@ -3,6 +3,9 @@ import * as ort from "onnxruntime-web";
 const MODEL_URL = "/models/u2netp.onnx";
 const MODEL_SIZE = 320;
 const MAX_OUTPUT_DIMENSION = 1600;
+const MASK_THRESHOLD = 0.08;
+const MASK_GAMMA = 1.15;
+const MASK_FEATHER_BLUR = 1.4;
 
 const MEAN = [0.485, 0.456, 0.406];
 const STD = [0.229, 0.224, 0.225];
@@ -109,7 +112,13 @@ function createMaskCanvas(prediction: Float32Array): HTMLCanvasElement {
   for (let index = 0; index < pixelCount; index++) {
     const normalized = Math.max(0, Math.min(1, (prediction[index] - minimum) / range));
 
-    const intensity = Math.round(normalized * 255);
+    // Tighten the mask a little so more background is removed.
+    const thresholded = Math.max(0, (normalized - MASK_THRESHOLD) / (1 - MASK_THRESHOLD));
+
+    // Gentle curve to keep the subject natural.
+    const adjusted = Math.pow(thresholded, MASK_GAMMA);
+
+    const intensity = Math.round(adjusted * 255);
     const offset = index * 4;
 
     imageData.data[offset] = intensity;
@@ -145,7 +154,7 @@ async function createTransparentImage(image: ImageBitmap, mask: HTMLCanvasElemen
 
   context.drawImage(image, 0, 0, width, height);
 
-  // Build a properly resized transparency mask.
+  // Resize the mask to the output size.
   const alphaCanvas = document.createElement("canvas");
   alphaCanvas.width = width;
   alphaCanvas.height = height;
@@ -162,9 +171,22 @@ async function createTransparentImage(image: ImageBitmap, mask: HTMLCanvasElemen
   alphaContext.imageSmoothingQuality = "high";
   alphaContext.drawImage(mask, 0, 0, width, height);
 
-  const alphaPixels = alphaContext.getImageData(0, 0, width, height);
+  // Feather the mask slightly so the pet edge looks softer.
+  const featherCanvas = document.createElement("canvas");
+  featherCanvas.width = width;
+  featherCanvas.height = height;
 
-  // Use the mask's brightness as the alpha channel.
+  const featherContext = featherCanvas.getContext("2d");
+
+  if (!featherContext) {
+    throw new Error("Unable to feather the foreground mask");
+  }
+
+  featherContext.filter = `blur(${MASK_FEATHER_BLUR}px)`;
+  featherContext.drawImage(alphaCanvas, 0, 0);
+
+  const alphaPixels = featherContext.getImageData(0, 0, width, height);
+
   for (let index = 0; index < alphaPixels.data.length; index += 4) {
     alphaPixels.data[index + 3] = alphaPixels.data[index];
     alphaPixels.data[index] = 255;
@@ -172,10 +194,10 @@ async function createTransparentImage(image: ImageBitmap, mask: HTMLCanvasElemen
     alphaPixels.data[index + 2] = 255;
   }
 
-  alphaContext.putImageData(alphaPixels, 0, 0);
+  featherContext.putImageData(alphaPixels, 0, 0);
 
   context.globalCompositeOperation = "destination-in";
-  context.drawImage(alphaCanvas, 0, 0);
+  context.drawImage(featherCanvas, 0, 0);
   context.globalCompositeOperation = "source-over";
 
   return new Promise<Blob>((resolve, reject) => {

@@ -1,0 +1,385 @@
+/* ==========================================
+   CUSTOM CANVAS DIMENSIONS
+   ========================================== */
+
+.custom-size-fields {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.custom-size-intro {
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.custom-size-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.custom-size-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.custom-size-field label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.custom-size-field input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+}
+
+.custom-size-field input:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 2px;
+}
+
+.custom-size-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   CUSTOM DIMENSION STEPPER CONTROLS
+   ========================================== */
+
+.dimension-control {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+}
+
+.dimension-control input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 10px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.dimension-control input::-webkit-inner-spin-button,
+.dimension-control input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.dimension-button {
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: var(--field-paper);
+  color: var(--ink);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.dimension-button:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.dimension-button:last-child {
+  border-left: 1px solid var(--line);
+}
+
+.dimension-button:hover {
+  background: var(--wash);
+}
+
+.dimension-button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: -2px;
+}
+
+/* Space between canvas content and navigation */
+
+.canvas-screen > .step-navigation {
+  margin-top: 48px;
+  padding-top: 24px;
+}
+
+@media (max-width: 650px) {
+  .canvas-screen > .step-navigation {
+    margin-top: 32px;
+    padding-top: 20px;
+  }
+}
+
+/* ==========================================
+   COMPARISON SIZE SELECTOR
+   ========================================== */
+
+.comparison-size-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.comparison-size-selector label {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.comparison-size-selector select {
+  width: min(100%, 220px);
+  min-height: 44px;
+  padding: 10px 36px 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background-color: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.comparison-size-selector select:hover {
+  border-color: var(--olive);
+}
+
+.comparison-size-selector select:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .comparison-size-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .comparison-size-selector select {
+    width: 100%;
+  }
+}
+
+/* Comparison toolbar */
+
+.size-preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.size-preview-controls,
+.comparison-size-selector {
+  margin-top: 0;
+}
+
+.size-preview-controls {
+  gap: 8px;
+}
+
+.size-preview-controls .btn {
+  min-width: 0;
+}
+
+.comparison-size-selector {
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .size-preview-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .comparison-size-selector {
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   CANVAS COMPARISON TOOLBAR
+   ========================================== */
+
+.size-preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.size-preview-toolbar > .btn {
+  flex-shrink: 0;
+}
+
+.comparison-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.comparison-size-selector {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.comparison-size-selector select {
+  width: 145px;
+  min-height: 44px;
+  font-size: 13px;
+}
+
+.size-preview-toolbar .btn {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.size-preview-toolbar .btn[aria-pressed="true"] {
+  border-color: var(--olive);
+  background: var(--olive);
+  color: var(--white);
+}
+
+/* Keep the comparison dropdown hidden in single view */
+
+.comparison-size-selector[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 650px) {
+  .size-preview-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .size-preview-toolbar > .btn {
+    width: 100%;
+  }
+
+  .comparison-controls {
+    width: 100%;
+  }
+
+  .comparison-controls .btn {
+    flex: 1;
+  }
+
+  .comparison-size-selector select {
+    width: 135px;
+  }
+}
+
+/* ==========================================
+   SINGLE CANVAS / INITIAL PHOTO PREVIEW
+   ========================================== */
+
+/* Centre the selected canvas in single view */
+
+.size-preview-canvases.is-single-view {
+  justify-content: center;
+}
+
+.size-preview-canvases.is-single-view .size-preview-item {
+  flex: 0 1 100%;
+  width: 100%;
+}
+
+/* Show the photograph at its natural proportions
+   before canvas dimensions have been selected */
+
+.size-preview-artwork.is-unselected {
+  width: min(100%, 380px);
+  height: auto;
+  min-height: 180px;
+  max-width: 100%;
+  aspect-ratio: auto;
+}
+
+.size-preview-artwork.is-unselected .size-preview-image {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+/* Allow the selected canvas to be visually prominent
+   when the customer isn't comparing sizes */
+
+.size-preview-canvases.is-single-view .size-preview-artwork:not(.is-unselected) {
+  max-width: 100%;
+}
+
+/* Prevent disabled comparison controls from
+   appearing interactive */
+
+#compare-sizes:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   INITIAL PREVIEW — CANVAS ORIENTATION
+   ========================================== */
+
+.size-preview-artwork.is-unselected {
+  width: 100%;
+  height: auto;
+  max-width: 380px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.size-preview-artwork.is-unselected[data-shape="portrait"] {
+  aspect-ratio: 4 / 5;
+  max-width: 280px;
+}
+
+.size-preview-artwork.is-unselected[data-shape="landscape"] {
+  aspect-ratio: 5 / 4;
+  max-width: 380px;
+}
+
+.size-preview-artwork.is-unselected[data-shape="square"] {
+  aspect-ratio: 1 / 1;
+  max-width: 320px;
+}
+
+.size-preview-artwork.is-unselected .size-preview-image {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+}

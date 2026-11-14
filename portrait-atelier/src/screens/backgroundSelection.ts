@@ -258,10 +258,7 @@ export function initBackgroundSelection(): void {
       throw new Error("Background scene element not found");
     }
 
-    const sceneImage = elements.sceneImage;
-
-    // Reset effects before applying the new selection.
-    sceneImage.style.filter = "none";
+    // Visual blur is controlled exclusively in src/styles/background.css.
     scene.style.backgroundImage = "";
     scene.style.backgroundColor = "";
 
@@ -299,14 +296,6 @@ export function initBackgroundSelection(): void {
     )
   `;
     }
-
-    if (mode === "softened") {
-      sceneImage.style.filter = "blur(26px)";
-    }
-
-    if (mode === "personal") {
-      sceneImage.style.filter = "blur(18px)";
-    }
   }
 
   /**
@@ -340,8 +329,7 @@ export function initBackgroundSelection(): void {
         break;
 
       case "softened":
-        // Extra scale prevents empty edges after blurring.
-        elements.sceneImage.style.transform = `${compositionTransform} scale(1.15)`;
+        elements.sceneImage.style.transform = compositionTransform;
         break;
 
       case "personal":

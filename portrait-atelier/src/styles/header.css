@@ -1,0 +1,52 @@
+/* ==========================================
+   ATELIER HEADER
+   ========================================== */
+
+.atelier-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.atelier-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.atelier-brand:hover {
+  text-decoration: none;
+}
+
+.atelier-brand-name {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.atelier-brand-subtitle {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.atelier-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.atelier-exit:hover {
+  color: var(--ink);
+}

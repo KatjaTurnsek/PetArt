@@ -1,0 +1,460 @@
+/* ==========================================
+   STEP 4 — BACKGROUND VISUALISER
+   One authoritative stylesheet for this screen.
+   ========================================== */
+
+.background-screen {
+  padding-bottom: 64px;
+}
+
+.background-studio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.background-studio-preview {
+  width: 100%;
+  min-width: 0;
+}
+
+.background-preview-frame {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+}
+
+.background-preview-canvas {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 480px);
+  margin-inline: auto;
+  overflow: hidden;
+  aspect-ratio: 4 / 5; /* TypeScript overwrites this for the chosen canvas. */
+  border-radius: 3px;
+  background-color: #e9ddcf;
+}
+
+.background-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #e9ddcf;
+}
+
+.background-scene img,
+.background-subject-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.background-subject-image {
+  z-index: 2;
+}
+
+/* Only the background photo gets blurred. The extracted pet stays sharp. */
+.background-preview-canvas[data-mode="softened"][data-display="composite"] .background-scene img {
+  filter: blur(13px);
+}
+
+.background-preview-canvas[data-mode="personal"][data-display="composite"] .background-scene img {
+  filter: blur(13px);
+}
+
+/* Background colour tokens. The original data-tone values stay unchanged. */
+.background-preview-canvas[data-tone="ivory"] {
+  --tone-top: #ebdcc7;
+  --tone-middle: #c5aa8c;
+  --tone-bottom: #85705d;
+}
+
+.background-preview-canvas[data-tone="stone"] {
+  --tone-top: #e3ded3;
+  --tone-middle: #b5a99b;
+  --tone-bottom: #6f645a;
+}
+
+.background-preview-canvas[data-tone="sage"] {
+  --tone-top: #ccd1b5;
+  --tone-middle: #899374;
+  --tone-bottom: #454f38;
+}
+
+.background-preview-canvas[data-tone="umber"] {
+  --tone-top: #d9b38d;
+  --tone-middle: #9a7656;
+  --tone-bottom: #503b2d;
+}
+
+.background-preview-canvas[data-tone="blue"] {
+  --tone-top: #c6d2d2;
+  --tone-middle: #8b9fa6;
+  --tone-bottom: #4b626d;
+}
+
+/* Mottled colour is applied to the scene, not to the foreground pet. */
+.background-preview-canvas[data-mode="neutral"] .background-scene {
+  background-color: var(--tone-middle, #c5aa8c);
+  background-image:
+    radial-gradient(ellipse at 18% 18%, rgb(255 250 236 / 38%), transparent 52%),
+    radial-gradient(ellipse at 82% 30%, rgb(255 244 222 / 22%), transparent 48%),
+    radial-gradient(ellipse at 24% 75%, rgb(62 47 37 / 18%), transparent 54%),
+    radial-gradient(ellipse at 80% 88%, rgb(47 37 29 / 24%), transparent 55%),
+    linear-gradient(
+      180deg,
+      var(--tone-top, #ebdcc7) 0%,
+      var(--tone-middle, #c5aa8c) 50%,
+      var(--tone-bottom, #85705d) 100%
+    );
+}
+
+.background-empty-message {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Four cards in one vertical column alongside the preview. */
+.background-options {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 12px;
+  margin: 0;
+}
+
+.background-option {
+  position: relative;
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.background-option:hover,
+.background-option.is-selected {
+  border-color: var(--olive);
+}
+
+.background-option.is-selected {
+  background: var(--field-paper);
+}
+
+.background-option-thumbnail {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.thumbnail-original {
+  background: linear-gradient(135deg, #83946d, #d4c6a8);
+}
+
+.thumbnail-softened {
+  background: radial-gradient(circle at 40% 35%, #c5c7a1, #71876c);
+}
+
+.thumbnail-neutral {
+  background: linear-gradient(#ebdcc7, #85705d);
+}
+
+.thumbnail-personal {
+  background: linear-gradient(#bbd2d6 0%, #c6c7a1 55%, #87926a 100%);
+}
+
+.thumbnail-symbol {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 28px;
+}
+
+.background-option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.background-option-copy strong {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.8vw, 21px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.background-option-copy > span {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.background-option-check {
+  display: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--olive);
+  color: var(--white);
+  font-size: 13px;
+}
+
+.background-option.is-selected .background-option-check {
+  display: grid;
+}
+
+/* Five curated colour choices. */
+.background-swatches {
+  margin-top: 20px;
+}
+
+.background-swatches > p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.background-swatch-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.background-swatch {
+  display: block;
+  width: 62px;
+  height: 62px;
+  padding: 4px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background: transparent;
+  cursor: pointer;
+}
+
+.background-swatch.is-selected {
+  border-color: var(--olive);
+}
+
+.background-swatch:hover {
+  border-color: var(--muted);
+}
+
+.swatch-colour {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.swatch-ivory {
+  background: linear-gradient(#ebdcc7, #c5aa8c 50%, #85705d);
+}
+
+.swatch-stone {
+  background: linear-gradient(#e3ded3, #b5a99b 50%, #6f645a);
+}
+
+.swatch-sage {
+  background: linear-gradient(#ccd1b5, #899374 50%, #454f38);
+}
+
+.swatch-umber {
+  background: linear-gradient(#d9b38d, #9a7656 50%, #503b2d);
+}
+
+.swatch-blue {
+  background: linear-gradient(#c6d2d2, #8b9fa6 50%, #4b626d);
+}
+
+.background-preview-feedback {
+  margin: 14px 0 0;
+  min-height: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.background-preview-disclaimer {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Optional scenery upload. */
+.background-reference {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.background-reference h2 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 24px;
+}
+
+.background-reference > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.background-upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.background-upload-label:hover {
+  border-color: var(--olive);
+}
+
+.background-photo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.background-photo-preview img {
+  max-width: 100%;
+  max-height: 240px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  object-fit: contain;
+}
+
+#background-upload-feedback {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.background-reference label[for="background-notes"] {
+  display: block;
+  margin: 20px 0 10px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.optional-label {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+#background-notes {
+  width: 100%;
+  min-height: 100px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  resize: vertical;
+}
+
+#background-notes:focus-visible,
+.background-option:focus-visible,
+.background-swatch:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+.background-screen > .step-navigation {
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .background-studio {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .background-preview-canvas {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 480px) {
+  .background-studio {
+    margin-top: 22px;
+  }
+
+  .background-option {
+    grid-template-columns: 64px minmax(0, 1fr) 24px;
+    gap: 12px;
+    min-height: 92px;
+    padding: 12px;
+  }
+
+  .background-option-thumbnail {
+    width: 64px;
+    height: 64px;
+  }
+
+  .background-option-copy strong {
+    font-size: 18px;
+  }
+
+  .background-swatch {
+    width: 49px;
+    height: 49px;
+  }
+
+  .background-reference {
+    padding: 18px;
+  }
+}
