@@ -1,117 +1,326 @@
-import { savePhoto } from "../app/photoStorage";
-import { atelierState } from "../app/atelierState";
+import { atelierState, createPortraitSubject } from "../app/atelierState";
+import type { PortraitSubject } from "../app/atelierState";
+import {
+  deletePhoto,
+  loadPhoto,
+  loadPortraitSubjects,
+  savePhoto,
+  savePortraitSubjects,
+} from "../app/photoStorage";
 
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
-
-const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const MAX_PETS = 3;
+const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+type UploadMode = "one" | "several";
 
 /**
- * Initialises photograph uploads, previews and drag-and-drop.
- * Files remain in the browser until the customer submits an enquiry.
+ * Step 2 — One pet or several pets.
+ * Existing single-pet screens continue to use portrait.photo.
+ * Later, the composition editor will use portrait.subjects.
  */
 export function initPhotoUpload(): void {
   const photoInput = document.querySelector<HTMLInputElement>("#pet-photo");
   const uploadLabel = document.querySelector<HTMLElement>(".photo-upload-label");
+  const uploadTitle = document.querySelector<HTMLElement>("#photo-upload-title");
+  const uploadDescription = document.querySelector<HTMLElement>("#photo-upload-description");
   const preview = document.querySelector<HTMLElement>("#photo-preview");
   const previewImage = document.querySelector<HTMLImageElement>("#photo-preview-image");
   const changeButton = document.querySelector<HTMLButtonElement>("#change-photo");
+  const list = document.querySelector<HTMLElement>("#pet-photo-list");
   const feedback = document.querySelector<HTMLElement>("#upload-feedback");
+  const assistance = document.querySelector<HTMLElement>("#photo-assistance-note");
+  const modeButtons = document.querySelectorAll<HTMLButtonElement>("[data-pet-count]");
 
-  if (!photoInput || !uploadLabel || !preview || !previewImage || !changeButton || !feedback) {
+  if (
+    !photoInput || !uploadLabel || !uploadTitle || !uploadDescription ||
+    !preview || !previewImage || !changeButton || !list || !feedback ||
+    !assistance || modeButtons.length !== 2
+  ) {
     throw new Error("Photograph upload elements not found");
   }
 
-  let previewUrl: string | null = null;
+  const elements = {
+    photoInput,
+    uploadLabel,
+    uploadTitle,
+    uploadDescription,
+    preview,
+    previewImage,
+    changeButton,
+    list,
+    feedback,
+    assistance,
+  };
 
-  /**
-   * Validates and displays a selected photograph.
-   * Shared by file-picker and drag-and-drop interactions.
-   */
-  function handlePhoto(file: File): void {
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      feedback.textContent = "Please choose a JPG, PNG or WebP photograph.";
-      return;
+  let mode: UploadMode = "one";
+  let hasLocalEdits = false;
+  let previewUrls: string[] = [];
+  let saveQueue: Promise<void> = Promise.resolve();
+
+  function clearPreviewUrls(): void {
+    for (const url of previewUrls) URL.revokeObjectURL(url);
+    previewUrls = [];
+  }
+
+  function getPreviewUrl(file: File): string {
+    const url = URL.createObjectURL(file);
+    previewUrls.push(url);
+    return url;
+  }
+
+  function synchroniseLegacyPhoto(): void {
+    const subjects = atelierState.portrait.subjects;
+    atelierState.portrait.photo = subjects[0]?.photo ?? null;
+    atelierState.portrait.numberOfPets = subjects.length || null;
+  }
+
+  /** Serialise writes so a quick sequence of edits cannot restore old data. */
+  function persist(): void {
+    const snapshot = [...atelierState.portrait.subjects];
+    const firstPhoto = snapshot[0]?.photo ?? null;
+
+    saveQueue = saveQueue
+      .catch(() => {
+        // A previous write failed; still attempt the latest one.
+      })
+      .then(async () => {
+        await savePortraitSubjects(snapshot);
+        if (firstPhoto) {
+          await savePhoto(firstPhoto);
+        } else {
+          await deletePhoto();
+        }
+      })
+      .catch(() => {
+        elements.feedback.textContent =
+          "Your photos are available now, but they couldn't be saved for a future visit.";
+      });
+  }
+
+  function announce(message: string): void {
+    elements.feedback.textContent = message;
+  }
+
+  function makeButton(text: string, className: string, action: () => void): HTMLButtonElement {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = className;
+    button.textContent = text;
+    button.addEventListener("click", action);
+    return button;
+  }
+
+  /** Render cards with DOM elements, not HTML strings. */
+  function renderSubjects(subjects: PortraitSubject[]): void {
+    elements.list.replaceChildren();
+
+    for (let index = 0; index < subjects.length; index++) {
+      const subject = subjects[index];
+      const card = document.createElement("article");
+      card.className = "pet-photo-card";
+
+      const image = document.createElement("img");
+      image.src = getPreviewUrl(subject.photo);
+      image.alt = subject.name ? `Photo of ${subject.name}` : `Pet ${index + 1} photograph`;
+      card.append(image);
+
+      const details = document.createElement("div");
+      details.className = "pet-photo-details";
+
+      const label = document.createElement("label");
+      label.htmlFor = `pet-name-${subject.id}`;
+      label.textContent = `Pet ${index + 1} · name (optional)`;
+
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.id = `pet-name-${subject.id}`;
+      nameInput.maxLength = 60;
+      nameInput.placeholder = "Pet's name";
+      nameInput.value = subject.name;
+      nameInput.addEventListener("change", () => {
+        subject.name = nameInput.value.trim();
+        persist();
+      });
+
+      const filename = document.createElement("small");
+      filename.className = "pet-photo-filename";
+      filename.textContent = subject.photo.name;
+
+      const removeButton = makeButton("Remove pet", "pet-photo-remove", () => {
+        hasLocalEdits = true;
+        atelierState.portrait.subjects = atelierState.portrait.subjects.filter(
+          (entry) => entry.id !== subject.id,
+        );
+        synchroniseLegacyPhoto();
+        persist();
+        render();
+        document.dispatchEvent(new Event("atelier:subjects-changed"));
+        announce("Photograph removed.");
+      });
+
+      details.append(label, nameInput, filename, removeButton);
+      card.append(details);
+      elements.list.append(card);
     }
+  }
 
-    if (file.size > MAX_FILE_SIZE) {
-      feedback.textContent = "Please choose a photograph smaller than 15 MB.";
-      return;
-    }
+  function render(): void {
+    const subjects = atelierState.portrait.subjects;
+    if (subjects.length > 1) mode = "several";
 
-    const newUrl = URL.createObjectURL(file);
-
-    if (previewUrl) {
-      URL.revokeObjectURL(previewUrl);
-    }
-
-    previewUrl = newUrl;
-    atelierState.portrait.photo = file;
-    void savePhoto(file).catch(() => {
-      feedback!.textContent =
-        "Your photograph is ready, but it couldn't be saved for a future visit.";
+    modeButtons.forEach((button) => {
+      const selected = button.dataset.petCount === mode;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
     });
 
-    previewImage!.src = previewUrl;
-    uploadLabel!.hidden = true;
-    preview!.hidden = false;
+    elements.photoInput.multiple = mode === "several";
+    elements.assistance.hidden = mode !== "several";
 
-    feedback!.textContent = "Photograph added successfully.";
+    clearPreviewUrls();
+    elements.previewImage.removeAttribute("src");
+    elements.list.replaceChildren();
+
+    const showSinglePreview = mode === "one" && subjects.length === 1;
+    elements.preview.hidden = !showSinglePreview;
+    elements.list.hidden = mode !== "several" || subjects.length === 0;
+    elements.uploadLabel.hidden = showSinglePreview ||
+      (mode === "several" && subjects.length >= MAX_PETS);
+
+    if (showSinglePreview) {
+      elements.previewImage.src = getPreviewUrl(subjects[0].photo);
+      elements.previewImage.alt = subjects[0].name
+        ? `Photograph of ${subjects[0].name}`
+        : "Your selected pet photograph";
+    } else if (mode === "several") {
+      renderSubjects(subjects);
+    }
+
+    elements.uploadTitle.textContent = mode === "several"
+      ? subjects.length ? "Add another pet" : "Choose your pets' photographs"
+      : "Choose a photograph";
+    elements.uploadDescription.textContent = mode === "several"
+      ? `Choose up to ${MAX_PETS} photographs, one for each pet`
+      : "Tap here to select a photo from your device";
   }
 
-  // Choose a photograph by clicking or tapping.
-  photoInput.addEventListener("change", () => {
-    const file = photoInput.files?.[0];
-
-    if (file) {
-      handlePhoto(file);
+  function validPhoto(file: File): boolean {
+    if (!ALLOWED_TYPES.has(file.type)) {
+      announce("Please choose JPG, PNG or WebP photographs.");
+      return false;
     }
-  });
-
-  // Prevent the browser from opening the dropped file.
-  uploadLabel.addEventListener("dragover", (event: DragEvent) => {
-    event.preventDefault();
-    uploadLabel.classList.add("is-dragging");
-  });
-
-  uploadLabel.addEventListener("dragleave", () => {
-    uploadLabel.classList.remove("is-dragging");
-  });
-
-  // Handle a photograph dropped onto the upload area.
-  uploadLabel.addEventListener("drop", (event: DragEvent) => {
-    event.preventDefault();
-    uploadLabel.classList.remove("is-dragging");
-
-    const file = event.dataTransfer?.files[0];
-
-    if (file) {
-      handlePhoto(file);
+    if (file.size > MAX_FILE_SIZE) {
+      announce("Each photograph must be smaller than 15 MB.");
+      return false;
     }
-  });
-
-  /**
-   * Restores the photograph preview when returning
-   * to the upload screen.
-   */
-  function restorePhotoPreview(): void {
-    const savedPhoto = atelierState.portrait.photo;
-
-    if (!savedPhoto) return;
-
-    if (!previewUrl) {
-      previewUrl = URL.createObjectURL(savedPhoto);
-    }
-
-    previewImage!.src = previewUrl;
-    uploadLabel!.hidden = true;
-    preview!.hidden = false;
+    return true;
   }
 
-  document.addEventListener("atelier:photo-screen-opened", restorePhotoPreview);
+  function handlePhotos(files: File[]): void {
+    if (files.length === 0) return;
+    if (!files.every(validPhoto)) return;
 
-  // Allow customers to replace their photograph.
-  changeButton.addEventListener("click", () => {
-    photoInput.value = "";
-    photoInput.click();
+    if (mode === "one") {
+      const original = atelierState.portrait.subjects[0];
+      const replacement = createPortraitSubject(files[0], original?.name ?? "");
+      // Preserve a subject's ID/position when changing just its photo.
+      if (original) {
+        replacement.id = original.id;
+        replacement.position = { ...original.position };
+        replacement.scale = original.scale;
+        replacement.rotation = original.rotation;
+        replacement.layer = original.layer;
+        replacement.referencePhotos = original.referencePhotos;
+      }
+      atelierState.portrait.subjects = [replacement];
+    } else {
+      const available = MAX_PETS - atelierState.portrait.subjects.length;
+      if (available <= 0) {
+        announce(`You can add up to ${MAX_PETS} pets in this first version.`);
+        return;
+      }
+      if (files.length > available) {
+        announce(`You can add ${available} more ${available === 1 ? "pet" : "pets"}.`);
+        return;
+      }
+      for (const file of files) {
+        const subject = createPortraitSubject(file);
+        atelierState.portrait.subjects.push(subject);
+      }
+    }
+
+    hasLocalEdits = true;
+    synchroniseLegacyPhoto();
+    persist();
+    render();
+    document.dispatchEvent(new Event("atelier:subjects-changed"));
+    announce(atelierState.portrait.subjects.length === 1
+      ? "Photograph added successfully."
+      : `${atelierState.portrait.subjects.length} pet photographs added.`);
+  }
+
+  modeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const requested = button.dataset.petCount;
+      if (requested !== "one" && requested !== "several") return;
+      if (requested === "one" && atelierState.portrait.subjects.length > 1) {
+        announce("Remove extra pets before switching to one pet. Your photos are kept safe.");
+        return;
+      }
+      mode = requested;
+      announce("");
+      render();
+    });
   });
+
+  elements.photoInput.addEventListener("change", () => {
+    handlePhotos(Array.from(elements.photoInput.files ?? []));
+    elements.photoInput.value = "";
+  });
+
+  elements.uploadLabel.addEventListener("dragover", (event: DragEvent) => {
+    event.preventDefault();
+    elements.uploadLabel.classList.add("is-dragging");
+  });
+  elements.uploadLabel.addEventListener("dragleave", () => {
+    elements.uploadLabel.classList.remove("is-dragging");
+  });
+  elements.uploadLabel.addEventListener("drop", (event: DragEvent) => {
+    event.preventDefault();
+    elements.uploadLabel.classList.remove("is-dragging");
+    handlePhotos(Array.from(event.dataTransfer?.files ?? []));
+  });
+
+  elements.changeButton.addEventListener("click", () => {
+    elements.photoInput.value = "";
+    elements.photoInput.click();
+  });
+
+  document.addEventListener("atelier:photo-screen-opened", render);
+
+  // Load saved subjects; migrate an older single-photo session if necessary.
+  void (async () => {
+    try {
+      const storedSubjects = await loadPortraitSubjects();
+      if (hasLocalEdits) return;
+
+      if (storedSubjects.length > 0) {
+        atelierState.portrait.subjects = storedSubjects;
+      } else {
+        const legacy = atelierState.portrait.photo ?? await loadPhoto();
+        if (hasLocalEdits) return;
+        if (legacy) {
+          atelierState.portrait.subjects = [createPortraitSubject(legacy)];
+          persist();
+        }
+      }
+      synchroniseLegacyPhoto();
+      render();
+      document.dispatchEvent(new Event("atelier:subjects-changed"));
+    } catch {
+      announce("We couldn't restore previous photographs. You can choose them again.");
+    }
+  })();
+
+  render();
 }

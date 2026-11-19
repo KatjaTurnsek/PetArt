@@ -1,10 +1,6 @@
 /* ==========================================
-   PORTRAIT ATELIER — STEP 4
-   BACKGROUND VISUALISER
-   ========================================== */
-
-/* ==========================================
-   SCREEN LAYOUT
+   STEP 4 — BACKGROUND VISUALISER
+   One authoritative stylesheet for this screen.
    ========================================== */
 
 .background-screen {
@@ -13,20 +9,16 @@
 
 .background-studio {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   align-items: start;
   gap: 28px;
   margin-top: 32px;
 }
 
 .background-studio-preview {
-  min-width: 0;
   width: 100%;
+  min-width: 0;
 }
-
-/* ==========================================
-     LIVE PORTRAIT PREVIEW
-     ========================================== */
 
 .background-preview-frame {
   width: 100%;
@@ -42,7 +34,7 @@
   width: min(100%, 480px);
   margin-inline: auto;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 5; /* TypeScript overwrites this for the chosen canvas. */
   border-radius: 3px;
   background-color: #e9ddcf;
 }
@@ -76,27 +68,23 @@
   z-index: 2;
 }
 
-/* ==========================================
-     PHOTOGRAPHIC BACKGROUND BLUR
-     ========================================== */
-
-/*
-   * Only the background image is blurred.
-   * The transparent pet foreground stays sharp.
-   */
-
-.background-preview-canvas[data-mode="softened"][data-display="composite"] .background-scene img {
-  filter: blur(3px);
+/* Photographic blur is applied once at source-image resolution by
+   src/app/softenBackground.ts. Do not blur the scaled-down preview again. */
+.background-preview-canvas[data-mode="softened"] .background-scene img,
+.background-preview-canvas[data-mode="personal"] .background-scene img {
+  filter: none;
 }
 
-.background-preview-canvas[data-mode="personal"][data-display="composite"] .background-scene img {
-  filter: blur(3px);
+.background-preview-canvas[data-mode="original"] .background-scene img,
+.background-preview-canvas[data-mode="neutral"] .background-scene img {
+  filter: none;
 }
 
-/* ==========================================
-     MOT TLED BACKGROUND PALETTE
-     ========================================== */
+.background-preview-canvas .background-subject-image {
+  filter: none;
+}
 
+/* Background colour tokens. The original data-tone values stay unchanged. */
 .background-preview-canvas[data-tone="ivory"] {
   --tone-top: #ebdcc7;
   --tone-middle: #c5aa8c;
@@ -127,11 +115,9 @@
   --tone-bottom: #4b626d;
 }
 
-/* Soft, layered painterly backdrop. */
-
+/* Mottled colour is applied to the scene, not to the foreground pet. */
 .background-preview-canvas[data-mode="neutral"] .background-scene {
   background-color: var(--tone-middle, #c5aa8c);
-
   background-image:
     radial-gradient(ellipse at 18% 18%, rgb(255 250 236 / 38%), transparent 52%),
     radial-gradient(ellipse at 82% 30%, rgb(255 244 222 / 22%), transparent 48%),
@@ -145,10 +131,6 @@
     );
 }
 
-/* ==========================================
-     PREVIEW EMPTY STATE AND FEEDBACK
-     ========================================== */
-
 .background-empty-message {
   position: absolute;
   z-index: 3;
@@ -161,48 +143,17 @@
   text-align: center;
 }
 
-.background-preview-feedback {
-  min-height: 20px;
-  margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
-}
-
-.background-preview-disclaimer {
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* ==========================================
-     BACKGROUND OPTION CARDS
-     ========================================== */
-
+/* Four cards in one vertical column alongside the preview. */
 .background-options {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-content: start;
-  gap: 14px;
+  gap: 12px;
   margin: 0;
 }
 
-.background-option-card {
-  min-width: 0;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--border-radius);
-  background: var(--white);
-}
-
-.background-option-card:has(.background-option.is-selected) {
-  border-color: var(--olive);
-  background: var(--field-paper);
-}
-
 .background-option {
+  position: relative;
   display: grid;
   grid-template-columns: 78px minmax(0, 1fr) 24px;
   align-items: center;
@@ -210,16 +161,21 @@
   width: 100%;
   min-height: 112px;
   padding: 14px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--white);
   color: var(--ink);
   text-align: left;
   cursor: pointer;
 }
 
-.background-option:hover {
-  background: rgb(53 27 23 / 2%);
+.background-option:hover,
+.background-option.is-selected {
+  border-color: var(--olive);
+}
+
+.background-option.is-selected {
+  background: var(--field-paper);
 }
 
 .background-option-thumbnail {
@@ -263,15 +219,15 @@
 .background-option-copy strong {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(20px, 1.8vw, 22px);
+  font-size: clamp(18px, 1.8vw, 21px);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .background-option-copy > span {
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -290,62 +246,49 @@
   display: grid;
 }
 
-/* ==========================================
-     EXPANDABLE CARD PANELS
-     ========================================== */
-
-/*
-   * Expanded controls align beneath the
-   * card description rather than the thumbnail.
-   */
-
-.background-option-panel {
-  min-width: 0;
-  padding: 0 14px 16px 108px;
+/* Five curated colour choices. */
+.background-swatches {
+  margin-top: 8px;
 }
 
-/* ==========================================
-     MOT TLED BACKGROUND SWATCHES
-     ========================================== */
-
 .background-swatches > p {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: var(--muted);
   font-size: 13px;
+  text-align: center;
 }
 
 .background-swatch-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: flex-start;
   gap: 8px;
 }
 
 .background-swatch {
   display: block;
-  flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   padding: 3px;
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   background: transparent;
   cursor: pointer;
-}
-
-.background-swatch:hover {
-  border-color: var(--muted);
 }
 
 .background-swatch.is-selected {
   border-color: var(--olive);
 }
 
+.background-swatch:hover {
+  border-color: var(--muted);
+}
+
 .swatch-colour {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 7px;
+  border-radius: 3px;
 }
 
 .swatch-ivory {
@@ -368,18 +311,41 @@
   background: linear-gradient(#c6d2d2, #8b9fa6 50%, #4b626d);
 }
 
-/* ==========================================
-     PERSONAL BACKGROUND PANEL
-     ========================================== */
-
-.background-reference {
-  padding-top: 0;
-}
-
-.background-reference-intro {
-  margin: 0 0 14px;
+.background-preview-feedback {
+  margin: 14px 0 0;
+  min-height: 20px;
   color: var(--muted);
   font-size: 13px;
+  text-align: center;
+}
+
+.background-preview-disclaimer {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Optional scenery upload. */
+.background-reference {
+  margin-top: 8px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  background: var(--field-paper);
+}
+
+.background-reference h2 {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 24px;
+}
+
+.background-reference > p {
+  color: var(--muted);
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -387,13 +353,12 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  max-width: 100%;
-  padding: 12px 16px;
+  margin-top: 8px;
+  padding: 9px 12px;
   border: 1px solid var(--line);
   border-radius: var(--border-radius);
   background: var(--white);
   color: var(--ink);
-  font-size: 13px;
   cursor: pointer;
 }
 
@@ -406,26 +371,26 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
 .background-photo-preview img {
   max-width: 100%;
-  max-height: 180px;
+  max-height: 128px;
   border: 1px solid var(--line);
   border-radius: var(--border-radius);
   object-fit: contain;
 }
 
 #background-upload-feedback {
-  margin-top: 10px;
+  margin-top: 12px;
   color: var(--muted);
   font-size: 13px;
 }
 
 .background-reference label[for="background-notes"] {
   display: block;
-  margin: 18px 0 8px;
+  margin: 12px 0 6px;
   color: var(--ink);
   font-size: 14px;
   font-weight: 600;
@@ -437,10 +402,9 @@
 }
 
 #background-notes {
-  display: block;
   width: 100%;
-  min-height: 100px;
-  padding: 14px;
+  min-height: 76px;
+  padding: 10px;
   border: 1px solid var(--line);
   border-radius: var(--border-radius);
   background: var(--white);
@@ -449,39 +413,16 @@
   resize: vertical;
 }
 
-/* ==========================================
-     ACCESSIBILITY
-     ========================================== */
-
+#background-notes:focus-visible,
 .background-option:focus-visible,
-.background-swatch:focus-visible,
-.background-upload-label:focus-within,
-#background-notes:focus-visible {
+.background-swatch:focus-visible {
   outline: 2px solid var(--olive);
   outline-offset: 3px;
 }
 
-/* Preserve native hidden behaviour. */
-
-.background-option-panel[hidden],
-.background-photo-preview[hidden],
-.background-scene img[hidden],
-.background-subject-image[hidden],
-.background-empty-message[hidden] {
-  display: none !important;
-}
-
-/* ==========================================
-     STEP NAVIGATION
-     ========================================== */
-
 .background-screen > .step-navigation {
   margin-top: 40px;
 }
-
-/* ==========================================
-     TABLET
-     ========================================== */
 
 @media (max-width: 900px) {
   .background-studio {
@@ -494,110 +435,66 @@
   }
 }
 
-/* ==========================================
-     MOBILE
-     ========================================== */
-
-@media (max-width: 640px) {
-  .background-screen {
-    padding-bottom: 40px;
-  }
-
+@media (max-width: 480px) {
   .background-studio {
-    gap: 20px;
     margin-top: 22px;
   }
 
-  /* Keep the preview compact on mobile. */
-
-  .background-preview-canvas {
-    width: min(100%, 260px);
-  }
-
-  .background-preview-frame {
-    padding: 6px;
-  }
-
-  .background-preview-feedback {
-    margin-top: 8px;
-  }
-
-  .background-preview-disclaimer {
-    margin-top: 6px;
-    font-size: 11px;
-  }
-
-  /* Compact cards appear below the preview. */
-
-  .background-options {
-    gap: 10px;
-  }
-
   .background-option {
-    grid-template-columns: 54px minmax(0, 1fr) 22px;
+    grid-template-columns: 64px minmax(0, 1fr) 24px;
     gap: 12px;
-    min-height: 82px;
+    min-height: 92px;
     padding: 12px;
   }
 
   .background-option-thumbnail {
-    width: 54px;
-    height: 54px;
-  }
-
-  .thumbnail-symbol {
-    font-size: 23px;
-  }
-
-  .background-option-copy {
-    gap: 4px;
+    width: 64px;
+    height: 64px;
   }
 
   .background-option-copy strong {
-    font-size: 17px;
-  }
-
-  .background-option-copy > span {
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .background-option-check {
-    width: 22px;
-    height: 22px;
-  }
-
-  /* Expand directly beneath the selected option. */
-
-  .background-option-panel {
-    padding: 0 12px 14px;
-  }
-
-  .background-swatches > p {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .background-swatch {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
   }
 
-  .background-reference-intro {
-    font-size: 12px;
+  .background-reference {
+    padding: 12px;
   }
+}
 
-  .background-upload-label {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
+/* Multi-pet composition: one transparent arrangement above the selected scene. */
+.background-preview-canvas .background-multi-pet-image {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+}
+.background-preview-canvas .background-multi-pet-image[hidden] {
+  display: none;
+}
+.background-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
 
-  #background-notes {
-    min-height: 88px;
-    font-size: 14px;
-  }
-
-  .background-screen > .step-navigation {
-    margin-top: 28px;
-  }
+/* Keep expanded controls visually attached to their selected option. */
+.background-option-card {
+  min-width: 0;
+}
+.background-option-panel[hidden],
+.background-photo-preview[hidden] {
+  display: none;
+}
+.background-reference-intro {
+  margin: 0 0 6px;
 }

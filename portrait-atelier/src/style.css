@@ -1,8 +1,13 @@
-/* Portrait Atelier — Main stylesheet */
+/* ==========================================
+   PORTRAIT ATELIER — MAIN STYLESHEET
+   ========================================== */
 
+/* Shared styles */
 @import "./styles/base.css";
 @import "./styles/header.css";
 @import "./styles/progress.css";
+
+/* Atelier screens */
 @import "./styles/welcome.css";
 @import "./styles/photo.css";
 @import "./styles/canvas-shape.css";

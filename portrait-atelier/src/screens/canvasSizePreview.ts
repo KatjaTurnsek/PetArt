@@ -63,7 +63,56 @@ export function initCanvasSizePreview(): void {
     previewArea,
   };
 
+  const sizeOptions = document.querySelector<HTMLElement>("#canvas-size-options");
+  const sizeFeedback = document.querySelector<HTMLElement>("#canvas-size-feedback");
+  const customSizeButton = document.querySelector<HTMLButtonElement>("#custom-size");
+  const customWidth = document.querySelector<HTMLInputElement>("#custom-width");
+  const customHeight = document.querySelector<HTMLInputElement>("#custom-height");
+
+  // Small formats are for one pet only. For custom and square canvases,
+  // require more painting area before offering a multi-pet composition.
+  const MIN_MULTI_PET_AREA = 1600;
+  const hasMultiplePets = (): boolean => atelierState.portrait.subjects.length > 1;
+  const isEligible = (width: number, height: number): boolean =>
+    !hasMultiplePets() || width * height >= MIN_MULTI_PET_AREA;
+
+  function parseDimensions(value: string): { width: number; height: number } | null {
+    const match = value.match(/(\d+)\s*[×x]\s*(\d+)/i);
+    if (!match) return null;
+    return { width: Number(match[1]), height: Number(match[2]) };
+  }
+
+  // Disable unsuitable visible options, while keeping their prices visible.
+  function updateSizeEligibility(): void {
+    if (!sizeOptions) return;
+    const buttons = sizeOptions.querySelectorAll<HTMLButtonElement>("button");
+    for (const button of buttons) {
+      const dimensions = parseDimensions(button.textContent ?? "");
+      if (!dimensions) continue;
+      const restricted = !isEligible(dimensions.width, dimensions.height);
+      button.disabled = restricted;
+      button.classList.toggle("is-pet-restricted", restricted);
+      button.title = restricted ? "This canvas size is suitable for one pet only." : "";
+      button.setAttribute("aria-label", restricted
+        ? `${dimensions.width} by ${dimensions.height} centimetres — one pet only`
+        : `${dimensions.width} by ${dimensions.height} centimetres`);
+    }
+    const w = Number(customWidth?.value);
+    const h = Number(customHeight?.value);
+    const customRestricted = hasMultiplePets() &&
+      Number.isFinite(w) && Number.isFinite(h) && w * h < MIN_MULTI_PET_AREA;
+    customSizeButton?.classList.toggle("is-pet-restricted", customRestricted);
+
+    if (sizeFeedback && hasMultiplePets()) {
+      const oldText = sizeFeedback.textContent ?? "";
+      if (!oldText || oldText.includes("one pet only") || oldText.includes("For several pets")) {
+        sizeFeedback.textContent = "For several pets, the smallest canvas sizes are unavailable so there is room for detail.";
+      }
+    }
+  }
+
   // Start with one photograph rather than two empty canvases.
+  // Keep the comparison open even when a custom dimension needs correction.
   let compareMode = false;
 
   let comparisonId: string | null = null;
@@ -106,8 +155,8 @@ export function initCanvasSizePreview(): void {
       height === null ||
       !Number.isFinite(width) ||
       !Number.isFinite(height) ||
-      width < 10 ||
-      height < 10 ||
+      width < 25 ||
+      height < 25 ||
       width > 200 ||
       height > 200 ||
       width % 5 !== 0 ||
@@ -165,7 +214,10 @@ export function initCanvasSizePreview(): void {
   function getSuggestedComparison(selected: CanvasSize, sizes: CanvasSize[]): CanvasSize | null {
     const selectedArea = selected.width * selected.height;
 
-    const alternatives = sizes.filter((size) => size.id !== selected.id);
+    const alternatives = sizes.filter((size) => {
+      const d = getDimensions(size);
+      return size.id !== selected.id && isEligible(d.width, d.height);
+    });
 
     if (alternatives.length === 0) {
       return null;
@@ -187,7 +239,10 @@ export function initCanvasSizePreview(): void {
     selected: CanvasSize | null,
     sizes: CanvasSize[]
   ): CanvasSize | null {
-    const options = sizes.filter((size) => size.id !== selected?.id);
+    const options = sizes.filter((size) => {
+      const dimensions = getDimensions(size);
+      return size.id !== selected?.id && isEligible(dimensions.width, dimensions.height);
+    });
 
     const savedComparison = options.find((size) => size.id === comparisonId);
 
@@ -237,7 +292,14 @@ export function initCanvasSizePreview(): void {
     container.style.removeProperty("--canvas-width");
     container.style.removeProperty("--canvas-height");
 
-    if (photo) {
+    if (hasMultiplePets()) {
+      // The Konva editor overlays this placeholder and shows every pet,
+      // even before a physical canvas size has been selected.
+      const message = document.createElement("span");
+      message.textContent = "Preparing your pets…";
+      container.appendChild(message);
+      label.textContent = "Arrange your pets · Choose a canvas size when ready";
+    } else if (photo) {
       const image = document.createElement("img");
 
       image.src = photo;
@@ -287,7 +349,13 @@ export function initCanvasSizePreview(): void {
 
     label.textContent = `${dimensions.width} × ${dimensions.height} cm`;
 
-    if (photo) {
+    if (hasMultiplePets()) {
+      // The composition module will draw every pet over this canvas.
+      // Don't leave the first pet's original photograph underneath it.
+      const placeholder = document.createElement("span");
+      placeholder.textContent = "Preparing your pets…";
+      container.appendChild(placeholder);
+    } else if (photo) {
       const image = document.createElement("img");
 
       image.src = photo;
@@ -305,6 +373,66 @@ export function initCanvasSizePreview(): void {
   }
 
   /**
+   * Comparison canvases share one pixels-per-centimetre scale.
+   * Using a single scale is important: independently fitting each canvas
+   * to its slot would hide the physical size difference.
+   */
+  function setComparisonScale(
+    selected: CanvasSize | null,
+    comparison: CanvasSize | null,
+    enabled: boolean,
+  ): void {
+    const previews = [elements.secondPreview, elements.firstPreview];
+
+    for (const preview of previews) {
+      preview.classList.toggle("is-proportional-comparison", enabled);
+      preview.style.removeProperty("--comparison-pixel-width");
+      preview.style.removeProperty("--comparison-pixel-height");
+    }
+
+    if (!enabled || !selected || !comparison) {
+      return;
+    }
+
+    const a = getDimensions(selected);
+    const b = getDimensions(comparison);
+
+    // The two previews each occupy roughly half of the available row.
+    // Reserve space for the gap and padding, and cap the preview height.
+    const availableWidth = Math.max(220, elements.previewArea.clientWidth - 40);
+    const slotWidth = availableWidth / 2;
+    const maxHeight = window.innerWidth <= 700 ? 235 : 340;
+    const maxWidthCm = Math.max(a.width, b.width);
+    const maxHeightCm = Math.max(a.height, b.height);
+    const pixelsPerCm = Math.min(
+      slotWidth / maxWidthCm,
+      maxHeight / maxHeightCm,
+    );
+
+    for (const [preview, dimensions] of [
+      [elements.secondPreview, a],
+      [elements.firstPreview, b],
+    ] as const) {
+      preview.style.setProperty(
+        "--comparison-pixel-width",
+        `${Math.max(1, dimensions.width * pixelsPerCm)}px`,
+      );
+      preview.style.setProperty(
+        "--comparison-pixel-height",
+        `${Math.max(1, dimensions.height * pixelsPerCm)}px`,
+      );
+    }
+  }
+
+  /** Explain why very large custom canvases appear smaller on screen. */
+  const scaleNote = document.createElement("p");
+  scaleNote.className = "canvas-comparison-scale-note";
+  scaleNote.textContent =
+    "Both canvases are scaled to fit. Their relative physical sizes are preserved.";
+  scaleNote.hidden = true;
+  elements.previewArea.insertAdjacentElement("afterend", scaleNote);
+
+  /**
    * Updates the selected canvas and comparison preview.
    */
   function updatePreviews(): void {
@@ -316,7 +444,33 @@ export function initCanvasSizePreview(): void {
       previousShape = atelierState.canvas.shape;
     }
 
-    const selected = getSelectedSize(sizes);
+    updateSizeEligibility();
+    let selected = getSelectedSize(sizes);
+    let selectedSizeIsRestricted = false;
+    if (atelierState.canvas.sizeId === "custom" && selected === null && sizeFeedback) {
+      sizeFeedback.textContent = "Custom canvas dimensions must be at least 25 cm on each side.";
+    }
+
+    if (selected) {
+      const dimensions = getDimensions(selected);
+      if (!isEligible(dimensions.width, dimensions.height)) {
+        // Keep state and the underlying size module in sync by using the
+        // existing size button rather than assigning canvas fields directly.
+        const next = sizeOptions?.querySelector<HTMLButtonElement>("button:not(:disabled)");
+        if (next && selected.id !== "custom") {
+          queueMicrotask(() => next.click());
+          return;
+        }
+        // Keep the custom canvas visible in comparison mode so the layout
+        // does not jump back to a single canvas. It remains unavailable
+        // for continuing until the customer increases its dimensions.
+        selectedSizeIsRestricted = true;
+        if (sizeFeedback) {
+          sizeFeedback.textContent =
+            "This custom size is too small for several pets. Please increase the dimensions.";
+        }
+      }
+    }
 
     const comparison = updateComparisonOptions(selected, sizes);
 
@@ -328,19 +482,35 @@ export function initCanvasSizePreview(): void {
     // RIGHT: Comparison canvas.
     renderCanvas(elements.firstPreview, elements.firstLabel, comparison, photo);
 
-    const showComparison = compareMode && selected !== null;
+    const multiPet = atelierState.portrait.subjects.length > 1;
+    // An invalid custom size should not collapse the comparison view.
+    const showComparison = compareMode;
 
     elements.comparisonFigure.hidden = !showComparison;
 
     elements.comparisonSelector.hidden = !showComparison;
 
     elements.previewArea.classList.toggle("is-single-view", !showComparison);
+    setComparisonScale(selected, comparison, showComparison);
+    scaleNote.hidden = !showComparison;
 
-    elements.compareButton.disabled = selected === null;
+    elements.compareButton.hidden = false;
+    elements.singleButton.hidden = false;
+    elements.previewArea.classList.toggle("has-multi-pets", multiPet);
+    elements.compareButton.disabled = false;
+    const continueButton = document.querySelector<HTMLButtonElement>("#canvas-continue");
+    if (continueButton && hasMultiplePets()) {
+      continueButton.disabled = selected === null || selectedSizeIsRestricted;
+    }
 
     elements.compareButton.setAttribute("aria-pressed", String(showComparison));
 
     elements.singleButton.setAttribute("aria-pressed", String(!showComparison));
+
+    if (multiPet && selected) {
+      const dimensions = getDimensions(selected);
+      elements.secondLabel.textContent = `${dimensions.width} × ${dimensions.height} cm · Arrange your pets`;
+    }
 
     // IMPORTANT:
     // Let the composition module know that the
@@ -375,9 +545,52 @@ export function initCanvasSizePreview(): void {
 
   document.addEventListener("atelier:size-changed", updatePreviews);
 
-  document.addEventListener("atelier:shape-changed", updatePreviews);
+  // Shape controls may rebuild size buttons and reset selected dimensions.
+  // Refresh after the current shape-change handlers have completed so that
+  // the sizes, photos, live arrangement and comparison use the new shape.
+  document.addEventListener("atelier:shape-changed", () => {
+    // The shape/size modules update their buttons during this same event.
+    // Choose a valid size automatically rather than requiring a second click.
+    const previousArea = (atelierState.canvas.width ?? 0) *
+      (atelierState.canvas.height ?? 0);
+    requestAnimationFrame(() => {
+      updateSizeEligibility();
+      const candidates = Array.from(
+        sizeOptions?.querySelectorAll<HTMLButtonElement>("button:not(:disabled)") ?? [],
+      ).filter((button) => parseDimensions(button.textContent ?? "") !== null);
+      const closest = candidates.sort((left, right) => {
+        const a = parseDimensions(left.textContent ?? "")!;
+        const b = parseDimensions(right.textContent ?? "")!;
+        return Math.abs(a.width * a.height - previousArea) -
+          Math.abs(b.width * b.height - previousArea);
+      })[0];
+      if (closest) {
+        closest.click(); // Triggers the existing canvas-size module and UI updates.
+      } else {
+        updatePreviews();
+      }
+    });
+  });
 
   document.addEventListener("atelier:canvas-screen-opened", updatePreviews);
+
+  document.addEventListener("atelier:subjects-changed", updatePreviews);
+  // The canvas-size module may rebuild its buttons after a shape change.
+  // Watch only child changes to avoid an attribute update loop.
+  if (sizeOptions) {
+    new MutationObserver(updateSizeEligibility).observe(sizeOptions, { childList: true, subtree: true });
+  }
+  if (customWidth) customWidth.min = "25";
+  if (customHeight) customHeight.min = "25";
+  customWidth?.addEventListener("change", updatePreviews);
+  customHeight?.addEventListener("change", updatePreviews);
+  // Also refresh while users type (or adjust a custom size interactively).
+  customWidth?.addEventListener("input", () => requestAnimationFrame(updatePreviews));
+  customHeight?.addEventListener("input", () => requestAnimationFrame(updatePreviews));
+  window.addEventListener("resize", updatePreviews);
+  document.querySelector("#custom-size-fields")?.addEventListener("click", () => {
+    queueMicrotask(updatePreviews);
+  });
 
   updatePreviews();
 }

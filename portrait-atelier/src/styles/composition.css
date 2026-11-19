@@ -86,8 +86,8 @@
 }
 
 /* ==========================================
-   FIX — INTERACTIVE PHOTO POSITIONING
-   ========================================== */
+     FIX — INTERACTIVE PHOTO POSITIONING
+     ========================================== */
 
 .size-preview-artwork.is-composition-active {
   position: relative;
@@ -117,4 +117,402 @@
   -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+/* ==========================================
+     MULTI-PET COMPOSITION
+     ========================================== */
+
+.size-preview-artwork.is-multi-pet-active {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.size-preview-artwork.is-multi-pet-active > .size-preview-image {
+  visibility: hidden;
+}
+
+.multi-pet-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.multi-pet-tools {
+  width: min(100%, 460px);
+  margin: 22px auto 0;
+}
+
+.multi-pet-picker,
+.multi-pet-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.multi-pet-picker label,
+.multi-pet-slider label {
+  flex: 0 0 94px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.multi-pet-picker select,
+.multi-pet-slider input {
+  min-width: 0;
+  flex: 1;
+}
+
+.multi-pet-slider input {
+  accent-color: var(--olive);
+}
+
+.multi-pet-slider output {
+  width: 44px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.multi-pet-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.multi-pet-actions .btn {
+  min-width: 0;
+  padding: 9px 12px;
+  font-size: 13px;
+}
+
+.multi-pet-status {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ==========================================
+     LARGE MULTI-PET WORKSPACE
+     Comparison still uses the established physical-size scale.
+     ========================================== */
+
+.canvas-size-preview:has(.has-multi-pets) {
+  padding: clamp(16px, 3vw, 32px);
+}
+
+.size-preview-canvases.has-multi-pets.is-single-view {
+  min-height: 0;
+  padding: 12px 0;
+}
+
+/* Only the editable multi-pet canvas is enlarged. */
+.size-preview-canvases.has-multi-pets.is-single-view #size-preview-second {
+  width: min(100%, 480px);
+  height: auto;
+  aspect-ratio: var(--canvas-width, 40) / var(--canvas-height, 50);
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.size-preview-canvases.has-multi-pets.is-single-view .size-preview-item {
+  flex: 0 1 auto;
+  width: 100%;
+}
+
+.size-preview-canvases.has-multi-pets:not(.is-single-view) {
+  gap: clamp(8px, 2vw, 24px);
+  min-height: 250px;
+}
+
+.size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-artwork {
+  max-width: 100%;
+}
+
+.size-preview-artwork.is-multi-pet-comparison {
+  position: relative;
+  overflow: hidden;
+}
+.size-preview-artwork.is-multi-pet-comparison > .size-preview-image {
+  visibility: hidden;
+}
+.multi-pet-comparison-canvas {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.multi-pet-tools {
+  width: min(100%, 540px);
+}
+.multi-pet-actions .layer-icon {
+  display: inline-block;
+  min-width: 24px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--olive);
+}
+
+.canvas-size-option.is-pet-restricted,
+.canvas-size-option:disabled {
+  opacity: 0.53;
+  cursor: not-allowed;
+}
+.canvas-size-option.is-pet-restricted:hover,
+.canvas-size-option:disabled:hover {
+  border-color: var(--line);
+}
+
+@media (max-width: 700px) {
+  .size-preview-canvases.has-multi-pets.is-single-view #size-preview-second {
+    width: min(100%, 400px);
+  }
+  .multi-pet-tools {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 701px) {
+  .canvas-size-preview:has(.has-multi-pets:not(.is-single-view)) {
+    --canvas-cm-unit: 5px;
+  }
+}
+
+/* Multi-pet composition is visible before choosing a canvas size. */
+.size-preview-canvases.has-multi-pets.is-single-view #size-preview-second.is-multi-pet-before-size {
+  width: min(100%, 480px);
+  min-height: 360px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  position: relative;
+}
+.size-preview-artwork.is-multi-pet-active > span {
+  visibility: hidden;
+}
+/* Loading UI: progress is meaningful (pet count), not an invented time estimate. */
+.multi-pet-loading {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 22px;
+  background: var(--field-paper, #f8f5ef);
+  text-align: center;
+  color: var(--ink);
+}
+.multi-pet-loading[hidden] {
+  display: none;
+}
+.multi-pet-loading strong {
+  font-size: 16px;
+}
+.multi-pet-loading > span:not(.multi-pet-spinner) {
+  max-width: 290px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.multi-pet-loading progress {
+  display: block;
+  width: min(100%, 250px);
+  height: 8px;
+  accent-color: var(--olive);
+}
+.multi-pet-spinner {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--line);
+  border-top-color: var(--olive);
+  border-radius: 50%;
+  animation: pet-spin 0.85s linear infinite;
+}
+@keyframes pet-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .multi-pet-spinner {
+    animation: none;
+    border-top-color: var(--ink);
+  }
+}
+
+/* Multi-pet previews are part of the three shape cards, not a separate strip. */
+.shape-option.has-pet-composition .shape-illustration {
+  position: relative;
+  overflow: hidden;
+}
+.shape-option.has-pet-composition .shape-illustration .canvas-outline {
+  visibility: hidden;
+}
+.shape-pet-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.shape-pet-preview canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  border: 1px solid var(--line);
+  object-fit: contain;
+}
+
+/* ==========================================
+     COMPARE SIZES — SHARED PHYSICAL SCALE
+     The preview is fitted to the viewport as a pair,
+     never independently capped per canvas.
+     ========================================== */
+.size-preview-artwork.is-proportional-comparison {
+  box-sizing: border-box;
+  width: var(--comparison-pixel-width) !important;
+  height: var(--comparison-pixel-height) !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  flex: 0 0 auto !important;
+  aspect-ratio: auto !important;
+}
+
+/* Keep the comparison canvas centred within each figure. */
+.size-preview-canvases:not(.is-single-view) .size-preview-item {
+  min-width: 0;
+}
+
+.canvas-comparison-scale-note {
+  margin: 12px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.canvas-comparison-scale-note[hidden] {
+  display: none;
+}
+
+/* Comparison previews: captions stay underneath their own canvas. */
+.size-preview-canvases:not(.is-single-view) {
+  align-items: flex-start;
+}
+.size-preview-canvases:not(.is-single-view) .size-preview-item {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.size-preview-canvases:not(.is-single-view) .size-preview-item figcaption {
+  display: block;
+  box-sizing: border-box;
+  position: static;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 10px 0 0;
+  padding: 0 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+/* Once the mirrored composition exists, don't show the placeholder message. */
+.size-preview-artwork.is-multi-pet-comparison > span {
+  visibility: hidden;
+}
+
+/* ==========================================
+     EDITING VS COMPARISON — VISUAL CLARITY
+     Only the selected canvas is editable. The second
+     canvas mirrors the same arrangement at another size.
+     ========================================== */
+.size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item {
+  position: relative;
+  box-sizing: border-box;
+  padding: 38px 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--border-radius);
+  min-width: 0;
+  align-self: stretch;
+}
+
+/* CSS labels intentionally live outside the canvas artwork. */
+.size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item::before {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: block;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.size-preview-canvases.has-multi-pets:not(.is-single-view)
+  .size-preview-item:has(#size-preview-second) {
+  border-color: var(--olive);
+}
+
+.size-preview-canvases.has-multi-pets:not(.is-single-view)
+  .size-preview-item:has(#size-preview-second)::before {
+  content: "✎  Editing";
+  color: var(--olive);
+}
+
+.size-preview-canvases.has-multi-pets:not(.is-single-view)
+  .size-preview-item:has(#size-preview-first)::before {
+  content: "◉  Size comparison";
+}
+
+.size-preview-canvases.has-multi-pets:not(.is-single-view)
+  .size-preview-item:has(#size-preview-first) {
+  cursor: default;
+}
+
+/* A larger, dedicated canvas for precise arranging in single view. */
+.size-preview-canvases.has-multi-pets.is-single-view #size-preview-second {
+  width: min(100%, 580px);
+  max-width: 100%;
+}
+
+/* Make a minimum reached look different without hiding its explanation. */
+.dimension-button.is-at-limit {
+  opacity: 0.55;
+}
+
+@media (max-width: 650px) {
+  .size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item {
+    padding: 32px 6px 12px;
+  }
+  .size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item::before {
+    top: 9px;
+    left: 8px;
+    font-size: 11px;
+  }
+  .size-preview-canvases.has-multi-pets.is-single-view #size-preview-second {
+    width: min(100%, 480px);
+  }
 }

@@ -57,7 +57,7 @@
           <li>
             <button type="button" class="atelier-progress-step" data-step="2">
               <span class="progress-number">2</span>
-              <span class="progress-label">Photograph</span>
+              <span class="progress-label">Photographs</span>
             </button>
           </li>
 
@@ -134,7 +134,7 @@
         </section>
 
         <!-- ==========================================
-             SCREEN 02 — CHOOSE A PHOTOGRAPH
+             SCREEN 02 — PHOTOGRAPHS
              ========================================== -->
 
         <section
@@ -145,23 +145,38 @@
         >
           <div class="step-header">
             <span class="step-number">Step 2</span>
+            <h1 id="photo-heading">Who will be in your portrait?</h1>
+            <p>Start with one pet, or bring several together from different photographs.</p>
+          </div>
 
-            <h1 id="photo-heading">Choose a favourite photograph</h1>
-
-            <p>Start with a photograph you love. You can always change it later.</p>
+          <div class="pet-count-options" role="group" aria-label="Number of pets">
+            <button
+              type="button"
+              class="pet-count-option is-selected"
+              data-pet-count="one"
+              aria-pressed="true"
+            >
+              <strong>One pet</strong>
+              <span>A favourite companion</span>
+            </button>
+            <button
+              type="button"
+              class="pet-count-option"
+              data-pet-count="several"
+              aria-pressed="false"
+            >
+              <strong>Several pets</strong>
+              <span>Bring them together</span>
+            </button>
           </div>
 
           <div class="photo-upload">
             <label for="pet-photo" class="photo-upload-label">
               <span class="upload-icon" aria-hidden="true">+</span>
-
-              <strong>Choose a photograph</strong>
-
-              <span> Tap here to select a photo from your device </span>
-
-              <span>JPG, PNG or WebP · Maximum 15 MB</span>
+              <strong id="photo-upload-title">Choose a photograph</strong>
+              <span id="photo-upload-description">Tap here to select a photo from your device</span>
+              <span>JPG, PNG or WebP · Maximum 15 MB per photograph</span>
             </label>
-
             <input
               type="file"
               id="pet-photo"
@@ -171,24 +186,31 @@
               aria-describedby="upload-feedback"
             />
 
-            <!-- Photograph preview -->
-
+            <!-- Kept for compatibility with the original single-photo preview. -->
             <div class="photo-preview" id="photo-preview" hidden>
               <img id="photo-preview-image" alt="Your selected pet photograph" />
-
               <button type="button" class="btn btn-secondary" id="change-photo">
                 Change photograph
               </button>
             </div>
 
-            <p class="upload-feedback" id="upload-feedback" role="status"></p>
+            <div
+              id="pet-photo-list"
+              class="pet-photo-list"
+              aria-label="Selected pet photographs"
+              hidden
+            ></div>
+            <p class="upload-feedback" id="upload-feedback" role="status" aria-live="polite"></p>
           </div>
+
+          <p class="photo-assistance-note" id="photo-assistance-note" hidden>
+            Add one photograph per pet. In the next step, choose a canvas size to arrange them
+            together.
+          </p>
 
           <div class="photo-alternative">
             <p>Don't have a photograph ready?</p>
-
             <button class="btn btn-secondary" type="button" id="use-example">Try an example</button>
-
             <button class="btn btn-text" type="button" id="skip-photo">
               I'll send my photographs later
             </button>
@@ -196,7 +218,6 @@
 
           <nav class="step-navigation" aria-label="Step navigation">
             <button class="btn btn-secondary" type="button" id="photo-back">Back</button>
-
             <button class="btn btn-primary" type="button" id="photo-continue">Continue</button>
           </nav>
         </section>
@@ -359,7 +380,7 @@
                           type="number"
                           id="custom-width"
                           name="custom-width"
-                          min="10"
+                          min="25"
                           max="200"
                           step="5"
                           value="50"
@@ -398,7 +419,7 @@
                           type="number"
                           id="custom-height"
                           name="custom-height"
-                          min="10"
+                          min="25"
                           max="200"
                           step="5"
                           value="40"

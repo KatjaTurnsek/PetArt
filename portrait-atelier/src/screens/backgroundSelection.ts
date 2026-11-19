@@ -1,5 +1,8 @@
 import { atelierState } from "../app/atelierState";
 import { removeBackground } from "../services/backgroundRemoval";
+import { drawMultiPetComposition, preparePetCutout } from "../app/multiPetPreview";
+import { loadBackgroundSelection, saveBackgroundSelection } from "../app/atelierChoiceStorage";
+import { softenBackground } from "../app/softenBackground";
 
 /**
  * Available background styles.
@@ -113,6 +116,152 @@ export function initBackgroundSelection(): void {
     uploadFeedback,
     notesInput,
   };
+
+  // Blur each source photograph once, before it is resized for the preview.
+  // This keeps the blur at 6 source pixels rather than 6 visible screen pixels.
+  const softenedUrls = new WeakMap<File, string>();
+  const softeningRequests = new WeakSet<File>();
+  const softeningFailures = new WeakSet<File>();
+
+  function getSoftenedSceneUrl(file: File, originalUrl: string): string {
+    const ready = softenedUrls.get(file);
+    if (ready) return ready;
+
+    if (!softeningRequests.has(file) && !softeningFailures.has(file)) {
+      softeningRequests.add(file);
+      void softenBackground(file)
+        .then((url) => {
+          softenedUrls.set(file, url);
+          render();
+        })
+        .catch(() => {
+          softeningFailures.add(file);
+          elements.previewFeedback.textContent =
+            "The background couldn't be softened. Showing the original photograph.";
+        })
+        .finally(() => {
+          softeningRequests.delete(file);
+        });
+    }
+
+    // Show the source image while the softened copy is being prepared.
+    return originalUrl;
+  }
+
+  // Multi-pet Step 4 uses the same normalized arrangement as Step 3.
+  // The overlay is injected so the existing HTML does not need replacing.
+  const multiImage = document.createElement("img");
+  multiImage.className = "background-multi-pet-image";
+  multiImage.alt = "Your arranged pets";
+  multiImage.hidden = true;
+  elements.preview.append(multiImage);
+  let multiProcessing = false;
+  let multiRequest = 0;
+  let multiModeWasActive = false;
+
+  // Serialize IndexedDB writes; later changes must never be overwritten by earlier saves.
+  let saveQueue: Promise<void> = Promise.resolve();
+  let hasChangedBackground = false;
+
+  function persistBackground(): void {
+    hasChangedBackground = true;
+    const snapshot = { ...backgroundSelection };
+    saveQueue = saveQueue
+      .catch(() => undefined)
+      .then(() => saveBackgroundSelection(snapshot))
+      .catch(() => {
+        elements.uploadFeedback.textContent =
+          "Your background is visible, but we couldn't save it for a future visit.";
+      });
+  }
+
+  function setMultiPreviewImage(canvas: HTMLCanvasElement | null): void {
+    if (!canvas) {
+      multiImage.hidden = true;
+      multiImage.removeAttribute("src");
+      return;
+    }
+    // toDataURL is synchronous, so the image is updated before navigation.
+    multiImage.src = canvas.toDataURL("image/png");
+    multiImage.hidden = false;
+  }
+
+  async function prepareMultiPets(version: number): Promise<void> {
+    if (multiProcessing) return;
+    multiProcessing = true;
+    try {
+      const subjects = [...atelierState.portrait.subjects];
+      for (let i = 0; i < subjects.length; i++) {
+        if (version !== multiRequest) return;
+        elements.previewFeedback.textContent = `Preparing pet ${i + 1} of ${subjects.length}…`;
+        await preparePetCutout(subjects[i]);
+      }
+      if (version === multiRequest) render();
+    } catch {
+      if (version === multiRequest) {
+        elements.previewFeedback.textContent =
+          "We couldn't prepare every pet. Please return to Step 3 and check the photographs.";
+      }
+    } finally {
+      multiProcessing = false;
+    }
+  }
+
+  function renderMultiPets(): void {
+    multiModeWasActive = true;
+    const optionsForMultiple = options;
+    optionsForMultiple.forEach((button) => {
+      const unavailable =
+        button.dataset.background === "original" || button.dataset.background === "softened";
+      button.disabled = unavailable;
+      button.setAttribute("aria-disabled", String(unavailable));
+      button.title = unavailable
+        ? "With several pets from different photos, choose a new shared background."
+        : "";
+    });
+
+    if (
+      backgroundSelection.preference === "original" ||
+      backgroundSelection.preference === "softened"
+    ) {
+      backgroundSelection.preference = "neutral";
+    }
+    updateSceneryUrl();
+    updateCanvasShape();
+    renderOptions();
+    renderSceneryUpload();
+    elements.preview.dataset.mode = backgroundSelection.preference;
+    elements.preview.dataset.display = "multi";
+    applyBackgroundEffects();
+    elements.sceneImage.hidden = backgroundSelection.preference !== "personal" || !sceneryUrl;
+    if (!elements.sceneImage.hidden && sceneryUrl && backgroundSelection.photo) {
+      elements.sceneImage.src = getSoftenedSceneUrl(backgroundSelection.photo, sceneryUrl);
+      elements.sceneImage.style.transform = "scale(1.06)";
+    }
+    elements.subjectImage.hidden = true;
+    elements.emptyMessage.hidden = true;
+
+    // Render at the same aspect ratio as the displayed canvas.
+    // Using the element's real height avoids stretching the transparent layer.
+    const width = Math.max(1, Math.round(elements.preview.clientWidth || 380));
+    const ratio = Number(elements.preview.style.aspectRatio) || 0.8;
+    const measuredHeight = elements.preview.clientHeight;
+    const height = Math.max(1, Math.round(measuredHeight || width / ratio));
+    const composite = drawMultiPetComposition(width, height);
+    setMultiPreviewImage(composite);
+    if (composite) {
+      elements.previewFeedback.textContent =
+        backgroundSelection.preference === "personal" && !sceneryUrl
+          ? "Add your scenery photo to see your pets against it."
+          : "Your arrangement from Step 3 is preserved.";
+    } else {
+      elements.previewFeedback.textContent = "Preparing your pets…";
+      if (!multiProcessing) {
+        const version = ++multiRequest;
+        void prepareMultiPets(version);
+      }
+    }
+  }
 
   // Original pet photograph.
   let currentPetFile: File | null = null;
@@ -329,12 +478,13 @@ export function initBackgroundSelection(): void {
         break;
 
       case "softened":
-        elements.sceneImage.style.transform = compositionTransform;
+        // Extra scale prevents empty edges after blurring.
+        elements.sceneImage.style.transform = `${compositionTransform} scale(1.06)`;
         break;
 
       case "personal":
         // Uploaded scenery fills the canvas independently.
-        elements.sceneImage.style.transform = "scale(1.15)";
+        elements.sceneImage.style.transform = "scale(1.06)";
         break;
     }
   }
@@ -395,6 +545,7 @@ export function initBackgroundSelection(): void {
       const selected = button.dataset.background === backgroundSelection.preference;
 
       button.classList.toggle("is-selected", selected);
+
       button.setAttribute("aria-pressed", String(selected));
     });
 
@@ -402,10 +553,12 @@ export function initBackgroundSelection(): void {
       const selected = button.dataset.tone === backgroundSelection.tone;
 
       button.classList.toggle("is-selected", selected);
+
       button.setAttribute("aria-pressed", String(selected));
     });
 
     elements.swatchPanel.hidden = backgroundSelection.preference !== "neutral";
+
     elements.referencePanel.hidden = backgroundSelection.preference !== "personal";
 
     elements.preview.dataset.tone = backgroundSelection.tone;
@@ -450,6 +603,20 @@ export function initBackgroundSelection(): void {
    * Display the current visualisation.
    */
   function render(): void {
+    if (atelierState.portrait.subjects.length > 1) {
+      renderMultiPets();
+      return;
+    }
+    if (multiModeWasActive) {
+      multiModeWasActive = false;
+      ++multiRequest;
+      setMultiPreviewImage(null);
+      options.forEach((button) => {
+        button.disabled = false;
+        button.removeAttribute("aria-disabled");
+        button.removeAttribute("title");
+      });
+    }
     updatePetUrl();
     updateSceneryUrl();
     updateCanvasShape();
@@ -522,7 +689,9 @@ export function initBackgroundSelection(): void {
       case "softened":
         // Blur the original surroundings.
         // The separated pet stays sharp above them.
-        elements.sceneImage.src = petUrl;
+        if (file) {
+          elements.sceneImage.src = getSoftenedSceneUrl(file, petUrl);
+        }
         elements.sceneImage.hidden = false;
         break;
 
@@ -532,8 +701,8 @@ export function initBackgroundSelection(): void {
         break;
 
       case "personal":
-        if (sceneryUrl) {
-          elements.sceneImage.src = sceneryUrl;
+        if (sceneryUrl && backgroundSelection.photo) {
+          elements.sceneImage.src = getSoftenedSceneUrl(backgroundSelection.photo, sceneryUrl);
           elements.sceneImage.hidden = false;
         } else {
           // Show neutral fallback until scenery is uploaded.
@@ -562,7 +731,7 @@ export function initBackgroundSelection(): void {
       }
 
       backgroundSelection.preference = value as BackgroundPreference;
-
+      persistBackground();
       render();
     });
   });
@@ -579,7 +748,7 @@ export function initBackgroundSelection(): void {
       }
 
       backgroundSelection.tone = tone as BackgroundTone;
-
+      persistBackground();
       render();
     });
   });
@@ -609,6 +778,7 @@ export function initBackgroundSelection(): void {
     }
 
     backgroundSelection.photo = file;
+    persistBackground();
 
     elements.uploadFeedback.textContent = "Background photograph added.";
 
@@ -620,6 +790,7 @@ export function initBackgroundSelection(): void {
    */
   elements.removeButton.addEventListener("click", () => {
     backgroundSelection.photo = null;
+    persistBackground();
 
     elements.photoInput.value = "";
     elements.uploadFeedback.textContent = "";
@@ -632,6 +803,7 @@ export function initBackgroundSelection(): void {
    */
   elements.notesInput.addEventListener("input", () => {
     backgroundSelection.notes = elements.notesInput.value;
+    persistBackground();
   });
 
   /**
@@ -646,12 +818,34 @@ export function initBackgroundSelection(): void {
   /**
    * Update composition when the preview resizes.
    */
+  document.addEventListener("atelier:composition-changed", () => {
+    if (atelierState.portrait.subjects.length > 1) render();
+  });
+  document.addEventListener("atelier:cutout-ready", () => {
+    if (atelierState.portrait.subjects.length > 1) render();
+  });
   const resizeObserver = new ResizeObserver(() => {
-    updateComposition();
+    if (atelierState.portrait.subjects.length > 1) renderMultiPets();
+    else updateComposition();
   });
 
   resizeObserver.observe(elements.preview);
 
-  // Initialise with the original photograph.
+  // Restore previous background choices and an uploaded scenery file.
+  // If the customer changes an option while the database loads, keep their new choice.
+  void (async () => {
+    try {
+      const saved = await loadBackgroundSelection();
+      if (!saved || hasChangedBackground) return;
+      Object.assign(backgroundSelection, saved);
+      elements.notesInput.value = backgroundSelection.notes;
+      render();
+    } catch {
+      elements.uploadFeedback.textContent =
+        "We couldn't restore your previous background selection.";
+    }
+  })();
+
+  // Initialise with the current photograph.
   render();
 }

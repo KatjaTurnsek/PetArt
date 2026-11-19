@@ -1,47 +1,49 @@
 /**
- * Portrait Atelier — Application State
- *
- * Stores the customer's choices throughout
- * the portrait planning experience.
+ * Portrait Atelier — Application State.
+ * Preserve existing single-photo state during the multi-pet migration.
  */
+
+export type CanvasShape = "portrait" | "landscape" | "square";
+
+export interface PortraitSubject {
+  id: string;
+  name: string;
+  photo: File;
+  referencePhotos: File[];
+  /** Normalised position on the future composition canvas (0–1). */
+  position: { x: number; y: number };
+  scale: number;
+  rotation: number;
+  layer: number;
+}
 
 export interface AtelierState {
   currentStep: number;
-
   portrait: {
+    /** Compatibility with current single-photo visualisers. */
     photo: File | null;
     numberOfPets: number | null;
+    subjects: PortraitSubject[];
+    representsRealLifeSizes: boolean | null;
   };
-
   canvas: {
-    shape: "portrait" | "landscape" | "square";
+    shape: CanvasShape;
     width: number | null;
     height: number | null;
     sizeId: string | null;
   };
-
-  composition: {
-    zoom: number;
-    offsetX: number;
-    offsetY: number;
-  };
-
+  composition: { zoom: number; offsetX: number; offsetY: number };
   background: {
     type: "original" | "blurred" | "neutral" | "custom";
     customImage: File | null;
   };
-
-  framing: {
-    selectedFrame: string | null;
-  };
-
+  framing: { selectedFrame: string | null };
   room: {
     image: File | null;
     positionX: number;
     positionY: number;
     scale: number;
   };
-
   enquiry: {
     name: string;
     email: string;
@@ -50,50 +52,45 @@ export interface AtelierState {
   };
 }
 
-/**
- * Initial state for a new Portrait Atelier session.
- */
 export const atelierState: AtelierState = {
   currentStep: 1,
-
   portrait: {
     photo: null,
     numberOfPets: null,
+    subjects: [],
+    representsRealLifeSizes: null,
   },
-
-  canvas: {
-    shape: "portrait",
-    width: null,
-    height: null,
-    sizeId: null,
-  },
-
-  composition: {
-    zoom: 1,
-    offsetX: 0,
-    offsetY: 0,
-  },
-
-  background: {
-    type: "original",
-    customImage: null,
-  },
-
-  framing: {
-    selectedFrame: null,
-  },
-
-  room: {
-    image: null,
-    positionX: 0,
-    positionY: 0,
-    scale: 1,
-  },
-
-  enquiry: {
-    name: "",
-    email: "",
-    message: "",
-    wantsAdvice: false,
-  },
+  canvas: { shape: "portrait", width: null, height: null, sizeId: null },
+  composition: { zoom: 1, offsetX: 0, offsetY: 0 },
+  background: { type: "original", customImage: null },
+  framing: { selectedFrame: null },
+  room: { image: null, positionX: 0, positionY: 0, scale: 1 },
+  enquiry: { name: "", email: "", message: "", wantsAdvice: false },
 };
+
+export function createPortraitSubject(photo: File, name = ""): PortraitSubject {
+  return {
+    id: crypto.randomUUID(),
+    name,
+    photo,
+    referencePhotos: [],
+    position: { x: 0.5, y: 0.5 },
+    scale: 1,
+    rotation: 0,
+    layer: atelierState.portrait.subjects.length,
+  };
+}
+
+export function addPortraitSubject(photo: File, name = ""): PortraitSubject {
+  const subject = createPortraitSubject(photo, name);
+  atelierState.portrait.subjects.push(subject);
+  atelierState.portrait.numberOfPets = atelierState.portrait.subjects.length;
+  return subject;
+}
+
+export function removePortraitSubject(id: string): void {
+  atelierState.portrait.subjects = atelierState.portrait.subjects.filter(
+    (subject) => subject.id !== id
+  );
+  atelierState.portrait.numberOfPets = atelierState.portrait.subjects.length;
+}

@@ -1,3 +1,4 @@
+import { initMultiPetComposition } from "./multiPetComposition";
 import { atelierState } from "../app/atelierState";
 
 const MIN_ZOOM = 1;
@@ -144,6 +145,14 @@ export function initCanvasComposition(): void {
   function refreshComposition(): void {
     const image = getImage();
 
+    // Multi-pet editing is handled by its own Konva canvas.
+    if (atelierState.portrait.subjects.length > 1) {
+      elements.controls.hidden = true;
+      elements.preview.classList.remove("is-composition-active");
+      activeImage = null;
+      return;
+    }
+
     const ready = Boolean(
       image &&
         atelierState.portrait.photo &&
@@ -269,4 +278,5 @@ export function initCanvasComposition(): void {
   resizeObserver.observe(elements.preview);
 
   refreshComposition();
+  initMultiPetComposition();
 }

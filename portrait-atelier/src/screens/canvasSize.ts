@@ -8,8 +8,9 @@ import {
 } from "../app/canvasSizes";
 
 import { calculateCustomPrice } from "../app/canvasPricing";
+import { loadCanvasSelection, saveCanvasSelection } from "../app/atelierChoiceStorage";
 
-const MIN_DIMENSION = 10;
+const MIN_DIMENSION = 25;
 const MAX_DIMENSION = 200;
 const DIMENSION_STEP = 5;
 
@@ -52,9 +53,38 @@ export function initCanvasSizeSelection(): void {
   let customWidth = DEFAULT_CUSTOM_WIDTH;
   let customHeight = DEFAULT_CUSTOM_HEIGHT;
 
+  // Restore on refresh before rendering size buttons and previews.
+  const saved = loadCanvasSelection();
+  if (saved) {
+    atelierState.canvas.shape = saved.shape;
+    atelierState.canvas.sizeId = saved.sizeId;
+    atelierState.canvas.width = saved.width;
+    atelierState.canvas.height = saved.height;
+    customWidth = saved.customWidth;
+    customHeight = saved.customHeight;
+  }
+
+  function persistCanvas(): void {
+    saveCanvasSelection({
+      ...atelierState.canvas,
+      customWidth,
+      customHeight,
+    });
+  }
+
+  function updateShapeCards(): void {
+    document.querySelectorAll<HTMLButtonElement>(".shape-option[data-shape]").forEach((button) => {
+      const selected = button.dataset.shape === atelierState.canvas.shape;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+  }
+
   // Dimensions are controlled through the stepper buttons.
   elements.widthInput.readOnly = true;
+  elements.widthInput.min = String(MIN_DIMENSION);
   elements.heightInput.readOnly = true;
+  elements.heightInput.min = String(MIN_DIMENSION);
 
   elements.widthInput.value = String(customWidth);
   elements.heightInput.value = String(customHeight);
@@ -63,6 +93,7 @@ export function initCanvasSizeSelection(): void {
    * Notifies the preview that the canvas dimensions changed.
    */
   function notifySizeChanged(): void {
+    persistCanvas();
     document.dispatchEvent(new Event("atelier:size-changed"));
   }
 
@@ -109,15 +140,17 @@ export function initCanvasSizeSelection(): void {
 
     const validIncrements =
       customWidth % DIMENSION_STEP === 0 && customHeight % DIMENSION_STEP === 0;
+    const validRange = customWidth >= MIN_DIMENSION && customHeight >= MIN_DIMENSION &&
+      customWidth <= MAX_DIMENSION && customHeight <= MAX_DIMENSION;
 
     const price = calculateCustomPrice(customWidth, customHeight);
 
-    if (!validIncrements || price === null) {
+    if (!validIncrements || !validRange || price === null) {
       atelierState.canvas.width = null;
       atelierState.canvas.height = null;
 
       elements.feedback.textContent =
-        "Please choose dimensions between 10 and 200 cm in 5 cm increments.";
+        "Please choose dimensions between 25 and 200 cm in 5 cm increments.";
 
       notifySizeChanged();
       return;
@@ -206,6 +239,7 @@ export function initCanvasSizeSelection(): void {
     });
 
     updateSelection();
+    updateShapeCards();
   }
 
   /**
@@ -217,12 +251,16 @@ export function initCanvasSizeSelection(): void {
 
     const currentValue = Number(input.value);
 
-    const nextValue = Math.max(MIN_DIMENSION, Math.min(MAX_DIMENSION, currentValue + change));
+    const requested = currentValue + change;
+    const nextValue = Math.max(MIN_DIMENSION, Math.min(MAX_DIMENSION, requested));
 
     input.value = String(nextValue);
-
     updateCustomDimensions();
     updateDimensionButtons();
+
+    if (requested < MIN_DIMENSION && change < 0) {
+      elements.feedback.textContent = "Minimum canvas size is 25 cm.";
+    }
   }
 
   /**
@@ -246,9 +284,17 @@ export function initCanvasSizeSelection(): void {
 
       const value = Number(input.value);
 
-      button.disabled =
-        (action === "decrease" && value <= MIN_DIMENSION) ||
-        (action === "increase" && value >= MAX_DIMENSION);
+      // Keep the minimum button clickable to explain why it cannot go lower.
+      // The value itself is always clamped in adjustDimension().
+      const atMinimum = action === "decrease" && value <= MIN_DIMENSION;
+      button.disabled = action === "increase" && value >= MAX_DIMENSION;
+      button.classList.toggle("is-at-limit", atMinimum);
+      button.setAttribute("aria-disabled", String(atMinimum || button.disabled));
+      if (atMinimum) {
+        button.title = "Minimum canvas size is 25 cm";
+      } else {
+        button.removeAttribute("title");
+      }
     });
   }
 
@@ -289,9 +335,25 @@ export function initCanvasSizeSelection(): void {
   });
 
   // Update the size catalogue when the shape changes.
-  document.addEventListener("atelier:shape-changed", renderSizes);
+  document.addEventListener("atelier:shape-changed", () => {
+    renderSizes();
+    updateShapeCards();
+    persistCanvas();
+  });
+
+  // If another canvas module changes the selected size, persist that too.
+  document.addEventListener("atelier:size-changed", persistCanvas);
 
   // Initialise the controls.
   initDimensionControls();
   renderSizes();
+  updateShapeCards();
+  if (saved) {
+    elements.widthInput.value = String(customWidth);
+    elements.heightInput.value = String(customHeight);
+    updateDimensionButtons();
+    if (saved.sizeId === "custom") {
+      updateCustomDimensions();
+    }
+  }
 }
