@@ -1,3 +1,4 @@
+import { removeBackgroundWithBiRefNet } from "./birefnetLite";
 import * as ort from "onnxruntime-web";
 
 const MODEL_URL = "/models/u2netp.onnx";
@@ -177,7 +178,7 @@ async function createTransparentImage(image: ImageBitmap, mask: HTMLCanvasElemen
 }
 
 /** Remove a photo's background locally, preserving the original File. */
-export async function removeBackground(file: File): Promise<Blob> {
+export async function removeBackgroundWithU2Netp(file: File): Promise<Blob> {
   const image = await createImageBitmap(file);
 
   try {
@@ -197,5 +198,17 @@ export async function removeBackground(file: File): Promise<Blob> {
     return await createTransparentImage(image, mask);
   } finally {
     image.close();
+  }
+}
+
+
+/** Prefer BiRefNet Lite. Keep U²-Netp if the browser cannot run it. */
+export async function removeBackground(file: File): Promise<Blob> {
+  try {
+    return await removeBackgroundWithBiRefNet(file);
+  } catch {
+    // The fallback is intentional; both return a transparent PNG Blob.
+    document.dispatchEvent(new Event("atelier:background-removal-fallback"));
+    return removeBackgroundWithU2Netp(file);
   }
 }

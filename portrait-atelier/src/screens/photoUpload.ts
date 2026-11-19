@@ -1,3 +1,8 @@
+import {
+  preloadPetCutouts,
+  getPetCutoutStatus,
+  type PetCutoutStatus,
+} from "../app/multiPetPreview";
 import { atelierState, createPortraitSubject } from "../app/atelierState";
 import type { PortraitSubject } from "../app/atelierState";
 import {
@@ -56,6 +61,80 @@ export function initPhotoUpload(): void {
   let hasLocalEdits = false;
   let previewUrls: string[] = [];
   let saveQueue: Promise<void> = Promise.resolve();
+
+  /** Add progress feedback inside the photo preview, not as a separate panel. */
+  function createPreparationBadge(subjectId: string): HTMLElement {
+    const badge = document.createElement("span");
+    badge.className = "photo-preparation-badge";
+    badge.dataset.subjectId = subjectId;
+    badge.setAttribute("role", "status");
+    badge.setAttribute("aria-live", "polite");
+    return badge;
+  }
+
+  function updatePreparationBadges(): void {
+    const subjects = atelierState.portrait.subjects;
+    const labels: Record<PetCutoutStatus, string> = {
+      idle: "Preparing soon…",
+      preparing: "Preparing portrait…",
+      ready: "Ready for your canvas",
+      error: "Preview preparation failed",
+    };
+    for (const badge of Array.from(document.querySelectorAll<HTMLElement>(".photo-preparation-badge"))) {
+      const subject = subjects.find((item) => item.id === badge.dataset.subjectId);
+      if (!subject) continue;
+      const state = getPetCutoutStatus(subject);
+      badge.dataset.status = state;
+      badge.textContent = labels[state];
+    }
+  }
+
+  /** Update the dashed upload area while one or more pets are processing. */
+  function updateUploadAreaStatus(): void {
+    const subjects = atelierState.portrait.subjects;
+    const activeCount = subjects.filter((subject) => {
+      const status = getPetCutoutStatus(subject);
+      return status === "preparing" || status === "idle";
+    }).length;
+
+    const isVisible = !elements.uploadLabel.hidden && activeCount > 0;
+    uploadAreaStatus.hidden = !isVisible;
+    elements.uploadLabel.classList.toggle("is-preparing-photos", isVisible);
+
+    if (isVisible) {
+      uploadAreaMessage.textContent = activeCount === 1
+        ? "Preparing your photograph…"
+        : `Preparing ${activeCount} photographs…`;
+    }
+  }
+
+  // Overlay is added to the existing dashed upload area, without changing its markup.
+  const uploadAreaStatus = document.createElement("span");
+  uploadAreaStatus.className = "photo-upload-area-status";
+  uploadAreaStatus.hidden = true;
+  uploadAreaStatus.setAttribute("role", "status");
+  uploadAreaStatus.setAttribute("aria-live", "polite");
+
+  const uploadAreaSpinner = document.createElement("span");
+  uploadAreaSpinner.className = "photo-upload-area-spinner";
+  uploadAreaSpinner.setAttribute("aria-hidden", "true");
+
+  const uploadAreaMessage = document.createElement("span");
+  uploadAreaMessage.className = "photo-upload-area-message";
+
+  const uploadAreaHint = document.createElement("span");
+  uploadAreaHint.className = "photo-upload-area-hint";
+  uploadAreaHint.textContent = "You can continue while we prepare your pets.";
+
+  uploadAreaStatus.append(uploadAreaSpinner, uploadAreaMessage, uploadAreaHint);
+  elements.uploadLabel.append(uploadAreaStatus);
+
+  // Status changes are dispatched by the shared cutout preparation service.
+  document.addEventListener("atelier:cutout-status", () => {
+    updatePreparationBadges();
+    updateUploadAreaStatus();
+  });
+
 
   function clearPreviewUrls(): void {
     for (const url of previewUrls) URL.revokeObjectURL(url);
@@ -122,7 +201,10 @@ export function initPhotoUpload(): void {
       const image = document.createElement("img");
       image.src = getPreviewUrl(subject.photo);
       image.alt = subject.name ? `Photo of ${subject.name}` : `Pet ${index + 1} photograph`;
-      card.append(image);
+      const imageFrame = document.createElement("div");
+      imageFrame.className = "pet-photo-image-frame";
+      imageFrame.append(image, createPreparationBadge(subject.id));
+      card.append(imageFrame);
 
       const details = document.createElement("div");
       details.className = "pet-photo-details";
@@ -188,6 +270,15 @@ export function initPhotoUpload(): void {
       (mode === "several" && subjects.length >= MAX_PETS);
 
     if (showSinglePreview) {
+      let frame = elements.preview.querySelector<HTMLElement>(".single-photo-image-frame");
+      if (!frame) {
+        frame = document.createElement("div");
+        frame.className = "single-photo-image-frame";
+        elements.previewImage.before(frame);
+        frame.append(elements.previewImage);
+      }
+      frame.querySelector(".photo-preparation-badge")?.remove();
+      frame.append(createPreparationBadge(subjects[0].id));
       elements.previewImage.src = getPreviewUrl(subjects[0].photo);
       elements.previewImage.alt = subjects[0].name
         ? `Photograph of ${subjects[0].name}`
@@ -195,6 +286,9 @@ export function initPhotoUpload(): void {
     } else if (mode === "several") {
       renderSubjects(subjects);
     }
+
+    updatePreparationBadges();
+    updateUploadAreaStatus();
 
     elements.uploadTitle.textContent = mode === "several"
       ? subjects.length ? "Add another pet" : "Choose your pets' photographs"
@@ -254,6 +348,7 @@ export function initPhotoUpload(): void {
     persist();
     render();
     document.dispatchEvent(new Event("atelier:subjects-changed"));
+    preloadPetCutouts();
     announce(atelierState.portrait.subjects.length === 1
       ? "Photograph added successfully."
       : `${atelierState.portrait.subjects.length} pet photographs added.`);
@@ -317,6 +412,7 @@ export function initPhotoUpload(): void {
       synchroniseLegacyPhoto();
       render();
       document.dispatchEvent(new Event("atelier:subjects-changed"));
+      preloadPetCutouts();
     } catch {
       announce("We couldn't restore previous photographs. You can choose them again.");
     }

@@ -3,6 +3,7 @@ import { atelierState } from "../app/atelierState";
 import type { PortraitSubject } from "../app/atelierState";
 import { savePortraitSubjects } from "../app/photoStorage";
 import { preparePetCutout } from "../app/multiPetPreview";
+import { drawGroundShadow, getGroundShadowSprite, groundShadowBounds, hasGroundShadow, setGroundShadow } from "../app/groundShadow";
 
 const MIN_SCALE = 0.3;
 const MAX_SCALE = 2.5;
@@ -50,6 +51,14 @@ export function initMultiPetComposition(): void {
   const sizeValue = document.createElement("output");
   sizeValue.htmlFor = sizeSlider.id;
 
+  const shadowRow = document.createElement("label");
+  shadowRow.className = "multi-pet-shadow-option";
+  shadowRow.style.cssText = "display:flex;align-items:center;gap:10px;margin:12px 0;cursor:pointer;";
+  const shadowToggle = document.createElement("input");
+  shadowToggle.type = "checkbox";
+  shadowToggle.id = "multi-pet-ground-shadow";
+  shadowRow.append(shadowToggle, document.createTextNode("Soft ground shadow (full-body pets)"));
+
   const frontButton = document.createElement("button");
   frontButton.type = "button";
   frontButton.className = "btn btn-secondary";
@@ -85,7 +94,7 @@ export function initMultiPetComposition(): void {
   const actionRow = document.createElement("div");
   actionRow.className = "multi-pet-actions";
   actionRow.append(backButton, frontButton, resetButton);
-  tools.append(heading, pickerRow, sizeRow, actionRow, status);
+  tools.append(heading, pickerRow, sizeRow, shadowRow, actionRow, status);
   elements.existingControls.insertAdjacentElement("afterend", tools);
 
   let stage: Konva.Stage | null = null;
@@ -142,6 +151,13 @@ export function initMultiPetComposition(): void {
       ctx.fillRect(0, 0, width, height);
       for (const subject of subjects.slice().sort((a, b) => a.layer - b.layer)) {
         const cutout = extracted.get(subject.id);
+        if (cutout?.file !== subject.photo || !hasGroundShadow(subject.id)) continue;
+        const scale = height * BASE_HEIGHT / cutout.image.height * subject.scale;
+        drawGroundShadow(ctx, cutout.image,
+          subject.position.x * width, subject.position.y * height, scale);
+      }
+      for (const subject of subjects.slice().sort((a, b) => a.layer - b.layer)) {
+        const cutout = extracted.get(subject.id);
         if (cutout?.file === subject.photo) {
           const source = cutout.image;
           const scale = height * BASE_HEIGHT / source.height * subject.scale;
@@ -179,6 +195,7 @@ export function initMultiPetComposition(): void {
     }
   }
   const shapes = new Map<string, Konva.Image>();
+  const shadowShapes = new Map<string, Konva.Image>();
   // The customer sees loading progress while local AI processes each photograph.
   const loadingPanel = document.createElement("div");
   loadingPanel.className = "multi-pet-loading";
@@ -207,6 +224,40 @@ export function initMultiPetComposition(): void {
   function hideLoading(): void {
     loadingPanel.hidden = true;
   }
+  // Show all original photos immediately while cutouts are being prepared.
+  let instantPreview: HTMLDivElement | null = null;
+  const instantUrls = new Map<string, { file: File; url: string }>();
+
+  function showInstantPreview(): void {
+    instantPreview?.remove();
+    const subjects = atelierState.portrait.subjects;
+    if (subjects.length < 2) return;
+    instantPreview = document.createElement("div");
+    instantPreview.className = "multi-pet-instant-preview";
+    instantPreview.style.cssText =
+      "position:absolute;inset:0;display:flex;align-items:center;justify-content:space-evenly;gap:8px;padding:12px;pointer-events:none;overflow:hidden;";
+    for (const subject of subjects) {
+      let stored = instantUrls.get(subject.id);
+      if (!stored || stored.file !== subject.photo) {
+        if (stored) URL.revokeObjectURL(stored.url);
+        stored = { file: subject.photo, url: URL.createObjectURL(subject.photo) };
+        instantUrls.set(subject.id, stored);
+      }
+      const image = document.createElement("img");
+      image.src = stored.url;
+      image.alt = "";
+      image.style.cssText =
+        `display:block;max-width:${Math.floor(90 / subjects.length)}%;max-height:65%;object-fit:contain;border-radius:3px;`;
+      instantPreview.append(image);
+    }
+    elements.preview.append(instantPreview);
+  }
+
+  function hideInstantPreview(): void {
+    instantPreview?.remove();
+    instantPreview = null;
+  }
+
   let comparisonCanvas: HTMLCanvasElement | null = null;
 
   // Mirror the same arrangement in the comparison canvas without making
@@ -238,6 +289,13 @@ export function initMultiPetComposition(): void {
     if (!ctx) return;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.clearRect(0, 0, width, height);
+    for (const subject of orderedSubjects()) {
+      const item = extracted.get(subject.id);
+      if (!item || item.file !== subject.photo || !hasGroundShadow(subject.id)) continue;
+      const scale = height * BASE_HEIGHT / item.image.height * subject.scale;
+      drawGroundShadow(ctx, item.image, subject.position.x * width,
+        subject.position.y * height, scale);
+    }
     for (const subject of orderedSubjects()) {
       const item = extracted.get(subject.id);
       if (!item || item.file !== subject.photo) continue;
@@ -273,6 +331,7 @@ export function initMultiPetComposition(): void {
     stage = null;
     layer = null;
     shapes.clear();
+    shadowShapes.clear();
     elements.preview.querySelector(".multi-pet-stage")?.remove();
   }
 
@@ -286,6 +345,7 @@ export function initMultiPetComposition(): void {
     const subject = atelierState.portrait.subjects.find((item) => item.id === id);
     if (!subject) return;
     sizeSlider.value = String(subject.scale);
+    shadowToggle.checked = hasGroundShadow(id);
     sizeValue.textContent = `${Math.round(subject.scale * 100)}%`;
     shapes.forEach((shape, shapeId) => {
       shape.stroke(shapeId === id ? "#fff9eb" : "");
@@ -308,6 +368,13 @@ export function initMultiPetComposition(): void {
       shape.position({ x: subject.position.x * width, y: subject.position.y * height });
       shape.scale({ x: actualScale, y: actualScale });
       shape.rotation(subject.rotation);
+      const shadow = shadowShapes.get(subject.id);
+      if (shadow) {
+        const box = groundShadowBounds(item.image, shape.x(), shape.y(), actualScale);
+        shadow.position({ x: box.x, y: box.y });
+        shadow.size({ width: box.width, height: box.height });
+        shadow.visible(hasGroundShadow(subject.id));
+      }
     }
     layer?.batchDraw();
     drawComparison();
@@ -329,6 +396,19 @@ export function initMultiPetComposition(): void {
     layer = new Konva.Layer();
     stage.add(layer);
 
+    // All ground shadows are below every pet; no shadow can cover another pet.
+    for (const subject of orderedSubjects()) {
+      const item = extracted.get(subject.id);
+      if (!item || item.file !== subject.photo) continue;
+      const shadow = new Konva.Image({
+        image: getGroundShadowSprite(),
+        listening: false,
+        visible: hasGroundShadow(subject.id),
+      });
+      shadowShapes.set(subject.id, shadow);
+      layer.add(shadow);
+    }
+
     for (const subject of orderedSubjects()) {
       const item = extracted.get(subject.id);
       if (!item || item.file !== subject.photo) continue;
@@ -348,6 +428,14 @@ export function initMultiPetComposition(): void {
         if (!stage) return;
         subject.position.x = clamp(shape.x() / stage.width(), 0, 1);
         subject.position.y = clamp(shape.y() / stage.height(), 0, 1);
+        const shadow = shadowShapes.get(subject.id);
+        if (shadow) {
+          const actualScale = stage.height() * BASE_HEIGHT / item.image.height * subject.scale;
+          const box = groundShadowBounds(item.image, shape.x(), shape.y(), actualScale);
+          shadow.position({ x: box.x, y: box.y });
+          shadow.size({ width: box.width, height: box.height });
+          layer?.batchDraw();
+        }
         drawComparison();
         drawShapeCards();
         document.dispatchEvent(new Event("atelier:composition-changed"));
@@ -373,6 +461,7 @@ export function initMultiPetComposition(): void {
     elements.preview.classList.toggle("is-multi-pet-active", active);
     elements.preview.classList.toggle("is-multi-pet-before-size", active && atelierState.canvas.sizeId === null);
     destroyStage();
+    hideInstantPreview();
     // canvasSizePreview replaces preview children on every size change.
     // Reattach the persistent progress UI after that replacement.
     if (active) elements.preview.append(loadingPanel);
@@ -390,6 +479,7 @@ export function initMultiPetComposition(): void {
         frontButton.disabled = true;
         backButton.disabled = true;
         resetButton.disabled = true;
+        shadowToggle.disabled = true;
       }
       return;
     }
@@ -399,6 +489,7 @@ export function initMultiPetComposition(): void {
     frontButton.disabled = true;
     backButton.disabled = true;
     resetButton.disabled = true;
+    shadowToggle.disabled = true;
 
     status.textContent = "Preparing your pets for the composition…";
     const subjects = atelierState.portrait.subjects;
@@ -424,6 +515,7 @@ export function initMultiPetComposition(): void {
 
     // Give immediate feedback on a first visit and when a photograph changes.
     if (pending.length > 0) {
+      showInstantPreview();
       setLoading("Preparing your composition", "Starting background removal…", 0);
     }
 
@@ -456,6 +548,7 @@ export function initMultiPetComposition(): void {
       }
     }
     if (currentRequest !== requestId) return;
+    hideInstantPreview();
     buildStage();
     hideLoading();
     picker.disabled = false;
@@ -463,12 +556,23 @@ export function initMultiPetComposition(): void {
     frontButton.disabled = false;
     backButton.disabled = false;
     resetButton.disabled = false;
+    shadowToggle.disabled = false;
     status.textContent = atelierState.canvas.sizeId === null
       ? "Arrange your pets now, then choose a canvas size on the left."
       : "Drag a pet to move it. Select another pet to adjust its size.";
   }
 
   picker.addEventListener("change", () => setSelected(picker.value));
+  shadowToggle.addEventListener("change", () => {
+    if (!selectedId) return;
+    setGroundShadow(selectedId, shadowToggle.checked);
+    const shadow = shadowShapes.get(selectedId);
+    shadow?.visible(shadowToggle.checked);
+    layer?.batchDraw();
+    drawComparison();
+    drawShapeCards();
+    document.dispatchEvent(new Event("atelier:composition-changed"));
+  });
   sizeSlider.addEventListener("input", () => {
     const subject = atelierState.portrait.subjects.find((item) => item.id === selectedId);
     if (!subject) return;
