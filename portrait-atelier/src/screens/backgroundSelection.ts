@@ -395,7 +395,6 @@ export function initBackgroundSelection(): void {
       const selected = button.dataset.background === backgroundSelection.preference;
 
       button.classList.toggle("is-selected", selected);
-
       button.setAttribute("aria-pressed", String(selected));
     });
 
@@ -403,12 +402,10 @@ export function initBackgroundSelection(): void {
       const selected = button.dataset.tone === backgroundSelection.tone;
 
       button.classList.toggle("is-selected", selected);
-
       button.setAttribute("aria-pressed", String(selected));
     });
 
     elements.swatchPanel.hidden = backgroundSelection.preference !== "neutral";
-
     elements.referencePanel.hidden = backgroundSelection.preference !== "personal";
 
     elements.preview.dataset.tone = backgroundSelection.tone;
