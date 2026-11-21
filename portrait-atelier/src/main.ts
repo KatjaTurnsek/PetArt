@@ -1,4 +1,5 @@
 import "./style.css";
+import "./styles/frameSelection.css";
 
 import { atelierState } from "./app/atelierState";
 import { loadPhoto } from "./app/photoStorage";
@@ -9,8 +10,9 @@ import { updateCanvasPreviews } from "./screens/canvasShape";
 import { initCanvasSizePreview } from "./screens/canvasSizePreview";
 import { initCanvasComposition } from "./screens/canvasComposition";
 import { initBackgroundSelection } from "./screens/backgroundSelection";
+import { initFrameSelection } from "./screens/frameSelection";
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
 const STORAGE_KEY = "atelier-current-step";
 
 /**
@@ -70,8 +72,9 @@ function goToStep(step: number): void {
   const canvasScreen = document.querySelector<HTMLElement>("#canvas-screen");
 
   const backgroundScreen = document.querySelector<HTMLElement>("#background-screen");
+  const frameScreen = document.querySelector<HTMLElement>("#frame-screen");
 
-  if (!welcomeScreen || !photoScreen || !canvasScreen || !backgroundScreen) {
+  if (!welcomeScreen || !photoScreen || !canvasScreen || !backgroundScreen || !frameScreen) {
     throw new Error("Atelier screens not found");
   }
 
@@ -80,6 +83,7 @@ function goToStep(step: number): void {
   photoScreen.hidden = step !== 2;
   canvasScreen.hidden = step !== 3;
   backgroundScreen.hidden = step !== 4;
+  frameScreen.hidden = step !== 5;
 
   // Update the active step.
   atelierState.currentStep = step;
@@ -104,6 +108,10 @@ function goToStep(step: number): void {
 
   if (step === 4) {
     document.dispatchEvent(new Event("atelier:background-screen-opened"));
+  }
+
+  if (step === 5) {
+    document.dispatchEvent(new Event("atelier:frame-screen-opened"));
   }
 
   // Make the current screen visible from the top.
@@ -185,7 +193,7 @@ function initCanvasShapeSelection(): void {
 
 /**
  * Connects the navigation buttons between
- * the four Atelier screens.
+ * the five Atelier screens.
  */
 function initNavigation(): void {
   // Step 1 → Step 2
@@ -222,8 +230,22 @@ function initNavigation(): void {
     goToStep(3);
   });
 
-  // #background-continue will be connected
-  // when we create Step 5.
+  // Step 4 → Step 5
+  document.querySelector<HTMLButtonElement>("#background-continue")?.addEventListener("click", () => {
+    goToStep(5);
+  });
+
+  // Step 5 → Step 4
+  document.querySelector<HTMLButtonElement>("#frame-back")?.addEventListener("click", () => {
+    goToStep(4);
+  });
+
+  // Step 6 is not built yet. Keep this control visibly disabled.
+  const frameContinue = document.querySelector<HTMLButtonElement>("#frame-continue");
+  if (frameContinue) {
+    frameContinue.disabled = true;
+    frameContinue.title = "Room visualiser is the next stage.";
+  }
 }
 
 /**
@@ -247,6 +269,9 @@ async function startAtelier(): Promise<void> {
 
   // Step 4 — Background preferences
   initBackgroundSelection();
+
+  // Step 5 — Frame preview
+  initFrameSelection();
 
   // Restore the uploaded photograph from IndexedDB.
   try {

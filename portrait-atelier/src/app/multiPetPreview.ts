@@ -1,6 +1,6 @@
+import { getPetCutoutBlob } from "./petCutoutCache";
 import { atelierState } from "./atelierState";
 import type { PortraitSubject } from "./atelierState";
-import { removeBackground } from "../services/backgroundRemoval";
 import { drawGroundShadow, hasGroundShadow } from "./groundShadow";
 
 const BASE_HEIGHT = 0.56;
@@ -203,7 +203,7 @@ function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
 }
 
 function queueInference(file: File): Promise<Blob> {
-  const task = processingQueue.then(() => removeBackground(file));
+  const task = processingQueue.then(() => getPetCutoutBlob(file));
   // Keep the queue usable even when one photograph fails.
   processingQueue = task.then(() => undefined, () => undefined);
   return task;

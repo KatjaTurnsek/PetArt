@@ -1,8 +1,9 @@
+import { getPetCutoutBlob } from "../app/petCutoutCache";
 import { atelierState } from "../app/atelierState";
-import { removeBackground } from "../services/backgroundRemoval";
 import { drawMultiPetComposition, preparePetCutout } from "../app/multiPetPreview";
 import { loadBackgroundSelection, saveBackgroundSelection } from "../app/atelierChoiceStorage";
-import { softenBackground } from "../app/softenBackground";
+import { makeBlurredBackground } from "../app/graduatedBackground";
+import { reconstructPetBackground } from "../app/reconstructPetBackground";
 
 /**
  * Available background styles.
@@ -22,6 +23,11 @@ export interface BackgroundSelection {
   tone: BackgroundTone;
   photo: File | null;
   notes: string;
+  blurStrength: "soft" | "natural" | "dreamy";
+  blurFade: number; // 0 = blur stays near the top, 100 = reaches the ground
+  backgroundZoom: number; // 100–160 percent
+  backgroundX: number; // position in preview pixels at 100% width
+  backgroundY: number; // position in preview pixels at 100% height
 }
 
 /**
@@ -32,6 +38,11 @@ export const backgroundSelection: BackgroundSelection = {
   tone: "ivory",
   photo: null,
   notes: "",
+  blurStrength: "natural",
+  blurFade: 55,
+  backgroundZoom: 100,
+  backgroundX: 0,
+  backgroundY: 0,
 };
 
 const MAX_IMAGE_SIZE = 15 * 1024 * 1024;
@@ -80,6 +91,14 @@ export function initBackgroundSelection(): void {
   const uploadFeedback = document.querySelector<HTMLElement>("#background-upload-feedback");
 
   const notesInput = document.querySelector<HTMLTextAreaElement>("#background-notes");
+  const fineTune = document.querySelector<HTMLElement>("#background-finetune");
+  const blurStrengthButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-blur-strength]"));
+  const blurFadeInput = document.querySelector<HTMLInputElement>("#background-blur-fade");
+  const blurFadeValue = document.querySelector<HTMLOutputElement>("#background-blur-fade-value");
+  const personalPosition = document.querySelector<HTMLElement>("#background-personal-position");
+  const backgroundZoomInput = document.querySelector<HTMLInputElement>("#background-zoom");
+  const backgroundZoomValue = document.querySelector<HTMLOutputElement>("#background-zoom-value");
+  const resetAdjustments = document.querySelector<HTMLButtonElement>("#background-reset-adjustments");
 
   if (
     !preview ||
@@ -94,7 +113,9 @@ export function initBackgroundSelection(): void {
     !uploadPreviewImage ||
     !removeButton ||
     !uploadFeedback ||
-    !notesInput ||
+    !notesInput || !fineTune || !blurFadeInput || !blurFadeValue ||
+    !personalPosition || !backgroundZoomInput || !backgroundZoomValue ||
+    !resetAdjustments || blurStrengthButtons.length !== 3 ||
     options.length !== 4 ||
     swatches.length !== 5
   ) {
@@ -115,37 +136,149 @@ export function initBackgroundSelection(): void {
     removeButton,
     uploadFeedback,
     notesInput,
+    fineTune,
+    blurFadeInput,
+    blurFadeValue,
+    personalPosition,
+    backgroundZoomInput,
+    backgroundZoomValue,
+    resetAdjustments,
   };
 
-  // Blur each source photograph once, before it is resized for the preview.
-  // This keeps the blur at 6 source pixels rather than 6 visible screen pixels.
-  const softenedUrls = new WeakMap<File, string>();
-  const softeningRequests = new WeakSet<File>();
-  const softeningFailures = new WeakSet<File>();
+  // Keep the source image sharp at the bottom; fade in a separately blurred image
+  // toward the top. Both layers use identical positioning and object-fit rules.
+  const blurredImage = document.createElement("img");
+  blurredImage.className = "background-graduated-blur";
+  blurredImage.alt = "";
+  blurredImage.hidden = true;
+  elements.sceneImage.insertAdjacentElement("afterend", blurredImage);
 
-  function getSoftenedSceneUrl(file: File, originalUrl: string): string {
-    const ready = softenedUrls.get(file);
-    if (ready) return ready;
+  const blurredUrls = new WeakMap<File, Map<string, string>>();
+  const blurredPending = new WeakMap<File, Set<string>>();
+  let currentBlurFile: File | null = null;
+  let currentBlurStrength = "";
 
-    if (!softeningRequests.has(file) && !softeningFailures.has(file)) {
-      softeningRequests.add(file);
-      void softenBackground(file)
+  // Only for the single-pet Softened option. Generated once per photograph,
+  // without running segmentation again; all other background modes are untouched.
+  const reconstructedScenes = new WeakMap<File, { file: File; url: string }>();
+  const reconstructionPending = new WeakSet<File>();
+  const reconstructionFailed = new WeakSet<File>();
+
+  function getReconstructedScene(photo: File): { file: File; url: string } | null {
+    const cached = reconstructedScenes.get(photo);
+    if (cached) return cached;
+    if (reconstructionPending.has(photo) || reconstructionFailed.has(photo)) return null;
+
+    reconstructionPending.add(photo);
+    void getPetCutoutBlob(photo)
+      .then((cutout) => reconstructPetBackground(photo, cutout))
+      .then((sceneFile) => {
+        reconstructedScenes.set(photo, {
+          file: sceneFile,
+          url: URL.createObjectURL(sceneFile),
+        });
+        if (atelierState.portrait.photo === photo &&
+            backgroundSelection.preference === "softened") render();
+      })
+      .catch((error: unknown) => {
+        console.error("Could not reconstruct the pet-free background", error);
+        reconstructionFailed.add(photo);
+        if (atelierState.portrait.photo === photo &&
+            backgroundSelection.preference === "softened") {
+          elements.previewFeedback.textContent =
+            "We couldn't rebuild the scenery for this photograph. Showing the original.";
+        }
+      })
+      .finally(() => reconstructionPending.delete(photo));
+    return null;
+  }
+
+  function getBlurredUrl(file: File): string | null {
+    const strength = backgroundSelection.blurStrength;
+    const cached = blurredUrls.get(file)?.get(strength);
+    if (cached) return cached;
+
+    let pending = blurredPending.get(file);
+    if (!pending) {
+      pending = new Set<string>();
+      blurredPending.set(file, pending);
+    }
+    if (!pending.has(strength)) {
+      pending.add(strength);
+      void makeBlurredBackground(file, strength)
         .then((url) => {
-          softenedUrls.set(file, url);
-          render();
+          let versions = blurredUrls.get(file);
+          if (!versions) {
+            versions = new Map<string, string>();
+            blurredUrls.set(file, versions);
+          }
+          versions.set(strength, url);
+          if (currentBlurFile === file && currentBlurStrength === strength) render();
         })
         .catch(() => {
-          softeningFailures.add(file);
-          elements.previewFeedback.textContent =
-            "The background couldn't be softened. Showing the original photograph.";
+          if (currentBlurFile === file && currentBlurStrength === strength) {
+            elements.previewFeedback.textContent =
+              "The blur couldn't be prepared. Showing the original background.";
+          }
         })
-        .finally(() => {
-          softeningRequests.delete(file);
-        });
+        .finally(() => pending?.delete(strength));
     }
+    return null;
+  }
 
-    // Show the source image while the softened copy is being prepared.
-    return originalUrl;
+  function setScenePhoto(file: File | null, originalUrl: string | null): void {
+    const photographic = backgroundSelection.preference === "softened" ||
+      backgroundSelection.preference === "personal";
+    blurredImage.hidden = true;
+    currentBlurFile = photographic ? file : null;
+    currentBlurStrength = backgroundSelection.blurStrength;
+    if (!file || !originalUrl) return;
+
+    elements.sceneImage.src = originalUrl;
+    elements.sceneImage.hidden = false;
+    // Keep the underlying photograph SHARP. Only the graduated overlay
+    // is blurred; otherwise the ground stays blurred even at 0%.
+    elements.sceneImage.style.filter = "none";
+    if (!photographic) return;
+
+    const rawBlurUrl = getBlurredUrl(file);
+    // The original photograph includes the dog. Never show its raw blurred
+    // version underneath the pet, as that creates a soft duplicate/halo.
+    const finalBlurUrl = rawBlurUrl;
+    if (finalBlurUrl) {
+      blurredImage.src = finalBlurUrl;
+      blurredImage.hidden = false;
+    }
+  }
+
+  function applyBlurFade(): void {
+    const fade = Math.min(100, Math.max(0, backgroundSelection.blurFade));
+    // Always fully blurred at the top. At 0 the bottom half stays sharp;
+    // at 100 the blurred layer extends all the way toward the ground.
+    const start = 0;
+    const end = Math.round(35 + fade * 0.65);
+    blurredImage.style.maskImage =
+      `linear-gradient(to bottom, black ${start}%, transparent ${end}%)`;
+    blurredImage.style.webkitMaskImage = blurredImage.style.maskImage;
+  }
+
+  function syncFineTune(): void {
+    const mode = backgroundSelection.preference;
+    const available = mode === "softened" || mode === "personal";
+    elements.fineTune.hidden = !available;
+    elements.personalPosition.hidden = mode !== "personal";
+    blurStrengthButtons.forEach((button) => {
+      const selected = button.dataset.blurStrength === backgroundSelection.blurStrength;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    elements.blurFadeInput.value = String(backgroundSelection.blurFade);
+    elements.blurFadeValue.textContent = `${backgroundSelection.blurFade}%`;
+    elements.backgroundZoomInput.value = String(backgroundSelection.backgroundZoom);
+    elements.backgroundZoomValue.textContent = `${backgroundSelection.backgroundZoom}%`;
+    elements.preview.classList.toggle("is-background-draggable",
+      mode === "personal" && Boolean(backgroundSelection.photo));
+    applyBlurFade();
   }
 
   // Multi-pet Step 4 uses the same normalized arrangement as Step 3.
@@ -158,6 +291,7 @@ export function initBackgroundSelection(): void {
   let multiProcessing = false;
   let multiRequest = 0;
   let multiModeWasActive = false;
+  let lastMultiPreviewKey = "";
 
   // Serialize IndexedDB writes; later changes must never be overwritten by earlier saves.
   let saveQueue: Promise<void> = Promise.resolve();
@@ -179,6 +313,7 @@ export function initBackgroundSelection(): void {
     if (!canvas) {
       multiImage.hidden = true;
       multiImage.removeAttribute("src");
+      lastMultiPreviewKey = "";
       return;
     }
     // toDataURL is synchronous, so the image is updated before navigation.
@@ -233,11 +368,13 @@ export function initBackgroundSelection(): void {
     elements.preview.dataset.mode = backgroundSelection.preference;
     elements.preview.dataset.display = "multi";
     applyBackgroundEffects();
-    elements.sceneImage.hidden = backgroundSelection.preference !== "personal" || !sceneryUrl;
-    if (!elements.sceneImage.hidden && sceneryUrl && backgroundSelection.photo) {
-      elements.sceneImage.src = getSoftenedSceneUrl(backgroundSelection.photo, sceneryUrl);
-      elements.sceneImage.style.transform = "scale(1.06)";
+    syncFineTune();
+    elements.sceneImage.hidden = true;
+    blurredImage.hidden = true;
+    if (backgroundSelection.preference === "personal" && sceneryUrl && backgroundSelection.photo) {
+      setScenePhoto(backgroundSelection.photo, sceneryUrl);
     }
+    applySceneTransform();
     elements.subjectImage.hidden = true;
     elements.emptyMessage.hidden = true;
 
@@ -247,9 +384,27 @@ export function initBackgroundSelection(): void {
     const ratio = Number(elements.preview.style.aspectRatio) || 0.8;
     const measuredHeight = elements.preview.clientHeight;
     const height = Math.max(1, Math.round(measuredHeight || width / ratio));
-    const composite = drawMultiPetComposition(width, height);
-    setMultiPreviewImage(composite);
-    if (composite) {
+    // A background style change does not alter the pet cutouts or positions.
+    // Reuse the prepared overlay until the composition or preview size changes.
+    const previewKey = JSON.stringify({
+      width,
+      height,
+      subjects: atelierState.portrait.subjects.map((subject) => ({
+        id: subject.id,
+        file: [subject.photo.name, subject.photo.size, subject.photo.lastModified],
+        position: subject.position,
+        scale: subject.scale,
+        rotation: subject.rotation,
+        layer: subject.layer,
+      })),
+    });
+    const needsDrawing = lastMultiPreviewKey !== previewKey || multiImage.hidden;
+    const composite = needsDrawing ? drawMultiPetComposition(width, height) : null;
+    if (needsDrawing && composite) {
+      setMultiPreviewImage(composite);
+      lastMultiPreviewKey = previewKey;
+    }
+    if (composite || !multiImage.hidden) {
       elements.previewFeedback.textContent =
         backgroundSelection.preference === "personal" && !sceneryUrl
           ? "Add your scenery photo to see your pets against it."
@@ -447,6 +602,15 @@ export function initBackgroundSelection(): void {
     }
   }
 
+  function applySceneTransform(): void {
+    const factor = 1.06 * (backgroundSelection.backgroundZoom / 100);
+    const x = backgroundSelection.backgroundX * (elements.preview.clientWidth || 350) / 100;
+    const y = backgroundSelection.backgroundY * (elements.preview.clientHeight || 430) / 100;
+    const transform = `translate(${x}px, ${y}px) scale(${factor})`;
+    elements.sceneImage.style.transform = transform;
+    blurredImage.style.transform = transform;
+  }
+
   /**
    * Applies the composition from Step 3.
    *
@@ -475,16 +639,20 @@ export function initBackgroundSelection(): void {
       case "original":
       case "neutral":
         elements.sceneImage.style.transform = compositionTransform;
+        blurredImage.style.transform = compositionTransform;
         break;
 
       case "softened":
-        // Extra scale prevents empty edges after blurring.
-        elements.sceneImage.style.transform = `${compositionTransform} scale(1.06)`;
+        // Keep the original scene and both photographic layers pixel-aligned
+        // with the pet cutout. Enlarging the background independently creates
+        // a visible blurred duplicate around the animal's silhouette.
+        elements.sceneImage.style.transform = compositionTransform;
+        blurredImage.style.transform = compositionTransform;
         break;
 
       case "personal":
-        // Uploaded scenery fills the canvas independently.
-        elements.sceneImage.style.transform = "scale(1.06)";
+        // Uploaded scenery fills the canvas independently and can be moved.
+        applySceneTransform();
         break;
     }
   }
@@ -506,7 +674,7 @@ export function initBackgroundSelection(): void {
 
     try {
       // Calls src/services/backgroundRemoval.ts
-      const transparentImage = await removeBackground(file);
+      const transparentImage = await getPetCutoutBlob(file);
 
       // Ignore results from an old photograph.
       if (version !== processingVersion || atelierState.portrait.photo !== file) {
@@ -589,6 +757,8 @@ export function initBackgroundSelection(): void {
 
     elements.sceneImage.src = petUrl;
     elements.sceneImage.hidden = false;
+    elements.sceneImage.style.filter = "none";
+    blurredImage.hidden = true;
 
     elements.subjectImage.hidden = true;
 
@@ -622,11 +792,15 @@ export function initBackgroundSelection(): void {
     updateCanvasShape();
     renderOptions();
     renderSceneryUpload();
+    syncFineTune();
+    blurredImage.hidden = true;
 
     const mode = backgroundSelection.preference;
     const file = atelierState.portrait.photo;
 
     elements.preview.dataset.mode = mode;
+    // Never leave the previous softened filter applied when changing styles.
+    elements.sceneImage.style.filter = "none";
     applyBackgroundEffects();
 
     const hasPhoto = Boolean(file && petUrl);
@@ -686,14 +860,25 @@ export function initBackgroundSelection(): void {
     elements.subjectImage.hidden = false;
 
     switch (mode) {
-      case "softened":
-        // Blur the original surroundings.
-        // The separated pet stays sharp above them.
-        if (file) {
-          elements.sceneImage.src = getSoftenedSceneUrl(file, petUrl);
+      case "softened": {
+        // Never blur the dog itself into the scenery. Reconstruct a pet-free
+        // background first, then layer the sharp cutout over its graduated blur.
+        const reconstructed = file ? getReconstructedScene(file) : null;
+        if (reconstructed) {
+          setScenePhoto(reconstructed.file, reconstructed.url);
+        } else {
+          // Show the original photo while the lightweight local fill runs.
+          // Do not render a blurred duplicate of the dog during preparation.
+          currentBlurFile = null;
+          elements.sceneImage.src = petUrl;
+          elements.sceneImage.hidden = false;
+          blurredImage.hidden = true;
+          if (file && !reconstructionFailed.has(file)) {
+            elements.previewFeedback.textContent = "Preparing the softened background…";
+          }
         }
-        elements.sceneImage.hidden = false;
         break;
+      }
 
       case "neutral":
         // CSS generates the warm mottled background.
@@ -702,8 +887,7 @@ export function initBackgroundSelection(): void {
 
       case "personal":
         if (sceneryUrl && backgroundSelection.photo) {
-          elements.sceneImage.src = getSoftenedSceneUrl(backgroundSelection.photo, sceneryUrl);
-          elements.sceneImage.hidden = false;
+          setScenePhoto(backgroundSelection.photo, sceneryUrl);
         } else {
           // Show neutral fallback until scenery is uploaded.
           elements.sceneImage.hidden = true;
@@ -711,10 +895,15 @@ export function initBackgroundSelection(): void {
         break;
     }
 
-    elements.previewFeedback.textContent =
-      mode === "personal" && !sceneryUrl
-        ? "Add a scenery photograph to preview your background."
-        : "";
+    const waitingForScene = mode === "softened" && file &&
+      !reconstructedScenes.has(file) && !reconstructionFailed.has(file);
+    elements.previewFeedback.textContent = waitingForScene
+      ? "Preparing the softened background…"
+      : mode === "softened" && file && reconstructionFailed.has(file)
+        ? "We couldn't rebuild the scenery for this photograph. Showing the original."
+        : mode === "personal" && !sceneryUrl
+          ? "Add a scenery photograph to preview your background."
+          : "";
 
     updateComposition();
   }
@@ -798,6 +987,73 @@ export function initBackgroundSelection(): void {
     render();
   });
 
+  // Fine-tuning affects only the scenery, never the pet foreground.
+  blurStrengthButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const choice = button.dataset.blurStrength;
+      if (choice !== "soft" && choice !== "natural" && choice !== "dreamy") return;
+      backgroundSelection.blurStrength = choice;
+      persistBackground();
+      render();
+    });
+  });
+
+  elements.blurFadeInput.addEventListener("input", () => {
+    backgroundSelection.blurFade = Number(elements.blurFadeInput.value);
+    applyBlurFade();
+    elements.blurFadeValue.textContent = `${backgroundSelection.blurFade}%`;
+  });
+  elements.blurFadeInput.addEventListener("change", persistBackground);
+
+  elements.backgroundZoomInput.addEventListener("input", () => {
+    backgroundSelection.backgroundZoom = Number(elements.backgroundZoomInput.value);
+    elements.backgroundZoomValue.textContent = `${backgroundSelection.backgroundZoom}%`;
+    applySceneTransform();
+  });
+  elements.backgroundZoomInput.addEventListener("change", persistBackground);
+
+  elements.resetAdjustments.addEventListener("click", () => {
+    backgroundSelection.blurStrength = "natural";
+    backgroundSelection.blurFade = 55;
+    backgroundSelection.backgroundZoom = 100;
+    backgroundSelection.backgroundX = 0;
+    backgroundSelection.backgroundY = 0;
+    persistBackground();
+    render();
+  });
+
+  // Move personal backgrounds directly on the preview. Pointer events also
+  // support touch. A drag never changes the pet arrangement.
+  let drag: { pointerId: number; x: number; y: number; startX: number; startY: number } | null = null;
+  elements.preview.addEventListener("pointerdown", (event: PointerEvent) => {
+    if (backgroundSelection.preference !== "personal" || !backgroundSelection.photo) return;
+    drag = {
+      pointerId: event.pointerId, x: event.clientX, y: event.clientY,
+      startX: backgroundSelection.backgroundX, startY: backgroundSelection.backgroundY,
+    };
+    elements.preview.setPointerCapture(event.pointerId);
+  });
+  elements.preview.addEventListener("pointermove", (event: PointerEvent) => {
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    const width = Math.max(1, elements.preview.clientWidth);
+    const height = Math.max(1, elements.preview.clientHeight);
+    backgroundSelection.backgroundX = Math.max(-35, Math.min(35,
+      drag.startX + (event.clientX - drag.x) / width * 100));
+    backgroundSelection.backgroundY = Math.max(-35, Math.min(35,
+      drag.startY + (event.clientY - drag.y) / height * 100));
+    applySceneTransform();
+  });
+  function finishDrag(event: PointerEvent): void {
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    drag = null;
+    if (elements.preview.hasPointerCapture(event.pointerId)) {
+      elements.preview.releasePointerCapture(event.pointerId);
+    }
+    persistBackground();
+  }
+  elements.preview.addEventListener("pointerup", finishDrag);
+  elements.preview.addEventListener("pointercancel", finishDrag);
+
   /**
    * Keep the customer's written idea.
    */
@@ -822,6 +1078,7 @@ export function initBackgroundSelection(): void {
     if (atelierState.portrait.subjects.length > 1) render();
   });
   document.addEventListener("atelier:cutout-ready", () => {
+    lastMultiPreviewKey = "";
     if (atelierState.portrait.subjects.length > 1) render();
   });
   const resizeObserver = new ResizeObserver(() => {
@@ -838,7 +1095,19 @@ export function initBackgroundSelection(): void {
       const saved = await loadBackgroundSelection();
       if (!saved || hasChangedBackground) return;
       Object.assign(backgroundSelection, saved);
+      backgroundSelection.blurStrength = ["soft", "natural", "dreamy"].includes(backgroundSelection.blurStrength)
+        ? backgroundSelection.blurStrength : "natural";
+      backgroundSelection.blurFade = Number.isFinite(backgroundSelection.blurFade)
+        ? Math.max(0, Math.min(100, backgroundSelection.blurFade)) : 55;
+      backgroundSelection.backgroundZoom = Number.isFinite(backgroundSelection.backgroundZoom)
+        ? Math.max(100, Math.min(160, backgroundSelection.backgroundZoom)) : 100;
+      backgroundSelection.backgroundX = Number.isFinite(backgroundSelection.backgroundX)
+        ? backgroundSelection.backgroundX : 0;
+      backgroundSelection.backgroundY = Number.isFinite(backgroundSelection.backgroundY)
+        ? backgroundSelection.backgroundY : 0;
       elements.notesInput.value = backgroundSelection.notes;
+      const notesDetails = elements.notesInput.closest<HTMLDetailsElement>(".background-notes-details");
+      if (notesDetails && backgroundSelection.notes.trim()) notesDetails.open = true;
       render();
     } catch {
       elements.uploadFeedback.textContent =

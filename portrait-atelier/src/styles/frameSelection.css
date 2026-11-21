@@ -1,0 +1,87 @@
+/* Step 5 — frame visualisation: mobile-first and independent of Step 4. */
+.frame-screen { padding-bottom: 64px; }
+.frame-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 28px; }
+.frame-preview-column { min-width: 0; }
+.frame-preview-card { border: 1px solid var(--line); border-radius: var(--border-radius); background: var(--white); padding: 18px; }
+.frame-visualiser { width: 100%; display: flex; justify-content: center; align-items: flex-start; min-height: 260px; }
+.frame-stage { --frame-thickness: 0px; width: min(100%, 530px); padding: var(--frame-thickness); box-sizing: border-box; position: relative; filter: drop-shadow(0 6px 8px rgb(51 31 19 / 14%)); }
+.frame-stage .frame-artwork { display: block; width: 100%; position: relative; overflow: hidden; }
+.frame-stage .frame-artwork > .background-preview-canvas { width: 100%; max-width: none; margin: 0; border-radius: 0; }
+.frame-overlay { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; z-index: 3; }
+.frame-overlay[hidden] { display: none; }
+.frame-feedback { min-height: 22px; margin: 13px 0 0; color: var(--muted); font-size: 13px; text-align: center; }
+.frame-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.frame-choice { min-width: 0; display: flex; align-items: center; flex-direction: column; gap: 9px; padding: 12px; text-align: center; border: 1px solid var(--line); border-radius: var(--border-radius); background: var(--white); color: var(--ink); cursor: pointer; }
+.frame-choice:is(:hover,.is-selected) { border-color: var(--olive); }
+.frame-choice.is-selected { background: var(--field-paper); }
+.frame-choice img { display: block; width: 100%; height: 110px; object-fit: contain; background: #f5f0e8; border-radius: 3px; }
+.frame-choice strong { font-family: var(--serif); font-size: 17px; }
+.frame-choice > span { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.frame-choice:focus-visible { outline: 2px solid var(--olive); outline-offset: 3px; }
+.frame-disclaimer { margin-top: 18px; font-size: 13px; line-height: 1.6; color: var(--muted); }
+.frame-screen .step-navigation { margin-top: 32px; }
+@media(max-width: 900px) { .frame-layout { grid-template-columns: 1fr; gap: 18px; } .frame-choices { grid-row: 1; } .frame-preview-column { grid-row: 2; } }
+@media(max-width: 480px) { .frame-choice { padding: 9px; } .frame-choice img { height: 85px; } .frame-choice strong { font-size: 16px; } .frame-preview-card { padding: 10px; } }
+
+
+/* ===== Step 5 layout correction (five-step progress + fully visible artwork) ===== */
+/* The old progress stylesheet allowed a fifth item to wrap. */
+.atelier-progress-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  padding: 0;
+  margin: 16px 0 0;
+  list-style: none;
+}
+.atelier-progress-steps > li {
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+.atelier-progress-steps .atelier-progress-step {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 100%;
+  padding: 8px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+.atelier-progress-steps .progress-label { min-width: 0; }
+
+/* Limit by screen height as well as width: a tall portrait must not
+   fill the entire viewport and hide its bottom behind the browser edge. */
+.frame-visualiser { min-height: 0; align-items: center; }
+.frame-stage {
+  width: min(100%, 440px, calc(52dvh * var(--frame-artwork-ratio, 0.8)));
+  max-width: 100%;
+  flex: none;
+}
+.frame-preview-card { display: flex; justify-content: center; }
+.frame-choices { align-content: start; }
+.frame-choice { padding: 9px; gap: 6px; }
+.frame-choice img, .frame-choice .frame-no-frame-thumb {
+  height: 86px !important;
+  object-fit: contain;
+}
+.frame-choice strong { font-size: 16px; }
+.frame-choice > span { font-size: 11px; }
+
+@media (max-width: 720px) {
+  .atelier-progress-steps { gap: 4px; }
+  .atelier-progress-steps .atelier-progress-step { gap: 4px; padding: 8px 3px; }
+  .atelier-progress-steps .progress-label { font-size: 11px; }
+}
+@media (max-width: 540px) {
+  /* Five circles remain on a single row, with the active step named above. */
+  .atelier-progress-steps .progress-label { display: none; }
+  .atelier-progress-steps .atelier-progress-step { min-height: 42px; }
+  .frame-stage { width: min(100%, 410px, calc(44dvh * var(--frame-artwork-ratio, 0.8))); }
+}

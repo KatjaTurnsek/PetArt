@@ -34,7 +34,7 @@
       <nav class="atelier-progress atelier-container" aria-label="Atelier progress">
         <div class="atelier-progress-heading">
           <span>Your portrait journey</span>
-          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 4 </span>
+          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 5 </span>
         </div>
 
         <div class="atelier-progress-track" aria-hidden="true">
@@ -72,6 +72,12 @@
             <button type="button" class="atelier-progress-step" data-step="4">
               <span class="progress-number">4</span>
               <span class="progress-label">Background</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="5">
+              <span class="progress-number">5</span>
+              <span class="progress-label">Frames</span>
             </button>
           </li>
         </ol>
@@ -615,6 +621,141 @@
                 role="status"
                 aria-live="polite"
               ></p>
+              <!-- Contextual controls stay next to the image they affect. -->
+              <div class="background-preview-adjustments" aria-label="Background adjustments">
+                <div
+                  id="background-swatches"
+                  class="background-option-panel background-swatches"
+                  hidden
+                >
+                  <p>Choose a colour</p>
+                  <div
+                    class="background-swatch-list"
+                    role="group"
+                    aria-label="Mottled background colours"
+                  >
+                    <button
+                      type="button"
+                      class="background-swatch is-selected"
+                      data-tone="ivory"
+                      aria-pressed="true"
+                      aria-label="Warm linen"
+                      title="Warm linen"
+                    >
+                      <span class="swatch-colour swatch-ivory" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="stone"
+                      aria-pressed="false"
+                      aria-label="Soft taupe"
+                      title="Soft taupe"
+                    >
+                      <span class="swatch-colour swatch-stone" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="sage"
+                      aria-pressed="false"
+                      aria-label="Olive green"
+                      title="Olive green"
+                    >
+                      <span class="swatch-colour swatch-sage" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="umber"
+                      aria-pressed="false"
+                      aria-label="Deep umber"
+                      title="Deep umber"
+                    >
+                      <span class="swatch-colour swatch-umber" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="blue"
+                      aria-pressed="false"
+                      aria-label="Smoky blue"
+                      title="Smoky blue"
+                    >
+                      <span class="swatch-colour swatch-blue" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  id="background-reference"
+                  class="background-option-panel background-reference"
+                  hidden
+                >
+                  <div class="background-reference-upload-row">
+                    <label for="background-photo" class="background-upload-label">
+                      <span aria-hidden="true">↑</span>
+                      <span>Choose scenery photo</span>
+                    </label>
+                    <input
+                      type="file"
+                      id="background-photo"
+                      name="background-photo"
+                      accept="image/jpeg,image/png,image/webp"
+                      class="visually-hidden"
+                      aria-describedby="background-upload-feedback"
+                    />
+                    <div id="background-photo-preview" class="background-photo-preview" hidden>
+                      <img id="background-preview-image" alt="Uploaded background reference" />
+                      <button type="button" id="remove-background-photo" class="btn btn-text">
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <p id="background-upload-feedback" role="status" aria-live="polite"></p>
+                  <details class="background-notes-details">
+                    <summary>Add a background note (optional)</summary>
+                    <label for="background-notes" class="visually-hidden">Describe your background idea</label>
+                    <textarea
+                      id="background-notes"
+                      name="background-notes"
+                      rows="2"
+                      maxlength="1000"
+                      placeholder="For example: our garden in summer."
+                    ></textarea>
+                  </details>
+                </div>
+
+              <details class="background-finetune" id="background-finetune" hidden>
+                <summary>Fine-tune background</summary>
+                <div class="background-finetune-controls">
+                  <div class="background-control-group">
+                    <span class="background-control-heading">Background softness</span>
+                    <div class="background-blur-presets" role="group" aria-label="Blur strength">
+                      <button type="button" class="background-blur-preset" data-blur-strength="soft" aria-pressed="false">Soft</button>
+                      <button type="button" class="background-blur-preset is-selected" data-blur-strength="natural" aria-pressed="true">Natural</button>
+                      <button type="button" class="background-blur-preset" data-blur-strength="dreamy" aria-pressed="false">Dreamy</button>
+                    </div>
+                  </div>
+                  <div class="background-control-group">
+                    <label class="background-control-heading" for="background-blur-fade">
+                      <span>Blur near the ground</span>
+                      <output id="background-blur-fade-value" for="background-blur-fade">55%</output>
+                    </label>
+                    <input id="background-blur-fade" type="range" min="0" max="100" step="5" value="55" />
+                    <div class="background-range-ends"><span>Ground stays sharp</span><span>Blur reaches ground</span></div>
+                  </div>
+                  <div class="background-personal-position background-control-group" id="background-personal-position" hidden>
+                    <label class="background-control-heading" for="background-zoom">
+                      <span>Background zoom</span><output id="background-zoom-value" for="background-zoom">100%</output>
+                    </label>
+                    <input id="background-zoom" type="range" min="100" max="160" step="5" value="100" />
+                    <p class="background-finetune-help">Drag the scenery in the preview to reposition it. Your pets stay in place.</p>
+                  </div>
+                  <p class="background-finetune-help">These adjustments are for visualisation. The final painting is composed personally.</p>
+                  <button id="background-reset-adjustments" class="btn btn-text background-finetune-reset" type="button">Reset adjustments</button>
+                </div>
+              </details>
+              </div>
               <p class="background-preview-disclaimer">
                 A visual idea to explore. Your finished portrait will be individually composed and
                 hand-painted.
@@ -680,69 +821,7 @@
                   >
                   <span class="background-option-check" aria-hidden="true">✓</span>
                 </button>
-                <div
-                  id="background-swatches"
-                  class="background-option-panel background-swatches"
-                  hidden
-                >
-                  <p>Choose a colour</p>
-                  <div
-                    class="background-swatch-list"
-                    role="group"
-                    aria-label="Mottled background colours"
-                  >
-                    <button
-                      type="button"
-                      class="background-swatch is-selected"
-                      data-tone="ivory"
-                      aria-pressed="true"
-                      aria-label="Warm linen"
-                      title="Warm linen"
-                    >
-                      <span class="swatch-colour swatch-ivory" aria-hidden="true"></span>
-                    </button>
-                    <button
-                      type="button"
-                      class="background-swatch"
-                      data-tone="stone"
-                      aria-pressed="false"
-                      aria-label="Soft taupe"
-                      title="Soft taupe"
-                    >
-                      <span class="swatch-colour swatch-stone" aria-hidden="true"></span>
-                    </button>
-                    <button
-                      type="button"
-                      class="background-swatch"
-                      data-tone="sage"
-                      aria-pressed="false"
-                      aria-label="Olive green"
-                      title="Olive green"
-                    >
-                      <span class="swatch-colour swatch-sage" aria-hidden="true"></span>
-                    </button>
-                    <button
-                      type="button"
-                      class="background-swatch"
-                      data-tone="umber"
-                      aria-pressed="false"
-                      aria-label="Deep umber"
-                      title="Deep umber"
-                    >
-                      <span class="swatch-colour swatch-umber" aria-hidden="true"></span>
-                    </button>
-                    <button
-                      type="button"
-                      class="background-swatch"
-                      data-tone="blue"
-                      aria-pressed="false"
-                      aria-label="Smoky blue"
-                      title="Smoky blue"
-                    >
-                      <span class="swatch-colour swatch-blue" aria-hidden="true"></span>
-                    </button>
-                  </div>
-                </div>
+
               </article>
 
               <article class="background-option-card">
@@ -762,46 +841,9 @@
                   >
                   <span class="background-option-check" aria-hidden="true">✓</span>
                 </button>
-                <div
-                  id="background-reference"
-                  class="background-option-panel background-reference"
-                  hidden
-                >
-                  <p class="background-reference-intro">
-                    Upload a background reference, or describe the setting you have in mind.
-                  </p>
-                  <label for="background-photo" class="background-upload-label"
-                    ><span aria-hidden="true">↑</span
-                    ><span>Upload background photograph</span></label
-                  >
-                  <input
-                    type="file"
-                    id="background-photo"
-                    name="background-photo"
-                    accept="image/jpeg,image/png,image/webp"
-                    class="visually-hidden"
-                    aria-describedby="background-upload-feedback"
-                  />
-                  <div id="background-photo-preview" class="background-photo-preview" hidden>
-                    <img id="background-preview-image" alt="Uploaded background reference" />
-                    <button type="button" id="remove-background-photo" class="btn btn-secondary">
-                      Remove background image
-                    </button>
-                  </div>
-                  <p id="background-upload-feedback" role="status" aria-live="polite"></p>
-                  <label for="background-notes"
-                    >Describe the background idea
-                    <span class="optional-label">(optional)</span></label
-                  >
-                  <textarea
-                    id="background-notes"
-                    name="background-notes"
-                    rows="4"
-                    maxlength="1000"
-                    placeholder="For example: our garden in summer, a softer countryside setting, or something simple and painterly."
-                  ></textarea>
-                </div>
+
               </article>
+
             </section>
           </div>
 
@@ -810,6 +852,53 @@
             <button type="button" class="btn btn-primary" id="background-continue">
               Continue <span aria-hidden="true">→</span>
             </button>
+          </nav>
+        </section>
+
+        <!-- SCREEN 05 — FRAME PREVIEW -->
+        <section id="frame-screen" class="atelier-container frame-screen" aria-labelledby="frame-heading" hidden>
+          <div class="step-header">
+            <span class="step-number">Step 5</span>
+            <h1 id="frame-heading">Try a frame</h1>
+            <p>Explore how different frames could complement your portrait. No frame is the default.</p>
+          </div>
+          <div class="frame-layout">
+            <div class="frame-preview-column">
+              <div class="frame-preview-card">
+                <div id="frame-visualiser" class="frame-visualiser">
+                  <div id="frame-stage" class="frame-stage">
+                    <div id="frame-artwork" class="frame-artwork"></div>
+                    <canvas id="frame-overlay" class="frame-overlay" aria-hidden="true"></canvas>
+                  </div>
+                </div>
+              </div>
+              <p id="frame-feedback" class="frame-feedback" role="status" aria-live="polite"></p>
+            </div>
+            <div>
+              <div class="frame-choices" role="group" aria-label="Frame style">
+                <button type="button" class="frame-choice is-selected" data-frame-style="none" aria-pressed="true">
+                  <span class="frame-no-frame-thumb" aria-hidden="true" style="display:grid;place-items:center;background:#e9dfd2;width:100%;height:110px;border:1px solid #cfc5b8;">No frame</span>
+                  <strong>No frame</strong><span>Gallery-wrapped canvas</span>
+                </button>
+                <button type="button" class="frame-choice" data-frame-style="rustic" aria-pressed="false">
+                  <img src="/frames/rustic-corner.png" alt="" loading="lazy" />
+                  <strong>Rustic wood</strong><span>Weathered and characterful</span>
+                </button>
+                <button type="button" class="frame-choice" data-frame-style="antique-gold" aria-pressed="false">
+                  <img src="/frames/antique-gold-corner.png" alt="" loading="lazy" />
+                  <strong>Antique gold</strong><span>Classic and decorative</span>
+                </button>
+                <button type="button" class="frame-choice" data-frame-style="natural-wood" aria-pressed="false">
+                  <img src="/frames/natural-wood-corner.png" alt="" loading="lazy" />
+                  <strong>Natural wood</strong><span>Warm and understated</span>
+                </button>
+              </div>
+              <p class="frame-disclaimer">Frame options are for inspiration only. Physical framing is not currently offered.</p>
+            </div>
+          </div>
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="frame-back">Back</button>
+            <button type="button" class="btn btn-primary" id="frame-continue">Continue <span aria-hidden="true">→</span></button>
           </nav>
         </section>
       </main>
