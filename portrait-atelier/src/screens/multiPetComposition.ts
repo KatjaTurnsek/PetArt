@@ -585,13 +585,13 @@ export function initMultiPetComposition(): void {
   function moveLayer(direction: -1 | 1): void {
     const subjects = orderedSubjects();
     const index = subjects.findIndex((subject) => subject.id === selectedId);
-    const swapIndex = index + direction;
-    if (index < 0 || swapIndex < 0 || swapIndex >= subjects.length) return;
-    const other = subjects[swapIndex];
-    const current = subjects[index];
-    const oldLayer = current.layer;
-    current.layer = other.layer;
-    other.layer = oldLayer;
+    const next = index + direction;
+    if (index < 0 || next < 0 || next >= subjects.length) return;
+    // Reassign all layer numbers. Swapping two numbers can fail if a
+    // restored composition contains duplicate or nonsequential values.
+    const [selected] = subjects.splice(index, 1);
+    subjects.splice(next, 0, selected);
+    subjects.forEach((subject, position) => { subject.layer = position; });
     save();
     buildStage();
   }

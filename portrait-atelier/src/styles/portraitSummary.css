@@ -1,0 +1,19 @@
+/* Step 7 — read-only summary. No styles leak into Steps 1–6. */
+.summary-screen { padding-bottom: 64px; }
+.summary-layout { display:grid; grid-template-columns:minmax(0, 1.15fr) minmax(0, .85fr); gap:28px; margin-top:28px; align-items:start; }
+.summary-preview-card { padding: 30px; background:var(--white); border:1px solid var(--line); border-radius:var(--border-radius); }
+.summary-artwork-preview { display:flex; justify-content:center; align-items:center; min-height:220px; padding:36px; color:var(--muted); text-align:center; }
+.summary-artwork-preview .frame-stage { max-width:100%; }
+.summary-detail-card { padding:28px; background:var(--field-paper); border:1px solid var(--line); border-radius:var(--border-radius); }
+.summary-detail-card h2 { font-family:var(--serif); margin:0 0 18px; font-size:26px; }
+.summary-details { margin:0; }
+.summary-details > div { display:flex; justify-content:space-between; align-items:baseline; gap:14px; padding:13px 0; border-bottom:1px solid var(--line); }
+.summary-details dt { font-size:14px; color:var(--muted); }
+.summary-details dd { margin:0; text-align:right; font-weight:600; }
+.summary-note { color:var(--muted); font-size:13px; line-height:1.7; margin:22px 0 0; }
+.summary-next { margin-top:24px; font-size:14px; line-height:1.7; }
+.summary-screen .step-navigation { margin-top:32px; }
+/* Progress is now seven steps. Keep other navigation styles and mobile rules. */
+.atelier-progress-steps { grid-template-columns:repeat(7,minmax(0,1fr)); }
+@media(max-width:900px) { .summary-layout { grid-template-columns:1fr; } }
+@media(max-width:540px) { .summary-preview-card, .summary-detail-card { padding:16px; } .summary-artwork-preview { padding:20px; } }

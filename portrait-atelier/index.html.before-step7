@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Explore your ideas for a beautiful, hand-painted pet portrait with Pet Art with Heart."
+    />
+
+    <title>Portrait Atelier | Pet Art with Heart</title>
+  </head>
+
+  <body>
+    <div class="atelier-screen">
+      <!-- ==========================================
+           ATELIER HEADER
+           ========================================== -->
+
+      <header class="atelier-header atelier-container">
+        <a class="atelier-brand" href="/" aria-label="Pet Art with Heart homepage">
+          <span class="atelier-brand-name">Pet Art with Heart</span>
+          <span class="atelier-brand-subtitle">PORTRAIT ATELIER</span>
+        </a>
+
+        <a class="atelier-exit" href="/"> Exit Atelier <span aria-hidden="true">×</span> </a>
+      </header>
+
+      <!-- ==========================================
+     ATELIER PROGRESS NAVIGATION
+     ========================================== -->
+
+      <nav class="atelier-progress atelier-container" aria-label="Atelier progress">
+        <div class="atelier-progress-heading">
+          <span>Your portrait journey</span>
+          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 6 </span>
+        </div>
+
+        <div class="atelier-progress-track" aria-hidden="true">
+          <div class="atelier-progress-fill" id="atelier-progress-fill"></div>
+        </div>
+
+        <ol class="atelier-progress-steps">
+          <li>
+            <button
+              type="button"
+              class="atelier-progress-step is-current"
+              data-step="1"
+              aria-current="step"
+            >
+              <span class="progress-number">1</span>
+              <span class="progress-label">Welcome</span>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="2">
+              <span class="progress-number">2</span>
+              <span class="progress-label">Photographs</span>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="3">
+              <span class="progress-number">3</span>
+              <span class="progress-label">Canvas</span>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="4">
+              <span class="progress-number">4</span>
+              <span class="progress-label">Background</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="5">
+              <span class="progress-number">5</span>
+              <span class="progress-label">Frames</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="6">
+              <span class="progress-number">6</span>
+              <span class="progress-label">Room</span>
+            </button>
+          </li>
+        </ol>
+      </nav>
+
+      <main id="atelier-main">
+        <!-- ==========================================
+             SCREEN 01 — WELCOME
+             ========================================== -->
+
+        <section class="atelier-welcome atelier-container">
+          <div class="welcome-content">
+            <p class="welcome-eyebrow">A PERSONAL PORTRAIT EXPERIENCE</p>
+
+            <h1>Every portrait begins with a story.</h1>
+
+            <p class="welcome-description">
+              Let's imagine a beautiful portrait of your companion. Explore your ideas, try
+              different possibilities, and share your vision with me.
+            </p>
+
+            <div class="welcome-choices">
+              <button class="selection-card welcome-choice" type="button" data-choice="guided">
+                <span class="choice-icon" aria-hidden="true">♡</span>
+
+                <span class="choice-content">
+                  <strong>Guide me</strong>
+                  <span>I'd love a little inspiration.</span>
+                </span>
+
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+
+              <button class="selection-card welcome-choice" type="button" data-choice="photo">
+                <span class="choice-icon" aria-hidden="true">▧</span>
+
+                <span class="choice-content">
+                  <strong>I have a photograph</strong>
+                  <span>Let's explore what it could become.</span>
+                </span>
+
+                <span class="choice-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <p class="welcome-note">
+              No commitment, no payment — just a little creative exploration.
+            </p>
+
+            <a class="welcome-contact" href="/html/contact.html">
+              Prefer to contact me directly?
+            </a>
+          </div>
+
+          <div class="welcome-artwork" aria-hidden="true">
+            <div class="artwork-placeholder">
+              <span>Your artwork image</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SCREEN 02 — PHOTOGRAPHS
+             ========================================== -->
+
+        <section
+          id="photo-screen"
+          class="atelier-container photo-screen"
+          aria-labelledby="photo-heading"
+          hidden
+        >
+          <div class="step-header">
+            <span class="step-number">Step 2</span>
+            <h1 id="photo-heading">Who will be in your portrait?</h1>
+            <p>Start with one pet, or bring several together from different photographs.</p>
+          </div>
+
+          <div class="pet-count-options" role="group" aria-label="Number of pets">
+            <button
+              type="button"
+              class="pet-count-option is-selected"
+              data-pet-count="one"
+              aria-pressed="true"
+            >
+              <strong>One pet</strong>
+              <span>A favourite companion</span>
+            </button>
+            <button
+              type="button"
+              class="pet-count-option"
+              data-pet-count="several"
+              aria-pressed="false"
+            >
+              <strong>Several pets</strong>
+              <span>Bring them together</span>
+            </button>
+          </div>
+
+          <div class="photo-upload">
+            <label for="pet-photo" class="photo-upload-label">
+              <span class="upload-icon" aria-hidden="true">+</span>
+              <strong id="photo-upload-title">Choose a photograph</strong>
+              <span id="photo-upload-description">Tap here to select a photo from your device</span>
+              <span>JPG, PNG or WebP · Maximum 15 MB per photograph</span>
+            </label>
+            <input
+              type="file"
+              id="pet-photo"
+              name="pet-photo"
+              accept="image/jpeg,image/png,image/webp"
+              class="visually-hidden"
+              aria-describedby="upload-feedback"
+            />
+
+            <!-- Kept for compatibility with the original single-photo preview. -->
+            <div class="photo-preview" id="photo-preview" hidden>
+              <img id="photo-preview-image" alt="Your selected pet photograph" />
+              <button type="button" class="btn btn-secondary" id="change-photo">
+                Change photograph
+              </button>
+            </div>
+
+            <div
+              id="pet-photo-list"
+              class="pet-photo-list"
+              aria-label="Selected pet photographs"
+              hidden
+            ></div>
+            <p class="upload-feedback" id="upload-feedback" role="status" aria-live="polite"></p>
+          </div>
+
+          <p class="photo-assistance-note" id="photo-assistance-note" hidden>
+            Add one photograph per pet. In the next step, choose a canvas size to arrange them
+            together.
+          </p>
+
+          <div class="photo-alternative">
+            <p>Don't have a photograph ready?</p>
+            <button class="btn btn-secondary" type="button" id="use-example">Try an example</button>
+            <button class="btn btn-text" type="button" id="skip-photo">
+              I'll send my photographs later
+            </button>
+          </div>
+
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button class="btn btn-secondary" type="button" id="photo-back">Back</button>
+            <button class="btn btn-primary" type="button" id="photo-continue">Continue</button>
+          </nav>
+        </section>
+
+        <!-- ==========================================
+             SCREEN 03 — CANVAS SHAPE AND SIZE
+             ========================================== -->
+
+        <section
+          id="canvas-screen"
+          class="atelier-container canvas-screen"
+          aria-labelledby="canvas-heading"
+          hidden
+        >
+          <div class="step-header">
+            <span class="step-number">Step 3</span>
+
+            <h1 id="canvas-heading">Choose your canvas</h1>
+
+            <p>
+              Explore different shapes and sizes to find the right composition for your portrait.
+            </p>
+          </div>
+
+          <!-- ==========================================
+               CANVAS SHAPE SELECTION
+               ========================================== -->
+
+          <div class="shape-options" role="group" aria-label="Choose a canvas shape">
+            <!-- Portrait -->
+
+            <button
+              type="button"
+              class="selection-card shape-option is-selected"
+              data-shape="portrait"
+              aria-pressed="true"
+            >
+              <span class="shape-check" aria-hidden="true"> ✓ </span>
+
+              <span class="shape-illustration">
+                <span class="canvas-outline canvas-outline--portrait"></span>
+              </span>
+
+              <strong class="shape-name">Portrait</strong>
+
+              <span class="shape-description"> A taller format for classic portraits. </span>
+            </button>
+
+            <!-- Landscape -->
+
+            <button
+              type="button"
+              class="selection-card shape-option"
+              data-shape="landscape"
+              aria-pressed="false"
+            >
+              <span class="shape-check" aria-hidden="true"> ✓ </span>
+
+              <span class="shape-illustration">
+                <span class="canvas-outline canvas-outline--landscape"></span>
+              </span>
+
+              <strong class="shape-name">Landscape</strong>
+
+              <span class="shape-description"> A wider format for relaxed compositions. </span>
+            </button>
+
+            <!-- Square -->
+
+            <button
+              type="button"
+              class="selection-card shape-option"
+              data-shape="square"
+              aria-pressed="false"
+            >
+              <span class="shape-check" aria-hidden="true"> ✓ </span>
+
+              <span class="shape-illustration">
+                <span class="canvas-outline canvas-outline--square"></span>
+              </span>
+
+              <strong class="shape-name">Square</strong>
+
+              <span class="shape-description"> A balanced format with a timeless feel. </span>
+            </button>
+          </div>
+
+          <!-- ==========================================
+               CANVAS SIZE SELECTION AND PREVIEW
+               ========================================== -->
+
+          <section class="canvas-size-selection" aria-labelledby="canvas-size-heading">
+            <div class="canvas-size-header">
+              <h2 id="canvas-size-heading">Find the perfect canvas size</h2>
+
+              <p>
+                Explore different dimensions, see how your portrait looks, and compare sizes side by
+                side.
+              </p>
+            </div>
+
+            <div class="canvas-size-layout">
+              <!-- ==========================================
+                   LEFT — SIZE SELECTION
+                   ========================================== -->
+
+              <div class="canvas-size-sidebar">
+                <h3>Choose a size</h3>
+
+                <div
+                  id="canvas-size-options"
+                  class="canvas-size-options"
+                  role="group"
+                  aria-label="Choose a canvas size"
+                >
+                  <!-- Standard sizes generated by TypeScript -->
+                </div>
+
+                <!-- Bespoke size option -->
+
+                <div class="custom-size-option">
+                  <button
+                    type="button"
+                    class="selection-card canvas-size-option custom-size-button"
+                    id="custom-size"
+                    aria-pressed="false"
+                    aria-controls="custom-size-fields"
+                  >
+                    <strong class="canvas-size-dimensions"> Custom size </strong>
+
+                    <span class="canvas-size-price"> On request </span>
+                  </button>
+                </div>
+
+                <!-- ==========================================
+                     CUSTOM DIMENSION CONTROLS
+                     ========================================== -->
+
+                <div id="custom-size-fields" class="custom-size-fields" hidden>
+                  <p class="custom-size-intro">Have a particular size in mind?</p>
+
+                  <div class="custom-size-inputs">
+                    <!-- Width -->
+
+                    <div class="custom-size-field">
+                      <label for="custom-width"> Width (cm) </label>
+
+                      <div class="dimension-control">
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="width"
+                          data-action="decrease"
+                          aria-label="Decrease width by 5 centimetres"
+                        >
+                          −
+                        </button>
+
+                        <input
+                          type="number"
+                          id="custom-width"
+                          name="custom-width"
+                          min="25"
+                          max="200"
+                          step="5"
+                          value="50"
+                          readonly
+                        />
+
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="width"
+                          data-action="increase"
+                          aria-label="Increase width by 5 centimetres"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Height -->
+
+                    <div class="custom-size-field">
+                      <label for="custom-height"> Height (cm) </label>
+
+                      <div class="dimension-control">
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="height"
+                          data-action="decrease"
+                          aria-label="Decrease height by 5 centimetres"
+                        >
+                          −
+                        </button>
+
+                        <input
+                          type="number"
+                          id="custom-height"
+                          name="custom-height"
+                          min="25"
+                          max="200"
+                          step="5"
+                          value="40"
+                          readonly
+                        />
+
+                        <button
+                          type="button"
+                          class="dimension-button"
+                          data-dimension="height"
+                          data-action="increase"
+                          aria-label="Increase height by 5 centimetres"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="custom-size-note">
+                    Use + and − to adjust your canvas in 5 cm increments. I'll confirm the final
+                    dimensions and price personally.
+                  </p>
+                </div>
+
+                <p id="canvas-size-feedback" class="canvas-size-feedback" role="status"></p>
+              </div>
+
+              <!-- ==========================================
+     RIGHT — VISUAL CANVAS COMPARISON
+     ========================================== -->
+
+              <div class="canvas-size-preview">
+                <div class="size-preview-canvases">
+                  <!-- LEFT: Customer's selected canvas -->
+                  <figure class="size-preview-item">
+                    <div class="size-preview-artwork" id="size-preview-second">
+                      <span>Canvas preview</span>
+                    </div>
+
+                    <figcaption id="size-preview-second-label">Selected size</figcaption>
+                  </figure>
+
+                  <!-- RIGHT: Comparison canvas -->
+                  <figure class="size-preview-item">
+                    <div class="size-preview-artwork" id="size-preview-first">
+                      <span>Canvas preview</span>
+                    </div>
+
+                    <figcaption id="size-preview-first-label">Comparison size</figcaption>
+                  </figure>
+                </div>
+
+                <!-- Photograph composition controls -->
+                <div class="canvas-composition-controls" id="canvas-composition-controls" hidden>
+                  <p class="composition-instruction">
+                    Drag your photograph to adjust its position.
+                  </p>
+
+                  <div class="composition-zoom">
+                    <label for="composition-zoom"> Zoom </label>
+
+                    <input
+                      type="range"
+                      id="composition-zoom"
+                      min="1"
+                      max="3"
+                      step="0.1"
+                      value="1"
+                    />
+
+                    <output id="composition-zoom-value" for="composition-zoom"> 100% </output>
+
+                    <button type="button" class="btn btn-text" id="composition-reset">Reset</button>
+                  </div>
+                </div>
+
+                <!-- Preview controls -->
+                <div class="size-preview-toolbar">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="view-single-size"
+                    aria-pressed="false"
+                  >
+                    View single size
+                  </button>
+
+                  <div class="comparison-controls">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      id="compare-sizes"
+                      aria-pressed="true"
+                    >
+                      Compare sizes
+                    </button>
+
+                    <div class="comparison-size-selector" id="comparison-size-selector">
+                      <label for="comparison-size" class="visually-hidden">
+                        Compare with canvas size
+                      </label>
+
+                      <select
+                        id="comparison-size"
+                        name="comparison-size"
+                        aria-label="Compare with canvas size"
+                      >
+                        <!-- Options generated by TypeScript -->
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 SIZE GUIDANCE
+                 ========================================== -->
+
+            <aside class="size-help" aria-labelledby="size-help-heading">
+              <div>
+                <h3 id="size-help-heading">A small difference can make a big impact</h3>
+
+                <p>Compare different canvas sizes to see which composition feels right.</p>
+              </div>
+
+              <p>Not sure? I'll be happy to help you choose the ideal size.</p>
+            </aside>
+          </section>
+
+          <!-- ==========================================
+               STEP NAVIGATION
+               ========================================== -->
+
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button class="btn btn-secondary" type="button" id="canvas-back">Back</button>
+
+            <button class="btn btn-primary" type="button" id="canvas-continue">
+              Continue
+              <span aria-hidden="true">→</span>
+            </button>
+          </nav>
+        </section>
+
+        <!-- ==========================================
+             SCREEN 04 — BACKGROUND VISUALISER
+             ========================================== -->
+        <section
+          id="background-screen"
+          class="atelier-container background-screen"
+          aria-labelledby="background-heading"
+          hidden
+        >
+          <div class="step-header">
+            <span class="step-number">Step 4</span>
+            <h1 id="background-heading">Choose a background</h1>
+            <p>
+              Set the atmosphere for your portrait. Keep the original, soften it, or try something
+              new.
+            </p>
+          </div>
+
+          <div class="background-studio">
+            <!-- LEFT: LIVE PREVIEW -->
+            <section class="background-studio-preview" aria-labelledby="background-preview-title">
+              <h2 id="background-preview-title" class="visually-hidden">Background preview</h2>
+              <div class="background-preview-frame">
+                <div
+                  id="background-live-preview"
+                  class="background-preview-canvas"
+                  data-mode="original"
+                  data-display="original"
+                  data-tone="ivory"
+                >
+                  <div id="background-scene" class="background-scene">
+                    <img id="background-scene-image" alt="" hidden />
+                  </div>
+                  <img
+                    id="background-subject-image"
+                    class="background-subject-image"
+                    alt=""
+                    hidden
+                  />
+                  <p id="background-empty-message" class="background-empty-message">
+                    Your background preview will appear here.
+                  </p>
+                </div>
+              </div>
+              <p
+                id="background-preview-feedback"
+                class="background-preview-feedback"
+                role="status"
+                aria-live="polite"
+              ></p>
+              <!-- Contextual controls stay next to the image they affect. -->
+              <div class="background-preview-adjustments" aria-label="Background adjustments">
+                <div
+                  id="background-swatches"
+                  class="background-option-panel background-swatches"
+                  hidden
+                >
+                  <p>Choose a colour</p>
+                  <div
+                    class="background-swatch-list"
+                    role="group"
+                    aria-label="Mottled background colours"
+                  >
+                    <button
+                      type="button"
+                      class="background-swatch is-selected"
+                      data-tone="ivory"
+                      aria-pressed="true"
+                      aria-label="Warm linen"
+                      title="Warm linen"
+                    >
+                      <span class="swatch-colour swatch-ivory" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="stone"
+                      aria-pressed="false"
+                      aria-label="Soft taupe"
+                      title="Soft taupe"
+                    >
+                      <span class="swatch-colour swatch-stone" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="sage"
+                      aria-pressed="false"
+                      aria-label="Olive green"
+                      title="Olive green"
+                    >
+                      <span class="swatch-colour swatch-sage" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="umber"
+                      aria-pressed="false"
+                      aria-label="Deep umber"
+                      title="Deep umber"
+                    >
+                      <span class="swatch-colour swatch-umber" aria-hidden="true"></span>
+                    </button>
+                    <button
+                      type="button"
+                      class="background-swatch"
+                      data-tone="blue"
+                      aria-pressed="false"
+                      aria-label="Smoky blue"
+                      title="Smoky blue"
+                    >
+                      <span class="swatch-colour swatch-blue" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  id="background-reference"
+                  class="background-option-panel background-reference"
+                  hidden
+                >
+                  <div class="background-reference-upload-row">
+                    <label for="background-photo" class="background-upload-label">
+                      <span aria-hidden="true">↑</span>
+                      <span>Choose scenery photo</span>
+                    </label>
+                    <input
+                      type="file"
+                      id="background-photo"
+                      name="background-photo"
+                      accept="image/jpeg,image/png,image/webp"
+                      class="visually-hidden"
+                      aria-describedby="background-upload-feedback"
+                    />
+                    <div id="background-photo-preview" class="background-photo-preview" hidden>
+                      <img id="background-preview-image" alt="Uploaded background reference" />
+                      <button type="button" id="remove-background-photo" class="btn btn-text">
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                  <p id="background-upload-feedback" role="status" aria-live="polite"></p>
+                  <details class="background-notes-details">
+                    <summary>Add a background note (optional)</summary>
+                    <label for="background-notes" class="visually-hidden">Describe your background idea</label>
+                    <textarea
+                      id="background-notes"
+                      name="background-notes"
+                      rows="2"
+                      maxlength="1000"
+                      placeholder="For example: our garden in summer."
+                    ></textarea>
+                  </details>
+                </div>
+
+              <details class="background-finetune" id="background-finetune" hidden>
+                <summary>Fine-tune background</summary>
+                <div class="background-finetune-controls">
+                  <div class="background-control-group">
+                    <span class="background-control-heading">Background softness</span>
+                    <div class="background-blur-presets" role="group" aria-label="Blur strength">
+                      <button type="button" class="background-blur-preset" data-blur-strength="soft" aria-pressed="false">Soft</button>
+                      <button type="button" class="background-blur-preset is-selected" data-blur-strength="natural" aria-pressed="true">Natural</button>
+                      <button type="button" class="background-blur-preset" data-blur-strength="dreamy" aria-pressed="false">Dreamy</button>
+                    </div>
+                  </div>
+                  <div class="background-control-group">
+                    <label class="background-control-heading" for="background-blur-fade">
+                      <span>Blur near the ground</span>
+                      <output id="background-blur-fade-value" for="background-blur-fade">55%</output>
+                    </label>
+                    <input id="background-blur-fade" type="range" min="0" max="100" step="5" value="55" />
+                    <div class="background-range-ends"><span>Ground stays sharp</span><span>Blur reaches ground</span></div>
+                  </div>
+                  <div class="background-personal-position background-control-group" id="background-personal-position" hidden>
+                    <label class="background-control-heading" for="background-zoom">
+                      <span>Background zoom</span><output id="background-zoom-value" for="background-zoom">100%</output>
+                    </label>
+                    <input id="background-zoom" type="range" min="100" max="160" step="5" value="100" />
+                    <p class="background-finetune-help">Drag the scenery in the preview to reposition it. Your pets stay in place.</p>
+                  </div>
+                  <p class="background-finetune-help">These adjustments are for visualisation. The final painting is composed personally.</p>
+                  <button id="background-reset-adjustments" class="btn btn-text background-finetune-reset" type="button">Reset adjustments</button>
+                </div>
+              </details>
+              </div>
+              <p class="background-preview-disclaimer">
+                A visual idea to explore. Your finished portrait will be individually composed and
+                hand-painted.
+              </p>
+            </section>
+
+            <!-- RIGHT: OPTIONS WITH EXPANDING CONTROLS -->
+            <section class="background-options" aria-labelledby="background-options-title">
+              <h2 id="background-options-title" class="visually-hidden">Background options</h2>
+
+              <article class="background-option-card">
+                <button
+                  type="button"
+                  class="background-option is-selected"
+                  data-background="original"
+                  aria-pressed="true"
+                >
+                  <span class="background-option-thumbnail thumbnail-original" aria-hidden="true"
+                    ><span class="thumbnail-symbol">▧</span></span
+                  >
+                  <span class="background-option-copy"
+                    ><strong>Keep my background</strong
+                    ><span>Use the photograph as it is.</span></span
+                  >
+                  <span class="background-option-check" aria-hidden="true">✓</span>
+                </button>
+              </article>
+
+              <article class="background-option-card">
+                <button
+                  type="button"
+                  class="background-option"
+                  data-background="softened"
+                  aria-pressed="false"
+                >
+                  <span class="background-option-thumbnail thumbnail-softened" aria-hidden="true"
+                    ><span class="thumbnail-symbol">◌</span></span
+                  >
+                  <span class="background-option-copy"
+                    ><strong>Soften the background</strong
+                    ><span>A gentle blur that keeps the focus on your pet.</span></span
+                  >
+                  <span class="background-option-check" aria-hidden="true">✓</span>
+                </button>
+              </article>
+
+              <article class="background-option-card">
+                <button
+                  type="button"
+                  class="background-option"
+                  data-background="neutral"
+                  aria-pressed="false"
+                  aria-controls="background-swatches"
+                >
+                  <span class="background-option-thumbnail thumbnail-neutral" aria-hidden="true"
+                    ><span class="thumbnail-symbol">✦</span></span
+                  >
+                  <span class="background-option-copy"
+                    ><strong>Try a mottled background</strong
+                    ><span
+                      >A soft, painterly background that brings out your pet’s character.</span
+                    ></span
+                  >
+                  <span class="background-option-check" aria-hidden="true">✓</span>
+                </button>
+
+              </article>
+
+              <article class="background-option-card">
+                <button
+                  type="button"
+                  class="background-option"
+                  data-background="personal"
+                  aria-pressed="false"
+                  aria-controls="background-reference"
+                >
+                  <span class="background-option-thumbnail thumbnail-personal" aria-hidden="true"
+                    ><span class="thumbnail-symbol">＋</span></span
+                  >
+                  <span class="background-option-copy"
+                    ><strong>Use my own background</strong
+                    ><span>Try a garden, favourite place or special scenery.</span></span
+                  >
+                  <span class="background-option-check" aria-hidden="true">✓</span>
+                </button>
+
+              </article>
+
+            </section>
+          </div>
+
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="background-back">Back</button>
+            <button type="button" class="btn btn-primary" id="background-continue">
+              Continue <span aria-hidden="true">→</span>
+            </button>
+          </nav>
+        </section>
+
+        <!-- SCREEN 05 — FRAME PREVIEW -->
+        <section id="frame-screen" class="atelier-container frame-screen" aria-labelledby="frame-heading" hidden>
+          <div class="step-header">
+            <span class="step-number">Step 5</span>
+            <h1 id="frame-heading">Try a frame</h1>
+            <p>Explore how different frames could complement your portrait. No frame is the default.</p>
+          </div>
+          <div class="frame-layout">
+            <div class="frame-preview-column">
+              <div class="frame-preview-card">
+                <div id="frame-visualiser" class="frame-visualiser">
+                  <div id="frame-stage" class="frame-stage">
+                    <div id="frame-artwork" class="frame-artwork"></div>
+                    <canvas id="frame-overlay" class="frame-overlay" aria-hidden="true"></canvas>
+                  </div>
+                </div>
+              </div>
+              <p id="frame-feedback" class="frame-feedback" role="status" aria-live="polite"></p>
+            </div>
+            <div>
+              <div class="frame-choices" role="group" aria-label="Frame style">
+                <button type="button" class="frame-choice is-selected" data-frame-style="none" aria-pressed="true">
+                  <span class="frame-no-frame-thumb" aria-hidden="true" style="display:grid;place-items:center;background:#e9dfd2;width:100%;height:110px;border:1px solid #cfc5b8;">No frame</span>
+                  <strong>No frame</strong><span>Gallery-wrapped canvas</span>
+                </button>
+                <button type="button" class="frame-choice" data-frame-style="rustic" aria-pressed="false">
+                  <img src="/frames/rustic-corner.png" alt="" loading="lazy" />
+                  <strong>Rustic wood</strong><span>Weathered and characterful</span>
+                </button>
+                <button type="button" class="frame-choice" data-frame-style="antique-gold" aria-pressed="false">
+                  <img src="/frames/antique-gold-corner.png" alt="" loading="lazy" />
+                  <strong>Antique gold</strong><span>Classic and decorative</span>
+                </button>
+                <button type="button" class="frame-choice" data-frame-style="natural-wood" aria-pressed="false">
+                  <img src="/frames/natural-wood-corner.png" alt="" loading="lazy" />
+                  <strong>Natural wood</strong><span>Warm and understated</span>
+                </button>
+              </div>
+              <p class="frame-disclaimer">Frame options are for inspiration only. Physical framing is not currently offered.</p>
+            </div>
+          </div>
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="frame-back">Back</button>
+            <button type="button" class="btn btn-primary" id="frame-continue">Continue <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+        <!-- SCREEN 06 — ROOM VISUALISER -->
+        <section id="room-screen" class="atelier-container room-screen" aria-labelledby="room-heading" hidden>
+          <div class="step-header">
+            <span class="step-number">Step 6</span>
+            <h1 id="room-heading">See it in your room</h1>
+            <p>Imagine your portrait on the wall. Choose a room below, or use a photo of your own.</p>
+          </div>
+          <div class="room-layout">
+            <div class="room-view-column">
+              <div class="room-preview-card">
+                <div id="room-preview" class="room-preview" aria-label="Room with your portrait preview">
+                  <img id="room-background" class="room-background" src="/rooms/warm-living-room.webp" alt="Warm living room" draggable="false" />
+                  <div id="room-placed-portrait" class="room-placed-portrait" aria-label="Drag to move your portrait"></div>
+                  <div id="room-corner-handles" class="room-corner-handles" hidden></div>
+                </div>
+              </div>
+              <p id="room-feedback" class="room-feedback" role="status" aria-live="polite">Drag your portrait to place it on the wall.</p>
+              <p class="room-hint">This is a visual approximation. Exact physical scale requires a room measurement.</p>
+            </div>
+            <div class="room-settings">
+              <h2>Choose a room</h2>
+              <div class="room-choices" role="group" aria-label="Example rooms">
+                <button type="button" data-room-preset="warm" class="room-choice is-selected" aria-pressed="true"><img src="/rooms/warm-living-room.webp" alt=""/><span>Warm living room</span></button>
+                <button type="button" data-room-preset="classic" class="room-choice" aria-pressed="false"><img src="/rooms/classic-interior.webp" alt=""/><span>Classic interior</span></button>
+                <button type="button" data-room-preset="modern" class="room-choice" aria-pressed="false"><img src="/rooms/modern-interior.webp" alt=""/><span>Modern interior</span></button>
+                <button type="button" data-room-preset="dark" class="room-choice" aria-pressed="false"><img src="/rooms/dark-study.webp" alt=""/><span>Dark study</span></button>
+              </div>
+              <div class="room-upload-row">
+                <label class="btn btn-secondary room-upload-label" for="room-photo">Upload my room photo</label>
+                <input id="room-photo" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+                <button id="room-remove-photo" class="room-text-button" type="button" hidden>Use example rooms</button>
+              </div>
+              <div class="room-placement-controls">
+                <label for="room-portrait-size">Portrait size in preview <output id="room-size-value">32%</output></label>
+                <input id="room-portrait-size" type="range" min="14" max="70" value="32" step="1" />
+                <div class="room-action-row">
+                  <button type="button" id="room-reset" class="btn btn-secondary">Reset placement</button>
+                  <button type="button" id="room-perspective" class="btn btn-secondary" aria-pressed="false">Adjust perspective</button>
+                </div>
+                <p id="room-perspective-help" class="room-perspective-help" hidden>Drag the four corner handles until the portrait follows the wall. Choose “Done” when finished.</p>
+              </div>
+            </div>
+          </div>
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="room-back">Back</button>
+            <button type="button" class="btn btn-primary" id="room-continue" disabled title="The portrait summary is the next stage">Continue <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

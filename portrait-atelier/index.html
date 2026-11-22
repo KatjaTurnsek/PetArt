@@ -34,7 +34,7 @@
       <nav class="atelier-progress atelier-container" aria-label="Atelier progress">
         <div class="atelier-progress-heading">
           <span>Your portrait journey</span>
-          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 6 </span>
+          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 7 </span>
         </div>
 
         <div class="atelier-progress-track" aria-hidden="true">
@@ -84,6 +84,12 @@
             <button type="button" class="atelier-progress-step" data-step="6">
               <span class="progress-number">6</span>
               <span class="progress-label">Room</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="7">
+              <span class="progress-number">7</span>
+              <span class="progress-label">Review</span>
             </button>
           </li>
         </ol>
@@ -952,7 +958,37 @@
           </div>
           <nav class="step-navigation" aria-label="Step navigation">
             <button type="button" class="btn btn-secondary" id="room-back">Back</button>
-            <button type="button" class="btn btn-primary" id="room-continue" disabled title="The portrait summary is the next stage">Continue <span aria-hidden="true">→</span></button>
+            <button type="button" class="btn btn-primary" id="room-continue">Continue <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+
+        <!-- SCREEN 07 — PORTRAIT SUMMARY -->
+        <section id="summary-screen" class="atelier-container summary-screen" aria-labelledby="summary-heading" hidden>
+          <div class="step-header">
+            <span class="step-number">Step 7</span>
+            <h1 id="summary-heading">Your portrait, at a glance</h1>
+            <p>Here's the vision you've created. Take a moment to review your choices before getting in touch.</p>
+          </div>
+          <div class="summary-layout">
+            <div class="summary-preview-card">
+              <div class="summary-artwork-preview" id="summary-artwork-preview" aria-label="Your portrait composition and selected frame preview"></div>
+            </div>
+            <div class="summary-detail-card">
+              <h2>Your choices</h2>
+              <dl class="summary-details">
+                <div><dt>Subjects</dt><dd id="summary-pets">—</dd></div>
+                <div><dt>Canvas size</dt><dd id="summary-size">—</dd></div>
+                <div><dt>Orientation</dt><dd id="summary-shape">—</dd></div>
+                <div><dt>Background</dt><dd id="summary-background">—</dd></div>
+                <div><dt>Frame preview</dt><dd id="summary-frame">—</dd></div>
+              </dl>
+              <p class="summary-note">Your choices are a starting point. Your final portrait will be personally composed and painted. Frames shown here are visual inspiration only.</p>
+              <p class="summary-next">Next: share your ideas and contact details for a personal consultation. No order or payment is placed at this stage.</p>
+            </div>
+          </div>
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="summary-back">Back to room</button>
+            <button type="button" class="btn btn-primary" id="summary-enquiry" disabled title="The enquiry form will be added next">Continue to enquiry →</button>
           </nav>
         </section>
       </main>
