@@ -502,6 +502,10 @@ export function initRoomVisualiser(): void {
     updatePlacement();
     void refreshPortrait();
   });
+  // Keep the frame in the room preview in sync with Step 5, without changing placement.
+  document.addEventListener("atelier:frame-changed", () => {
+    if (atelierState.currentStep === 6) void refreshPortrait();
+  });
   document.addEventListener("atelier:room-portrait-changed", () => { if (atelierState.currentStep === 6) void refreshPortrait(); });
   document.addEventListener("atelier:cutout-ready", () => { if (atelierState.currentStep === 6) void refreshPortrait(); });
 

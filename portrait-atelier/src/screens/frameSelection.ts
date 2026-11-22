@@ -111,6 +111,8 @@ export function initFrameSelection(): void {
       atelierState.framing.selectedFrame = selected === "none" ? null : selected;
       try { window.localStorage.setItem(FRAME_STORAGE_KEY, selected); } catch { /* optional */ }
       renderSelection();
+      // Let other previews redraw when the frame choice changes.
+      document.dispatchEvent(new Event("atelier:frame-changed"));
     });
   }
 
