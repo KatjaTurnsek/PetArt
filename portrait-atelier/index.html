@@ -34,7 +34,7 @@
       <nav class="atelier-progress atelier-container" aria-label="Atelier progress">
         <div class="atelier-progress-heading">
           <span>Your portrait journey</span>
-          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 5 </span>
+          <span id="atelier-progress-status" aria-live="polite"> Step 1 of 6 </span>
         </div>
 
         <div class="atelier-progress-track" aria-hidden="true">
@@ -78,6 +78,12 @@
             <button type="button" class="atelier-progress-step" data-step="5">
               <span class="progress-number">5</span>
               <span class="progress-label">Frames</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="atelier-progress-step" data-step="6">
+              <span class="progress-number">6</span>
+              <span class="progress-label">Room</span>
             </button>
           </li>
         </ol>
@@ -899,6 +905,54 @@
           <nav class="step-navigation" aria-label="Step navigation">
             <button type="button" class="btn btn-secondary" id="frame-back">Back</button>
             <button type="button" class="btn btn-primary" id="frame-continue">Continue <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+        <!-- SCREEN 06 — ROOM VISUALISER -->
+        <section id="room-screen" class="atelier-container room-screen" aria-labelledby="room-heading" hidden>
+          <div class="step-header">
+            <span class="step-number">Step 6</span>
+            <h1 id="room-heading">See it in your room</h1>
+            <p>Imagine your portrait on the wall. Choose a room below, or use a photo of your own.</p>
+          </div>
+          <div class="room-layout">
+            <div class="room-view-column">
+              <div class="room-preview-card">
+                <div id="room-preview" class="room-preview" aria-label="Room with your portrait preview">
+                  <img id="room-background" class="room-background" src="/rooms/warm-living-room.webp" alt="Warm living room" draggable="false" />
+                  <div id="room-placed-portrait" class="room-placed-portrait" aria-label="Drag to move your portrait"></div>
+                  <div id="room-corner-handles" class="room-corner-handles" hidden></div>
+                </div>
+              </div>
+              <p id="room-feedback" class="room-feedback" role="status" aria-live="polite">Drag your portrait to place it on the wall.</p>
+              <p class="room-hint">This is a visual approximation. Exact physical scale requires a room measurement.</p>
+            </div>
+            <div class="room-settings">
+              <h2>Choose a room</h2>
+              <div class="room-choices" role="group" aria-label="Example rooms">
+                <button type="button" data-room-preset="warm" class="room-choice is-selected" aria-pressed="true"><img src="/rooms/warm-living-room.webp" alt=""/><span>Warm living room</span></button>
+                <button type="button" data-room-preset="classic" class="room-choice" aria-pressed="false"><img src="/rooms/classic-interior.webp" alt=""/><span>Classic interior</span></button>
+                <button type="button" data-room-preset="modern" class="room-choice" aria-pressed="false"><img src="/rooms/modern-interior.webp" alt=""/><span>Modern interior</span></button>
+                <button type="button" data-room-preset="dark" class="room-choice" aria-pressed="false"><img src="/rooms/dark-study.webp" alt=""/><span>Dark study</span></button>
+              </div>
+              <div class="room-upload-row">
+                <label class="btn btn-secondary room-upload-label" for="room-photo">Upload my room photo</label>
+                <input id="room-photo" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+                <button id="room-remove-photo" class="room-text-button" type="button" hidden>Use example rooms</button>
+              </div>
+              <div class="room-placement-controls">
+                <label for="room-portrait-size">Portrait size in preview <output id="room-size-value">32%</output></label>
+                <input id="room-portrait-size" type="range" min="14" max="70" value="32" step="1" />
+                <div class="room-action-row">
+                  <button type="button" id="room-reset" class="btn btn-secondary">Reset placement</button>
+                  <button type="button" id="room-perspective" class="btn btn-secondary" aria-pressed="false">Adjust perspective</button>
+                </div>
+                <p id="room-perspective-help" class="room-perspective-help" hidden>Drag the four corner handles until the portrait follows the wall. Choose “Done” when finished.</p>
+              </div>
+            </div>
+          </div>
+          <nav class="step-navigation" aria-label="Step navigation">
+            <button type="button" class="btn btn-secondary" id="room-back">Back</button>
+            <button type="button" class="btn btn-primary" id="room-continue" disabled title="The portrait summary is the next stage">Continue <span aria-hidden="true">→</span></button>
           </nav>
         </section>
       </main>

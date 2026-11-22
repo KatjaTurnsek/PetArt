@@ -449,7 +449,7 @@
      Only the selected canvas is editable. The second
      canvas mirrors the same arrangement at another size.
      ========================================== */
-.size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item {
+.size-preview-canvases:not(.is-single-view) .size-preview-item {
   position: relative;
   box-sizing: border-box;
   padding: 38px 12px 14px;
@@ -460,7 +460,7 @@
 }
 
 /* CSS labels intentionally live outside the canvas artwork. */
-.size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item::before {
+.size-preview-canvases:not(.is-single-view) .size-preview-item::before {
   position: absolute;
   top: 12px;
   left: 12px;
@@ -471,23 +471,23 @@
   color: var(--muted);
 }
 
-.size-preview-canvases.has-multi-pets:not(.is-single-view)
+.size-preview-canvases:not(.is-single-view)
   .size-preview-item:has(#size-preview-second) {
   border-color: var(--olive);
 }
 
-.size-preview-canvases.has-multi-pets:not(.is-single-view)
+.size-preview-canvases:not(.is-single-view)
   .size-preview-item:has(#size-preview-second)::before {
   content: "✎  Editing";
   color: var(--olive);
 }
 
-.size-preview-canvases.has-multi-pets:not(.is-single-view)
+.size-preview-canvases:not(.is-single-view)
   .size-preview-item:has(#size-preview-first)::before {
   content: "◉  Size comparison";
 }
 
-.size-preview-canvases.has-multi-pets:not(.is-single-view)
+.size-preview-canvases:not(.is-single-view)
   .size-preview-item:has(#size-preview-first) {
   cursor: default;
 }
@@ -504,10 +504,10 @@
 }
 
 @media (max-width: 650px) {
-  .size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item {
+  .size-preview-canvases:not(.is-single-view) .size-preview-item {
     padding: 32px 6px 12px;
   }
-  .size-preview-canvases.has-multi-pets:not(.is-single-view) .size-preview-item::before {
+  .size-preview-canvases:not(.is-single-view) .size-preview-item::before {
     top: 9px;
     left: 8px;
     font-size: 11px;

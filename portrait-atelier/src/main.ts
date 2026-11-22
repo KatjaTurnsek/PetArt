@@ -1,5 +1,6 @@
 import "./style.css";
 import "./styles/frameSelection.css";
+import "./styles/roomVisualiser.css";
 
 import { atelierState } from "./app/atelierState";
 import { loadPhoto } from "./app/photoStorage";
@@ -11,8 +12,9 @@ import { initCanvasSizePreview } from "./screens/canvasSizePreview";
 import { initCanvasComposition } from "./screens/canvasComposition";
 import { initBackgroundSelection } from "./screens/backgroundSelection";
 import { initFrameSelection } from "./screens/frameSelection";
+import { initRoomVisualiser } from "./screens/roomVisualiser";
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 6;
 const STORAGE_KEY = "atelier-current-step";
 
 /**
@@ -73,8 +75,9 @@ function goToStep(step: number): void {
 
   const backgroundScreen = document.querySelector<HTMLElement>("#background-screen");
   const frameScreen = document.querySelector<HTMLElement>("#frame-screen");
+  const roomScreen = document.querySelector<HTMLElement>("#room-screen");
 
-  if (!welcomeScreen || !photoScreen || !canvasScreen || !backgroundScreen || !frameScreen) {
+  if (!welcomeScreen || !photoScreen || !canvasScreen || !backgroundScreen || !frameScreen || !roomScreen) {
     throw new Error("Atelier screens not found");
   }
 
@@ -84,6 +87,7 @@ function goToStep(step: number): void {
   canvasScreen.hidden = step !== 3;
   backgroundScreen.hidden = step !== 4;
   frameScreen.hidden = step !== 5;
+  roomScreen.hidden = step !== 6;
 
   // Update the active step.
   atelierState.currentStep = step;
@@ -112,6 +116,10 @@ function goToStep(step: number): void {
 
   if (step === 5) {
     document.dispatchEvent(new Event("atelier:frame-screen-opened"));
+  }
+
+  if (step === 6) {
+    document.dispatchEvent(new Event("atelier:room-screen-opened"));
   }
 
   // Make the current screen visible from the top.
@@ -240,12 +248,8 @@ function initNavigation(): void {
     goToStep(4);
   });
 
-  // Step 6 is not built yet. Keep this control visibly disabled.
-  const frameContinue = document.querySelector<HTMLButtonElement>("#frame-continue");
-  if (frameContinue) {
-    frameContinue.disabled = true;
-    frameContinue.title = "Room visualiser is the next stage.";
-  }
+  document.querySelector<HTMLButtonElement>("#frame-continue")?.addEventListener("click", () => goToStep(6));
+  document.querySelector<HTMLButtonElement>("#room-back")?.addEventListener("click", () => goToStep(5));
 }
 
 /**
@@ -263,14 +267,17 @@ async function startAtelier(): Promise<void> {
   // Keep one refresh per animation frame even if several cutouts finish together.
   let pendingFrameRefresh = 0;
   function refreshFramingAfterPhotoRestore(): void {
-    if (atelierState.currentStep !== 5 || pendingFrameRefresh !== 0) return;
+    if ((atelierState.currentStep !== 5 && atelierState.currentStep !== 6) || pendingFrameRefresh !== 0) return;
     pendingFrameRefresh = window.requestAnimationFrame(() => {
       pendingFrameRefresh = 0;
-      if (atelierState.currentStep !== 5) return;
+      if ((atelierState.currentStep !== 5 && atelierState.currentStep !== 6)) return;
       // Step 4 builds the current multi-pet composition synchronously when ready.
       document.dispatchEvent(new Event("atelier:background-screen-opened"));
       // Step 5 can now clone the up-to-date preview, not its pre-restore state.
       document.dispatchEvent(new Event("atelier:frame-screen-opened"));
+      if (atelierState.currentStep === 6) {
+        document.dispatchEvent(new Event("atelier:room-portrait-changed"));
+      }
     });
   }
   document.addEventListener("atelier:subjects-changed", refreshFramingAfterPhotoRestore);
@@ -290,6 +297,9 @@ async function startAtelier(): Promise<void> {
 
   // Step 5 — Frame preview
   initFrameSelection();
+
+  // Step 6 — Room visualisation
+  initRoomVisualiser();
 
   // Restore the uploaded photograph from IndexedDB.
   try {

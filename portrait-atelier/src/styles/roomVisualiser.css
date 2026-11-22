@@ -1,0 +1,37 @@
+/* Step 6 — room visualiser. Frame assets are never altered. */
+.atelier-progress-steps {grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.room-screen {padding-bottom:64px}
+.room-layout {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);align-items:start;gap:26px;margin-top:30px}
+.room-view-column,.room-settings {min-width:0}
+.room-preview-card {padding:10px;border:1px solid var(--line);border-radius:var(--border-radius);background:white}
+.room-preview {position:relative;overflow:hidden;aspect-ratio:4/3;background:#d0c5b8;touch-action:pan-y;isolation:isolate}
+.room-background {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
+.room-placed-portrait {position:absolute;left:0;top:0;width:1px;height:1px;transform-origin:0 0;cursor:grab;touch-action:none;user-select:none;will-change:transform}
+.room-placed-portrait:active {cursor:grabbing}
+.room-placed-portrait .room-artwork {position:relative;width:100%;height:100%;filter:drop-shadow(1px 5px 6px #1a130f60)}
+.room-placed-portrait .background-preview-canvas {max-width:none!important;width:100%!important;margin:0!important;border-radius:0!important}
+.room-placed-portrait .room-frame-image {position:absolute;z-index:4;pointer-events:none;max-width:none}
+.room-corner-handles[hidden] {display:none}
+.room-corner-handles {position:absolute;inset:0;pointer-events:none}
+.room-corner-handle {position:absolute;width:22px;height:22px;border:2px solid #fff;border-radius:50%;background:var(--olive);box-shadow:0 0 0 1px #45382d,0 2px 6px #0005;transform:translate(-50%,-50%);pointer-events:auto;touch-action:none;cursor:move}
+.room-feedback {min-height:22px;margin-top:10px;text-align:center;font-size:13px}
+.room-hint {font-size:12px;text-align:center;margin-top:6px}
+.room-settings h2 {font-size:23px;margin-bottom:15px}
+.room-choices {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.room-choice {min-width:0;border:1px solid var(--line);border-radius:var(--border-radius);background:white;padding:6px;color:var(--ink);text-align:left}
+.room-choice.is-selected,.room-choice:hover {border-color:var(--olive)}
+.room-choice.is-selected {box-shadow:inset 0 0 0 1px var(--olive)}
+.room-choice img {width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+.room-choice span {display:block;padding:5px 3px 2px;font-size:13px;font-weight:600}
+.room-upload-row {display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.room-upload-label {display:inline-flex;align-items:center;justify-content:center;cursor:pointer;min-height:42px;padding:8px 14px}
+.room-text-button {color:var(--accent);background:transparent;border:0;text-decoration:underline;font-size:13px}
+.room-placement-controls {padding:16px;border:1px solid var(--line);border-radius:var(--border-radius);background:var(--field-paper)}
+.room-placement-controls label {display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:600}
+.room-placement-controls output {color:var(--muted);font-weight:400}
+.room-placement-controls input[type=range] {display:block;width:100%;accent-color:var(--olive);margin:15px 0}
+.room-action-row {display:flex;gap:9px;flex-wrap:wrap}
+.room-action-row .btn {min-height:42px;padding:8px 12px;font-size:13px}
+.room-perspective-help {font-size:12px;line-height:1.5;margin-top:12px}
+@media(max-width:900px) {.room-layout {grid-template-columns:1fr}.room-settings {order:0}.room-view-column {order:1}.room-choices {grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:650px) {.atelier-progress-steps .progress-label {display:none}.atelier-progress-step {min-height:42px}.room-choices {grid-template-columns:repeat(2,minmax(0,1fr))}.room-layout {gap:16px}.room-action-row .btn {flex:1}}

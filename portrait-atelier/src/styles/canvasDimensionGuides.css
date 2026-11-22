@@ -1,0 +1,15 @@
+/* Measurement callouts. They sit outside the artwork and do not intercept gestures. */
+.has-canvas-measurements { position: relative; }
+.has-canvas-measurements.size-preview-item { padding: 26px 0 0 30px; box-sizing: border-box; }
+.background-preview-frame.has-canvas-measurements { padding: 29px 12px 12px 35px; }
+.frame-preview-card.has-canvas-measurements { padding-top: 54px; padding-left: 58px; }
+.canvas-measurement { position:absolute; z-index:5; display:none; align-items:center; justify-content:center; pointer-events:none; color:var(--muted); font-family:var(--sans); font-size:11px; font-weight:600; line-height:1; white-space:nowrap; }
+.has-measurement-values > .canvas-measurement { display:flex; }
+.canvas-measurement-top { height:17px; border-bottom:1px solid var(--line); }
+.canvas-measurement-top::before,.canvas-measurement-top::after { content:""; position:absolute; bottom:-3px; height:6px; width:1px; background:var(--muted); }
+.canvas-measurement-top::before { left:0; }.canvas-measurement-top::after { right:0; }
+.canvas-measurement-side { width:21px; border-right:1px solid var(--line); writing-mode:vertical-rl; transform:none; }
+.canvas-measurement-side::before,.canvas-measurement-side::after { content:""; position:absolute; right:-3px; width:6px; height:1px; background:var(--muted); }
+.canvas-measurement-side::before { top:0; }.canvas-measurement-side::after { bottom:0; }
+.room-canvas-dimensions { display:inline-block; padding:7px 12px; margin-bottom:10px; border:1px solid var(--line); border-radius:var(--border-radius); background:var(--field-paper); color:var(--ink); font-size:13px; font-weight:600; }
+@media(max-width:480px) { .frame-preview-card.has-canvas-measurements {padding-left:48px; padding-top:49px} .background-preview-frame.has-canvas-measurements {padding-left:34px} }
