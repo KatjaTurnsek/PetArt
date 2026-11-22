@@ -258,6 +258,24 @@ async function startAtelier(): Promise<void> {
   initProgressNavigation();
   initNavigation();
 
+  // Step 2 restores multiple pets asynchronously from IndexedDB. Step 5 copies
+  // Step 4's preview, so it must refresh AFTER restored pets/cutouts are ready.
+  // Keep one refresh per animation frame even if several cutouts finish together.
+  let pendingFrameRefresh = 0;
+  function refreshFramingAfterPhotoRestore(): void {
+    if (atelierState.currentStep !== 5 || pendingFrameRefresh !== 0) return;
+    pendingFrameRefresh = window.requestAnimationFrame(() => {
+      pendingFrameRefresh = 0;
+      if (atelierState.currentStep !== 5) return;
+      // Step 4 builds the current multi-pet composition synchronously when ready.
+      document.dispatchEvent(new Event("atelier:background-screen-opened"));
+      // Step 5 can now clone the up-to-date preview, not its pre-restore state.
+      document.dispatchEvent(new Event("atelier:frame-screen-opened"));
+    });
+  }
+  document.addEventListener("atelier:subjects-changed", refreshFramingAfterPhotoRestore);
+  document.addEventListener("atelier:cutout-ready", refreshFramingAfterPhotoRestore);
+
   // Step 2 — Photograph
   initPhotoUpload();
 

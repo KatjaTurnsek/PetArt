@@ -383,3 +383,31 @@
   object-fit: cover;
   object-position: center;
 }
+
+/* Keep width and height controls side by side */
+.custom-size-inputs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.custom-size-field {
+  min-width: 0;
+}
+
+.dimension-control {
+  display: grid;
+  grid-template-columns: 28px minmax(28px, 1fr) 28px;
+  width: 100%;
+}
+
+.dimension-control input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 2px;
+}
+
+.dimension-button {
+  width: 28px;
+  min-width: 0;
+  padding: 0;
+}

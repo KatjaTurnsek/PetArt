@@ -1,5 +1,6 @@
 import { atelierState } from "../app/atelierState";
-import { drawPictureFrame, type FrameStyle } from "../app/frameRenderer";
+import { drawPictureFrame, type FrameStyle } from "../app/frameRendererV2";
+import { getFramePreviewThickness } from "../app/frameDefinitions";
 
 const FRAME_STORAGE_KEY = "portrait-atelier-frame-v1";
 const FRAME_STYLES: FrameStyle[] = ["none", "rustic", "antique-gold", "natural-wood"];
@@ -19,8 +20,6 @@ export function initFrameSelection(): void {
   const elements = { previewHost, artworkHost, stage, canvas, status };
   let selected: FrameStyle = "none";
   let drawId = 0;
-  let scheduledDraw = 0;
-  let lastDrawKey = "";
 
   // State already has a framing.selectedFrame field. The saved choice is also stored
   // separately because existing Atelier choice storage may not yet cover Step 5.
@@ -65,23 +64,24 @@ export function initFrameSelection(): void {
     );
     clone.setAttribute("aria-label", "Your portrait composition");
     elements.artworkHost.replaceChildren(clone);
-    lastDrawKey = ""; // The composition changed; redraw the frame on re-entry.
   }
 
   async function drawFrame(): Promise<void> {
     const current = ++drawId;
     const stageWidth = elements.stage.clientWidth;
     if (stageWidth < 1) return;
-    const thickness = selected === "none" ? 0 : Math.max(10, Math.min(36, Math.round(stageWidth * 0.075)));
+    // Keep the artwork dimensions unchanged. The full frame lives OUTSIDE the
+    // artwork rectangle, rather than covering its outer pixels.
+    const thickness = getFramePreviewThickness(selected, stageWidth);
     elements.stage.style.setProperty("--frame-thickness", `${thickness}px`);
     elements.stage.classList.toggle("has-frame", selected !== "none");
     elements.canvas.hidden = selected === "none";
-    const width = elements.stage.clientWidth;
-    const height = elements.stage.clientHeight;
+    // The overlay starts at -thickness on both axes (see frameSelection.css).
+    // Drawing the frame into this larger rectangle makes its inner opening
+    // match the full painting size; no part of the portrait is covered.
+    const width = elements.stage.clientWidth + thickness * 2;
+    const height = elements.stage.clientHeight + thickness * 2;
     if (width < 1 || height < 1) return;
-    const drawKey = `${selected}:${Math.round(width)}:${Math.round(height)}:${thickness}`;
-    if (drawKey === lastDrawKey) return;
-    lastDrawKey = drawKey;
     try {
       await drawPictureFrame(elements.canvas, selected, width, height, thickness);
       if (current !== drawId) return;
@@ -90,7 +90,6 @@ export function initFrameSelection(): void {
         : "Frame preview only — framing is not currently available to order.";
     } catch {
       if (current !== drawId) return;
-      lastDrawKey = ""; // Allow a retry after a temporary image-loading failure.
       elements.status.textContent = "The frame preview could not load. Your portrait is unaffected.";
     }
   }
@@ -101,15 +100,7 @@ export function initFrameSelection(): void {
       button.classList.toggle("is-selected", active);
       button.setAttribute("aria-pressed", String(active));
     }
-    scheduleFrame();
-  }
-
-  function scheduleFrame(): void {
-    if (scheduledDraw) cancelAnimationFrame(scheduledDraw);
-    scheduledDraw = requestAnimationFrame(() => {
-      scheduledDraw = 0;
-      void drawFrame();
-    });
+    void drawFrame();
   }
 
   for (const button of buttons) {
@@ -129,7 +120,7 @@ export function initFrameSelection(): void {
     renderSelection();
   });
 
-  const observer = new ResizeObserver(scheduleFrame);
+  const observer = new ResizeObserver(() => { void drawFrame(); });
   observer.observe(elements.previewHost);
   observer.observe(elements.stage);
   // Background Step 4 remains authoritative; refresh our clone on re-entry.

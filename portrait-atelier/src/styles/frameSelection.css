@@ -1,10 +1,11 @@
 /* Step 5 — frame visualisation: mobile-first and independent of Step 4. */
+/* The artwork retains the same size for every frame choice. The frame canvas overlays its edges. */
 .frame-screen { padding-bottom: 64px; }
 .frame-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 28px; }
 .frame-preview-column { min-width: 0; }
 .frame-preview-card { border: 1px solid var(--line); border-radius: var(--border-radius); background: var(--white); padding: 18px; }
 .frame-visualiser { width: 100%; display: flex; justify-content: center; align-items: flex-start; min-height: 260px; }
-.frame-stage { --frame-thickness: 0px; width: min(100%, 530px); padding: var(--frame-thickness); box-sizing: border-box; position: relative; filter: drop-shadow(0 6px 8px rgb(51 31 19 / 14%)); }
+.frame-stage { --frame-thickness: 0px; width: min(100%, 530px); padding: 0; box-sizing: border-box; position: relative; filter: drop-shadow(0 6px 8px rgb(51 31 19 / 14%)); }
 .frame-stage .frame-artwork { display: block; width: 100%; position: relative; overflow: hidden; }
 .frame-stage .frame-artwork > .background-preview-canvas { width: 100%; max-width: none; margin: 0; border-radius: 0; }
 .frame-overlay { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; z-index: 3; }
@@ -58,7 +59,23 @@
 
 /* Limit by screen height as well as width: a tall portrait must not
    fill the entire viewport and hide its bottom behind the browser edge. */
-.frame-visualiser { min-height: 0; align-items: center; }
+/* Reserve outside-frame clearance for EVERY option, including No frame.
+   This keeps the actual painting size stable when selecting a frame. */
+.frame-visualiser {
+  min-height: 0;
+  align-items: center;
+  padding: 38px;
+  box-sizing: border-box;
+}
+.frame-stage .frame-overlay {
+  inset: auto;
+  top: calc(-1 * var(--frame-thickness));
+  left: calc(-1 * var(--frame-thickness));
+  width: calc(100% + 2 * var(--frame-thickness));
+  height: calc(100% + 2 * var(--frame-thickness));
+}
+/* Allow the frame to project outward without clipping the artwork. */
+.frame-stage, .frame-preview-card { overflow: visible; }
 .frame-stage {
   width: min(100%, 440px, calc(52dvh * var(--frame-artwork-ratio, 0.8)));
   max-width: 100%;
