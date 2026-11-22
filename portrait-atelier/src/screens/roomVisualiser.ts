@@ -4,7 +4,14 @@ import { getFramePreviewThickness } from "../app/frameDefinitions";
 
 type Point = { x: number; y: number };
 type RoomId = "warm" | "classic" | "modern" | "dark" | "upload";
-type RoomSaved = { room: RoomId; x: number; y: number; width: number; perspective: boolean; offsets: Point[] };
+type RoomSaved = {
+  room: RoomId;
+  x: number;
+  y: number;
+  width: number;
+  perspective: boolean;
+  offsets: Point[];
+};
 const ROOM_PRESETS: Record<Exclude<RoomId, "upload">, { url: string; alt: string }> = {
   warm: { url: "/rooms/warm-living-room.webp", alt: "Warm living room" },
   classic: { url: "/rooms/classic-interior.webp", alt: "Classic interior" },
@@ -15,6 +22,10 @@ const STORAGE_KEY = "portrait-atelier-room-settings-v1";
 // Tracks which canvas dimensions the current room estimate was based on.
 // Kept separate from existing room settings to preserve older saved placements.
 const SCALE_SIGNATURE_KEY = "portrait-atelier-room-scale-signature-v1";
+const UPLOAD_SCALE_MIGRATION_KEY = "portrait-atelier-upload-scale-v2";
+// With no real-world measurement, use a representative wall width to keep
+// the starting size comparable to the example rooms (not physically exact).
+const UPLOAD_ESTIMATED_VIEW_WIDTH_CM = 350;
 // Approximate width represented by each example photograph at the painting wall.
 // These are illustrative assumptions, NOT measurements of the photographed rooms.
 const ROOM_ESTIMATED_VIEW_WIDTH_CM: Record<Exclude<RoomId, "upload">, number> = {
@@ -36,13 +47,27 @@ function currentCanvasSignature(room: RoomId): string | null {
 function estimatedPreviewWidth(room: Exclude<RoomId, "upload">): number | null {
   const canvasWidthCm = atelierState.canvas.width;
   if (!canvasWidthCm || !Number.isFinite(canvasWidthCm) || canvasWidthCm <= 0) return null;
-  return Math.max(MIN_ROOM_PREVIEW_FRACTION, Math.min(MAX_ROOM_PREVIEW_FRACTION,
-    canvasWidthCm / ROOM_ESTIMATED_VIEW_WIDTH_CM[room]));
+  return Math.max(
+    MIN_ROOM_PREVIEW_FRACTION,
+    Math.min(MAX_ROOM_PREVIEW_FRACTION, canvasWidthCm / ROOM_ESTIMATED_VIEW_WIDTH_CM[room])
+  );
 }
 const ROOM_DATABASE = "portrait-atelier-room-v1";
 const ROOM_KEY = "room-photo";
-const DEFAULT_OFFSETS = (): Point[] => [{ x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 }];
-const DEFAULT_ROOM: RoomSaved = { room: "warm", x: 0.5, y: 0.37, width: 0.32, perspective: false, offsets: DEFAULT_OFFSETS() };
+const DEFAULT_OFFSETS = (): Point[] => [
+  { x: 0, y: 0 },
+  { x: 0, y: 0 },
+  { x: 0, y: 0 },
+  { x: 0, y: 0 },
+];
+const DEFAULT_ROOM: RoomSaved = {
+  room: "warm",
+  x: 0.5,
+  y: 0.37,
+  width: 0.32,
+  perspective: false,
+  offsets: DEFAULT_OFFSETS(),
+};
 
 function roomDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -60,7 +85,9 @@ async function readRoomFile(): Promise<Blob | null> {
       request.onsuccess = () => resolve(request.result instanceof Blob ? request.result : null);
       request.onerror = () => reject(request.error);
     });
-  } finally { db.close(); }
+  } finally {
+    db.close();
+  }
 }
 async function writeRoomFile(file: Blob | null): Promise<void> {
   const db = await roomDb();
@@ -73,12 +100,19 @@ async function writeRoomFile(file: Blob | null): Promise<void> {
       transaction.onerror = () => reject(transaction.error);
       transaction.onabort = () => reject(transaction.error);
     });
-  } finally { db.close(); }
+  } finally {
+    db.close();
+  }
 }
 
 /** Solve the 8 coefficients of a source-to-quad homography, no external dependency. */
 function homography(width: number, height: number, quad: Point[]): string {
-  const from: Point[] = [{ x: 0, y: 0 }, { x: width, y: 0 }, { x: width, y: height }, { x: 0, y: height }];
+  const from: Point[] = [
+    { x: 0, y: 0 },
+    { x: width, y: 0 },
+    { x: width, y: height },
+    { x: 0, y: height },
+  ];
   const rows: number[][] = [];
   from.forEach((p, i) => {
     const q = quad[i];
@@ -123,11 +157,40 @@ export function initRoomVisualiser(): void {
   const reset = document.querySelector<HTMLButtonElement>("#room-reset");
   const perspectiveButton = document.querySelector<HTMLButtonElement>("#room-perspective");
   const perspectiveHelp = document.querySelector<HTMLElement>("#room-perspective-help");
-  const roomButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-room-preset]"));
-  if (!view || !background || !placed || !handles || !feedback || !sizeInput || !sizeValue || !photoInput || !removePhoto || !reset || !perspectiveButton || !perspectiveHelp || roomButtons.length !== 4) {
+  const roomButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-room-preset]")
+  );
+  if (
+    !view ||
+    !background ||
+    !placed ||
+    !handles ||
+    !feedback ||
+    !sizeInput ||
+    !sizeValue ||
+    !photoInput ||
+    !removePhoto ||
+    !reset ||
+    !perspectiveButton ||
+    !perspectiveHelp ||
+    roomButtons.length !== 4
+  ) {
     throw new Error("Room visualiser elements not found.");
   }
-  const ui = { view, background, placed, handles, feedback, sizeInput, sizeValue, photoInput, removePhoto, reset, perspectiveButton, perspectiveHelp };
+  const ui = {
+    view,
+    background,
+    placed,
+    handles,
+    feedback,
+    sizeInput,
+    sizeValue,
+    photoInput,
+    removePhoto,
+    reset,
+    perspectiveButton,
+    perspectiveHelp,
+  };
   // The previous 14% minimum exaggerated small (e.g. 30 cm) paintings.
   // This slider changes apparent size only; it never changes atelierState.canvas.
   // The slider represents a multiple of the room's estimated starting size,
@@ -151,30 +214,64 @@ export function initRoomVisualiser(): void {
   ui.removePhoto.textContent = "Remove my room";
   let settings: RoomSaved = { ...DEFAULT_ROOM, offsets: DEFAULT_OFFSETS() };
   try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") as Partial<RoomSaved> | null;
-    if (stored && typeof stored.x === "number" && typeof stored.width === "number" && typeof stored.y === "number" &&
-      ["warm", "classic", "modern", "dark", "upload"].includes(String(stored.room))) {
+    const stored = JSON.parse(
+      localStorage.getItem(STORAGE_KEY) || "null"
+    ) as Partial<RoomSaved> | null;
+    if (
+      stored &&
+      typeof stored.x === "number" &&
+      typeof stored.width === "number" &&
+      typeof stored.y === "number" &&
+      ["warm", "classic", "modern", "dark", "upload"].includes(String(stored.room))
+    ) {
       settings = {
         room: stored.room as RoomId,
         x: Math.max(0.1, Math.min(0.9, stored.x)),
         y: Math.max(0.1, Math.min(0.9, stored.y)),
-        width: Math.max(MIN_ROOM_PREVIEW_FRACTION, Math.min(MAX_ROOM_PREVIEW_FRACTION, stored.width)),
+        width: Math.max(
+          MIN_ROOM_PREVIEW_FRACTION,
+          Math.min(MAX_ROOM_PREVIEW_FRACTION, stored.width)
+        ),
         perspective: Boolean(stored.perspective),
-        offsets: Array.isArray(stored.offsets) && stored.offsets.length === 4 && stored.offsets.every((point) =>
-          typeof point?.x === "number" && Number.isFinite(point.x) && typeof point?.y === "number" && Number.isFinite(point.y))
-          ? stored.offsets.map((point) => ({ x: Math.max(-0.35, Math.min(0.35, point.x)), y: Math.max(-0.35, Math.min(0.35, point.y)) }))
-          : DEFAULT_OFFSETS(),
+        offsets:
+          Array.isArray(stored.offsets) &&
+          stored.offsets.length === 4 &&
+          stored.offsets.every(
+            (point) =>
+              typeof point?.x === "number" &&
+              Number.isFinite(point.x) &&
+              typeof point?.y === "number" &&
+              Number.isFinite(point.y)
+          )
+            ? stored.offsets.map((point) => ({
+                x: Math.max(-0.35, Math.min(0.35, point.x)),
+                y: Math.max(-0.35, Math.min(0.35, point.y)),
+              }))
+            : DEFAULT_OFFSETS(),
       };
     }
-  } catch { /* Empty or invalid stored choices use defaults. */ }
+  } catch {
+    /* Empty or invalid stored choices use defaults. */
+  }
   let roomPhotoUrl: string | null = null;
   let uploadVersion = 0;
-  let activePointer: { pointerId: number; x: number; y: number; initialX: number; initialY: number; corner?: number } | null = null;
+  let activePointer: {
+    pointerId: number;
+    x: number;
+    y: number;
+    initialX: number;
+    initialY: number;
+    corner?: number;
+  } | null = null;
   let visualVersion = 0;
   let hasPortrait = false;
 
   function save(): void {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(settings)); } catch { /* Storage is optional. */ }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+    } catch {
+      /* Storage is optional. */
+    }
     atelierState.room.positionX = settings.x;
     atelierState.room.positionY = settings.y;
     atelierState.room.scale = settings.width;
@@ -182,15 +279,22 @@ export function initRoomVisualiser(): void {
   function recordScaleSignature(): void {
     const signature = currentCanvasSignature(settings.room);
     if (!signature) return;
-    try { localStorage.setItem(SCALE_SIGNATURE_KEY, signature); } catch { /* Optional storage. */ }
+    try {
+      localStorage.setItem(SCALE_SIGNATURE_KEY, signature);
+    } catch {
+      /* Optional storage. */
+    }
   }
   function applyEstimatedScale(force = false): void {
     if (settings.room === "upload") return; // An unmeasured user photo stays manually adjustable.
     const signature = currentCanvasSignature(settings.room);
     if (!signature) return;
     if (!force) {
-      try { if (localStorage.getItem(SCALE_SIGNATURE_KEY) === signature) return; }
-      catch { /* The estimate still works if storage is unavailable. */ }
+      try {
+        if (localStorage.getItem(SCALE_SIGNATURE_KEY) === signature) return;
+      } catch {
+        /* The estimate still works if storage is unavailable. */
+      }
     }
     const estimated = estimatedPreviewWidth(settings.room);
     if (estimated === null) return;
@@ -201,36 +305,52 @@ export function initRoomVisualiser(): void {
     save();
   }
   function previewBaseWidth(): number {
-    // Personal rooms have no known physical reference, so 100% represents
-    // their starting visual scale only, not actual physical dimensions.
-    return settings.room === "upload"
-      ? 0.32
-      : (estimatedPreviewWidth(settings.room) ?? 0.32);
+    // Uploaded rooms have no measured physical reference. Use a consistent
+    // visual estimate, based on the selected painting's actual canvas width.
+    if (settings.room === "upload") {
+      const canvasWidth = atelierState.canvas.width;
+      return canvasWidth && Number.isFinite(canvasWidth) && canvasWidth > 0
+        ? Math.max(
+            MIN_ROOM_PREVIEW_FRACTION,
+            Math.min(MAX_ROOM_PREVIEW_FRACTION, canvasWidth / UPLOAD_ESTIMATED_VIEW_WIDTH_CM)
+          )
+        : 0.32;
+    }
+    return estimatedPreviewWidth(settings.room) ?? 0.32;
   }
   function updatePreviewScaleLabel(): void {
     const base = previewBaseWidth();
-    const min = Math.max(10, Math.ceil(MIN_ROOM_PREVIEW_FRACTION / base * 20) * 5);
-    const max = Math.max(100, Math.min(400, Math.floor(MAX_ROOM_PREVIEW_FRACTION / base * 20) * 5));
+    const min = Math.max(10, Math.ceil((MIN_ROOM_PREVIEW_FRACTION / base) * 20) * 5);
+    const max = Math.max(
+      100,
+      Math.min(400, Math.floor((MAX_ROOM_PREVIEW_FRACTION / base) * 20) * 5)
+    );
     ui.sizeInput.min = String(min);
     ui.sizeInput.max = String(max);
-    const percentage = Math.max(min, Math.min(max, Math.round(settings.width / base * 100 / 5) * 5));
+    const percentage = Math.max(
+      min,
+      Math.min(max, Math.round(((settings.width / base) * 100) / 5) * 5)
+    );
     ui.sizeInput.value = String(percentage);
-    ui.sizeValue.textContent = `${Math.round(settings.width / base * 100)}%`;
+    ui.sizeValue.textContent = `${Math.round((settings.width / base) * 100)}%`;
     const label = ui.sizeInput.previousElementSibling;
     const labelText = label?.firstChild;
     if (labelText?.nodeType === Node.TEXT_NODE) {
-      labelText.textContent = settings.room === "upload"
-        ? "Preview scale (visual only) "
-        : "Preview scale (estimate: 100%) ";
+      labelText.textContent =
+        settings.room === "upload"
+          ? "Preview scale (visual only) "
+          : "Preview scale (estimate: 100%) ";
     }
   }
   function roomUrl(): { url: string; alt: string } {
-    if (settings.room === "upload" && roomPhotoUrl) return { url: roomPhotoUrl, alt: "Your uploaded room" };
+    if (settings.room === "upload" && roomPhotoUrl)
+      return { url: roomPhotoUrl, alt: "Your uploaded room" };
     return ROOM_PRESETS[settings.room === "upload" ? "warm" : settings.room];
   }
   function updateRoom(): void {
     const data = roomUrl();
-    if (ui.background.src !== new URL(data.url, document.baseURI).href) ui.background.src = data.url;
+    if (ui.background.src !== new URL(data.url, document.baseURI).href)
+      ui.background.src = data.url;
     ui.background.alt = data.alt;
     roomButtons.forEach((button) => {
       const active = button.dataset.roomPreset === settings.room;
@@ -260,7 +380,10 @@ export function initRoomVisualiser(): void {
       { x: x + pw / 2, y: y + ph / 2 },
       { x: x - pw / 2, y: y + ph / 2 },
     ];
-    return points.map((p, i) => ({ x: p.x + settings.offsets[i].x * pw, y: p.y + settings.offsets[i].y * ph }));
+    return points.map((p, i) => ({
+      x: p.x + settings.offsets[i].x * pw,
+      y: p.y + settings.offsets[i].y * ph,
+    }));
   }
   function updatePlacement(): void {
     if (!hasPortrait) return;
@@ -284,7 +407,8 @@ export function initRoomVisualiser(): void {
     const formerStyle = screen.getAttribute("style");
     const previousWidth = source.style.width;
     screen.hidden = false;
-    screen.style.cssText = "position:fixed;left:-10000px;top:0;width:900px;visibility:hidden;pointer-events:none;";
+    screen.style.cssText =
+      "position:fixed;left:-10000px;top:0;width:900px;visibility:hidden;pointer-events:none;";
     source.style.width = "420px";
     // This paints the latest multi-pet composition at a stable size.
     document.dispatchEvent(new Event("atelier:background-screen-opened"));
@@ -297,13 +421,15 @@ export function initRoomVisualiser(): void {
     clone.style.maxWidth = "none";
     clone.style.borderRadius = "0";
     source.style.width = previousWidth;
-    if (formerStyle === null) screen.removeAttribute("style"); else screen.setAttribute("style", formerStyle);
+    if (formerStyle === null) screen.removeAttribute("style");
+    else screen.setAttribute("style", formerStyle);
     screen.hidden = wasHidden;
     return clone;
   }
   async function refreshPortrait(): Promise<void> {
     const version = ++visualVersion;
-    const hasPet = atelierState.portrait.subjects.length > 0 || atelierState.portrait.photo !== null;
+    const hasPet =
+      atelierState.portrait.subjects.length > 0 || atelierState.portrait.photo !== null;
     if (!hasPet) {
       hasPortrait = false;
       ui.placed.replaceChildren();
@@ -328,7 +454,8 @@ export function initRoomVisualiser(): void {
     updateRoom();
     updatePlacement();
     const style = (atelierState.framing.selectedFrame ?? "none") as FrameStyle;
-    if (!["none", "rustic", "antique-gold", "natural-wood"].includes(style) || style === "none") return;
+    if (!["none", "rustic", "antique-gold", "natural-wood"].includes(style) || style === "none")
+      return;
     const t = getFramePreviewThickness(style, sourceWidth);
     const frameCanvas = document.createElement("canvas");
     try {
@@ -344,13 +471,15 @@ export function initRoomVisualiser(): void {
       image.style.height = `${sourceHeight + t * 2}px`;
       artwork.append(image);
     } catch {
-      if (version === visualVersion) ui.feedback.textContent = "The painting is visible, but the decorative frame couldn't load.";
+      if (version === visualVersion)
+        ui.feedback.textContent =
+          "The painting is visible, but the decorative frame couldn't load.";
     }
   }
   function resetPlacement(): void {
     settings.x = 0.5;
     settings.y = 0.37;
-    settings.width = 0.32;
+    settings.width = previewBaseWidth();
     settings.offsets = DEFAULT_OFFSETS();
     applyEstimatedScale(true);
     save();
@@ -361,21 +490,31 @@ export function initRoomVisualiser(): void {
   for (const button of roomButtons) {
     button.addEventListener("click", () => {
       const choice = button.dataset.roomPreset;
-      if (choice !== "warm" && choice !== "classic" && choice !== "modern" && choice !== "dark") return;
+      if (choice !== "warm" && choice !== "classic" && choice !== "modern" && choice !== "dark")
+        return;
       settings.room = choice;
       applyEstimatedScale(true);
-      save(); updateRoom(); updatePlacement();
+      save();
+      updateRoom();
+      updatePlacement();
     });
   }
   myRoomButton.addEventListener("click", () => {
     if (!roomPhotoUrl) return;
     settings.room = "upload";
-    save(); updateRoom();
+    settings.width = previewBaseWidth();
+    recordScaleSignature();
+    save();
+    updateRoom();
+    updatePlacement();
   });
   ui.photoInput.addEventListener("change", () => {
     const file = ui.photoInput.files?.[0];
     if (!file) return;
-    if (!["image/png", "image/jpeg", "image/webp"].includes(file.type) || file.size > 15 * 1024 * 1024) {
+    if (
+      !["image/png", "image/jpeg", "image/webp"].includes(file.type) ||
+      file.size > 15 * 1024 * 1024
+    ) {
       ui.feedback.textContent = "Choose a JPG, PNG or WebP image smaller than 15 MB.";
       ui.photoInput.value = "";
       return;
@@ -386,28 +525,39 @@ export function initRoomVisualiser(): void {
     if (previous) URL.revokeObjectURL(previous);
     const version = ++uploadVersion;
     settings.room = "upload";
+    // Start at 100% of the same visual estimate used for the example rooms.
+    settings.width = previewBaseWidth();
+    recordScaleSignature();
     atelierState.room.image = file;
-    save(); updateRoom();
+    save();
+    updateRoom();
+    updatePlacement();
     ui.feedback.textContent = "Room photo added. Drag your portrait to position it.";
     void writeRoomFile(file).catch(() => {
-      if (uploadVersion === version) ui.feedback.textContent = "Room photo is shown, but couldn't be saved for refresh.";
+      if (uploadVersion === version)
+        ui.feedback.textContent = "Room photo is shown, but couldn't be saved for refresh.";
     });
   });
   ui.removePhoto.addEventListener("click", () => {
     ++uploadVersion;
     settings.room = "warm";
     atelierState.room.image = null;
-    save(); updateRoom();
+    save();
+    updateRoom();
     ui.photoInput.value = "";
-    void writeRoomFile(null).catch(() => { ui.feedback.textContent = "Couldn't clear the saved room photo."; });
+    void writeRoomFile(null).catch(() => {
+      ui.feedback.textContent = "Couldn't clear the saved room photo.";
+    });
     if (roomPhotoUrl) URL.revokeObjectURL(roomPhotoUrl);
     roomPhotoUrl = null;
     myRoomImage.removeAttribute("src");
     updateRoom();
   });
   ui.sizeInput.addEventListener("input", () => {
-    settings.width = Math.max(MIN_ROOM_PREVIEW_FRACTION, Math.min(MAX_ROOM_PREVIEW_FRACTION,
-      previewBaseWidth() * Number(ui.sizeInput.value) / 100));
+    settings.width = Math.max(
+      MIN_ROOM_PREVIEW_FRACTION,
+      Math.min(MAX_ROOM_PREVIEW_FRACTION, (previewBaseWidth() * Number(ui.sizeInput.value)) / 100)
+    );
     recordScaleSignature(); // Preserve deliberate manual adjustment.
     save();
     updatePreviewScaleLabel();
@@ -416,7 +566,9 @@ export function initRoomVisualiser(): void {
   ui.reset.addEventListener("click", resetPlacement);
   ui.perspectiveButton.addEventListener("click", () => {
     settings.perspective = !settings.perspective;
-    save(); updateRoom(); updatePlacement();
+    save();
+    updateRoom();
+    updatePlacement();
   });
 
   for (let i = 0; i < 4; i++) {
@@ -430,9 +582,20 @@ export function initRoomVisualiser(): void {
   function startDrag(event: PointerEvent, corner?: number): void {
     if (!hasPortrait) return;
     event.preventDefault();
-    activePointer = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, initialX: corner === undefined ? settings.x : settings.offsets[corner].x, initialY: corner === undefined ? settings.y : settings.offsets[corner].y, corner };
+    activePointer = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      initialX: corner === undefined ? settings.x : settings.offsets[corner].x,
+      initialY: corner === undefined ? settings.y : settings.offsets[corner].y,
+      corner,
+    };
     (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
   }
+  // Prevent the browser from dragging the underlying pet/frame <img> as a
+  // native drag preview. Our pointer handlers move the placed portrait instead.
+  // Listening on the container also covers images created on later refreshes.
+  ui.placed.addEventListener("dragstart", (event) => event.preventDefault());
   ui.placed.addEventListener("pointerdown", (event) => startDrag(event));
   ui.handles.addEventListener("pointerdown", (event) => {
     const target = (event.target as HTMLElement).closest<HTMLElement>("[data-corner]");
@@ -443,13 +606,25 @@ export function initRoomVisualiser(): void {
     const diffX = event.clientX - activePointer.x;
     const diffY = event.clientY - activePointer.y;
     if (activePointer.corner === undefined) {
-      settings.x = Math.max(0.05, Math.min(0.95, activePointer.initialX + diffX / Math.max(1, ui.view.clientWidth)));
-      settings.y = Math.max(0.05, Math.min(0.95, activePointer.initialY + diffY / Math.max(1, ui.view.clientHeight)));
+      settings.x = Math.max(
+        0.05,
+        Math.min(0.95, activePointer.initialX + diffX / Math.max(1, ui.view.clientWidth))
+      );
+      settings.y = Math.max(
+        0.05,
+        Math.min(0.95, activePointer.initialY + diffY / Math.max(1, ui.view.clientHeight))
+      );
     } else {
       const scaleWidth = Math.max(1, settings.width * ui.view.clientWidth);
       const scaleHeight = scaleWidth / getAspectRatio();
-      settings.offsets[activePointer.corner].x = Math.max(-0.35, Math.min(0.35, activePointer.initialX + diffX / scaleWidth));
-      settings.offsets[activePointer.corner].y = Math.max(-0.35, Math.min(0.35, activePointer.initialY + diffY / scaleHeight));
+      settings.offsets[activePointer.corner].x = Math.max(
+        -0.35,
+        Math.min(0.35, activePointer.initialX + diffX / scaleWidth)
+      );
+      settings.offsets[activePointer.corner].y = Math.max(
+        -0.35,
+        Math.min(0.35, activePointer.initialY + diffY / scaleHeight)
+      );
     }
     updatePlacement();
   }
@@ -477,14 +652,17 @@ export function initRoomVisualiser(): void {
     const signature = currentCanvasSignature(settings.room);
     if (!signature) return;
     let previousSignature: string | null = null;
-    try { previousSignature = localStorage.getItem(SCALE_SIGNATURE_KEY); }
-    catch { /* If storage is blocked, use a new visual baseline. */ }
+    try {
+      previousSignature = localStorage.getItem(SCALE_SIGNATURE_KEY);
+    } catch {
+      /* If storage is blocked, use a new visual baseline. */
+    }
     if (signature === previousSignature) return;
 
     // A different canvas selection starts at 100% of its new preview baseline.
     // Uploaded rooms cannot be physically calibrated, so 100% is visual only.
     if (settings.room === "upload") {
-      settings.width = 0.32;
+      settings.width = previewBaseWidth();
     } else {
       const estimate = estimatedPreviewWidth(settings.room);
       if (estimate === null) return;
@@ -506,24 +684,45 @@ export function initRoomVisualiser(): void {
   document.addEventListener("atelier:frame-changed", () => {
     if (atelierState.currentStep === 6) void refreshPortrait();
   });
-  document.addEventListener("atelier:room-portrait-changed", () => { if (atelierState.currentStep === 6) void refreshPortrait(); });
-  document.addEventListener("atelier:cutout-ready", () => { if (atelierState.currentStep === 6) void refreshPortrait(); });
+  document.addEventListener("atelier:room-portrait-changed", () => {
+    if (atelierState.currentStep === 6) void refreshPortrait();
+  });
+  document.addEventListener("atelier:cutout-ready", () => {
+    if (atelierState.currentStep === 6) void refreshPortrait();
+  });
 
   // Restore the uploaded room even when an example room was last selected.
   // The version check prevents a delayed read from undoing a new upload/removal.
   const restoreVersion = uploadVersion;
-  void readRoomFile().then((saved) => {
-    if (!saved || roomPhotoUrl || uploadVersion !== restoreVersion) return;
-    roomPhotoUrl = URL.createObjectURL(saved);
-    myRoomImage.src = roomPhotoUrl;
-    atelierState.room.image = new File([saved], "room-photo", { type: saved.type });
-    updateRoom();
-  }).catch(() => {
-    if (settings.room === "upload" && !roomPhotoUrl) {
-      settings.room = "warm";
-      save(); updateRoom();
+  void readRoomFile()
+    .then((saved) => {
+      if (!saved || roomPhotoUrl || uploadVersion !== restoreVersion) return;
+      roomPhotoUrl = URL.createObjectURL(saved);
+      myRoomImage.src = roomPhotoUrl;
+      atelierState.room.image = new File([saved], "room-photo", { type: saved.type });
+      updateRoom();
+    })
+    .catch(() => {
+      if (settings.room === "upload" && !roomPhotoUrl) {
+        settings.room = "warm";
+        save();
+        updateRoom();
+      }
+    });
+  // One-time migration of old uploaded-room previews that used an oversized
+  // fixed 32% room width as their 100% baseline.
+  if (settings.room === "upload") {
+    try {
+      if (localStorage.getItem(UPLOAD_SCALE_MIGRATION_KEY) !== "done") {
+        settings.width = previewBaseWidth();
+        recordScaleSignature();
+        save();
+        localStorage.setItem(UPLOAD_SCALE_MIGRATION_KEY, "done");
+      }
+    } catch {
+      /* Storage is optional. */
     }
-  });
+  }
   applyEstimatedScale();
   updateRoom();
 }
