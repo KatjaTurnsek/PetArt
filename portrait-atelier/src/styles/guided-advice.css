@@ -1,0 +1,43 @@
+/* ==========================================
+   GUIDE ME — ARTIST GUIDANCE
+   ========================================== */
+
+.guided-advice {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background-color: #fefaf7;
+  border: 1px solid #cfc5b8;
+  border-radius: 12px;
+  color: #40362f;
+}
+
+.guided-advice[hidden] {
+  display: none;
+}
+
+.guided-advice h2,
+.guided-advice h3 {
+  margin: 0 0 0.75rem;
+  color: #864a35;
+  font-family: "Libre Caslon Text", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.guided-advice p {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.guided-advice p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .guided-advice {
+    margin: 1.25rem 0;
+    padding: 1.25rem;
+  }
+}

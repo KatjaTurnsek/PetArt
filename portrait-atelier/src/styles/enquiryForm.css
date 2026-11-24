@@ -1,0 +1,44 @@
+.enquiry-section {
+  max-width: 780px;
+  margin: 2.5rem auto 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid #cfc5b8;
+  border-radius: 12px;
+  background: #fefaf7;
+}
+
+.enquiry-heading { margin-bottom: 1.75rem; }
+.enquiry-heading h2 { margin: 0 0 .5rem; font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(1.5rem, 3vw, 2rem); }
+.enquiry-heading p { margin: 0; line-height: 1.6; }
+.enquiry-form { display: grid; gap: 1.4rem; }
+.enquiry-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.enquiry-field { display: grid; gap: .45rem; min-width: 0; }
+.enquiry-field label { font-weight: 600; }
+.enquiry-field input:not([type="file"]), .enquiry-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: .8rem .9rem;
+  border: 1px solid #cfc5b8;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+.enquiry-field input:focus-visible, .enquiry-field textarea:focus-visible {
+  outline: 2px solid #864a35;
+  outline-offset: 2px;
+}
+.enquiry-field textarea { resize: vertical; }
+.enquiry-field input[type="file"] { max-width: 100%; font: inherit; font-size: .9rem; }
+.enquiry-help, .enquiry-optional, .enquiry-privacy-note { margin: 0; color: #71675f; font-size: .88rem; line-height: 1.6; }
+.enquiry-file-row { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; overflow-wrap: anywhere; }
+.enquiry-example-note { margin: 0; padding: 1rem; border: 1px solid #cfc5b8; border-radius: 8px; line-height: 1.6; }
+.enquiry-feedback { margin: 0; color: #864a35; font-size: .9rem; }
+.enquiry-actions { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.enquiry-actions button[disabled] { cursor: not-allowed; opacity: .6; }
+.enquiry-section [hidden] { display: none !important; }
+@media (max-width: 640px) {
+  .enquiry-fields { grid-template-columns: 1fr; }
+  .enquiry-actions { flex-wrap: wrap; }
+}

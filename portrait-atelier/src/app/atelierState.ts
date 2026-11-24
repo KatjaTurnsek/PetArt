@@ -5,6 +5,8 @@
 
 export type CanvasShape = "portrait" | "landscape" | "square";
 
+export type AtelierMode = "create" | "guided";
+
 export interface PortraitSubject {
   id: string;
   name: string;
@@ -19,6 +21,7 @@ export interface PortraitSubject {
 
 export interface AtelierState {
   currentStep: number;
+  mode: AtelierMode;
   portrait: {
     /** Compatibility with current single-photo visualisers. */
     photo: File | null;
@@ -49,11 +52,14 @@ export interface AtelierState {
     email: string;
     message: string;
     wantsAdvice: boolean;
+    /** Optional extra scenery reference supplied at the enquiry stage. */
+    additionalBackground: File | null;
   };
 }
 
 export const atelierState: AtelierState = {
   currentStep: 1,
+  mode: "create",
   portrait: {
     photo: null,
     numberOfPets: null,
@@ -65,7 +71,7 @@ export const atelierState: AtelierState = {
   background: { type: "original", customImage: null },
   framing: { selectedFrame: null },
   room: { image: null, positionX: 0, positionY: 0, scale: 1 },
-  enquiry: { name: "", email: "", message: "", wantsAdvice: false },
+  enquiry: { name: "", email: "", message: "", wantsAdvice: false, additionalBackground: null },
 };
 
 export function createPortraitSubject(photo: File, name = ""): PortraitSubject {

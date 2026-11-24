@@ -1,4 +1,5 @@
 import { atelierState } from "../app/atelierState";
+import { createGuidedAdvice } from "../components/guidedAdvice";
 import { drawPictureFrame, type FrameStyle } from "../app/frameRendererV2";
 import { getFramePreviewThickness } from "../app/frameDefinitions";
 
@@ -191,6 +192,24 @@ export function initRoomVisualiser(): void {
     perspectiveButton,
     perspectiveHelp,
   };
+  // Contextual advice uses the shared Guide Me card, without changing placement.
+  const guidanceHost = document.querySelector<HTMLElement>(".room-settings");
+  if (!guidanceHost) throw new Error("Room settings container not found.");
+  const guidance = createGuidedAdvice({ id: "room-guidance" });
+  guidanceHost.append(guidance.element);
+
+  function updateGuidedAdvice(): void {
+    guidance.update(
+      settings.room === "upload"
+        ? "Try placing your portrait where you would enjoy seeing it every day. " +
+            "The preview size is only an estimate because your room photo has no measurements. " +
+            "I'll help you confirm the right canvas size."
+        : "Try a few different wall positions and preview sizes to see what feels right. " +
+            "The room scale is an illustration, not a precise measurement. " +
+            "I'll help you confirm the final canvas size."
+    );
+  }
+
   // The previous 14% minimum exaggerated small (e.g. 30 cm) paintings.
   // This slider changes apparent size only; it never changes atelierState.canvas.
   // The slider represents a multiple of the room's estimated starting size,
@@ -366,6 +385,7 @@ export function initRoomVisualiser(): void {
     ui.perspectiveButton.textContent = settings.perspective ? "Done" : "Adjust perspective";
     ui.perspectiveHelp.hidden = !settings.perspective;
     ui.handles.hidden = !settings.perspective || !hasPortrait;
+    updateGuidedAdvice();
   }
   function quad(): Point[] {
     const w = ui.view.clientWidth;

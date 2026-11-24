@@ -5,6 +5,7 @@ import {
 } from "../app/multiPetPreview";
 import { atelierState, createPortraitSubject } from "../app/atelierState";
 import type { PortraitSubject } from "../app/atelierState";
+import { getPetCutoutBlob } from "../app/petCutoutCache";
 import {
   deletePhoto,
   loadPhoto,
@@ -16,6 +17,22 @@ import {
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
 const MAX_PETS = 3;
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const EXAMPLE_STORAGE_KEY = "atelier-example-photos-v1";
+const EXAMPLE_FILENAMES = new Set(["atelier-example-dog.webp", "atelier-example-cat.webp"]);
+
+/** Identifies a demonstration session for the future enquiry flow. */
+export function isUsingExamplePhotos(): boolean {
+  try {
+    return (
+      localStorage.getItem(EXAMPLE_STORAGE_KEY) === "true" &&
+      atelierState.portrait.subjects.length > 0 &&
+      atelierState.portrait.subjects.every((subject) => EXAMPLE_FILENAMES.has(subject.photo.name))
+    );
+  } catch {
+    return false;
+  }
+}
+
 type UploadMode = "one" | "several";
 
 /**
@@ -35,11 +52,21 @@ export function initPhotoUpload(): void {
   const feedback = document.querySelector<HTMLElement>("#upload-feedback");
   const assistance = document.querySelector<HTMLElement>("#photo-assistance-note");
   const modeButtons = document.querySelectorAll<HTMLButtonElement>("[data-pet-count]");
+  const exampleButton = document.querySelector<HTMLButtonElement>("#use-example");
 
   if (
-    !photoInput || !uploadLabel || !uploadTitle || !uploadDescription ||
-    !preview || !previewImage || !changeButton || !list || !feedback ||
-    !assistance || modeButtons.length !== 2
+    !photoInput ||
+    !uploadLabel ||
+    !uploadTitle ||
+    !uploadDescription ||
+    !preview ||
+    !previewImage ||
+    !changeButton ||
+    !list ||
+    !feedback ||
+    !assistance ||
+    !exampleButton ||
+    modeButtons.length !== 2
   ) {
     throw new Error("Photograph upload elements not found");
   }
@@ -61,6 +88,58 @@ export function initPhotoUpload(): void {
   let hasLocalEdits = false;
   let previewUrls: string[] = [];
   let saveQueue: Promise<void> = Promise.resolve();
+  let exampleLoadVersion = 0;
+  let exampleFilesPromise: Promise<{ dog: File; cat: File }> | null = null;
+
+  // The example prompt and button belong together in the existing markup.
+  const exampleChoice = exampleButton.closest<HTMLElement>(".photo-alternative");
+  if (!exampleChoice) {
+    throw new Error("Example photograph choice container not found");
+  }
+
+  // Single-pet previews have a Change button but no Remove action.
+  const removeSingleExample = document.createElement("button");
+  removeSingleExample.type = "button";
+  removeSingleExample.className = "pet-photo-remove";
+  removeSingleExample.textContent = "Remove example pet";
+  removeSingleExample.hidden = true;
+  elements.changeButton.insertAdjacentElement("afterend", removeSingleExample);
+
+  /** Keep example status separate from customer-uploaded photographs. */
+  function setExampleMode(active: boolean): void {
+    try {
+      if (active) localStorage.setItem(EXAMPLE_STORAGE_KEY, "true");
+      else localStorage.removeItem(EXAMPLE_STORAGE_KEY);
+    } catch {
+      // Optional browser storage; filenames still identify the example assets.
+    }
+  }
+
+  // Photo credits are displayed only when the built-in photographs are used.
+  const credits = document.createElement("p");
+  credits.className = "example-photo-credits";
+  credits.hidden = true;
+  credits.append("Example photos: dog by ");
+  const dogCredit = document.createElement("a");
+  dogCredit.href = "https://unsplash.com/photos/a-small-dog-wearing-a-green-bandana-_hoAqzp39tk";
+  dogCredit.textContent = "Karsten Winegeart";
+  dogCredit.target = "_blank";
+  dogCredit.rel = "noopener noreferrer";
+  credits.append(dogCredit, " and cat by ");
+  const catCredit = document.createElement("a");
+  catCredit.href = "https://unsplash.com/photos/orange-and-white-tabby-cat-ng9yenZfeuI";
+  catCredit.textContent = "Kabo";
+  catCredit.target = "_blank";
+  catCredit.rel = "noopener noreferrer";
+  credits.append(catCredit, ", and scenery by ");
+  const sceneryCredit = document.createElement("a");
+  sceneryCredit.href = "https://unsplash.com/photos/field-of-green-trees--F5ik109zfU";
+  sceneryCredit.textContent = "Madeleine Wilson";
+  sceneryCredit.target = "_blank";
+  sceneryCredit.rel = "noopener noreferrer";
+  credits.append(sceneryCredit, " on Unsplash. For demonstration only.");
+  // Keep attribution visible even while the Try an example choice is hidden.
+  exampleChoice.insertAdjacentElement("afterend", credits);
 
   /** Add progress feedback inside the photo preview, not as a separate panel. */
   function createPreparationBadge(subjectId: string): HTMLElement {
@@ -80,7 +159,9 @@ export function initPhotoUpload(): void {
       ready: "Ready for your canvas",
       error: "Preview preparation failed",
     };
-    for (const badge of Array.from(document.querySelectorAll<HTMLElement>(".photo-preparation-badge"))) {
+    for (const badge of Array.from(
+      document.querySelectorAll<HTMLElement>(".photo-preparation-badge")
+    )) {
       const subject = subjects.find((item) => item.id === badge.dataset.subjectId);
       if (!subject) continue;
       const state = getPetCutoutStatus(subject);
@@ -102,9 +183,8 @@ export function initPhotoUpload(): void {
     elements.uploadLabel.classList.toggle("is-preparing-photos", isVisible);
 
     if (isVisible) {
-      uploadAreaMessage.textContent = activeCount === 1
-        ? "Preparing your photograph…"
-        : `Preparing ${activeCount} photographs…`;
+      uploadAreaMessage.textContent =
+        activeCount === 1 ? "Preparing your photograph…" : `Preparing ${activeCount} photographs…`;
     }
   }
 
@@ -134,7 +214,6 @@ export function initPhotoUpload(): void {
     updatePreparationBadges();
     updateUploadAreaStatus();
   });
-
 
   function clearPreviewUrls(): void {
     for (const url of previewUrls) URL.revokeObjectURL(url);
@@ -231,9 +310,10 @@ export function initPhotoUpload(): void {
       const removeButton = makeButton("Remove pet", "pet-photo-remove", () => {
         hasLocalEdits = true;
         atelierState.portrait.subjects = atelierState.portrait.subjects.filter(
-          (entry) => entry.id !== subject.id,
+          (entry) => entry.id !== subject.id
         );
         synchroniseLegacyPhoto();
+        if (atelierState.portrait.subjects.length === 0) setExampleMode(false);
         persist();
         render();
         document.dispatchEvent(new Event("atelier:subjects-changed"));
@@ -266,8 +346,8 @@ export function initPhotoUpload(): void {
     const showSinglePreview = mode === "one" && subjects.length === 1;
     elements.preview.hidden = !showSinglePreview;
     elements.list.hidden = mode !== "several" || subjects.length === 0;
-    elements.uploadLabel.hidden = showSinglePreview ||
-      (mode === "several" && subjects.length >= MAX_PETS);
+    elements.uploadLabel.hidden =
+      showSinglePreview || (mode === "several" && subjects.length >= MAX_PETS);
 
     if (showSinglePreview) {
       let frame = elements.preview.querySelector<HTMLElement>(".single-photo-image-frame");
@@ -289,13 +369,21 @@ export function initPhotoUpload(): void {
 
     updatePreparationBadges();
     updateUploadAreaStatus();
+    const usingExamples = isUsingExamplePhotos();
+    credits.hidden = !usingExamples;
+    if (exampleChoice) exampleChoice.hidden = usingExamples;
+    removeSingleExample.hidden = !usingExamples || !showSinglePreview;
 
-    elements.uploadTitle.textContent = mode === "several"
-      ? subjects.length ? "Add another pet" : "Choose your pets' photographs"
-      : "Choose a photograph";
-    elements.uploadDescription.textContent = mode === "several"
-      ? `Choose up to ${MAX_PETS} photographs, one for each pet`
-      : "Tap here to select a photo from your device";
+    elements.uploadTitle.textContent =
+      mode === "several"
+        ? subjects.length
+          ? "Add another pet"
+          : "Choose your pets' photographs"
+        : "Choose a photograph";
+    elements.uploadDescription.textContent =
+      mode === "several"
+        ? `Choose up to ${MAX_PETS} photographs, one for each pet`
+        : "Tap here to select a photo from your device";
   }
 
   function validPhoto(file: File): boolean {
@@ -313,6 +401,13 @@ export function initPhotoUpload(): void {
   function handlePhotos(files: File[]): void {
     if (files.length === 0) return;
     if (!files.every(validPhoto)) return;
+    ++exampleLoadVersion;
+    // Uploading the customer's own photographs replaces example animals;
+    // the two sources must never be mixed in an enquiry.
+    if (isUsingExamplePhotos()) {
+      atelierState.portrait.subjects = [];
+      setExampleMode(false);
+    }
 
     if (mode === "one") {
       const original = atelierState.portrait.subjects[0];
@@ -344,15 +439,158 @@ export function initPhotoUpload(): void {
     }
 
     hasLocalEdits = true;
+    setExampleMode(false);
     synchroniseLegacyPhoto();
     persist();
     render();
     document.dispatchEvent(new Event("atelier:subjects-changed"));
     preloadPetCutouts();
-    announce(atelierState.portrait.subjects.length === 1
-      ? "Photograph added successfully."
-      : `${atelierState.portrait.subjects.length} pet photographs added.`);
+    announce(
+      atelierState.portrait.subjects.length === 1
+        ? "Photograph added successfully."
+        : `${atelierState.portrait.subjects.length} pet photographs added.`
+    );
   }
+
+  /**
+   * Load a verified example image. Vite may return index.html with HTTP 200 when
+   * a missing asset URL is requested, so checking response.ok is not enough.
+   * Support both public/images/examples/ and public/images/ layouts.
+   */
+  async function loadExampleFile(filename: string, exampleName: string): Promise<File> {
+    const base = import.meta.env.BASE_URL;
+    const paths = [`${base}images/examples/${filename}`, `${base}images/${filename}`];
+
+    for (const path of paths) {
+      const response = await fetch(path);
+      if (!response.ok) continue;
+
+      const blob = await response.blob();
+      const mimeType = blob.type.toLowerCase();
+      if (!mimeType.startsWith("image/")) continue;
+
+      // Verify the actual WebP file signature, not just its HTTP MIME type.
+      const header = new Uint8Array(await blob.slice(0, 12).arrayBuffer());
+      const signature = Array.from(header, (byte) => String.fromCharCode(byte)).join("");
+      if (!signature.startsWith("RIFF") || signature.slice(8, 12) !== "WEBP") continue;
+
+      // The file must also be decodable before we pass it to the cutout service.
+      try {
+        const bitmap = await createImageBitmap(blob);
+        bitmap.close();
+      } catch {
+        continue;
+      }
+
+      // Stable metadata is essential: petCutoutCache uses lastModified in
+      // its IndexedDB key. Date.now() would invalidate the cache on every visit.
+      return new File([blob], exampleName, {
+        type: "image/webp",
+        lastModified: 0,
+      });
+    }
+
+    throw new Error(`Could not find a valid example image: ${filename}`);
+  }
+
+  /** Download and validate the two examples once per page visit, in the background. */
+  function preloadExampleFiles(): Promise<{ dog: File; cat: File }> {
+    if (!exampleFilesPromise) {
+      exampleFilesPromise = Promise.all([
+        loadExampleFile("example-dog-desktop.webp", "atelier-example-dog.webp"),
+        loadExampleFile("example-cat-desktop.webp", "atelier-example-cat.webp"),
+      ])
+        .then(([dog, cat]) => ({ dog, cat }))
+        .catch((error: unknown) => {
+          // A failed preload can be retried if someone chooses Try an example.
+          exampleFilesPromise = null;
+          throw error;
+        });
+    }
+    return exampleFilesPromise;
+  }
+
+  /** Load ready-made pets through the same pipeline as customer photographs. */
+  async function loadExamplePhotos(): Promise<void> {
+    // Switching between guided and independent exploration must not create
+    // new subjects or run background removal for examples already selected.
+    const currentSubjects = atelierState.portrait.subjects;
+    const requestedNames =
+      mode === "several"
+        ? ["atelier-example-dog.webp", "atelier-example-cat.webp"]
+        : ["atelier-example-dog.webp"];
+    const sameExamplesAlreadySelected =
+      isUsingExamplePhotos() &&
+      currentSubjects.length === requestedNames.length &&
+      currentSubjects.every((subject, index) => subject.photo.name === requestedNames[index]);
+
+    if (sameExamplesAlreadySelected) {
+      announce("Your example pets are already selected. Continue exploring the Atelier.");
+      render();
+      return;
+    }
+
+    const existing = currentSubjects.length > 0;
+    if (
+      existing &&
+      !isUsingExamplePhotos() &&
+      !window.confirm(
+        "Try example photographs?\n\nThis will replace the photographs you've uploaded with our example pets. You can upload your own photographs again whenever you like.\n\nChoose OK to use examples, or Cancel to keep your photographs."
+      )
+    ) {
+      return;
+    }
+
+    const version = ++exampleLoadVersion;
+    if (exampleButton) exampleButton.disabled = true;
+    announce("Loading example photographs…");
+
+    try {
+      const { dog, cat } = await preloadExampleFiles();
+      const files = mode === "several" ? [dog, cat] : [dog];
+      if (version !== exampleLoadVersion) return;
+
+      hasLocalEdits = true;
+      atelierState.portrait.subjects = files.map((file) => createPortraitSubject(file));
+      setExampleMode(true);
+      synchroniseLegacyPhoto();
+      persist();
+      render();
+      document.dispatchEvent(new Event("atelier:subjects-changed"));
+      preloadPetCutouts();
+      announce(
+        files.length === 1
+          ? "Example dog loaded. Explore the Atelier with this sample photograph."
+          : "Example dog and cat loaded. Try arranging them together on a canvas."
+      );
+    } catch (error: unknown) {
+      if (version === exampleLoadVersion) {
+        const detail = error instanceof Error ? error.message : "An unknown error occurred.";
+        announce(
+          `${detail} Check that the WebP files are in public/images/examples/ (or public/images/). Your existing photographs have not been changed.`
+        );
+      }
+    } finally {
+      if (version === exampleLoadVersion && exampleButton) exampleButton.disabled = false;
+    }
+  }
+
+  exampleButton.addEventListener("click", () => {
+    void loadExamplePhotos();
+  });
+
+  removeSingleExample.addEventListener("click", () => {
+    if (!isUsingExamplePhotos() || atelierState.portrait.subjects.length !== 1) return;
+    ++exampleLoadVersion;
+    hasLocalEdits = true;
+    atelierState.portrait.subjects = [];
+    setExampleMode(false);
+    synchroniseLegacyPhoto();
+    persist();
+    render();
+    document.dispatchEvent(new Event("atelier:subjects-changed"));
+    announce("Example photograph removed.");
+  });
 
   modeButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -365,6 +603,42 @@ export function initPhotoUpload(): void {
       mode = requested;
       announce("");
       render();
+
+      // Expanding a one-pet example to several pets should add the cat,
+      // not download or reprocess the dog a second time.
+      if (
+        requested === "several" &&
+        isUsingExamplePhotos() &&
+        atelierState.portrait.subjects.length === 1 &&
+        atelierState.portrait.subjects[0].photo.name === "atelier-example-dog.webp"
+      ) {
+        const version = ++exampleLoadVersion;
+        void (async () => {
+          try {
+            const { cat } = await preloadExampleFiles();
+            if (
+              version !== exampleLoadVersion ||
+              mode !== "several" ||
+              !isUsingExamplePhotos() ||
+              atelierState.portrait.subjects.length !== 1
+            )
+              return;
+
+            hasLocalEdits = true;
+            atelierState.portrait.subjects.push(createPortraitSubject(cat));
+            synchroniseLegacyPhoto();
+            persist();
+            render();
+            document.dispatchEvent(new Event("atelier:subjects-changed"));
+            preloadPetCutouts();
+            announce("Example dog and cat ready. Try arranging them together.");
+          } catch (error: unknown) {
+            const detail =
+              error instanceof Error ? error.message : "Could not load the example cat.";
+            announce(detail);
+          }
+        })();
+      }
     });
   });
 
@@ -402,7 +676,7 @@ export function initPhotoUpload(): void {
       if (storedSubjects.length > 0) {
         atelierState.portrait.subjects = storedSubjects;
       } else {
-        const legacy = atelierState.portrait.photo ?? await loadPhoto();
+        const legacy = atelierState.portrait.photo ?? (await loadPhoto());
         if (hasLocalEdits) return;
         if (legacy) {
           atelierState.portrait.subjects = [createPortraitSubject(legacy)];
@@ -410,6 +684,7 @@ export function initPhotoUpload(): void {
         }
       }
       synchroniseLegacyPhoto();
+      if (!isUsingExamplePhotos()) setExampleMode(false);
       render();
       document.dispatchEvent(new Event("atelier:subjects-changed"));
       preloadPetCutouts();
@@ -419,4 +694,27 @@ export function initPhotoUpload(): void {
   })();
 
   render();
+  // Warm the same persistent cutout cache used for customer photographs.
+  // Start after initial UI rendering, one example at a time. If a visitor
+  // chooses an example during preparation, getPetCutoutBlob shares the
+  // in-flight promise rather than running background removal twice.
+  async function warmExampleCutouts(): Promise<void> {
+    const { dog, cat } = await preloadExampleFiles();
+    for (const file of [dog, cat]) {
+      try {
+        await getPetCutoutBlob(file);
+      } catch {
+        // Warming is optional. The normal preview flow will retry and
+        // display its existing error status if processing still fails.
+      }
+    }
+  }
+
+  // Let the welcome screen render before using the device for AI processing.
+  // On subsequent visits, IndexedDB serves prepared example cutouts directly.
+  window.setTimeout(() => {
+    void warmExampleCutouts().catch(() => {
+      // Missing example assets are reported by the Try an example action.
+    });
+  }, 1200);
 }

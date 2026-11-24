@@ -20,7 +20,9 @@
   font-weight: 600;
 }
 
-.step-header h1 { margin-bottom: 12px; }
+.step-header h1 {
+  margin-bottom: 12px;
+}
 
 /* Choose the number of pets before uploading. */
 .pet-count-options {
@@ -45,9 +47,16 @@
   cursor: pointer;
 }
 
-.pet-count-option strong { font-size: 16px; }
-.pet-count-option span { color: var(--muted); font-size: 13px; }
-.pet-count-option:hover { border-color: var(--olive); }
+.pet-count-option strong {
+  font-size: 16px;
+}
+.pet-count-option span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.pet-count-option:hover {
+  border-color: var(--olive);
+}
 .pet-count-option.is-selected {
   border-color: var(--olive);
   background: var(--field-paper);
@@ -67,7 +76,9 @@
   background: var(--field-paper);
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .photo-upload-label:hover {
@@ -86,8 +97,14 @@
   font-size: 36px;
 }
 
-.photo-upload-label strong { font-size: 17px; font-weight: 600; }
-.photo-upload-label > span:last-child { color: var(--muted); font-size: 14px; }
+.photo-upload-label strong {
+  font-size: 17px;
+  font-weight: 600;
+}
+.photo-upload-label > span:last-child {
+  color: var(--muted);
+  font-size: 14px;
+}
 
 .upload-feedback {
   margin-top: 12px;
@@ -102,7 +119,9 @@
   gap: 14px;
   margin-top: 36px;
 }
-.photo-alternative p { font-size: 14px; }
+.photo-alternative p {
+  font-size: 14px;
+}
 
 .step-navigation {
   display: flex;
@@ -181,8 +200,17 @@
   object-fit: cover;
 }
 
-.pet-photo-details { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
-.pet-photo-details label { font-size: 13px; font-weight: 600; }
+.pet-photo-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+.pet-photo-details label {
+  font-size: 13px;
+  font-weight: 600;
+}
 .pet-photo-details input {
   width: 100%;
   min-width: 0;
@@ -219,17 +247,39 @@
 }
 
 /* The hidden attribute must win over layout display rules. */
-.photo-screen [hidden] { display: none !important; }
+.photo-screen [hidden] {
+  display: none !important;
+}
 
 @media (max-width: 480px) {
-  .photo-screen { margin-block: 40px; }
-  .photo-upload-label { min-height: 190px; padding: 24px 18px; }
-  .pet-count-option { min-height: 84px; padding: 12px; }
-  .pet-count-option strong { font-size: 15px; }
-  .pet-count-option span { font-size: 12px; }
-  .pet-photo-card { grid-template-columns: 86px minmax(0, 1fr); gap: 12px; }
-  .pet-photo-card > img { width: 86px; height: 86px; }
-  .step-navigation .btn { flex: 1; }
+  .photo-screen {
+    margin-block: 40px;
+  }
+  .photo-upload-label {
+    min-height: 190px;
+    padding: 24px 18px;
+  }
+  .pet-count-option {
+    min-height: 84px;
+    padding: 12px;
+  }
+  .pet-count-option strong {
+    font-size: 15px;
+  }
+  .pet-count-option span {
+    font-size: 12px;
+  }
+  .pet-photo-card {
+    grid-template-columns: 86px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .pet-photo-card > img {
+    width: 86px;
+    height: 86px;
+  }
+  .step-navigation .btn {
+    flex: 1;
+  }
 }
 
 /* ==========================================
@@ -294,14 +344,48 @@
 }
 
 @keyframes photo-preparation-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 480px) {
-  .pet-photo-image-frame > img { width: 86px; height: 86px; }
-  .pet-photo-image-frame .photo-preparation-badge { font-size: 10px; }
+  .pet-photo-image-frame > img {
+    width: 86px;
+    height: 86px;
+  }
+  .pet-photo-image-frame .photo-preparation-badge {
+    font-size: 10px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-preparation-badge::before { animation: none !important; }
+  .photo-preparation-badge::before {
+    animation: none !important;
+  }
+}
+
+/* Example photograph credits */
+
+.example-photo-credits {
+  margin: 1rem auto 0;
+  max-width: 42rem;
+  color: #766b63;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.example-photo-credits a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.example-photo-credits a:hover {
+  color: #a45c3f;
+}
+
+.example-photo-credits[hidden] {
+  display: none;
 }

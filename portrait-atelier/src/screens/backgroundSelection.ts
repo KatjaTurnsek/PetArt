@@ -1,5 +1,7 @@
 import { getPetCutoutBlob } from "../app/petCutoutCache";
 import { atelierState } from "../app/atelierState";
+import { createGuidedAdvice } from "../components/guidedAdvice";
+import { isUsingExamplePhotos } from "./photoUpload";
 import { drawMultiPetComposition, preparePetCutout } from "../app/multiPetPreview";
 import { loadBackgroundSelection, saveBackgroundSelection } from "../app/atelierChoiceStorage";
 import { makeBlurredBackground } from "../app/graduatedBackground";
@@ -44,6 +46,13 @@ export const backgroundSelection: BackgroundSelection = {
   backgroundX: 0,
   backgroundY: 0,
 };
+
+const EXAMPLE_MEADOW_PATHS = [
+  "/images/examples/example-background-desktop.webp",
+  "/images/example-background-desktop.webp",
+];
+const EXAMPLE_MEADOW_NAME = "atelier-example-meadow.webp";
+const EXAMPLE_MEADOW_TIMESTAMP = 1_700_000_000_000;
 
 const MAX_IMAGE_SIZE = 15 * 1024 * 1024;
 
@@ -92,13 +101,17 @@ export function initBackgroundSelection(): void {
 
   const notesInput = document.querySelector<HTMLTextAreaElement>("#background-notes");
   const fineTune = document.querySelector<HTMLElement>("#background-finetune");
-  const blurStrengthButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-blur-strength]"));
+  const blurStrengthButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-blur-strength]")
+  );
   const blurFadeInput = document.querySelector<HTMLInputElement>("#background-blur-fade");
   const blurFadeValue = document.querySelector<HTMLOutputElement>("#background-blur-fade-value");
   const personalPosition = document.querySelector<HTMLElement>("#background-personal-position");
   const backgroundZoomInput = document.querySelector<HTMLInputElement>("#background-zoom");
   const backgroundZoomValue = document.querySelector<HTMLOutputElement>("#background-zoom-value");
-  const resetAdjustments = document.querySelector<HTMLButtonElement>("#background-reset-adjustments");
+  const resetAdjustments = document.querySelector<HTMLButtonElement>(
+    "#background-reset-adjustments"
+  );
 
   if (
     !preview ||
@@ -113,13 +126,164 @@ export function initBackgroundSelection(): void {
     !uploadPreviewImage ||
     !removeButton ||
     !uploadFeedback ||
-    !notesInput || !fineTune || !blurFadeInput || !blurFadeValue ||
-    !personalPosition || !backgroundZoomInput || !backgroundZoomValue ||
-    !resetAdjustments || blurStrengthButtons.length !== 3 ||
+    !notesInput ||
+    !fineTune ||
+    !blurFadeInput ||
+    !blurFadeValue ||
+    !personalPosition ||
+    !backgroundZoomInput ||
+    !backgroundZoomValue ||
+    !resetAdjustments ||
+    blurStrengthButtons.length !== 3 ||
     options.length !== 4 ||
     swatches.length !== 5
   ) {
     throw new Error("Background visualiser elements not found");
+  }
+
+  // The existing personal-background card doubles as an example-meadow card.
+  // Reuse all its existing fine-tuning controls instead of introducing a second editor.
+  const personalOption = Array.from(options).find(
+    (button) => button.dataset.background === "personal"
+  );
+  const personalOptionTitle = personalOption?.querySelector<HTMLElement>(
+    ".background-option-copy strong"
+  );
+  const personalOptionDescription = personalOption?.querySelector<HTMLElement>(
+    ".background-option-copy span"
+  );
+  const personalOptionSymbol = personalOption?.querySelector<HTMLElement>(".thumbnail-symbol");
+
+  const meadowCredit = document.createElement("p");
+  meadowCredit.className = "example-photo-credits";
+  meadowCredit.hidden = true;
+  meadowCredit.append("Example meadow photo by ");
+  const meadowCreditLink = document.createElement("a");
+  meadowCreditLink.href = "https://unsplash.com/photos/field-of-green-trees--F5ik109zfU";
+  meadowCreditLink.textContent = "Madeleine Wilson";
+  meadowCreditLink.target = "_blank";
+  meadowCreditLink.rel = "noopener noreferrer";
+  meadowCredit.append(meadowCreditLink, " on Unsplash.");
+  referencePanel.insertAdjacentElement("afterend", meadowCredit);
+
+  // A stable File identity lets existing background caches work across revisits.
+  let meadowPromise: Promise<File> | null = null;
+  let meadowFile: File | null = null;
+  let meadowRequestVersion = 0;
+  let meadowLoading = false;
+
+  function loadMeadow(): Promise<File> {
+    if (!meadowPromise) {
+      meadowPromise = (async () => {
+        for (const url of EXAMPLE_MEADOW_PATHS) {
+          const response = await fetch(url);
+          if (!response.ok) continue;
+
+          const blob = await response.blob();
+          if (!blob.type.startsWith("image/") || blob.size === 0) continue;
+
+          // Vite may return index.html for an unknown asset URL.
+          // Check the image itself rather than trusting a successful response.
+          try {
+            const bitmap = await createImageBitmap(blob);
+            bitmap.close();
+          } catch {
+            continue;
+          }
+
+          return new File([blob], EXAMPLE_MEADOW_NAME, {
+            type: blob.type,
+            lastModified: EXAMPLE_MEADOW_TIMESTAMP,
+          });
+        }
+        throw new Error(
+          "Example meadow not found. Check that example-background-desktop.webp " +
+            "is in public/images/examples/ or public/images/."
+        );
+      })().catch((error: unknown) => {
+        meadowPromise = null;
+        throw error;
+      });
+    }
+    return meadowPromise;
+  }
+
+  function selectExampleMeadow(): void {
+    if (meadowLoading) return;
+    meadowLoading = true;
+    const version = ++meadowRequestVersion;
+    void loadMeadow()
+      .then((file) => {
+        meadowFile = file;
+        if (
+          version !== meadowRequestVersion ||
+          !isUsingExamplePhotos() ||
+          backgroundSelection.preference !== "personal"
+        )
+          return;
+        if (backgroundSelection.photo !== file) {
+          backgroundSelection.photo = file;
+          persistBackground();
+        }
+        render();
+      })
+      .catch((error: unknown) => {
+        if (version !== meadowRequestVersion || !isUsingExamplePhotos()) return;
+        elements.previewFeedback.textContent =
+          error instanceof Error
+            ? error.message
+            : "The example meadow couldn't be loaded. Please try again.";
+      })
+      .finally(() => {
+        meadowLoading = false;
+      });
+  }
+
+  /** Keep demo scenery separate from customers' uploaded reference photos. */
+  function syncExampleBackground(): void {
+    const example = isUsingExamplePhotos();
+    if (personalOptionTitle) {
+      personalOptionTitle.textContent = example
+        ? "Try the example meadow"
+        : "Use my own background";
+    }
+    if (personalOptionDescription) {
+      personalOptionDescription.textContent = example
+        ? "Explore a meadow setting and make it your own with adjustments."
+        : "Try a garden, favourite place or special scenery.";
+    }
+    if (personalOptionSymbol) personalOptionSymbol.textContent = example ? "✿" : "＋";
+    if (personalOption) {
+      personalOption.setAttribute(
+        "aria-controls",
+        example ? "background-finetune" : "background-reference"
+      );
+    }
+    meadowCredit.hidden = !example || backgroundSelection.preference !== "personal";
+    elements.referencePanel.hidden = example || backgroundSelection.preference !== "personal";
+    elements.photoInput.disabled = example;
+
+    // A demo image must never silently become a customer's background reference.
+    if (!example && backgroundSelection.photo?.name === EXAMPLE_MEADOW_NAME) {
+      backgroundSelection.photo = null;
+      if (backgroundSelection.preference === "personal") {
+        backgroundSelection.preference = "neutral";
+      }
+      persistBackground();
+    }
+    if (example && backgroundSelection.preference === "personal") {
+      // Never carry a customer-uploaded scenery file into the example session.
+      if (backgroundSelection.photo?.name !== EXAMPLE_MEADOW_NAME) {
+        backgroundSelection.photo = null;
+      }
+      if (
+        backgroundSelection.photo === null ||
+        (meadowFile !== null && backgroundSelection.photo !== meadowFile)
+      ) {
+        // A restored File may have the same name; load the canonical example asset.
+        selectExampleMeadow();
+      }
+    }
   }
 
   const elements = {
@@ -177,14 +341,16 @@ export function initBackgroundSelection(): void {
           file: sceneFile,
           url: URL.createObjectURL(sceneFile),
         });
-        if (atelierState.portrait.photo === photo &&
-            backgroundSelection.preference === "softened") render();
+        if (atelierState.portrait.photo === photo && backgroundSelection.preference === "softened")
+          render();
       })
       .catch((error: unknown) => {
         console.error("Could not reconstruct the pet-free background", error);
         reconstructionFailed.add(photo);
-        if (atelierState.portrait.photo === photo &&
-            backgroundSelection.preference === "softened") {
+        if (
+          atelierState.portrait.photo === photo &&
+          backgroundSelection.preference === "softened"
+        ) {
           elements.previewFeedback.textContent =
             "We couldn't rebuild the scenery for this photograph. Showing the original.";
         }
@@ -227,7 +393,8 @@ export function initBackgroundSelection(): void {
   }
 
   function setScenePhoto(file: File | null, originalUrl: string | null): void {
-    const photographic = backgroundSelection.preference === "softened" ||
+    const photographic =
+      backgroundSelection.preference === "softened" ||
       backgroundSelection.preference === "personal";
     blurredImage.hidden = true;
     currentBlurFile = photographic ? file : null;
@@ -257,8 +424,7 @@ export function initBackgroundSelection(): void {
     // at 100 the blurred layer extends all the way toward the ground.
     const start = 0;
     const end = Math.round(35 + fade * 0.65);
-    blurredImage.style.maskImage =
-      `linear-gradient(to bottom, black ${start}%, transparent ${end}%)`;
+    blurredImage.style.maskImage = `linear-gradient(to bottom, black ${start}%, transparent ${end}%)`;
     blurredImage.style.webkitMaskImage = blurredImage.style.maskImage;
   }
 
@@ -276,8 +442,10 @@ export function initBackgroundSelection(): void {
     elements.blurFadeValue.textContent = `${backgroundSelection.blurFade}%`;
     elements.backgroundZoomInput.value = String(backgroundSelection.backgroundZoom);
     elements.backgroundZoomValue.textContent = `${backgroundSelection.backgroundZoom}%`;
-    elements.preview.classList.toggle("is-background-draggable",
-      mode === "personal" && Boolean(backgroundSelection.photo));
+    elements.preview.classList.toggle(
+      "is-background-draggable",
+      mode === "personal" && Boolean(backgroundSelection.photo)
+    );
     applyBlurFade();
   }
 
@@ -604,8 +772,8 @@ export function initBackgroundSelection(): void {
 
   function applySceneTransform(): void {
     const factor = 1.06 * (backgroundSelection.backgroundZoom / 100);
-    const x = backgroundSelection.backgroundX * (elements.preview.clientWidth || 350) / 100;
-    const y = backgroundSelection.backgroundY * (elements.preview.clientHeight || 430) / 100;
+    const x = (backgroundSelection.backgroundX * (elements.preview.clientWidth || 350)) / 100;
+    const y = (backgroundSelection.backgroundY * (elements.preview.clientHeight || 430)) / 100;
     const transform = `translate(${x}px, ${y}px) scale(${factor})`;
     elements.sceneImage.style.transform = transform;
     blurredImage.style.transform = transform;
@@ -705,6 +873,45 @@ export function initBackgroundSelection(): void {
     }
   }
 
+  // Guide Me stays beside the selected option, not above the entire screen.
+  // This is advice only: it never changes the customer's background preference.
+  const guidance = createGuidedAdvice({ id: "background-guidance" });
+  guidance.element.classList.add("background-guided-advice");
+
+  /** Updates artist advice without altering the selected background. */
+  function updateGuidedAdvice(): void {
+    guidance.syncVisibility();
+    if (guidance.element.hidden) return;
+
+    const multiplePets = atelierState.portrait.subjects.length > 1;
+    const advice: Record<BackgroundPreference, string> = {
+      original:
+        "Keep the original setting when it is part of the memory you want to preserve. " +
+        "I'll make sure your pet remains the focus.",
+      softened:
+        "Softening the surroundings can draw attention to your pet's expression " +
+        "while keeping the feeling of the original photograph.",
+      neutral: multiplePets
+        ? "A simple, shared background helps bring pets from different photographs " +
+          "together naturally, without competing with their expressions."
+        : "A softly mottled background is a timeless choice when you want " +
+          "your pet's personality to take centre stage.",
+      personal: isUsingExamplePhotos()
+        ? "Try adjusting the meadow's softness and position to find the feeling you like. " +
+          "These are ideas for your portrait, not fixed painting instructions."
+        : "A favourite garden or meaningful place can make a portrait even more personal. " +
+          "You can upload a separate scenery photograph to explore the idea.",
+    };
+    guidance.update(advice[backgroundSelection.preference]);
+
+    // Place the note directly after the selected card in the options column.
+    const selectedButton = Array.from(options).find(
+      (button) => button.dataset.background === backgroundSelection.preference
+    );
+    const selectedCard = selectedButton?.closest<HTMLElement>(".background-option-card");
+    if (selectedCard) selectedCard.insertAdjacentElement("afterend", guidance.element);
+  }
+
   /**
    * Update selected background cards and swatches.
    */
@@ -727,9 +934,11 @@ export function initBackgroundSelection(): void {
 
     elements.swatchPanel.hidden = backgroundSelection.preference !== "neutral";
 
-    elements.referencePanel.hidden = backgroundSelection.preference !== "personal";
+    elements.referencePanel.hidden =
+      isUsingExamplePhotos() || backgroundSelection.preference !== "personal";
 
     elements.preview.dataset.tone = backgroundSelection.tone;
+    updateGuidedAdvice();
   }
 
   /**
@@ -773,6 +982,7 @@ export function initBackgroundSelection(): void {
    * Display the current visualisation.
    */
   function render(): void {
+    syncExampleBackground();
     if (atelierState.portrait.subjects.length > 1) {
       renderMultiPets();
       return;
@@ -895,8 +1105,11 @@ export function initBackgroundSelection(): void {
         break;
     }
 
-    const waitingForScene = mode === "softened" && file &&
-      !reconstructedScenes.has(file) && !reconstructionFailed.has(file);
+    const waitingForScene =
+      mode === "softened" &&
+      file &&
+      !reconstructedScenes.has(file) &&
+      !reconstructionFailed.has(file);
     elements.previewFeedback.textContent = waitingForScene
       ? "Preparing the softened background…"
       : mode === "softened" && file && reconstructionFailed.has(file)
@@ -946,6 +1159,10 @@ export function initBackgroundSelection(): void {
    * Validate and store the uploaded scenery.
    */
   elements.photoInput.addEventListener("change", () => {
+    if (isUsingExamplePhotos()) {
+      elements.photoInput.value = "";
+      return;
+    }
     const file = elements.photoInput.files?.[0];
 
     if (!file) {
@@ -1024,12 +1241,16 @@ export function initBackgroundSelection(): void {
 
   // Move personal backgrounds directly on the preview. Pointer events also
   // support touch. A drag never changes the pet arrangement.
-  let drag: { pointerId: number; x: number; y: number; startX: number; startY: number } | null = null;
+  let drag: { pointerId: number; x: number; y: number; startX: number; startY: number } | null =
+    null;
   elements.preview.addEventListener("pointerdown", (event: PointerEvent) => {
     if (backgroundSelection.preference !== "personal" || !backgroundSelection.photo) return;
     drag = {
-      pointerId: event.pointerId, x: event.clientX, y: event.clientY,
-      startX: backgroundSelection.backgroundX, startY: backgroundSelection.backgroundY,
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      startX: backgroundSelection.backgroundX,
+      startY: backgroundSelection.backgroundY,
     };
     elements.preview.setPointerCapture(event.pointerId);
   });
@@ -1037,10 +1258,14 @@ export function initBackgroundSelection(): void {
     if (!drag || drag.pointerId !== event.pointerId) return;
     const width = Math.max(1, elements.preview.clientWidth);
     const height = Math.max(1, elements.preview.clientHeight);
-    backgroundSelection.backgroundX = Math.max(-35, Math.min(35,
-      drag.startX + (event.clientX - drag.x) / width * 100));
-    backgroundSelection.backgroundY = Math.max(-35, Math.min(35,
-      drag.startY + (event.clientY - drag.y) / height * 100));
+    backgroundSelection.backgroundX = Math.max(
+      -35,
+      Math.min(35, drag.startX + ((event.clientX - drag.x) / width) * 100)
+    );
+    backgroundSelection.backgroundY = Math.max(
+      -35,
+      Math.min(35, drag.startY + ((event.clientY - drag.y) / height) * 100)
+    );
     applySceneTransform();
   });
   function finishDrag(event: PointerEvent): void {
@@ -1095,18 +1320,27 @@ export function initBackgroundSelection(): void {
       const saved = await loadBackgroundSelection();
       if (!saved || hasChangedBackground) return;
       Object.assign(backgroundSelection, saved);
-      backgroundSelection.blurStrength = ["soft", "natural", "dreamy"].includes(backgroundSelection.blurStrength)
-        ? backgroundSelection.blurStrength : "natural";
+      backgroundSelection.blurStrength = ["soft", "natural", "dreamy"].includes(
+        backgroundSelection.blurStrength
+      )
+        ? backgroundSelection.blurStrength
+        : "natural";
       backgroundSelection.blurFade = Number.isFinite(backgroundSelection.blurFade)
-        ? Math.max(0, Math.min(100, backgroundSelection.blurFade)) : 55;
+        ? Math.max(0, Math.min(100, backgroundSelection.blurFade))
+        : 55;
       backgroundSelection.backgroundZoom = Number.isFinite(backgroundSelection.backgroundZoom)
-        ? Math.max(100, Math.min(160, backgroundSelection.backgroundZoom)) : 100;
+        ? Math.max(100, Math.min(160, backgroundSelection.backgroundZoom))
+        : 100;
       backgroundSelection.backgroundX = Number.isFinite(backgroundSelection.backgroundX)
-        ? backgroundSelection.backgroundX : 0;
+        ? backgroundSelection.backgroundX
+        : 0;
       backgroundSelection.backgroundY = Number.isFinite(backgroundSelection.backgroundY)
-        ? backgroundSelection.backgroundY : 0;
+        ? backgroundSelection.backgroundY
+        : 0;
       elements.notesInput.value = backgroundSelection.notes;
-      const notesDetails = elements.notesInput.closest<HTMLDetailsElement>(".background-notes-details");
+      const notesDetails = elements.notesInput.closest<HTMLDetailsElement>(
+        ".background-notes-details"
+      );
       if (notesDetails && backgroundSelection.notes.trim()) notesDetails.open = true;
       render();
     } catch {

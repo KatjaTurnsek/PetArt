@@ -1,4 +1,5 @@
 import { atelierState } from "../app/atelierState";
+import { createGuidedAdvice } from "../components/guidedAdvice";
 
 import {
   canvasSizes,
@@ -48,6 +49,48 @@ export function initCanvasSizeSelection(): void {
     heightInput,
     feedback,
   };
+
+  const guidance = createGuidedAdvice({
+    id: "canvas-guidance",
+  });
+
+  guidance.element.classList.add("canvas-guided-advice");
+  elements.container.insertAdjacentElement("beforebegin", guidance.element);
+
+  /** Adjust the advice to the number of pets without changing any selection. */
+  function updateGuidedAdvice(): void {
+    guidance.syncVisibility();
+    if (guidance.element.hidden) return;
+
+    const petCount =
+      atelierState.portrait.subjects.length || atelierState.portrait.numberOfPets || 0;
+
+    if (petCount >= 3) {
+      guidance.update(
+        "With several pets, a larger canvas gives me more room to capture their individual expressions. " +
+          "Try comparing sizes around 60 × 50 cm or larger. I'll help confirm the best dimensions."
+      );
+    } else if (petCount === 2) {
+      guidance.update(
+        "For two pets, it's worth allowing extra space for both faces and their details. " +
+          "Try comparing sizes around 50 × 40 cm or larger. I'll help you find the right balance."
+      );
+    } else if (petCount === 1) {
+      guidance.update(
+        "For one pet, a smaller canvas can work beautifully for a close-up portrait. " +
+          "If you'd like more of the body or surroundings, compare a larger size too."
+      );
+    } else {
+      guidance.update(
+        "Not sure where to start? Smaller sizes suit simple, close-up portraits, " +
+          "while more pets or detailed scenes usually need more space. " +
+          "You can explore sizes now and I'll advise you personally before painting."
+      );
+    }
+  }
+
+  document.addEventListener("atelier:canvas-screen-opened", updateGuidedAdvice);
+  document.addEventListener("atelier:subjects-changed", updateGuidedAdvice);
 
   // Preserve custom values when switching between standard sizes.
   let customWidth = DEFAULT_CUSTOM_WIDTH;
@@ -140,8 +183,11 @@ export function initCanvasSizeSelection(): void {
 
     const validIncrements =
       customWidth % DIMENSION_STEP === 0 && customHeight % DIMENSION_STEP === 0;
-    const validRange = customWidth >= MIN_DIMENSION && customHeight >= MIN_DIMENSION &&
-      customWidth <= MAX_DIMENSION && customHeight <= MAX_DIMENSION;
+    const validRange =
+      customWidth >= MIN_DIMENSION &&
+      customHeight >= MIN_DIMENSION &&
+      customWidth <= MAX_DIMENSION &&
+      customHeight <= MAX_DIMENSION;
 
     const price = calculateCustomPrice(customWidth, customHeight);
 

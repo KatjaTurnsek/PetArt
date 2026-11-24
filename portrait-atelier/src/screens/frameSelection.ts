@@ -1,6 +1,7 @@
 import { atelierState } from "../app/atelierState";
 import { drawPictureFrame, type FrameStyle } from "../app/frameRendererV2";
 import { getFramePreviewThickness } from "../app/frameDefinitions";
+import { createGuidedAdvice } from "../components/guidedAdvice";
 
 const FRAME_STORAGE_KEY = "portrait-atelier-frame-v1";
 const FRAME_STYLES: FrameStyle[] = ["none", "rustic", "antique-gold", "natural-wood"];
@@ -18,6 +19,33 @@ export function initFrameSelection(): void {
   }
 
   const elements = { previewHost, artworkHost, stage, canvas, status };
+
+  // Keep the advice outside the frame-choice grid to preserve its layout.
+  const frameChoices = buttons[0].parentElement;
+  if (!frameChoices) {
+    throw new Error("Frame choices container not found.");
+  }
+
+  const guidance = createGuidedAdvice({ id: "frame-guidance" });
+  guidance.element.classList.add("frame-guided-advice");
+  frameChoices.insertAdjacentElement("afterend", guidance.element);
+
+  const frameAdvice: Record<FrameStyle, string> = {
+    none: "A gallery-wrapped canvas has a clean, timeless look and can be displayed without a decorative frame.",
+    rustic:
+      "Rustic wood brings warmth and character, especially alongside earthy colours and natural scenery.",
+    "antique-gold":
+      "Antique gold creates a traditional, elegant look that can complement a classic portrait.",
+    "natural-wood":
+      "Natural wood offers a softer, understated look that suits many interiors without drawing attention away from your pet.",
+  };
+
+  /** Update the advice without changing the selected frame or artwork. */
+  function updateGuidedAdvice(): void {
+    guidance.update(
+      `${frameAdvice[selected]} These frames are for inspiration only; physical framing is not currently offered.`
+    );
+  }
   let selected: FrameStyle = "none";
   let drawId = 0;
 
@@ -26,7 +54,9 @@ export function initFrameSelection(): void {
   try {
     const saved = window.localStorage.getItem(FRAME_STORAGE_KEY);
     if (saved && FRAME_STYLES.includes(saved as FrameStyle)) selected = saved as FrameStyle;
-  } catch { /* Browsers may block storage in privacy mode. */ }
+  } catch {
+    /* Browsers may block storage in privacy mode. */
+  }
   const currentChoice = atelierState.framing.selectedFrame;
   if (currentChoice && FRAME_STYLES.includes(currentChoice as FrameStyle)) {
     selected = currentChoice as FrameStyle;
@@ -53,14 +83,18 @@ export function initFrameSelection(): void {
     clone.style.aspectRatio = source.style.aspectRatio || "4 / 5";
     // Fit the complete painting (including its frame) within the visible viewport.
     // The width is recalculated by CSS when the canvas shape or screen size changes.
-    const canvasRatio = Number(source.style.aspectRatio) ||
+    const canvasRatio =
+      Number(source.style.aspectRatio) ||
       (atelierState.canvas.width && atelierState.canvas.height
         ? atelierState.canvas.width / atelierState.canvas.height
-        : atelierState.canvas.shape === "landscape" ? 1.25
-          : atelierState.canvas.shape === "square" ? 1 : 0.8);
+        : atelierState.canvas.shape === "landscape"
+          ? 1.25
+          : atelierState.canvas.shape === "square"
+            ? 1
+            : 0.8);
     elements.stage.style.setProperty(
       "--frame-artwork-ratio",
-      String(Math.min(4, Math.max(0.25, canvasRatio))),
+      String(Math.min(4, Math.max(0.25, canvasRatio)))
     );
     clone.setAttribute("aria-label", "Your portrait composition");
     elements.artworkHost.replaceChildren(clone);
@@ -85,12 +119,14 @@ export function initFrameSelection(): void {
     try {
       await drawPictureFrame(elements.canvas, selected, width, height, thickness);
       if (current !== drawId) return;
-      elements.status.textContent = selected === "none"
-        ? "Gallery-wrapped canvas without a decorative frame."
-        : "Frame preview only — framing is not currently available to order.";
+      elements.status.textContent =
+        selected === "none"
+          ? "Gallery-wrapped canvas without a decorative frame."
+          : "Frame preview only — framing is not currently available to order.";
     } catch {
       if (current !== drawId) return;
-      elements.status.textContent = "The frame preview could not load. Your portrait is unaffected.";
+      elements.status.textContent =
+        "The frame preview could not load. Your portrait is unaffected.";
     }
   }
 
@@ -100,6 +136,7 @@ export function initFrameSelection(): void {
       button.classList.toggle("is-selected", active);
       button.setAttribute("aria-pressed", String(active));
     }
+    updateGuidedAdvice();
     void drawFrame();
   }
 
@@ -109,7 +146,11 @@ export function initFrameSelection(): void {
       if (!next || !FRAME_STYLES.includes(next as FrameStyle)) return;
       selected = next as FrameStyle;
       atelierState.framing.selectedFrame = selected === "none" ? null : selected;
-      try { window.localStorage.setItem(FRAME_STORAGE_KEY, selected); } catch { /* optional */ }
+      try {
+        window.localStorage.setItem(FRAME_STORAGE_KEY, selected);
+      } catch {
+        /* optional */
+      }
       renderSelection();
       // Let other previews redraw when the frame choice changes.
       document.dispatchEvent(new Event("atelier:frame-changed"));
@@ -122,7 +163,9 @@ export function initFrameSelection(): void {
     renderSelection();
   });
 
-  const observer = new ResizeObserver(() => { void drawFrame(); });
+  const observer = new ResizeObserver(() => {
+    void drawFrame();
+  });
   observer.observe(elements.previewHost);
   observer.observe(elements.stage);
   // Background Step 4 remains authoritative; refresh our clone on re-entry.

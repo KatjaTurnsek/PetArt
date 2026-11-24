@@ -117,18 +117,18 @@
 
                 <span class="choice-content">
                   <strong>Guide me</strong>
-                  <span>I'd love a little inspiration.</span>
+                  <span>I'd love a little help along the way.</span>
                 </span>
 
                 <span class="choice-arrow" aria-hidden="true">→</span>
               </button>
 
-              <button class="selection-card welcome-choice" type="button" data-choice="photo">
+              <button class="selection-card welcome-choice" type="button" data-choice="create">
                 <span class="choice-icon" aria-hidden="true">▧</span>
 
                 <span class="choice-content">
-                  <strong>I have a photograph</strong>
-                  <span>Let's explore what it could become.</span>
+                  <strong>I'll explore on my own</strong>
+                  <span>I have some ideas I'd like to try.</span>
                 </span>
 
                 <span class="choice-arrow" aria-hidden="true">→</span>
@@ -165,6 +165,18 @@
             <span class="step-number">Step 2</span>
             <h1 id="photo-heading">Who will be in your portrait?</h1>
             <p>Start with one pet, or bring several together from different photographs.</p>
+
+            <div id="photo-guidance" class="guided-advice" hidden>
+              <h2>A little advice from your artist</h2>
+              <p>
+                Don't worry about finding the perfect photograph. Look for one that captures your
+                pet's personality, expression, or a moment you love.
+              </p>
+              <p>
+                Not sure which photograph would work best? You can share your favourites, and I'll
+                help you choose.
+              </p>
+            </div>
           </div>
 
           <div class="pet-count-options" role="group" aria-label="Number of pets">
@@ -229,9 +241,6 @@
           <div class="photo-alternative">
             <p>Don't have a photograph ready?</p>
             <button class="btn btn-secondary" type="button" id="use-example">Try an example</button>
-            <button class="btn btn-text" type="button" id="skip-photo">
-              I'll send my photographs later
-            </button>
           </div>
 
           <nav class="step-navigation" aria-label="Step navigation">
@@ -726,7 +735,9 @@
                   <p id="background-upload-feedback" role="status" aria-live="polite"></p>
                   <details class="background-notes-details">
                     <summary>Add a background note (optional)</summary>
-                    <label for="background-notes" class="visually-hidden">Describe your background idea</label>
+                    <label for="background-notes" class="visually-hidden"
+                      >Describe your background idea</label
+                    >
                     <textarea
                       id="background-notes"
                       name="background-notes"
@@ -737,36 +748,91 @@
                   </details>
                 </div>
 
-              <details class="background-finetune" id="background-finetune" hidden>
-                <summary>Fine-tune background</summary>
-                <div class="background-finetune-controls">
-                  <div class="background-control-group">
-                    <span class="background-control-heading">Background softness</span>
-                    <div class="background-blur-presets" role="group" aria-label="Blur strength">
-                      <button type="button" class="background-blur-preset" data-blur-strength="soft" aria-pressed="false">Soft</button>
-                      <button type="button" class="background-blur-preset is-selected" data-blur-strength="natural" aria-pressed="true">Natural</button>
-                      <button type="button" class="background-blur-preset" data-blur-strength="dreamy" aria-pressed="false">Dreamy</button>
+                <details class="background-finetune" id="background-finetune" hidden>
+                  <summary>Fine-tune background</summary>
+                  <div class="background-finetune-controls">
+                    <div class="background-control-group">
+                      <span class="background-control-heading">Background softness</span>
+                      <div class="background-blur-presets" role="group" aria-label="Blur strength">
+                        <button
+                          type="button"
+                          class="background-blur-preset"
+                          data-blur-strength="soft"
+                          aria-pressed="false"
+                        >
+                          Soft
+                        </button>
+                        <button
+                          type="button"
+                          class="background-blur-preset is-selected"
+                          data-blur-strength="natural"
+                          aria-pressed="true"
+                        >
+                          Natural
+                        </button>
+                        <button
+                          type="button"
+                          class="background-blur-preset"
+                          data-blur-strength="dreamy"
+                          aria-pressed="false"
+                        >
+                          Dreamy
+                        </button>
+                      </div>
                     </div>
+                    <div class="background-control-group">
+                      <label class="background-control-heading" for="background-blur-fade">
+                        <span>Blur near the ground</span>
+                        <output id="background-blur-fade-value" for="background-blur-fade"
+                          >55%</output
+                        >
+                      </label>
+                      <input
+                        id="background-blur-fade"
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="5"
+                        value="55"
+                      />
+                      <div class="background-range-ends">
+                        <span>Ground stays sharp</span><span>Blur reaches ground</span>
+                      </div>
+                    </div>
+                    <div
+                      class="background-personal-position background-control-group"
+                      id="background-personal-position"
+                      hidden
+                    >
+                      <label class="background-control-heading" for="background-zoom">
+                        <span>Background zoom</span
+                        ><output id="background-zoom-value" for="background-zoom">100%</output>
+                      </label>
+                      <input
+                        id="background-zoom"
+                        type="range"
+                        min="100"
+                        max="160"
+                        step="5"
+                        value="100"
+                      />
+                      <p class="background-finetune-help">
+                        Drag the scenery in the preview to reposition it. Your pets stay in place.
+                      </p>
+                    </div>
+                    <p class="background-finetune-help">
+                      These adjustments are for visualisation. The final painting is composed
+                      personally.
+                    </p>
+                    <button
+                      id="background-reset-adjustments"
+                      class="btn btn-text background-finetune-reset"
+                      type="button"
+                    >
+                      Reset adjustments
+                    </button>
                   </div>
-                  <div class="background-control-group">
-                    <label class="background-control-heading" for="background-blur-fade">
-                      <span>Blur near the ground</span>
-                      <output id="background-blur-fade-value" for="background-blur-fade">55%</output>
-                    </label>
-                    <input id="background-blur-fade" type="range" min="0" max="100" step="5" value="55" />
-                    <div class="background-range-ends"><span>Ground stays sharp</span><span>Blur reaches ground</span></div>
-                  </div>
-                  <div class="background-personal-position background-control-group" id="background-personal-position" hidden>
-                    <label class="background-control-heading" for="background-zoom">
-                      <span>Background zoom</span><output id="background-zoom-value" for="background-zoom">100%</output>
-                    </label>
-                    <input id="background-zoom" type="range" min="100" max="160" step="5" value="100" />
-                    <p class="background-finetune-help">Drag the scenery in the preview to reposition it. Your pets stay in place.</p>
-                  </div>
-                  <p class="background-finetune-help">These adjustments are for visualisation. The final painting is composed personally.</p>
-                  <button id="background-reset-adjustments" class="btn btn-text background-finetune-reset" type="button">Reset adjustments</button>
-                </div>
-              </details>
+                </details>
               </div>
               <p class="background-preview-disclaimer">
                 A visual idea to explore. Your finished portrait will be individually composed and
@@ -833,7 +899,6 @@
                   >
                   <span class="background-option-check" aria-hidden="true">✓</span>
                 </button>
-
               </article>
 
               <article class="background-option-card">
@@ -853,9 +918,7 @@
                   >
                   <span class="background-option-check" aria-hidden="true">✓</span>
                 </button>
-
               </article>
-
             </section>
           </div>
 
@@ -868,11 +931,18 @@
         </section>
 
         <!-- SCREEN 05 — FRAME PREVIEW -->
-        <section id="frame-screen" class="atelier-container frame-screen" aria-labelledby="frame-heading" hidden>
+        <section
+          id="frame-screen"
+          class="atelier-container frame-screen"
+          aria-labelledby="frame-heading"
+          hidden
+        >
           <div class="step-header">
             <span class="step-number">Step 5</span>
             <h1 id="frame-heading">Try a frame</h1>
-            <p>Explore how different frames could complement your portrait. No frame is the default.</p>
+            <p>
+              Explore how different frames could complement your portrait. No frame is the default.
+            </p>
           </div>
           <div class="frame-layout">
             <div class="frame-preview-column">
@@ -888,109 +958,295 @@
             </div>
             <div>
               <div class="frame-choices" role="group" aria-label="Frame style">
-                <button type="button" class="frame-choice is-selected" data-frame-style="none" aria-pressed="true">
-                  <span class="frame-no-frame-thumb" aria-hidden="true" style="display:grid;place-items:center;background:#e9dfd2;width:100%;height:110px;border:1px solid #cfc5b8;">No frame</span>
+                <button
+                  type="button"
+                  class="frame-choice is-selected"
+                  data-frame-style="none"
+                  aria-pressed="true"
+                >
+                  <span class="frame-no-frame-thumb" aria-hidden="true"> No frame </span>
                   <strong>No frame</strong><span>Gallery-wrapped canvas</span>
                 </button>
-                <button type="button" class="frame-choice" data-frame-style="rustic" aria-pressed="false">
+                <button
+                  type="button"
+                  class="frame-choice"
+                  data-frame-style="rustic"
+                  aria-pressed="false"
+                >
                   <img src="/frames/rustic-corner.png" alt="" loading="lazy" />
                   <strong>Rustic wood</strong><span>Weathered and characterful</span>
                 </button>
-                <button type="button" class="frame-choice" data-frame-style="antique-gold" aria-pressed="false">
+                <button
+                  type="button"
+                  class="frame-choice"
+                  data-frame-style="antique-gold"
+                  aria-pressed="false"
+                >
                   <img src="/frames/antique-gold-corner.png" alt="" loading="lazy" />
                   <strong>Antique gold</strong><span>Classic and decorative</span>
                 </button>
-                <button type="button" class="frame-choice" data-frame-style="natural-wood" aria-pressed="false">
+                <button
+                  type="button"
+                  class="frame-choice"
+                  data-frame-style="natural-wood"
+                  aria-pressed="false"
+                >
                   <img src="/frames/natural-wood-corner.png" alt="" loading="lazy" />
                   <strong>Natural wood</strong><span>Warm and understated</span>
                 </button>
               </div>
-              <p class="frame-disclaimer">Frame options are for inspiration only. Physical framing is not currently offered.</p>
+              <p class="frame-disclaimer">
+                Frame options are for inspiration only. Physical framing is not currently offered.
+              </p>
             </div>
           </div>
           <nav class="step-navigation" aria-label="Step navigation">
             <button type="button" class="btn btn-secondary" id="frame-back">Back</button>
-            <button type="button" class="btn btn-primary" id="frame-continue">Continue <span aria-hidden="true">→</span></button>
+            <button type="button" class="btn btn-primary" id="frame-continue">
+              Continue <span aria-hidden="true">→</span>
+            </button>
           </nav>
         </section>
         <!-- SCREEN 06 — ROOM VISUALISER -->
-        <section id="room-screen" class="atelier-container room-screen" aria-labelledby="room-heading" hidden>
+        <section
+          id="room-screen"
+          class="atelier-container room-screen"
+          aria-labelledby="room-heading"
+          hidden
+        >
           <div class="step-header">
             <span class="step-number">Step 6</span>
             <h1 id="room-heading">See it in your room</h1>
-            <p>Imagine your portrait on the wall. Choose a room below, or use a photo of your own.</p>
+            <p>
+              Imagine your portrait on the wall. Choose a room below, or use a photo of your own.
+            </p>
           </div>
           <div class="room-layout">
             <div class="room-view-column">
               <div class="room-preview-card">
-                <div id="room-preview" class="room-preview" aria-label="Room with your portrait preview">
-                  <img id="room-background" class="room-background" src="/rooms/warm-living-room.webp" alt="Warm living room" draggable="false" />
-                  <div id="room-placed-portrait" class="room-placed-portrait" aria-label="Drag to move your portrait"></div>
+                <div
+                  id="room-preview"
+                  class="room-preview"
+                  aria-label="Room with your portrait preview"
+                >
+                  <img
+                    id="room-background"
+                    class="room-background"
+                    src="/rooms/warm-living-room.webp"
+                    alt="Warm living room"
+                    draggable="false"
+                  />
+                  <div
+                    id="room-placed-portrait"
+                    class="room-placed-portrait"
+                    aria-label="Drag to move your portrait"
+                  ></div>
                   <div id="room-corner-handles" class="room-corner-handles" hidden></div>
                 </div>
               </div>
-              <p id="room-feedback" class="room-feedback" role="status" aria-live="polite">Drag your portrait to place it on the wall.</p>
-              <p class="room-hint">This is a visual approximation. Exact physical scale requires a room measurement.</p>
+              <p id="room-feedback" class="room-feedback" role="status" aria-live="polite">
+                Drag your portrait to place it on the wall.
+              </p>
+              <p class="room-hint">
+                This is a visual approximation. Exact physical scale requires a room measurement.
+              </p>
             </div>
             <div class="room-settings">
               <h2>Choose a room</h2>
               <div class="room-choices" role="group" aria-label="Example rooms">
-                <button type="button" data-room-preset="warm" class="room-choice is-selected" aria-pressed="true"><img src="/rooms/warm-living-room.webp" alt=""/><span>Warm living room</span></button>
-                <button type="button" data-room-preset="classic" class="room-choice" aria-pressed="false"><img src="/rooms/classic-interior.webp" alt=""/><span>Classic interior</span></button>
-                <button type="button" data-room-preset="modern" class="room-choice" aria-pressed="false"><img src="/rooms/modern-interior.webp" alt=""/><span>Modern interior</span></button>
-                <button type="button" data-room-preset="dark" class="room-choice" aria-pressed="false"><img src="/rooms/dark-study.webp" alt=""/><span>Dark study</span></button>
+                <button
+                  type="button"
+                  data-room-preset="warm"
+                  class="room-choice is-selected"
+                  aria-pressed="true"
+                >
+                  <img src="/rooms/warm-living-room.webp" alt="" /><span>Warm living room</span>
+                </button>
+                <button
+                  type="button"
+                  data-room-preset="classic"
+                  class="room-choice"
+                  aria-pressed="false"
+                >
+                  <img src="/rooms/classic-interior.webp" alt="" /><span>Classic interior</span>
+                </button>
+                <button
+                  type="button"
+                  data-room-preset="modern"
+                  class="room-choice"
+                  aria-pressed="false"
+                >
+                  <img src="/rooms/modern-interior.webp" alt="" /><span>Modern interior</span>
+                </button>
+                <button
+                  type="button"
+                  data-room-preset="dark"
+                  class="room-choice"
+                  aria-pressed="false"
+                >
+                  <img src="/rooms/dark-study.webp" alt="" /><span>Dark study</span>
+                </button>
               </div>
               <div class="room-upload-row">
-                <label class="btn btn-secondary room-upload-label" for="room-photo">Upload my room photo</label>
-                <input id="room-photo" type="file" accept="image/jpeg,image/png,image/webp" hidden />
-                <button id="room-remove-photo" class="room-text-button" type="button" hidden>Use example rooms</button>
+                <label class="btn btn-secondary room-upload-label" for="room-photo"
+                  >Upload my room photo</label
+                >
+                <input
+                  id="room-photo"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  hidden
+                />
+                <button id="room-remove-photo" class="room-text-button" type="button" hidden>
+                  Use example rooms
+                </button>
               </div>
               <div class="room-placement-controls">
-                <label for="room-portrait-size">Portrait size in preview <output id="room-size-value">32%</output></label>
+                <label for="room-portrait-size"
+                  >Portrait size in preview <output id="room-size-value">32%</output></label
+                >
                 <input id="room-portrait-size" type="range" min="14" max="70" value="32" step="1" />
                 <div class="room-action-row">
-                  <button type="button" id="room-reset" class="btn btn-secondary">Reset placement</button>
-                  <button type="button" id="room-perspective" class="btn btn-secondary" aria-pressed="false">Adjust perspective</button>
+                  <button type="button" id="room-reset" class="btn btn-secondary">
+                    Reset placement
+                  </button>
+                  <button
+                    type="button"
+                    id="room-perspective"
+                    class="btn btn-secondary"
+                    aria-pressed="false"
+                  >
+                    Adjust perspective
+                  </button>
                 </div>
-                <p id="room-perspective-help" class="room-perspective-help" hidden>Drag the four corner handles until the portrait follows the wall. Choose “Done” when finished.</p>
+                <p id="room-perspective-help" class="room-perspective-help" hidden>
+                  Drag the four corner handles until the portrait follows the wall. Choose “Done”
+                  when finished.
+                </p>
               </div>
             </div>
           </div>
           <nav class="step-navigation" aria-label="Step navigation">
             <button type="button" class="btn btn-secondary" id="room-back">Back</button>
-            <button type="button" class="btn btn-primary" id="room-continue">Continue <span aria-hidden="true">→</span></button>
+            <button type="button" class="btn btn-primary" id="room-continue">
+              Continue <span aria-hidden="true">→</span>
+            </button>
           </nav>
         </section>
 
         <!-- SCREEN 07 — PORTRAIT SUMMARY -->
-        <section id="summary-screen" class="atelier-container summary-screen" aria-labelledby="summary-heading" hidden>
+        <section
+          id="summary-screen"
+          class="atelier-container summary-screen"
+          aria-labelledby="summary-heading"
+          hidden
+        >
           <div class="step-header">
             <span class="step-number">Step 7</span>
             <h1 id="summary-heading">Your portrait, at a glance</h1>
-            <p>Here's the vision you've created. Take a moment to review your choices before getting in touch.</p>
+            <p>
+              Here's the vision you've created. Take a moment to review your choices before getting
+              in touch.
+            </p>
           </div>
           <div class="summary-layout">
             <div class="summary-preview-card">
-              <div class="summary-artwork-preview" id="summary-artwork-preview" aria-label="Your portrait composition and selected frame preview"></div>
+              <div
+                class="summary-artwork-preview"
+                id="summary-artwork-preview"
+                aria-label="Your portrait composition and selected frame preview"
+              ></div>
             </div>
             <div class="summary-detail-card">
               <h2>Your choices</h2>
               <dl class="summary-details">
-                <div><dt>Subjects</dt><dd id="summary-pets">—</dd></div>
-                <div><dt>Canvas size</dt><dd id="summary-size">—</dd></div>
-                <div><dt>Orientation</dt><dd id="summary-shape">—</dd></div>
-                <div><dt>Background</dt><dd id="summary-background">—</dd></div>
-                <div><dt>Frame inspiration</dt><dd id="summary-frame">—</dd></div>
+                <div>
+                  <dt>Subjects</dt>
+                  <dd id="summary-pets">—</dd>
+                </div>
+                <div>
+                  <dt>Canvas size</dt>
+                  <dd id="summary-size">—</dd>
+                </div>
+                <div>
+                  <dt>Orientation</dt>
+                  <dd id="summary-shape">—</dd>
+                </div>
+                <div>
+                  <dt>Background</dt>
+                  <dd id="summary-background">—</dd>
+                </div>
+                <div>
+                  <dt>Frame inspiration</dt>
+                  <dd id="summary-frame">—</dd>
+                </div>
               </dl>
-              <p class="summary-frame-note" id="summary-frame-note">Framing is not included or currently offered.</p>
-              <p class="summary-note">Your choices are a starting point. Your final portrait will be personally composed and painted. Frames shown here are visual inspiration only.</p>
-              <p class="summary-next">Next: share your ideas and contact details for a personal consultation. No order or payment is placed at this stage.</p>
+              <p class="summary-frame-note" id="summary-frame-note">
+                Framing is not included or currently offered.
+              </p>
+              <p class="summary-note">
+                Your choices are a starting point. Your final portrait will be personally composed
+                and painted. Frames shown here are visual inspiration only.
+              </p>
+              <p class="summary-next">
+                Next: share your ideas and contact details for a personal consultation. No order or
+                payment is placed at this stage.
+              </p>
             </div>
           </div>
-          <nav class="step-navigation" aria-label="Step navigation">
-            <button type="button" class="btn btn-secondary" id="summary-back">Back</button>
-            <button type="button" class="btn btn-primary" id="summary-enquiry" disabled title="The enquiry form will be added next">Continue to enquiry →</button>
-          </nav>
+          <!-- The enquiry remains on Step 7, below the portrait review. -->
+          <section class="enquiry-section" aria-labelledby="enquiry-heading">
+            <div class="enquiry-heading">
+              <h2 id="enquiry-heading">Ready to bring your portrait to life?</h2>
+              <p>Share a few details and I'll personally review your ideas and photographs.</p>
+            </div>
+
+            <form id="atelier-enquiry-form" class="enquiry-form" novalidate>
+              <div class="enquiry-fields">
+                <div class="enquiry-field">
+                  <label for="enquiry-name">Your name <span aria-hidden="true">*</span></label>
+                  <input id="enquiry-name" name="name" type="text" autocomplete="name"
+                    maxlength="120" required placeholder="Your name" />
+                </div>
+                <div class="enquiry-field">
+                  <label for="enquiry-email">Email address <span aria-hidden="true">*</span></label>
+                  <input id="enquiry-email" name="email" type="email" autocomplete="email"
+                    maxlength="254" required placeholder="you@example.com" />
+                </div>
+              </div>
+
+              <div class="enquiry-field">
+                <label for="enquiry-message">Anything else you'd like me to know?</label>
+                <textarea id="enquiry-message" name="message" rows="4" maxlength="3000"
+                  placeholder="Your pet's personality, special requests, or an important date…"></textarea>
+                <p class="enquiry-help">Your portrait choices and notes from earlier steps are already included.</p>
+              </div>
+
+              <div id="enquiry-extra-background" class="enquiry-field">
+                <label for="enquiry-background-file">Additional background reference <span class="enquiry-optional">(optional)</span></label>
+                <p class="enquiry-help">Have another place in mind? Attach a photograph here, even if you chose a different background in Step 4.</p>
+                <input id="enquiry-background-file" name="additional-background" type="file"
+                  accept="image/jpeg,image/png,image/webp" aria-describedby="enquiry-background-feedback" />
+                <div class="enquiry-file-row" id="enquiry-file-row" hidden>
+                  <span id="enquiry-file-name"></span>
+                  <button type="button" class="btn btn-text" id="enquiry-remove-background">Remove</button>
+                </div>
+                <p id="enquiry-background-feedback" class="enquiry-feedback" role="status" aria-live="polite"></p>
+              </div>
+              <p id="enquiry-example-note" class="enquiry-example-note" hidden>
+                You're exploring with example pets. These images won't be submitted as your own references. You can return to Step 2 to add your own photographs before sending a commission enquiry.
+              </p>
+
+              <p class="enquiry-privacy-note">Your contact details and photographs will be used to review and respond to your enquiry. No payment or order is placed at this stage.</p>
+              <p id="enquiry-form-status" class="enquiry-feedback" role="status" aria-live="polite"></p>
+              <div class="enquiry-actions">
+                <button class="btn btn-secondary" type="button" id="summary-back">Back</button>
+                <button class="btn btn-primary" type="submit" id="summary-enquiry" disabled
+                  title="Sending will be enabled after the secure API is connected">Send my enquiry →</button>
+              </div>
+              <p class="enquiry-help">Enquiry sending will be enabled when the secure API is connected.</p>
+            </form>
+          </section>
         </section>
       </main>
     </div>

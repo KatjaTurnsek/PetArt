@@ -16,6 +16,8 @@ import { initBackgroundSelection } from "./screens/backgroundSelection";
 import { initFrameSelection } from "./screens/frameSelection";
 import { initRoomVisualiser } from "./screens/roomVisualiser";
 import { initPortraitSummary } from "./screens/portraitSummary";
+import { initEnquiryForm } from "./screens/enquiryForm";
+import "./styles/enquiryForm.css";
 import "./styles/portraitSummary.css";
 
 const TOTAL_STEPS = 7;
@@ -105,6 +107,13 @@ function goToStep(step: number): void {
 
   // Update the active step.
   atelierState.currentStep = step;
+
+  // Display additional artist guidance in guided mode.
+  const photoGuidance = document.querySelector<HTMLElement>("#photo-guidance");
+
+  if (photoGuidance) {
+    photoGuidance.hidden = atelierState.mode !== "guided";
+  }
 
   // Update progress indicator.
   updateProgress(step);
@@ -219,14 +228,23 @@ function initCanvasShapeSelection(): void {
 
 /**
  * Connects the navigation buttons between
- * the five Atelier screens.
+ * the Atelier screens.
  */
 function initNavigation(): void {
   // Step 1 → Step 2
+  // Both modes share the same screens and preserve customer selections.
   const choiceButtons = document.querySelectorAll<HTMLButtonElement>("[data-choice]");
 
   choiceButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      const choice = button.dataset.choice;
+
+      if (choice !== "create" && choice !== "guided") {
+        return;
+      }
+
+      atelierState.mode = choice;
+
       goToStep(2);
     });
   });
@@ -271,11 +289,18 @@ function initNavigation(): void {
   document
     .querySelector<HTMLButtonElement>("#frame-continue")
     ?.addEventListener("click", () => goToStep(6));
+
   document
     .querySelector<HTMLButtonElement>("#room-back")
     ?.addEventListener("click", () => goToStep(5));
-  document.querySelector<HTMLButtonElement>("#room-continue")?.addEventListener("click", () => goToStep(7));
-  document.querySelector<HTMLButtonElement>("#summary-back")?.addEventListener("click", () => goToStep(6));
+
+  document
+    .querySelector<HTMLButtonElement>("#room-continue")
+    ?.addEventListener("click", () => goToStep(7));
+
+  document
+    .querySelector<HTMLButtonElement>("#summary-back")
+    ?.addEventListener("click", () => goToStep(6));
 }
 
 /**
@@ -292,24 +317,31 @@ async function startAtelier(): Promise<void> {
   // Step 4's preview, so it must refresh AFTER restored pets/cutouts are ready.
   // Keep one refresh per animation frame even if several cutouts finish together.
   let pendingFrameRefresh = 0;
+
   function refreshFramingAfterPhotoRestore(): void {
     if (
       (atelierState.currentStep !== 5 && atelierState.currentStep !== 6) ||
       pendingFrameRefresh !== 0
     )
       return;
+
     pendingFrameRefresh = window.requestAnimationFrame(() => {
       pendingFrameRefresh = 0;
+
       if (atelierState.currentStep !== 5 && atelierState.currentStep !== 6) return;
+
       // Step 4 builds the current multi-pet composition synchronously when ready.
       document.dispatchEvent(new Event("atelier:background-screen-opened"));
+
       // Step 5 can now clone the up-to-date preview, not its pre-restore state.
       document.dispatchEvent(new Event("atelier:frame-screen-opened"));
+
       if (atelierState.currentStep === 6) {
         document.dispatchEvent(new Event("atelier:room-portrait-changed"));
       }
     });
   }
+
   document.addEventListener("atelier:subjects-changed", refreshFramingAfterPhotoRestore);
   document.addEventListener("atelier:cutout-ready", refreshFramingAfterPhotoRestore);
 
@@ -333,6 +365,7 @@ async function startAtelier(): Promise<void> {
 
   // Step 7 — Read-only portrait review
   initPortraitSummary();
+  initEnquiryForm();
 
   initCanvasDimensions();
 

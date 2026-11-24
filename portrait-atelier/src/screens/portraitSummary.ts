@@ -1,4 +1,7 @@
 import { atelierState } from "../app/atelierState";
+import { createGuidedAdvice } from "../components/guidedAdvice";
+import { isUsingExamplePhotos } from "./photoUpload";
+import { backgroundSelection } from "./backgroundSelection";
 import { drawPictureFrame, type FrameStyle } from "../app/frameRendererV2";
 import { getFramePreviewThickness } from "../app/frameDefinitions";
 
@@ -35,7 +38,8 @@ function snapshotArtwork(): HTMLElement | null {
   try {
     // Allow Step 4 to compute its layout offscreen without exposing it to users.
     screen.hidden = false;
-    screen.style.cssText = "position:fixed;left:-10000px;top:0;width:900px;visibility:hidden;pointer-events:none;";
+    screen.style.cssText =
+      "position:fixed;left:-10000px;top:0;width:900px;visibility:hidden;pointer-events:none;";
     source.style.width = "420px";
     document.dispatchEvent(new Event("atelier:background-screen-opened"));
     const clone = source.cloneNode(true) as HTMLElement;
@@ -112,45 +116,155 @@ async function renderArtworkPreview(): Promise<void> {
     // The unframed artwork remains visible if a decorative asset cannot load.
     if (version === renderVersion) {
       const note = document.querySelector<HTMLElement>("#summary-frame-note");
-      if (note) note.textContent = "The selected decorative frame could not be displayed. Framing is not included or currently offered.";
+      if (note)
+        note.textContent =
+          "The selected decorative frame could not be displayed. Framing is not included or currently offered.";
     }
   }
 }
 
+/** Personal, contextual advice for the final review. Only shown in Guide Me mode. */
+function getSummaryAdvice(): string {
+  const { portrait, canvas } = atelierState;
+  const numberOfPets = portrait.subjects.length || portrait.numberOfPets || 0;
+  const advice: string[] = [];
+
+  if (isUsingExamplePhotos()) {
+    advice.push(
+      "These example pets are just for exploring ideas. When you enquire about a real painting, we'll use photographs of your own pets."
+    );
+  }
+
+  if (numberOfPets > 1) {
+    advice.push(
+      "With several pets, I'll check their relative sizes, positioning and balance before we agree on the composition."
+    );
+  } else if (numberOfPets === 1) {
+    advice.push(
+      "For a single pet, I'll check that the chosen composition captures their character and allows enough room for the details that matter."
+    );
+  }
+
+  if (canvas.width && canvas.height) {
+    const dimensions = [canvas.width, canvas.height].sort((a, b) => a - b);
+    const isSmallSinglePetSize =
+      (dimensions[0] === 25 && dimensions[1] === 30) ||
+      (dimensions[0] === 30 && dimensions[1] === 40) ||
+      (dimensions[0] === 35 && dimensions[1] === 45);
+
+    if (numberOfPets > 1 && isSmallSinglePetSize) {
+      advice.push(
+        "This canvas size is normally suitable for one pet only. I'll help you choose a larger size that gives every animal enough space."
+      );
+    }
+  }
+
+  advice.push(
+    "This preview is a starting point, not the final artwork. I'll personally review your choices before any painting begins."
+  );
+
+  return advice.join(" ");
+}
+
+/** Show the customer's Step 4 background note under Your choices. */
+function updateBackgroundNote(): void {
+  const details = document.querySelector<HTMLElement>("#summary-screen .summary-details");
+  if (!details) return;
+
+  let row = details.querySelector<HTMLElement>("#summary-background-note-row");
+  if (!row) {
+    row = document.createElement("div");
+    row.id = "summary-background-note-row";
+
+    const label = document.createElement("dt");
+    label.textContent = "Your background note";
+
+    const value = document.createElement("dd");
+    value.id = "summary-background-note";
+    value.style.whiteSpace = "pre-wrap";
+
+    row.append(label, value);
+    const backgroundRow = document.querySelector<HTMLElement>("#summary-background")?.parentElement;
+    if (backgroundRow?.parentElement === details) {
+      backgroundRow.insertAdjacentElement("afterend", row);
+    } else {
+      details.append(row);
+    }
+  }
+
+  const note = backgroundSelection.notes.trim();
+  row.hidden = note.length === 0;
+  const value = row.querySelector<HTMLElement>("#summary-background-note");
+  if (value) value.textContent = note;
+}
+
 function updateSummary(): void {
   const { canvas, framing, background, portrait } = atelierState;
-  setText("#summary-size", canvas.width && canvas.height
-    ? `${canvas.width} × ${canvas.height} cm` : "Not yet selected");
+  setText(
+    "#summary-size",
+    canvas.width && canvas.height ? `${canvas.width} × ${canvas.height} cm` : "Not yet selected"
+  );
   setText("#summary-shape", canvas.shape[0].toUpperCase() + canvas.shape.slice(1));
   const selectedFrame = framing.selectedFrame;
-  setText("#summary-frame", selectedFrame ? (FRAME_LABELS[selectedFrame] ?? selectedFrame) : "No frame");
-  setText("#summary-frame-note", selectedFrame
-    ? "Frame shown for inspiration only. Framing is not included or currently offered."
-    : "Gallery-wrapped canvas. Decorative framing is not included or currently offered.");
+  setText(
+    "#summary-frame",
+    selectedFrame ? (FRAME_LABELS[selectedFrame] ?? selectedFrame) : "No frame"
+  );
+  setText(
+    "#summary-frame-note",
+    selectedFrame
+      ? "Frame shown for inspiration only. Framing is not included or currently offered."
+      : "Gallery-wrapped canvas. Decorative framing is not included or currently offered."
+  );
   const selectedBackground = document.querySelector<HTMLElement>(
     ".background-option.is-selected .background-option-copy strong, .background-option[aria-pressed='true'] .background-option-copy strong"
   );
-  setText("#summary-background", selectedBackground?.textContent?.trim() ||
-    (background.type === "blurred" ? "Softened background" :
-      background.type === "neutral" ? "Neutral background" :
-        background.type === "custom" ? "Personal background" : "Original photograph"));
+  setText(
+    "#summary-background",
+    selectedBackground?.textContent?.trim() ||
+      (background.type === "blurred"
+        ? "Softened background"
+        : background.type === "neutral"
+          ? "Neutral background"
+          : background.type === "custom"
+            ? "Personal background"
+            : "Original photograph")
+  );
   const count = portrait.numberOfPets || portrait.subjects.length;
-  setText("#summary-pets", count ? `${count} ${count === 1 ? "pet" : "pets"}` : "Your selected photograph(s)");
+  setText(
+    "#summary-pets",
+    count ? `${count} ${count === 1 ? "pet" : "pets"}` : "Your selected photograph(s)"
+  );
+  updateBackgroundNote();
   void renderArtworkPreview();
 }
 
 /** A scheduled refresh also handles pets restored asynchronously from IndexedDB. */
 export function initPortraitSummary(): void {
+  const summaryLayout = document.querySelector<HTMLElement>("#summary-screen .summary-layout");
+  if (!summaryLayout) throw new Error("Portrait summary layout not found.");
+
+  const guidance = createGuidedAdvice({
+    id: "summary-guidance",
+    heading: "A final thought from your artist",
+  });
+  summaryLayout.insertAdjacentElement("afterend", guidance.element);
+
+  function refreshSummary(): void {
+    guidance.update(getSummaryAdvice());
+    updateSummary();
+  }
+
   let queued = false;
   function scheduleIfVisible(): void {
     if (atelierState.currentStep !== 7 || queued) return;
     queued = true;
     requestAnimationFrame(() => {
       queued = false;
-      if (atelierState.currentStep === 7) updateSummary();
+      if (atelierState.currentStep === 7) refreshSummary();
     });
   }
-  document.addEventListener("atelier:summary-screen-opened", updateSummary);
+  document.addEventListener("atelier:summary-screen-opened", refreshSummary);
   document.addEventListener("atelier:subjects-changed", scheduleIfVisible);
   document.addEventListener("atelier:cutout-ready", scheduleIfVisible);
   document.addEventListener("atelier:frame-changed", scheduleIfVisible);
