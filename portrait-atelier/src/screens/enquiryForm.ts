@@ -1,27 +1,68 @@
+
 import { atelierState } from "../app/atelierState";
+import {
+  createEnquiryPayload,
+  submitEnquiry,
+  type EnquiryResponse,
+} from "../app/enquiryApi";
+import {
+  uploadReference,
+} from "../app/referenceUploadApi";
+import {
+  collectEnquiryReferences,
+  type EnquiryReference,
+} from "../app/collectEnquiryReferences";
 import { isUsingExamplePhotos } from "./photoUpload";
 
 const MAX_BACKGROUND_SIZE = 15 * 1024 * 1024;
-const ALLOWED_BACKGROUND_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const MAX_REFERENCES = 20;
+
+const ALLOWED_BACKGROUND_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+]);
 
 /**
- * Step 7 enquiry: collect customer details for the future API.
- * Does not upload or send anything until the secure API is implemented.
+ * Step 7 — Submit an enquiry and its reference photographs.
+ *
+ * Keeps the enquiry credentials in memory for upload retries.
+ * Never reports full success until all files are uploaded.
  */
 export function initEnquiryForm(): void {
-  const form = document.querySelector<HTMLFormElement>("#atelier-enquiry-form");
+  const form = document.querySelector<HTMLFormElement>(
+    "#atelier-enquiry-form",
+  );
   const name = document.querySelector<HTMLInputElement>("#enquiry-name");
   const email = document.querySelector<HTMLInputElement>("#enquiry-email");
-  const message = document.querySelector<HTMLTextAreaElement>("#enquiry-message");
-  const backgroundInput = document.querySelector<HTMLInputElement>("#enquiry-background-file");
-  const backgroundSection = document.querySelector<HTMLElement>("#enquiry-extra-background");
-  const backgroundFeedback = document.querySelector<HTMLElement>("#enquiry-background-feedback");
+  const message = document.querySelector<HTMLTextAreaElement>(
+    "#enquiry-message",
+  );
+  const backgroundInput = document.querySelector<HTMLInputElement>(
+    "#enquiry-background-file",
+  );
+  const backgroundSection = document.querySelector<HTMLElement>(
+    "#enquiry-extra-background",
+  );
+  const backgroundFeedback = document.querySelector<HTMLElement>(
+    "#enquiry-background-feedback",
+  );
   const fileRow = document.querySelector<HTMLElement>("#enquiry-file-row");
-  const filename = document.querySelector<HTMLElement>("#enquiry-file-name");
-  const removeBackground = document.querySelector<HTMLButtonElement>("#enquiry-remove-background");
-  const exampleNote = document.querySelector<HTMLElement>("#enquiry-example-note");
-  const submit = document.querySelector<HTMLButtonElement>("#summary-enquiry");
-  const status = document.querySelector<HTMLElement>("#enquiry-form-status");
+  const filename = document.querySelector<HTMLElement>(
+    "#enquiry-file-name",
+  );
+  const removeBackground = document.querySelector<HTMLButtonElement>(
+    "#enquiry-remove-background",
+  );
+  const exampleNote = document.querySelector<HTMLElement>(
+    "#enquiry-example-note",
+  );
+  const submit = document.querySelector<HTMLButtonElement>(
+    "#summary-enquiry",
+  );
+  const status = document.querySelector<HTMLElement>(
+    "#enquiry-form-status",
+  );
 
   if (
     !form ||
@@ -41,8 +82,18 @@ export function initEnquiryForm(): void {
     throw new Error("Enquiry form elements not found.");
   }
 
-  // Capture validated elements so nested callbacks retain non-null types.
-  const view = { fileRow, filename, backgroundSection, exampleNote };
+  const view = {
+    fileRow,
+    filename,
+    backgroundSection,
+    exampleNote,
+  };
+
+  let savedEnquiry: EnquiryResponse | null = null;
+  let pendingReferences: EnquiryReference[] = [];
+  let nextReferenceIndex = 0;
+  let isSubmitting = false;
+  let isComplete = false;
 
   name.value = atelierState.enquiry.name;
   email.value = atelierState.enquiry.email;
@@ -51,9 +102,11 @@ export function initEnquiryForm(): void {
   name.addEventListener("input", () => {
     atelierState.enquiry.name = name.value;
   });
+
   email.addEventListener("input", () => {
     atelierState.enquiry.email = email.value;
   });
+
   message.addEventListener("input", () => {
     atelierState.enquiry.message = message.value;
   });
@@ -66,28 +119,33 @@ export function initEnquiryForm(): void {
 
   function syncExampleMode(): void {
     const usingExamples = isUsingExamplePhotos();
+
     view.backgroundSection.hidden = usingExamples;
     view.exampleNote.hidden = !usingExamples;
-    // An example visit may change back to real photos without losing a previously selected reference.
-    // It must not be included in an example enquiry when submission is implemented.
+
     updateFileView();
   }
 
   backgroundInput.addEventListener("change", () => {
     backgroundFeedback.textContent = "";
+
     const file = backgroundInput.files?.[0];
     if (!file) return;
 
     if (!ALLOWED_BACKGROUND_TYPES.has(file.type)) {
-      backgroundFeedback.textContent = "Please choose a JPG, PNG or WebP photograph.";
+      backgroundFeedback.textContent =
+        "Please choose a JPG, PNG or WebP photograph.";
       backgroundInput.value = "";
       return;
     }
-    if (file.size > MAX_BACKGROUND_SIZE) {
-      backgroundFeedback.textContent = "Please choose a photograph smaller than 15 MB.";
+
+    if (file.size === 0 || file.size > MAX_BACKGROUND_SIZE) {
+      backgroundFeedback.textContent =
+        "Please choose a photograph smaller than 15 MB.";
       backgroundInput.value = "";
       return;
     }
+
     atelierState.enquiry.additionalBackground = file;
     updateFileView();
   });
@@ -101,13 +159,97 @@ export function initEnquiryForm(): void {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    // Defense in depth: never imply that an enquiry was sent without a backend response.
-    status.textContent =
-      "The secure enquiry service isn't connected yet. Your details have not been sent.";
+
+    if (isSubmitting || isComplete) return;
+
+    if (!form.reportValidity()) return;
+
+    if (isUsingExamplePhotos()) {
+      status.textContent =
+        "Please choose your own pet photographs before sending an enquiry.";
+      return;
+    }
+
+    if (atelierState.portrait.subjects.length === 0) {
+      status.textContent =
+        "Please add at least one pet photograph before submitting.";
+      return;
+    }
+
+    if (!savedEnquiry) {
+      const references = collectEnquiryReferences(atelierState);
+
+      if (references.length > MAX_REFERENCES) {
+        status.textContent =
+          "Please select no more than 20 reference photographs.";
+        return;
+      }
+
+      pendingReferences = references;
+      nextReferenceIndex = 0;
+    }
+
+    void sendEnquiry();
   });
 
-  // The API and privacy-policy integration are the next milestone.
-  submit.disabled = true;
-  document.addEventListener("atelier:summary-screen-opened", syncExampleMode);
+  async function sendEnquiry(): Promise<void> {
+    if (isSubmitting || isComplete) return;
+
+    isSubmitting = true;
+    submit.disabled = true;
+
+    try {
+      if (!savedEnquiry) {
+        status.textContent = "Saving your enquiry…";
+
+        savedEnquiry = await submitEnquiry(
+          createEnquiryPayload(atelierState),
+        );
+      }
+
+      while (nextReferenceIndex < pendingReferences.length) {
+        const reference = pendingReferences[nextReferenceIndex];
+
+        status.textContent =
+          `Uploading photograph ${nextReferenceIndex + 1} ` +
+          `of ${pendingReferences.length}…`;
+
+        await uploadReference(
+          reference.file,
+          reference.type,
+          savedEnquiry,
+        );
+
+        nextReferenceIndex += 1;
+      }
+
+      isComplete = true;
+      status.textContent =
+        "Your enquiry and photographs have been saved successfully.";
+      submit.textContent = "Enquiry submitted";
+    } catch (error: unknown) {
+      const detail = error instanceof Error
+        ? error.message
+        : "Something went wrong. Please try again.";
+
+      status.textContent = savedEnquiry
+        ? `${detail} Your enquiry was saved. ` +
+          "You can retry uploading the remaining photographs."
+        : detail;
+    } finally {
+      isSubmitting = false;
+      submit.disabled = isComplete;
+    }
+  }
+
+  // The actual API is connected for local development.
+  // Production launch requires privacy and security review.
+  submit.disabled = false;
+
+  document.addEventListener(
+    "atelier:summary-screen-opened",
+    syncExampleMode,
+  );
+
   syncExampleMode();
 }
