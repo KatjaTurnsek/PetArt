@@ -5,11 +5,13 @@ import type { AtelierState } from "./atelierState";
  * Customer information accepted by our submit-enquiry API.
  */
 export interface EnquiryPayload {
-  customerName: string;
-  customerEmail: string;
-  customerMessage: string;
-  portraitChoices: Record<string, unknown>;
-}
+    submissionKey: string;
+    uploadToken: string;
+    customerName: string;
+    customerEmail: string;
+    customerMessage: string;
+    portraitChoices: Record<string, unknown>;
+  }
 
 /**
  * Converts Atelier state into data our backend can accept.
@@ -18,10 +20,14 @@ export interface EnquiryPayload {
  * Photographs will be uploaded separately.
  */
 export function createEnquiryPayload(
-  state: AtelierState,
-): EnquiryPayload {
-  return {
-    customerName: state.enquiry.name.trim(),
+    state: AtelierState,
+    submissionKey: string,
+    uploadToken: string,
+  ): EnquiryPayload {
+    return {
+      submissionKey,
+      uploadToken,
+      customerName: state.enquiry.name.trim(),
     customerEmail: state.enquiry.email.trim(),
     customerMessage: state.enquiry.message.trim(),
 

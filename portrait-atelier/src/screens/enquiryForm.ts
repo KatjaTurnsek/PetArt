@@ -5,9 +5,7 @@ import {
   submitEnquiry,
   type EnquiryResponse,
 } from "../app/enquiryApi";
-import {
-  uploadReference,
-} from "../app/referenceUploadApi";
+import { uploadReference } from "../app/referenceUploadApi";
 import {
   collectEnquiryReferences,
   type EnquiryReference,
@@ -22,6 +20,23 @@ const ALLOWED_BACKGROUND_TYPES = new Set([
   "image/png",
   "image/webp",
 ]);
+
+/**
+ * Generates a cryptographically secure upload token.
+ * The same token is reused for retries during this page visit.
+ */
+function createUploadToken(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(32));
+
+  const binary = Array.from(bytes, (byte) =>
+    String.fromCharCode(byte)
+  ).join("");
+
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
 
 /**
  * Step 7 — Submit an enquiry and its reference photographs.
@@ -89,6 +104,11 @@ export function initEnquiryForm(): void {
     exampleNote,
   };
 
+  // Generate credentials once per page visit.
+  // Retries reuse these values rather than creating a new enquiry.
+  const submissionKey = crypto.randomUUID();
+  const uploadToken = createUploadToken();
+
   let savedEnquiry: EnquiryResponse | null = null;
   let pendingReferences: EnquiryReference[] = [];
   let nextReferenceIndex = 0;
@@ -113,6 +133,7 @@ export function initEnquiryForm(): void {
 
   function updateFileView(): void {
     const file = atelierState.enquiry.additionalBackground;
+
     view.fileRow.hidden = file === null;
     view.filename.textContent = file?.name ?? "";
   }
@@ -203,7 +224,11 @@ export function initEnquiryForm(): void {
         status.textContent = "Saving your enquiry…";
 
         savedEnquiry = await submitEnquiry(
-          createEnquiryPayload(atelierState),
+          createEnquiryPayload(
+            atelierState,
+            submissionKey,
+            uploadToken,
+          ),
         );
       }
 
@@ -242,7 +267,7 @@ export function initEnquiryForm(): void {
     }
   }
 
-  // The actual API is connected for local development.
+  // Enabled for local development only.
   // Production launch requires privacy and security review.
   submit.disabled = false;
 
