@@ -15,15 +15,17 @@ export interface UploadReferenceResponse {
  * through our authenticated enquiry upload endpoint.
  */
 export async function uploadReference(
-  file: File,
-  referenceType: ReferenceType,
-  enquiry: EnquiryResponse,
-): Promise<UploadReferenceResponse> {
+    file: File,
+    referenceType: ReferenceType,
+    enquiry: EnquiryResponse,
+    uploadId: string,
+  ): Promise<UploadReferenceResponse> {
   const formData = new FormData();
 
   formData.append("enquiryId", enquiry.enquiryId);
   formData.append("uploadToken", enquiry.uploadToken);
   formData.append("referenceType", referenceType);
+  formData.append("uploadId", uploadId);
   formData.append("file", file);
 
   const response = await fetch(

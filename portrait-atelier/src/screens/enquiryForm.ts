@@ -110,7 +110,7 @@ export function initEnquiryForm(): void {
   const uploadToken = createUploadToken();
 
   let savedEnquiry: EnquiryResponse | null = null;
-  let pendingReferences: EnquiryReference[] = [];
+  let pendingReferences: (EnquiryReference & { uploadId: string })[] = [];
   let nextReferenceIndex = 0;
   let isSubmitting = false;
   let isComplete = false;
@@ -206,7 +206,10 @@ export function initEnquiryForm(): void {
         return;
       }
 
-      pendingReferences = references;
+      pendingReferences = references.map((reference) => ({
+        ...reference,
+        uploadId: crypto.randomUUID(),
+      }));
       nextReferenceIndex = 0;
     }
 
@@ -239,11 +242,12 @@ export function initEnquiryForm(): void {
           `Uploading photograph ${nextReferenceIndex + 1} ` +
           `of ${pendingReferences.length}…`;
 
-        await uploadReference(
-          reference.file,
-          reference.type,
-          savedEnquiry,
-        );
+          await uploadReference(
+            reference.file,
+            reference.type,
+            savedEnquiry,
+            reference.uploadId,
+          );
 
         nextReferenceIndex += 1;
       }

@@ -2,6 +2,14 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 
+/**
+ * Portrait Atelier — Reference photograph uploads.
+ *
+ * Validates photographs and upload permissions.
+ * Saves images privately and records their metadata.
+ * Recognises completed uploads when the same upload ID is retried.
+ */
+
 const BUCKET_NAME = "portrait-references";
 const MAX_FILE_BYTES = 15 * 1024 * 1024;
 const MAX_REQUEST_BYTES = MAX_FILE_BYTES + 1024 * 1024;
@@ -15,18 +23,28 @@ const ALLOWED_IMAGE_TYPES = [
 type AllowedImageType = (typeof ALLOWED_IMAGE_TYPES)[number];
 type ReferenceType = "pet" | "background";
 
+interface StoredReference {
+  id: string;
+  enquiry_id: string;
+  storage_path: string;
+  reference_type: ReferenceType;
+  file_size: number;
+}
+
 function jsonResponse(
   body: Record<string, unknown>,
   status: number,
 ): Response {
   return Response.json(body, {
     status,
-    headers: { "Cache-Control": "no-store" },
+    headers: {
+      "Cache-Control": "no-store",
+    },
   });
 }
 
 /**
- * Checks the image's file signature.
+ * Checks an image's file signature.
  */
 function matchesImageSignature(
   bytes: Uint8Array,
@@ -42,7 +60,9 @@ function matchesImageSignature(
   }
 
   if (contentType === "image/png") {
-    const signature = [137, 80, 78, 71, 13, 10, 26, 10];
+    const signature = [
+      137, 80, 78, 71, 13, 10, 26, 10,
+    ];
 
     return signature.every(
       (value, index) => bytes[index] === value,
@@ -64,15 +84,29 @@ function matchesImageSignature(
 }
 
 /**
- * Generates the same SHA-256 token hash as submit-enquiry.
+ * Hashes the upload token for database verification.
  */
-async function hashUploadToken(token: string): Promise<string> {
+async function hashUploadToken(
+  token: string,
+): Promise<string> {
   const bytes = new TextEncoder().encode(token);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
+
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    bytes,
+  );
 
   return Array.from(new Uint8Array(digest))
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
+}
+
+function isUuid(value: unknown): value is string {
+  return (
+    typeof value === "string" &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+      .test(value)
+  );
 }
 
 function hasValidCredentials(
@@ -80,9 +114,7 @@ function hasValidCredentials(
   uploadToken: FormDataEntryValue | null,
 ): enquiryId is string {
   return (
-    typeof enquiryId === "string" &&
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-      .test(enquiryId) &&
+    isUuid(enquiryId) &&
     typeof uploadToken === "string" &&
     /^[A-Za-z0-9_-]{43}$/.test(uploadToken)
   );
@@ -100,11 +132,60 @@ function getFileExtension(
   switch (contentType) {
     case "image/jpeg":
       return "jpg";
+
     case "image/png":
       return "png";
+
     case "image/webp":
       return "webp";
   }
+}
+
+/**
+ * Returns true when a saved record agrees with the
+ * incoming upload's known metadata.
+ *
+ * Full content-hash verification will be added separately.
+ */
+function matchesStoredReference(
+  reference: StoredReference,
+  enquiryId: string,
+  referenceType: ReferenceType,
+  file: File,
+  expectedPath: string,
+): boolean {
+  return (
+    reference.enquiry_id === enquiryId &&
+    reference.reference_type === referenceType &&
+    reference.file_size === file.size &&
+    reference.storage_path === expectedPath
+  );
+}
+
+function completedUploadResponse(
+  reference: StoredReference,
+  uploadCount: number | null,
+  reused: boolean,
+): Response {
+  return jsonResponse(
+    {
+      success: true,
+      validated: true,
+      authorised: true,
+      uploaded: true,
+      reused,
+      enquiryId: reference.enquiry_id,
+      referenceId: reference.id,
+      referenceType: reference.reference_type,
+      filePath: reference.storage_path,
+      fileSize: reference.file_size,
+      uploadCount,
+      message: reused
+        ? "Previously uploaded photograph recognised."
+        : "Photograph saved and recorded successfully.",
+    },
+    reused ? 200 : 201,
+  );
 }
 
 export default {
@@ -113,7 +194,10 @@ export default {
     async (request, ctx) => {
       if (request.method !== "POST") {
         return jsonResponse(
-          { success: false, message: "Method not allowed." },
+          {
+            success: false,
+            message: "Method not allowed.",
+          },
           405,
         );
       }
@@ -129,17 +213,18 @@ export default {
         return jsonResponse(
           {
             success: false,
-            message: "Please submit an image using multipart/form-data.",
+            message:
+              "Please submit an image using multipart/form-data.",
           },
           415,
         );
       }
 
-      const contentLength = Number(
+      const declaredLength = Number(
         request.headers.get("content-length") ?? "0",
       );
 
-      if (contentLength > MAX_REQUEST_BYTES) {
+      if (declaredLength > MAX_REQUEST_BYTES) {
         return jsonResponse(
           {
             success: false,
@@ -166,15 +251,29 @@ export default {
       const enquiryId = formData.get("enquiryId");
       const uploadToken = formData.get("uploadToken");
       const referenceType = formData.get("referenceType");
+      const uploadId = formData.get("uploadId");
+      const file = formData.get("file");
 
       if (!hasValidCredentials(enquiryId, uploadToken)) {
         return jsonResponse(
           {
             success: false,
             code: "INVALID_UPLOAD_CREDENTIALS",
-            message: "Upload permission is invalid or has expired.",
+            message:
+              "Upload permission is invalid or has expired.",
           },
           403,
+        );
+      }
+
+      if (!isUuid(uploadId)) {
+        return jsonResponse(
+          {
+            success: false,
+            code: "INVALID_UPLOAD_ID",
+            message: "The photograph identifier is invalid.",
+          },
+          422,
         );
       }
 
@@ -182,13 +281,12 @@ export default {
         return jsonResponse(
           {
             success: false,
-            message: "Choose a pet or background photograph.",
+            message:
+              "Choose a pet or background photograph.",
           },
           422,
         );
       }
-
-      const file = formData.get("file");
 
       if (!(file instanceof File)) {
         return jsonResponse(
@@ -200,11 +298,15 @@ export default {
         );
       }
 
-      if (file.size === 0 || file.size > MAX_FILE_BYTES) {
+      if (
+        file.size === 0 ||
+        file.size > MAX_FILE_BYTES
+      ) {
         return jsonResponse(
           {
             success: false,
-            message: "Photographs must be smaller than 15 MB.",
+            message:
+              "Photographs must be smaller than 15 MB.",
           },
           422,
         );
@@ -218,7 +320,8 @@ export default {
         return jsonResponse(
           {
             success: false,
-            message: "Please use a JPG, PNG or WebP photograph.",
+            message:
+              "Please use a JPG, PNG or WebP photograph.",
           },
           422,
         );
@@ -237,27 +340,35 @@ export default {
         return jsonResponse(
           {
             success: false,
-            message: "The file is not a valid supported image format.",
+            message:
+              "The file is not a valid supported image format.",
           },
           422,
         );
       }
 
-      const tokenHash = await hashUploadToken(uploadToken);
+      const tokenHash = await hashUploadToken(
+        uploadToken,
+      );
 
+      // Verify permission before looking up private files.
       const { data: enquiry, error: verificationError } =
         await ctx.supabaseAdmin
           .from("portrait_enquiries")
-          .select("id")
+          .select("id, reference_upload_count")
           .eq("id", enquiryId)
           .eq("upload_token_hash", tokenHash)
-          .gt("upload_expires_at", new Date().toISOString())
+          .gt(
+            "upload_expires_at",
+            new Date().toISOString(),
+          )
           .maybeSingle();
 
       if (verificationError) {
         return jsonResponse(
           {
             success: false,
+            code: "VERIFICATION_FAILED",
             message: "We couldn't verify your upload.",
           },
           500,
@@ -269,27 +380,92 @@ export default {
           {
             success: false,
             code: "INVALID_UPLOAD_CREDENTIALS",
-            message: "Upload permission is invalid or has expired.",
+            message:
+              "Upload permission is invalid or has expired.",
           },
           403,
         );
       }
 
-      // Reserve a slot before saving the photograph.
-      const { data: uploadCount, error: reservationError } =
-        await ctx.supabaseAdmin.rpc(
-          "reserve_reference_upload_slot",
+      const extension = getFileExtension(
+        file.type as AllowedImageType,
+      );
+
+      // A retry uses the same path instead of
+      // generating a different filename.
+      const filePath =
+        `${enquiryId}/${uploadId}.${extension}`;
+
+      // Check whether this upload has already completed.
+      const { data: existing, error: lookupError } =
+        await ctx.supabaseAdmin
+          .from("portrait_reference_files")
+          .select(
+            "id, enquiry_id, storage_path, reference_type, file_size",
+          )
+          .eq("upload_id", uploadId)
+          .maybeSingle();
+
+      if (lookupError) {
+        return jsonResponse(
           {
-            p_enquiry_id: enquiryId,
-            p_token_hash: tokenHash,
+            success: false,
+            code: "UPLOAD_LOOKUP_FAILED",
+            message:
+              "We couldn't check the photograph's upload status.",
           },
+          500,
         );
+      }
+
+      if (existing) {
+        if (
+          !matchesStoredReference(
+            existing as StoredReference,
+            enquiryId,
+            referenceType,
+            file,
+            filePath,
+          )
+        ) {
+          return jsonResponse(
+            {
+              success: false,
+              code: "UPLOAD_ID_CONFLICT",
+              message:
+                "This photograph identifier has already been used for a different upload.",
+            },
+            409,
+          );
+        }
+
+        return completedUploadResponse(
+          existing as StoredReference,
+          enquiry.reference_upload_count,
+          true,
+        );
+      }
+
+      // Reserve a slot only for uploads
+      // that do not already have a record.
+      const {
+        data: uploadCount,
+        error: reservationError,
+      } = await ctx.supabaseAdmin.rpc(
+        "reserve_reference_upload_slot",
+        {
+          p_enquiry_id: enquiryId,
+          p_token_hash: tokenHash,
+        },
+      );
 
       if (reservationError) {
         return jsonResponse(
           {
             success: false,
-            message: "We couldn't prepare the photograph upload.",
+            code: "UPLOAD_RESERVATION_FAILED",
+            message:
+              "We couldn't prepare the photograph upload.",
           },
           500,
         );
@@ -300,27 +476,22 @@ export default {
           {
             success: false,
             code: "UPLOAD_LIMIT_REACHED",
-            message: "No upload slots are available for this enquiry.",
+            message:
+              "No upload slots are available for this enquiry.",
           },
           409,
         );
       }
 
-      const extension = getFileExtension(
-        file.type as AllowedImageType,
-      );
-
-      const filePath =
-        `${enquiryId}/${crypto.randomUUID()}.${extension}`;
-
-      // Save the actual image in private Storage.
-      const { error: storageError } = await ctx.supabaseAdmin
-        .storage
-        .from(BUCKET_NAME)
-        .upload(filePath, file, {
-          contentType: file.type,
-          upsert: false,
-        });
+      // The path is deterministic for this upload ID.
+      // Never overwrite an existing file.
+      const { error: storageError } =
+        await ctx.supabaseAdmin.storage
+          .from(BUCKET_NAME)
+          .upload(filePath, file, {
+            contentType: file.type,
+            upsert: false,
+          });
 
       if (storageError) {
         const { error: releaseError } =
@@ -329,41 +500,57 @@ export default {
             { p_enquiry_id: enquiryId },
           );
 
+        if (releaseError) {
+          return jsonResponse(
+            {
+              success: false,
+              code: "UPLOAD_RECOVERY_NEEDED",
+              message:
+                "We couldn't complete the upload. Please contact us.",
+            },
+            500,
+          );
+        }
+
+        // A concurrent request may still be completing
+        // this upload. Ask the browser to retry.
         return jsonResponse(
           {
             success: false,
-            code: releaseError
-              ? "UPLOAD_RECOVERY_NEEDED"
-              : "UPLOAD_FAILED",
-            message: "The photograph could not be saved.",
+            code: "UPLOAD_RETRY_REQUIRED",
+            message:
+              "The photograph could not be confirmed. Please retry.",
           },
-          500,
+          409,
         );
       }
 
-      // Save information ABOUT the photograph in PostgreSQL.
-      const { data: reference, error: recordError } =
-        await ctx.supabaseAdmin
-          .from("portrait_reference_files")
-          .insert({
-            enquiry_id: enquiryId,
-            storage_path: filePath,
-            reference_type: referenceType,
-            file_size: file.size,
-          })
-          .select("id")
-          .single();
+      // Record the successfully saved photograph.
+      const {
+        data: reference,
+        error: recordError,
+      } = await ctx.supabaseAdmin
+        .from("portrait_reference_files")
+        .insert({
+          enquiry_id: enquiryId,
+          upload_id: uploadId,
+          storage_path: filePath,
+          reference_type: referenceType,
+          file_size: file.size,
+        })
+        .select(
+          "id, enquiry_id, storage_path, reference_type, file_size",
+        )
+        .single();
 
-      if (recordError || !reference?.id) {
-        // Remove the file if its database record failed.
-        const { error: removeError } = await ctx.supabaseAdmin
-          .storage
-          .from(BUCKET_NAME)
-          .remove([filePath]);
+      if (recordError || !reference) {
+        // Delete only the file created by this request.
+        const { error: removeError } =
+          await ctx.supabaseAdmin.storage
+            .from(BUCKET_NAME)
+            .remove([filePath]);
 
         if (removeError) {
-          // Keep the reserved slot until we can reconcile
-          // the uncertain state of the stored photograph.
           return jsonResponse(
             {
               success: false,
@@ -394,21 +581,10 @@ export default {
         );
       }
 
-      return jsonResponse(
-        {
-          success: true,
-          validated: true,
-          authorised: true,
-          uploaded: true,
-          enquiryId,
-          referenceId: reference.id,
-          referenceType,
-          filePath,
-          fileSize: file.size,
-          uploadCount,
-          message: "Photograph saved and recorded successfully.",
-        },
-        201,
+      return completedUploadResponse(
+        reference as StoredReference,
+        uploadCount,
+        false,
       );
     },
   ),
